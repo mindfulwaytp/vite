@@ -1,94 +1,37 @@
-import React, { useState } from 'react';
-import Select from 'react-select';
-import useAirtableBooks from '../hooks/AirtableBooks';
+import { useEffect, useState } from 'react';
 
-const ITEMS_PER_PAGE = 8;
+export default function AirtableBooks() {
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-export default function BookShelf({ category }) {
-  const { books, loading, error } = useAirtableBooks();
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  useEffect(() => {
+    fetch('/functions/airtableBooks')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch books');
+        return res.json();
+      })
+      .then(data => {
+        // Convert Airtable response into your expected book shape
+        const mappedBooks = (data.records || []).map(record => ({
+          id: record.id,
+          title: record.fields.title || '',
+          description: record.fields.description || '',
+          link: record.fields.purchaseLink || '',
+          imageUrl: record.fields.imageUrl || '',
+          tags: record.fields.tags || [],
+          category: record.fields.category || '', // assumes you use this in filtering
+        }));
 
-  const filteredByCategory = books.filter(b => b.category === category);
-  const tagOptions = Array.from(
-    new Set(filteredByCategory.flatMap(book => book.tags || []))
-  ).map(tag => ({ value: tag, label: tag }));
+        setBooks(mappedBooks);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching books:', err);
+        setError(err);
+        setLoading(false);
+      });
+  }, []);
 
-  const filteredBooks = selectedTags.length
-    ? filteredByCategory.filter(book =>
-        selectedTags.every(tag => book.tags?.includes(tag.value))
-      )
-    : filteredByCategory;
-
-  const totalPages = Math.ceil(filteredBooks.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedBooks = filteredBooks.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
-  const handleTagChange = (tags) => {
-    setSelectedTags(tags);
-    setCurrentPage(1);
-  };
-
-  if (loading) return <p className="text-gray-500">Loading books...</p>;
-  if (error) return <p className="text-red-500">Error loading books: {error.message}</p>;
-
-  return (
-    <div className="max-w-7xl mx-auto px-4">
-      <div className="mb-8">
-        <label className="block font-semibold text-gray-700 mb-2">Filter by Tags:</label>
-        <Select
-          isMulti
-          options={tagOptions}
-          value={selectedTags}
-          onChange={handleTagChange}
-          className="text-black"
-          placeholder="Select tags..."
-        />
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
-        {paginatedBooks.map((book, idx) => (
-          <a
-            key={idx}
-            href={book.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full max-w-[300px] bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col items-center text-center"
-          >
-            <div className="w-full h-[240px] flex items-center justify-center overflow-hidden mb-4">
-              <img
-                src={book.imageUrl || '/fallback.jpg'}
-                alt={`Cover of ${book.title}`}
-                className="h-full object-contain"
-              />
-            </div>
-            <h3 className="text-lg font-semibold text-sky-700">{book.title}</h3>
-            <p className="text-base text-gray-700 mt-2">{book.description}</p>
-          </a>
-        ))}
-      </div>
-
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-4 mt-10">
-          <button
-            onClick={() => setCurrentPage(p => p - 1)}
-            disabled={currentPage === 1}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-          >
-            Previous
-          </button>
-          <span className="text-gray-700 font-semibold">
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={() => setCurrentPage(p => p + 1)}
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-          >
-            Next
-          </button>
-        </div>
-      )}
-    </div>
-  );
+  return { books, loading, error };
 }
