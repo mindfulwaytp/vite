@@ -1,51 +1,26 @@
-// src/hooks/useAirtableBooks.js
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
-function useAirtableBooks(tableName = 'Books') {
+export default function useAirtableBooks() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const baseId = 'appjQb7xeAtRjHH19';
-  const token = import.meta.env.VITE_AIRTABLE_API_TOKEN;
-  console.log('AIRTABLE TOKEN:', token); // 👈 add this line
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchBooks() {
-      try {
-        const res = await axios.get(
-          `https://api.airtable.com/v0/${baseId}/${tableName}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        const records = res.data.records.map(record => ({
-          id: record.id,
-          ...record.fields,
-          category: record.fields.Category?.toLowerCase() || '', // add this
-          tags: record.fields.Tags || [],                        // make sure tags are always present
-          title: record.fields.Title,
-          description: record.fields.Description,
-          link: record.fields.Link,
-          imageUrl: record.fields.Image?.[0]?.url || '',         // handle image field
-        }));
-
-
-        setBooks(records);
-      } catch (err) {
-        console.error('Error fetching books from Airtable:', err);
-      } finally {
+    fetch('/.netlify/functions/airtableBooks') // ← hitting your serverless function
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch books');
+        return res.json();
+      })
+      .then((data) => {
+        setBooks(data.books || []);
         setLoading(false);
-      }
-    }
+      })
+      .catch((err) => {
+        console.error('Error fetching books:', err);
+        setError(err);
+        setLoading(false);
+      });
+  }, []);
 
-    fetchBooks();
-  }, [tableName, token]);
-
-  return { books, loading };
+  return { books, loading, error };
 }
-
-export default useAirtableBooks;

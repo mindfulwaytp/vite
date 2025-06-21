@@ -1,5 +1,5 @@
-export async function onRequest(context) {
-  const { AIRTABLE_TOKEN } = context.env;
+export default async (request, context) => {
+  const AIRTABLE_TOKEN = context.env.AIRTABLE_TOKEN;
 
   if (!AIRTABLE_TOKEN) {
     return new Response(JSON.stringify({ error: 'Missing Airtable token' }), {
@@ -8,25 +8,25 @@ export async function onRequest(context) {
     });
   }
 
-  const url = "https://api.airtable.com/v0/appjQb7xeAtRjHH19/Books";
+  const url = 'https://api.airtable.com/v0/appjQb7xeAtRjHH19/Books';
 
-  const response = await fetch(url, {
+  const res = await fetch(url, {
     headers: {
       Authorization: `Bearer ${AIRTABLE_TOKEN}`,
     },
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
+  if (!res.ok) {
+    const errorText = await res.text();
     return new Response(JSON.stringify({ error: errorText }), {
-      status: response.status,
+      status: res.status,
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  const data = await response.json();
+  const data = await res.json();
 
-  const books = (data.records || []).map((record) => ({
+  const books = (data.records || []).map(record => ({
     id: record.id,
     title: record.fields.title || '',
     description: record.fields.description || '',
@@ -37,6 +37,7 @@ export async function onRequest(context) {
   }));
 
   return new Response(JSON.stringify({ books }), {
+    status: 200,
     headers: { 'Content-Type': 'application/json' },
   });
-}
+};
