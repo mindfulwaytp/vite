@@ -1,15 +1,20 @@
 export async function onRequest(context) {
-  const token = context.env.AIRTABLE_TOKEN;
-  const baseId = context.env.AIRTABLE_BASE_ID;
-  const table = 'Books'; // change if needed
+  const { AIRTABLE_TOKEN } = context.env;
 
-  const res = await fetch(`https://api.airtable.com/v0/${baseId}/${table}`, {
+  const response = await fetch("https://api.airtable.com/v0/appjQb7xeAtRjHH19/Books", {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${AIRTABLE_TOKEN}`,
     },
   });
 
-  const data = await res.json();
+  if (!response.ok) {
+    return new Response(JSON.stringify({ error: await response.text() }), {
+      status: response.status,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const data = await response.json();
 
   return new Response(JSON.stringify(data), {
     headers: { 'Content-Type': 'application/json' },
