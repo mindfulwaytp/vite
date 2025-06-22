@@ -1,43 +1,28 @@
-export default async (request, context) => {
-  const AIRTABLE_TOKEN = context.env.AIRTABLE_TOKEN;
+const fetch = require('node-fetch');
 
-  if (!AIRTABLE_TOKEN) {
-    return new Response(JSON.stringify({ error: 'Missing Airtable token' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+exports.handler = async function (event, context) {
+  const token = process.env.AIRTABLE_TOKEN;
+  const baseId = process.env.AIRTABLE_BASE_ID;
+
+  if (!token || !baseId) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Missing environment variables" }),
+    };
   }
 
-  const url = 'https://api.airtable.com/v0/appjQb7xeAtRjHH19/Books';
+  const url = `https://api.airtable.com/v0/${baseId}/Books`;
 
-  const res = await fetch(url, {
+  const response = await fetch(url, {
     headers: {
-      Authorization: `Bearer ${AIRTABLE_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 
-  if (!res.ok) {
-    const errorText = await res.text();
-    return new Response(JSON.stringify({ error: errorText }), {
-      status: res.status,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
+  const data = await response.json();
 
-  const data = await res.json();
-
-  const books = (data.records || []).map(record => ({
-    id: record.id,
-    title: record.fields.title || '',
-    description: record.fields.description || '',
-    link: record.fields.purchaseLink || '',
-    imageUrl: record.fields.imageUrl || '',
-    tags: record.fields.tags || [],
-    category: record.fields.category || '',
-  }));
-
-  return new Response(JSON.stringify({ books }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
+  return {
+    statusCode: 200,
+    body: JSON.stringify(data.records),
+  };
 };
