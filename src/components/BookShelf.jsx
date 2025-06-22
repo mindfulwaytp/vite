@@ -10,12 +10,15 @@ export default function BookShelf({ category }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredByCategory = books.filter(b =>
-    (b.category || '').toLowerCase() === category.toLowerCase()
+  Array.isArray(b.category) &&
+  b.category.map(c => c.toLowerCase()).includes(category.toLowerCase())
   );
 
   const tagOptions = Array.from(
     new Set(filteredByCategory.flatMap(book => book.tags || []))
-  ).map(tag => ({ value: tag, label: tag }));
+  )
+  .map(tag => ({ value: tag, label: tag}))
+  .sort((a,b) => a.label.localeCompare(b.label));
 
   const filteredBooks = selectedTags.length
     ? filteredByCategory.filter(book =>

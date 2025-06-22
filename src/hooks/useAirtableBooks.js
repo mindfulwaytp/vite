@@ -6,17 +6,38 @@ export default function useAirtableBooks() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('/.netlify/functions/airtableBooks') // ← hitting your serverless function
-      .then((res) => {
-        if (!res.ok) throw new Error('Failed to fetch books');
-        return res.json();
-      })
-      .then((data) => {
-        setBooks(data.books || []);
-        setLoading(false);
+    fetch('/.netlify/functions/airtableBooks')
+      .then(async (res) => {
+        const text = await res.text();
+
+        try {
+          const data = JSON.parse(text);
+
+          if (!Array.isArray(data)) {
+            throw new Error('Unexpected response format: expected an array');
+          }
+
+          const normalized = data
+            .filter(record => record.fields?.Title)
+            .map(record => ({
+              id: record.id,
+              title: record.fields.Title,
+              author: record.fields.Author,
+              description: record.fields.Description,
+              link: record.fields.Link,
+              tags: record.fields.Tags || [],
+              imageUrl: record.fields.Image?.[0]?.thumbnails?.large?.url || null,
+              category: record.fields.Category || '',
+            }));
+
+          setBooks(normalized);
+          setLoading(false);
+        } catch (jsonErr) {
+          throw new Error(`Error parsing response: ${jsonErr.message}\nRaw: ${text}`);
+        }
       })
       .catch((err) => {
-        console.error('Error fetching books:', err);
+        console.error('Error loading books:', err);
         setError(err);
         setLoading(false);
       });
