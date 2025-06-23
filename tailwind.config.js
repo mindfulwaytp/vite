@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        sans: ['Outfit', 'sans-serif'], // 👈 makes Outfit the default
         nunito: ['Nunito', 'sans-serif'],
         figtree: ['Figtree', 'sans-serif'],
         cal: ['"Cal-Sans"', 'sans-serif'],

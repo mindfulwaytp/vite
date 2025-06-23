@@ -22,6 +22,7 @@ export default function Header() {
     },
     { label: 'Join Our Team', path: '/join-our-team' },
     { label: 'Services', path: '#services' },
+    {label : 'Get Started', path: '/contact'}
   ];
 
   useEffect(() => {

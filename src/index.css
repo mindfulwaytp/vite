@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply font-figtree;
+  @apply font-sans; /* ✅ will now use Outfit */
 }

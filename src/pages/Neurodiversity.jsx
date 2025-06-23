@@ -42,10 +42,10 @@ function Neurodiversity() {
   <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 items-start">
 
     {/* Row 1, Column 1 */}
-    <div className="flex flex-col space-y-6">
-      <div className="flex items-start gap-4">
-        <img src={autism1} alt="Autism visual" />
-        <h3 className="text-xl text-gray-900 leading-snug">
+    <div className="flex flex-col space-y-2">
+      <div className="flex items-start gap-2">
+        <img src={autism1} alt="Autism visual" className="w-[135px] h-[137px] shrink-0"/>
+        <h3 className="text-2xl text-gray-900 leading-snug">
           Neurodivergent Affirming<br />Therapy
         </h3>
       </div>
@@ -58,10 +58,10 @@ function Neurodiversity() {
     </div>
 
     {/* Row 1, Column 2 */}
-    <div className="flex flex-col space-y-6">
-      <div className="flex items-start gap-4">
-        <img src={autism2} alt="Autism visual" />
-        <h3 className="text-xl text-gray-900 leading-snug">
+    <div className="flex flex-col space-y-2">
+      <div className="flex items-start gap-2">
+        <img src={autism2} alt="Autism visual" className="w-[135px] h-[137px] shrink-0"/>
+        <h3 className="text-2xl text-gray-900 leading-snug">
           ADHD & Autism Evaluations
         </h3>
       </div>
@@ -73,21 +73,20 @@ function Neurodiversity() {
       </p>
     </div>
 
-    {/* Row 2, Column 1 */}
-    <div className="flex flex-col space-y-2">
+    {/* Row 2, Centered Column */}
+    <div className="flex flex-col space-y-2 md:col-span-2 md:items-center">
       <div className="flex items-start gap-2">
         <Link to="/neurodiversity/resources">
           <img src={autism3} alt="Resource Library icon" className="w-[135px] h-[137px] shrink-0" />
         </Link>
-        <h3 className="text-xl text-gray-900 leading-snug">
+        <h3 className="text-2xl text-gray-900 leading-snug">
           Neurodiversity Resources
-        <div className="text-sm text-gray-600 mt-1 mt-8">
-          <p>Click the image to be directed to our resource page</p>
-        </div>
+          <div className="text-sm text-gray-600 mt-1 mt-8">
+            <p>Click the image to be directed to our resource page</p>
+          </div>
         </h3>
-
       </div>
-      <p className="text-gray-700 leading-relaxed text-[17px]">
+      <p className="text-gray-700 leading-relaxed text-[17px] max-w-3xl">
         Explore our curated library of books, articles, and tools created by and for neurodivergent individuals.
         Whether you’re looking to learn more about autism, ADHD, or affirming care practices,
         these resources offer guidance, validation, and connection for individuals, families, and professionals alike.
