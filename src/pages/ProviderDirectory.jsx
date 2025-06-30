@@ -92,18 +92,18 @@ const ProvidersDirectory = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <h1 className="text-3xl  text-center text-sky-700 mb-2">Meet Our Providers</h1>
-      <h3 className="text-lg text-center text-gray-600 mb-6">
+      <h3 className="text-lg text-center text-gray-700 mb-6">
         Use the search functions below to find a provider<br />
-        Availability Updated as of July 2025 (please note that provider availability may change quickly)
+        <p className="italic">Availability Updated as of July 2025 (please note that provider availability may change quickly)</p>
       </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <div><label className="block  text-sm text-gray-700 mb-1">Specialties</label><Select isMulti options={specialtyOptions} value={selectedSpecialties} onChange={(v) => { setSelectedSpecialties(v || []); updateMultiSelect('specialties', v); }} /></div>
-        <div><label className="block  text-sm text-gray-700 mb-1">Insurance</label><Select options={insuranceOptions} value={selectedInsurance} onChange={(v) => { setSelectedInsurance(v); const newParams = new URLSearchParams(searchParams); if (v) { newParams.set('insurance', v.value); } else { newParams.delete('insurance'); } setSearchParams(newParams); setCurrentPage(1); }} isClearable /></div>
-        <div><label className="block  text-sm text-gray-700 mb-1">Location</label><Select isMulti options={locationOptions} value={selectedLocation} onChange={(v) => { setSelectedLocation(v || []); updateMultiSelect('location', v); }} /></div>
-        <div><label className="block  text-sm text-gray-700 mb-1">Services</label><Select isMulti options={serviceOptions} value={selectedServices} onChange={(v) => { setSelectedServices(v || []); updateMultiSelect('services', v); }} /></div>
-        <div><label className="block  text-sm text-gray-700 mb-1">Gender Identity</label><Select isMulti options={genderOptions} value={selectedGender} onChange={(v) => { setSelectedGender(v || []); updateMultiSelect('gender', v); }} /></div>
-        <div><label className="block  text-sm text-gray-700 mb-1">Availability</label><Select options={[{ value: 'all', label: 'All' }, { value: 'true', label: 'Accepting New Clients' }, { value: 'false', label: 'Not Accepting New Clients' }]} value={availability} onChange={(v) => { setAvailability(v); const newParams = new URLSearchParams(searchParams); newParams.set('availability', v.value); setSearchParams(newParams); setCurrentPage(1); }} /></div>
+        <div><label className="block  text-base text-gray-700 mb-1">Specialties</label><Select isMulti options={specialtyOptions} value={selectedSpecialties} onChange={(v) => { setSelectedSpecialties(v || []); updateMultiSelect('specialties', v); }} /></div>
+        <div><label className="block  text-base text-gray-700 mb-1">Insurance</label><Select options={insuranceOptions} value={selectedInsurance} onChange={(v) => { setSelectedInsurance(v); const newParams = new URLSearchParams(searchParams); if (v) { newParams.set('insurance', v.value); } else { newParams.delete('insurance'); } setSearchParams(newParams); setCurrentPage(1); }} isClearable /></div>
+        <div><label className="block  text-base text-gray-700 mb-1">Location</label><Select isMulti options={locationOptions} value={selectedLocation} onChange={(v) => { setSelectedLocation(v || []); updateMultiSelect('location', v); }} /></div>
+        <div><label className="block  text-base text-gray-700 mb-1">Services</label><Select isMulti options={serviceOptions} value={selectedServices} onChange={(v) => { setSelectedServices(v || []); updateMultiSelect('services', v); }} /></div>
+        <div><label className="block  text-base text-gray-700 mb-1">Gender Identity</label><Select isMulti options={genderOptions} value={selectedGender} onChange={(v) => { setSelectedGender(v || []); updateMultiSelect('gender', v); }} /></div>
+        <div><label className="block  text-base text-gray-700 mb-1">Availability</label><Select options={[{ value: 'all', label: 'All' }, { value: 'true', label: 'Accepting New Clients' }, { value: 'false', label: 'Not Accepting New Clients' }]} value={availability} onChange={(v) => { setAvailability(v); const newParams = new URLSearchParams(searchParams); newParams.set('availability', v.value); setSearchParams(newParams); setCurrentPage(1); }} /></div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -124,14 +124,14 @@ const ProvidersDirectory = () => {
           <h2 className="text-lg  text-sky-700 mt-2">
             {t.name}
             {t.license && (
-              <span className="text-sm text-gray-800 ml-1">({t.license})</span>
+              <span className="text-base text-gray-800 ml-1">({t.license})</span>
             )}
             {t.pronouns && (
-              <span className="text-sm text-gray-600 ml-1">({t.pronouns})</span>
+              <span className="text-base text-gray-600 ml-1">({t.pronouns})</span>
             )}
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-3 text-sm text-gray-700 mt-2">
+          <div className="flex flex-wrap justify-center gap-3 text-base text-gray-700 mt-2">
             {t.location.includes('Telehealth') && (
               <span className="flex items-center gap-1">
                 <IoMdVideocam /> Telehealth
@@ -144,7 +144,7 @@ const ProvidersDirectory = () => {
             )}
           </div>
 
-          <div className="text-sm  text-gray-700 mt-2">
+          <div className="text-base  text-gray-700 mt-2">
             {t.acceptingClients?.toLowerCase() === 'yes' && (
               <span className="flex items-center justify-center text-green-600 gap-1">
                 <FaCalendarCheck /> Accepting New Clients
@@ -166,14 +166,14 @@ const ProvidersDirectory = () => {
             {(t.topSpecialties || []).map((spec, j) => (
               <li
                 key={j}
-                className="bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full"
+                className="bg-gray-100 text-gray-800 text-base px-3 py-1 rounded-full"
               >
                 {spec}
               </li>
             ))}
           </ul>
 
-          <p className="text-sm text-gray-700 leading-relaxed mt-3">
+          <p className="text-base text-gray-700 leading-relaxed mt-3">
             <strong className="text-gray-800">Insurance:</strong>{' '}
             {t.insurance.join(', ')}
           </p>

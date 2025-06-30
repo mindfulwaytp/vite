@@ -86,18 +86,6 @@ const allTherapists = [
   acceptingClients: 'yes',
 },
   {
-  name: 'Rachel Loch',
-  license: 'LMHCA',
-  pronouns: 'she/her',
-  specialties: ['ADHD', 'Anxiety', 'Autism', 'Depression', 'LGBTQ+ Identities', 'PTSD'],
-  topSpecialties: ['ADHD', 'Autism', 'LGBTQ+ Identities'],
-  insurance: ['Aetna', 'BCBS', 'Cigna', 'Molina-Medicaid', 'Premera', 'Private Pay', 'Regence'],
-  location: ['Telehealth', 'U-District'],
-  services: ['Individual', 'Assessments'],
-  gender: 'Female',
-  acceptingClients: 'yes',
-},
-  {
   name: 'Emily Hawkins',
   license: 'Intern',
   pronouns: 'she/her',

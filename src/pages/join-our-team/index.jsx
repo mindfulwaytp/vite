@@ -75,9 +75,9 @@ function JobBoard() {
               className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 hover:shadow-md transition"
             >
               <h3 className="text-xl  text-gray-800 mb-1">{job.title}</h3>
-              <p className="text-base  text-sky-700 mb-1">{job.location}</p>
-              <p className="text-base  text-sky-700 mb-2">{job.type}</p>
-              <p className="text-gray-700 text-base">{job.summary}</p>
+              <p className="text-lg  text-sky-700 mb-1">{job.location}</p>
+              <p className="text-lg  text-sky-700 mb-2">{job.type}</p>
+              <p className="text-gray-700 text-lg">{job.summary}</p>
             </Link>
           ))}
         </div>

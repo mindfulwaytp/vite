@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import useAirtableBooks from '../hooks/useAirtableBooks';
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 6;
 
 export default function BookShelf({ category }) {
   const { books, loading, error } = useAirtableBooks();
@@ -39,7 +39,7 @@ export default function BookShelf({ category }) {
   if (error) return <p className="text-red-500">Error loading books: {error.message}</p>;
 
   return (
-    <div className="max-w-7xl mx-auto px-4">
+    <div className="max-w-18xl mx-auto px-4">
       <div className="mb-8">
         <label className="block font-semibold text-gray-700 mb-2">Filter by Tags:</label>
         <Select
@@ -52,27 +52,28 @@ export default function BookShelf({ category }) {
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
-        {paginatedBooks.map((book) => (
-          <a
-            key={book.id}
-            href={book.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full max-w-[300px] bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col items-center text-center"
-          >
-            <div className="w-full h-[240px] flex items-center justify-center overflow-hidden mb-4">
-              <img
-                src={book.imageUrl || '/fallback.jpg'}
-                alt={`Cover of ${book.title}`}
-                className="h-full object-contain"
-              />
-            </div>
-            <h3 className="text-lg font-semibold text-sky-700">{book.title}</h3>
-            <p className="text-base text-gray-700 mt-2">{book.description}</p>
-          </a>
-        ))}
-      </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+          {paginatedBooks.map((book) => (
+            <a
+              key={book.id}
+              href={book.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full max-w-[500px] bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col items-center"
+            >
+              <div className="w-full h-[270px] flex items-start justify-center overflow-hidden mb-4">
+                <img
+                  src={book.imageUrl || '/fallback.jpg'}
+                  alt={`Cover of ${book.title}`}
+                  className="h-full object-contain"
+                />
+              </div>
+              <h3 className="text-lg font-semibold text-sky-700 text-center w-full">{book.title}</h3>
+              <p className="text-base text-gray-700 mt-2 text-left w-full">{book.description}</p>
+            </a>
+          ))}
+        </div>
+
 
       {totalPages > 1 && (
         <div className="flex justify-center items-center gap-4 mt-10">

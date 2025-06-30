@@ -11,7 +11,11 @@ import ADHDTherapistJob from './pages/join-our-team/adhd-therapist';
 import Internships from './pages/join-our-team/internships'; // ✅ New import for ADHD Therapist job
 import Contact from './pages/contact';//
 import ScrollToTop from './components/ScrollToTop';
-import NeurodiversityResources from './pages/NeurodiversityResources';
+import CategoryResourcePage from './pages/neurodiversity/neurodiversity-resources/CategoryResourcePage';
+import NeurodiversityResources from './pages/neurodiversity/neurodiversity-resources/index';
+import AssessmentsPage from './pages/neurodiversity/assessments'
+
+
 
 
 
@@ -25,12 +29,14 @@ function App() {
         <Route path="/providers" element={<ProviderDirectory />} />
         <Route path="/providers/:slug" element={<ProviderProfile />} /> {/* ✅ New route */}
         <Route path="/neurodiversity" element={<Neurodiversity />} />
+        <Route path="/neurodiversity/assessments" element={<AssessmentsPage />} />
         <Route path="/join-our-team/lgbtq-therapist" element={<LGBTQTherapistJob />} />
         <Route path="/join-our-team/adhd-therapist" element={<ADHDTherapistJob />} />
         <Route path="/join-our-team/internships" element={<Internships />} />
         <Route path="/join-our-team" element={<JobBoard />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/neurodiversity/resources" element={<NeurodiversityResources />} />
+        <Route path="/neurodiversity/neurodiversity-resources" element={<NeurodiversityResources />} />
+        <Route path="/neurodiversity/neurodiversity-resources/:slug" element={<CategoryResourcePage />} />
       </Routes>
     </div>
   );

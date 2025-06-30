@@ -8,22 +8,23 @@ export default function Header() {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Providers', path: '/providers' },
-    {
-      label: 'Neurodiversity',
-      path: '/neurodiversity',
-      subMenu: [
-        { label: 'Neurodiversity Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
-        { label: 'Autism & ADHD Evaluations', path: '/neurodiversity/evaluations' },
-        { label: 'Neurodiversity Resources', path: '/neurodiversity/resources' },
-      ],
-    },
-    { label: 'Join Our Team', path: '/join-our-team' },
-    { label: 'Services', path: '#services' },
-    {label : 'Get Started', path: '/contact'}
-  ];
+const navItems = [
+  { label: 'Home', path: '/' },
+  { label: 'Providers', path: '/providers' },
+  {
+    label: 'Neurodiversity',
+    path: '/neurodiversity',
+    subMenu: [
+      { label: 'Neurodiversity Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
+      { label: 'Autism & ADHD Assessments', path: '/neurodiversity/assessments' },
+      { label: 'Neurodiversity Resources', path: '/neurodiversity/neurodiversity-resources' },
+    ],
+  },
+  { label: 'Join Our Team', path: '/join-our-team' },
+  { label: 'Services', path: '#services' },
+  { label: 'Get Started', path: '/contact' }
+];
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,7 +85,7 @@ export default function Header() {
       <div key={idx} className="relative group">
         <Link
           to={item.path}
-          className={`hover:text-sky-700 transition inline-block ${
+          className={`hover:text-sky-400 transition inline-block ${
             location.pathname === item.path || item.subMenu.some(sub => location.pathname.startsWith(sub.path))
               ? 'underline underline-offset-4'
               : ''
@@ -98,9 +99,9 @@ export default function Header() {
             <Link
               key={subIdx}
               to={subItem.path}
-              className={`block px-4 py-2 text-sm hover:bg-sky-100 hover:text-sky-800 ${
+              className={`block px-4 py-2 text-sm hover:bg-sky-100 hover:text-sky-400 ${
                 location.pathname.startsWith(subItem.path)
-                  ? 'font-semibold text-sky-700'
+                  ? 'font-semibold text-sky-400'
                   : ''
               }`}
             >
@@ -113,7 +114,7 @@ export default function Header() {
       <Link
         key={idx}
         to={item.path}
-        className={`hover:text-sky-700 transition ${
+        className={`hover:text-sky-400 transition ${
           location.pathname === item.path ? 'underline underline-offset-4' : ''
         }`}
       >

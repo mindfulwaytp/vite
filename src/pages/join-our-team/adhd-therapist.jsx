@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 export default function ADHDTherapistJob() {
   const navigate = useNavigate();
   return (
-    <div className="p-8 max-w-3xl mx-auto">
+    <div className="p-8 max-w-6xl mx-auto">
       <button
         onClick={() => navigate(-1)}
         className="inline-block mb-6 bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-700 transition"
@@ -17,7 +17,7 @@ export default function ADHDTherapistJob() {
       </h1>
 
       <h3 className="text-xl text-center font-bold text-sky-700 mt-8 mb-2">Description</h3>
-      <p className="text-gray-700 mb-6">
+      <p className="text-xl text-gray-700 mb-6">
         At Mindful Way Therapy PLLC, we are seeking a passioante and experienced therapist to join our team in providing
         outpatient psychotherapy and evaluations for ADHD and Autism. This role is ideal for a clinician who is
         dedicated to supporting neurodivergent clients with compassion, cultural humility, and identity-affirming care.
@@ -29,7 +29,7 @@ export default function ADHDTherapistJob() {
       </p>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Benefits</h3>
-      <ul className="list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
+      <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
         <li className="font-extrabold">Make your own schedule!</li>
         <li>All employees are entitled to the applicable laws in Washington (1 hour per 40 hours worked)</li>
         <li>Paid admin time (1 hour per 5 client hours)</li>
@@ -43,19 +43,19 @@ export default function ADHDTherapistJob() {
       </ul>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Job Type</h3>
-      <ul className="list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
+      <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
         <li>Part-time: minimum 12 clients per week (scheduling 15)</li>
         <li>Full-time: minimum 22 clients per week (scheduling 25)</li>
         <li className="italic ml-4">Note: providing assessments counts towards these minimum hours; exact ratio will be discussed during interview</li>
       </ul>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Location</h3>
-      <ul className="list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
+      <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
         <li className="italic">Remote/Hybrid to start with the possibility of in-person in the future</li>
       </ul>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Salary Range</h3>
-      <ul className="list-disc ml-6 list-outside text-gray-700 mb-6 space-y-1">
+      <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
         <li>Starting at $42.75 for associates (increase after 6 months)</li>
         <li>Starting at $52.75 for fully-licensed (increase after 6 months)</li>
         <li>Admin rate: $30/hour (1 hour per 5 hours worked; max of 15 hours per month)</li>
@@ -64,7 +64,7 @@ export default function ADHDTherapistJob() {
       </ul>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Responsibilities</h3>
-      <ul className="list-disc ml-6 list-outside text-gray-700 mb-6 space-y-1">
+      <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
         <li>Provide individual and couples therapy sessions to clients, with a focus on LGBTQ+ affirming care</li>
         <li>Conduct comprehensive patient assessments utilizing intake forms and assessment questionnaires</li>
         <li>Maintain accurate medical documentation and adhere to HIPAA regulations</li>
@@ -74,7 +74,7 @@ export default function ADHDTherapistJob() {
       </ul>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Minimum Requirements</h3>
-      <ul className="list-disc ml-6 list-outside text-gray-700 mb-6 space-y-1">
+      <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
         <li>Master's degree in Marriage and Family Therapy, Clinical Mental Health Counseling, or Social Work</li>
         <li>Must have completed an internship that meets state requirements</li>
         <li>Associate license (LMFTA, LMHCA, LSWAIC) in the state of Washington</li>
@@ -84,7 +84,7 @@ export default function ADHDTherapistJob() {
       </ul>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Preferred</h3>
-      <ul className="list-disc ml-6 list-outside text-gray-700 mb-6 space-y-1">
+      <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
         <li>Fully licensed therapist in Washington</li>
         <li>Physically located in Washington State</li>
         <li>Personal/lived experience with the LGBTQ+ community</li>

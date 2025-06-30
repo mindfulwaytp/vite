@@ -12,7 +12,7 @@ function Home() {
           <h1 className="text-4xl md:text-4xl font-extrabold text-gray-900 mb-4">
             Welcome to Mindful Way Therapy
           </h1>
-          <p className="text-2xl text-gray-700 leading-relaxed">Therapy that Honors Who You Are</p>
+          <p className="italic text-2xl text-gray-700 leading-relaxed mb-4">Therapy that Honors Who You Are</p>
           <p className="text-xl text-gray-700 leading-relaxed">We believe therapy should feel safe, validating, and grounded in real understanding. Whether you're seeking support for yourself, your relationship, or your child—we’re here to walk with you.</p>
         </div>
 
@@ -38,7 +38,7 @@ function Home() {
         <div className="md:w-1/2 space-y-4">
           <h2 className="text-3xl font-bold text-center text-sky-700">About Us</h2>
 
-          <h3 className="text-lg font-semibold text-gray-700">
+          <h3 className="text-lg text-gray-700">
             At Mindful Way Therapy, we offer affriming, trauma-informed care with a focus on the lived
             experiences of LGBTQ+ and neurodivergent individuals. Many of our providers are members of these communities
             themselves, or have close connections that inform their work. Under the direction of Practice Owner, Ryne Evans, MA, LMFT,
@@ -81,32 +81,47 @@ function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row items-start gap-10 px-6 md:px-12 mb-12 bg-white">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 items-start">
+      <section className="flex flex-col md:flex-row px-2 md:px-1 mb-12 bg-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 items-start">
+          {/* Row 1, Col 1 */}
           <div className="flex flex-col space-y-2">
             <div className="flex items-start gap-2"></div>
             <h2 className="text-2xl font-bold text-center text-sky-700">Services</h2>
           <ul className="list-disc list-outside ml-2 text-gray-700 mb-6 space-y-2 text-lg">
-            <ul className="list-disc list-outside ml-6 text-gray-700 mb-6 space-y-2 text-lg">
               <li>
-                <span className="font-extrabold text-sky-800">Individual Therapy:</span>
+                <span className="font-bold text-sky-700">Individual Therapy:</span>
                 <span className="font-normal text-gray-700"> Support for a wide variety of challenges, including anxiety, depression, identity exploration, relationships and more.</span>
               </li>
               <li>
-                <span className="font-extrabold text-sky-800">Couples and Family Therapy:</span>
+                <span className="font-bold text-sky-700">Couples and Family Therapy:</span>
                 <span className="font-normal text-gray-700"> Help navigating conflict, communication, and deeper connection.</span>
               </li>
               <li>
-                <span className="font-extrabold text-sky-800">ADHD & Autism Evaluations:</span>
+                <span className="font-bold text-sky-700">ADHD & Autism Evaluations:</span>
                 <span className="font-normal text-gray-700"> Affirming assessments focused on insight, not diagnosis alone.</span>
               </li>
               <li>
-                <span className="font-extrabold text-sky-800">Surgery and Gender-Affirming Letters:</span>
+                <span className="font-bold text-sky-700">Surgery and Gender-Affirming Letters:</span>
                 <span className="font-normal text-gray-700"> Respectful documentation for clients seeking medical transition support.</span>
               </li>
             </ul>
-          </ul>
         </div>
+
+        {/* Row 1, Col 2 */}
+        <div className="flex flex-col space-y-2">
+            <div className="flex items-start gap-2"></div>
+            <h2 className="text-2xl font-bold text-center text-sky-700">Specializations</h2>
+            <ul className="list-disc list-outside ml-2 text-gray-700 mb-6 space-y-2 text-lg">
+              <li>
+                <span className="font-bold text-sky-700">Neurodiverse Affirming Therapy:</span> Affirming therapy for autism, ADHD, executive functioning differences, sensory sensitivities, burnout, and identity exploration.</li>
+              <li>
+                <span className="font-bold text-sky-700">LGBTQ+ Mental Health Support:</span> Queer, transgender, nonbinary, and gender-diverse clients navigating identity, relationships, and life transitions</li>
+              <li>
+                <span className="font-bold text-sky-700">Autism & ADHD Evaluations:</span> Comprehensive affirming assessments for teens and adults seeking clarity around their neurodivergent identity</li>
+              <li>
+                <span className="font-bold text-sky-700">Non-Monogamy and Other Relationship Styles:</span> Inclusive care for individuals, couples, and constellations exploring consensual non-monogamy, and alternative structures</li>
+            </ul>
+          </div>
       </div>
       </section>
     </>
@@ -114,5 +129,3 @@ function Home() {
 }
 
 export default Home;
-
-
