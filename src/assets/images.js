@@ -5,7 +5,7 @@ import paige from './images/paigeprofile.JPG';
 import cheryl from './images/cherylprofile.jpeg';
 import mary from './images/maryprofile.JPG';
 import julian from './images/julianprofile.jpeg';
-import emily from './images/emilyprofile.jpg'
+import emily from './images/emilyprofile.jpg';
 import rachel from './images/rachelprofile.jpeg'
 
 export const providerImages = {
