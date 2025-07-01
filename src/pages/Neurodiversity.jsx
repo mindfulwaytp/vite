@@ -45,9 +45,11 @@ function Neurodiversity() {
     <div className="flex flex-col space-y-2">
       <div className="flex items-start gap-2">
         <img src={autism1} alt="Autism visual" className="w-[135px] h-[137px] shrink-0 mb-5"/>
+        <Link to="/neurodiversity/affirming-therapy">
         <h3 className="text-center text-2xl text-gray-900 align-center">
           Neurodivergent Affirming Therapy
         </h3>
+        </Link>
       </div>
       <p className="text-gray-700 leading-relaxed text-base">
         Our commitment to Neurodivergent Affirming Therapy means creating a therapeutic environment
@@ -61,9 +63,11 @@ function Neurodiversity() {
     <div className="flex flex-col space-y-2">
       <div className="flex items-start gap-2">
         <img src={autism2} alt="Autism visual" className="w-[135px] h-[137px] shrink-0 mb-5"/>
-        <h3 className="text-2xl text-gray-900 leading-snug">
-          ADHD & Autism Evaluations
-        </h3>
+        <Link to="/neurodiversity/assessments">
+          <h3 className="text-2xl text-gray-900 leading-snug hover:text-sky-700 hover:underline transition-colors">
+            ADHD & Autism Evaluations
+          </h3>
+        </Link>
       </div>
       <p className="text-gray-700 leading-relaxed text-[17px]">
         Our Neurodivergent Affirming Assessments provide a comprehensive, respectful approach

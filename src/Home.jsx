@@ -13,6 +13,7 @@ function Home() {
             Welcome to Mindful Way Therapy
           </h1>
           <p className="italic text-2xl text-gray-700 leading-relaxed mb-4">Therapy that Honors Who You Are</p>
+          <p className="italic text-2xl text-gray-700 leading-relaxed mb-2">Offering Therapy in Seattle's U-District and via Telehealth</p>
           <p className="text-xl text-gray-700 leading-relaxed">We believe therapy should feel safe, validating, and grounded in real understanding. Whether you're seeking support for yourself, your relationship, or your child—we’re here to walk with you.</p>
         </div>
 
@@ -86,7 +87,9 @@ function Home() {
           {/* Row 1, Col 1 */}
           <div className="flex flex-col space-y-2">
             <div className="flex items-start gap-2"></div>
-            <h2 className="text-2xl font-bold text-center text-sky-700">Services</h2>
+            <Link to="/services">
+            <h2 className="text-2xl font-bold text-center text-sky-700 underline">Services</h2>
+            </Link>
           <ul className="list-disc list-outside ml-2 text-gray-700 mb-6 space-y-2 text-lg">
               <li>
                 <span className="font-bold text-sky-700">Individual Therapy:</span>

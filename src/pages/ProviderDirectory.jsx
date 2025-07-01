@@ -20,9 +20,13 @@ const specialtyOptions = [...new Set(allTherapists.flatMap(t => t.specialties))]
 const insuranceOptions = [...new Set(allTherapists.flatMap(t => t.insurance))].map(i => ({ label: i, value: i }));
 const locationOptions = [...new Set(allTherapists.flatMap(t => t.location))].map(l => ({ label: l, value: l }));
 const serviceOptions = [...new Set(allTherapists.flatMap(t => t.services))].map(s => ({ label: s, value: s }));
-const genderOptions = [...new Set(allTherapists.map(t => t.gender?.trim()))]
-  .filter(Boolean)
-  .map(g => ({ label: g, value: g }));
+const genderOptions = [
+  ...new Set(
+    allTherapists.flatMap(t =>
+      Array.isArray(t.gender) ? t.gender : [t.gender]
+    ).filter(Boolean).map(g => g.trim())
+  )
+].map(g => ({ label: g, value: g }));
 
 const ProvidersDirectory = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -68,7 +72,7 @@ const ProvidersDirectory = () => {
     const matchesInsurance = !selectedInsurance || t.insurance.includes(selectedInsurance.value);
     const matchesLocation = selectedLocation.length === 0 || selectedLocation.every(loc => t.location.includes(loc.value));
     const matchesServices = selectedServices.length === 0 || selectedServices.every(serv => t.services.includes(serv.value));
-    const matchesGender = selectedGender.length === 0 || selectedGender.some(sel => t.gender === sel.value);
+    const matchesGender = selectedGender.length === 0 || selectedGender.some(sel =>Array.isArray(t.gender) ? t.gender.includes(sel.value) : t.gender === sel.value);
     const matchesAvailability = availability.value === 'all' ||
       (availability.value === 'true' && ['yes', 'assessments only'].includes(t.acceptingClients.toLowerCase())) ||
       (availability.value === 'false' && ['no', 'assessments only'].includes(t.acceptingClients.toLowerCase()));
@@ -93,7 +97,7 @@ const ProvidersDirectory = () => {
     <div className="max-w-7xl mx-auto px-6 py-12">
       <h1 className="text-3xl  text-center text-sky-700 mb-2">Meet Our Providers</h1>
       <h3 className="text-lg text-center text-gray-700 mb-6">
-        Use the search functions below to find a provider<br />
+        Use the search functions below to find a provider. <br /> To learn more, click on each provider's profile<br />
         <p className="italic">Availability Updated as of July 2025 (please note that provider availability may change quickly)</p>
       </h3>
 
