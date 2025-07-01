@@ -12,8 +12,7 @@ const navItems = [
   { label: 'Home', path: '/' },
   { label: 'Providers', path: '/providers' },
   {
-    label: 'Neurodiversity',
-    path: '/neurodiversity',
+    label: 'Neurodiversity', path: '/neurodiversity',
     subMenu: [
       { label: 'Neurodiversity Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
       { label: 'Autism & ADHD Assessments', path: '/neurodiversity/assessments' },
@@ -21,7 +20,11 @@ const navItems = [
     ],
   },
   { label: 'Join Our Team', path: '/join-our-team' },
-  { label: 'Services', path: '#services' },
+  { label: 'Services', path: '/services', 
+    subMenu: [
+      { label: 'Rates and Fees', path: '/services/ratesfees'},
+    ]
+  },
   { label: 'Get Started', path: '/contact' }
 ];
 

@@ -64,12 +64,12 @@ function Home() {
             >
               <span>👥</span> Our Providers
             </Link>
-            <button
-              disabled
-              className="px-5 py-3 border border-gray-300 rounded-lg text-gray-400 cursor-not-allowed inline-flex items-center gap-2"
+            <Link
+              to="/services/ratesfees"
+              className="px-5 py-3 border border-gray-400 rounded-lg text-gray-800 hover:border-sky-500 hover:text-sky-700 transition inline-flex items-center gap-2"
             >
-              <span>💰</span> Rates Coming Soon
-            </button>
+              <span>💰</span> Our Rates and Fees
+            </Link>
           </div>
         </div>
       </section>

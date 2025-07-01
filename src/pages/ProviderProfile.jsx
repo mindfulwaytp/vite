@@ -128,11 +128,20 @@ if (!provider) {
       <div className="flex-col-reverse mt-10 bg-white p-6 rounded-xl shadow-sm flex md:flex-row gap-8 max-w-6xl mx-auto">
         {/* Left: About */}
         <div className="md:w-1/2 order-1 md:order-1">
-          <h2 className="text-2xl  text-sky-800 mb-2">About</h2>
-          <p className="text-base text-gray-700 leading-relaxed whitespace-pre-line">
-            {provider.about}
+          <h2 className="text-2xl text-sky-800 mb-4">Learn More</h2>
+          <p className="text-base text-gray-700 leading-relaxed">
+            We’re building our detailed bios. In the meantime, you can view this provider’s profile on Psychology Today:
           </p>
+          <a
+            href={provider.psychologyTodayLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-4 bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800 transition"
+          >
+            View Psychology Today Profile
+          </a>
         </div>
+
 
         {/* Divider */}
         <div className="hidden md:block w-px bg-gray-200"></div>

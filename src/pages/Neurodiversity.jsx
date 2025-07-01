@@ -45,8 +45,8 @@ function Neurodiversity() {
     <div className="flex flex-col space-y-2">
       <div className="flex items-start gap-2">
         <img src={autism1} alt="Autism visual" className="w-[135px] h-[137px] shrink-0 mb-5"/>
-        <h3 className="text-2xl text-gray-900 leading-snug">
-          Neurodivergent Affirming<br />Therapy
+        <h3 className="text-center text-2xl text-gray-900 align-center">
+          Neurodivergent Affirming Therapy
         </h3>
       </div>
       <p className="text-gray-700 leading-relaxed text-base">

@@ -14,6 +14,8 @@ import ScrollToTop from './components/ScrollToTop';
 import CategoryResourcePage from './pages/neurodiversity/neurodiversity-resources/CategoryResourcePage';
 import NeurodiversityResources from './pages/neurodiversity/neurodiversity-resources/index';
 import AssessmentsPage from './pages/neurodiversity/assessments'
+import Services from './pages/Services'
+import RatesFess from './pages/services/ratesfees.jsx'
 
 
 
@@ -35,6 +37,8 @@ function App() {
         <Route path="/join-our-team/internships" element={<Internships />} />
         <Route path="/join-our-team" element={<JobBoard />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/ratesfees" element={<RatesFess />} />
         <Route path="/neurodiversity/neurodiversity-resources" element={<NeurodiversityResources />} />
         <Route path="/neurodiversity/neurodiversity-resources/:slug" element={<CategoryResourcePage />} />
       </Routes>
