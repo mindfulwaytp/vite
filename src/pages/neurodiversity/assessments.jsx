@@ -17,7 +17,7 @@ const AssessmentsPage = () => {
           have to navigate these challenges alone or wonder why certain things feel so difficult asdfdfasdf.
         </p>
         <img
-          src="/images/asessmentheader.avif"
+          src="/images/assessmentheader.avif"
           alt="Autism Acceptance Banner"
           className="mx-auto mb-10 rounded-lg shadow-md"
         />
