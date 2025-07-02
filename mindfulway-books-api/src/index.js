@@ -3,15 +3,10 @@ export default {
     const baseId = env.AIRTABLE_BASE_ID;
     const token = env.AIRTABLE_TOKEN;
 
-    if (!baseId || !token) {
-      return new Response(JSON.stringify({ error: 'Missing Airtable credentials' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+    const airtableUrl = `https://api.airtable.com/v0/${baseId}/books`;
 
     try {
-      const res = await fetch(`https://api.airtable.com/v0/${baseId}/Books`, {
+      const res = await fetch(airtableUrl, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

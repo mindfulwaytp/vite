@@ -1,0 +1,12 @@
+name = "airtable-books"
+main = "src/index.js"
+compatibility_date = "2024-07-02"
+
+[vars]
+AIRTABLE_BASE_ID = "appjQb7xeAtRjHH19"
+AIRTABLE_TOKEN = "patglgQHGqHuPxdBL.1ed3d8d711d74ec54632cf01a7a77d713b88b1fe5e105394cf95e1d3208ac663"
+
+[[routes]]
+pattern = "api.mindfulway-therapy.com/books"
+account_id = "c00ac805d54a0aefdf72b40e5f24bc82"  # ✅ already correct
+zone_id = "mindfulway-books-api.pages.dev"              # ❗️replace this with actual zone ID from Cloudflare dashboard
