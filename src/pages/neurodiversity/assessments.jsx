@@ -6,28 +6,22 @@ const AssessmentsPage = () => {
   return (
     <div className="bg-white text-gray-800">
       {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-4xl font-bold mb-4">Autism & ADHD Evaluations</h1>
-        <p className="italic text-xl text-gray-700 mb-6">
-          Gain a better understanding of your unique <span className="underline">Brain Style</span>
-        </p>
-        <p className="text-lg text-gray-700 mb-10">
-          At Mindful Way Therapy, we recognize the unique ways ADHD and Autism shape daily experiences,
-          from managing focus and productivity to navigating social and emotional dynamics. You don’t
-          have to navigate these challenges alone or wonder why certain things feel so difficult asdfdfasdf.
-        </p>
-        <img
-          src="/images/assessmentheader.avif"
-          alt="Autism Acceptance Banner"
-          className="mx-auto mb-10 rounded-lg shadow-md"
-        />
-        <p className="text-lg text-gray-700">
-          Our neurodivergent-affirming assessments offer more than just clarity; they equip you with
-          a personalized understanding of your strengths and areas of need. With compassion and
-          expertise, we’re here to support your journey toward greater self-awareness and well-being.
-          Start finding the insights you need to thrive with an evaluation designed specifically for you.
-        </p>
-      </section>
+        <section
+          className="w-full h-[450px] bg-cover bg-center mt-20 relative flex items-center justify-center"
+          style={{ backgroundImage: `url(/images/assessmentheader.avif)` }}
+        >
+          <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
+            <h1 className="text-3xl md:text-4xl mb-4">Autism & ADHD Evaluations</h1>
+            <p className="italic text-lg text-gray-700 mb-4">
+              Gain a better understanding of your unique <span className="underline">Brain Style</span>
+            </p>
+            <p className="text-base md:text-lg leading-relaxed">
+              At Mindful Way Therapy, we recognize the unique ways ADHD and Autism shape daily experiences,
+              from managing focus and productivity to navigating social and emotional dynamics. You don’t
+              have to navigate these experiences alone or wonder why certain things feel so difficult.
+            </p>
+          </div>
+        </section>
 
       {/* Section 1: Why Should I (or my child) Get Assesed? */}
       <section className="bg-gray-50 py-16 px-4">
