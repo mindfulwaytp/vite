@@ -10,7 +10,7 @@ function RatesFees() {
         style={{ backgroundImage: `url(${insurance})` }}
       >
         <div className="bg-gray-600/80 text-white px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
-          <h1 className="text-3xl md:text-4xl mb-4">Rates and Fees</h1>
+          <h1 className="text-3xl md:text-4xl mb-4">Fees & Insurance</h1>
           <p className="text-base md:text-lg leading-relaxed">
             We are considered in-network with the following insurance companies. Please note: just because we are in network does not mean we accept your specific plan. It is ultimately your responsibility to confirm the network status of your provider.
           </p>
@@ -19,6 +19,7 @@ function RatesFees() {
 
       {/* Insurance Details */}
       <section className="py-16 px-4 md:px-10 bg-white">
+        <h1 className="text-3xl text-center text-sky-700 mb-6">Insurance Plans We Accept</h1>
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
 
           {/* Accepted by All Providers */}
@@ -70,7 +71,24 @@ function RatesFees() {
               </li>
             </ul>
           </div>
-
+        </div>
+      </section>
+            {/* Our Fees Section */}
+      <section className="py-10 px-4 md:px-10 bg-white border-t border-gray-200">
+        <h1 className="text-3xl text-center text-sky-700 mb-6">Our Fees</h1>
+        <div className="max-w-3xl mx-auto">
+          <ul className="text-lg list-disc list-inside space-y-2">
+            <li><strong>Interns:</strong> $30–60/session</li>
+            <li><strong>Associate Providers:</strong> $115/session</li>
+            <li><strong>Fully Licensed:</strong> $125/session</li>
+            <li>
+              <strong>Ryne:</strong>
+              <ul className="ml-10 list-disc space-y-1">
+                <li><strong>Intakes:</strong> $200</li>
+                <li><strong>Ongoing Therapy:</strong> $175</li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </section>
     </div>

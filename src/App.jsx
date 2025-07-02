@@ -15,7 +15,7 @@ import CategoryResourcePage from './pages/neurodiversity/neurodiversity-resource
 import NeurodiversityResources from './pages/neurodiversity/neurodiversity-resources/index';
 import AssessmentsPage from './pages/neurodiversity/assessments';
 import AffirmingTherapy from './pages/neurodiversity/affirming-therapy.jsx';
-import Services from './pages/Services';
+import Services from './pages/Services.jsx';
 import RatesFess from './pages/services/ratesfees.jsx'
 import Footer from './components/Footer'
 

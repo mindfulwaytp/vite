@@ -109,7 +109,7 @@ const allTherapists = [
   gender: ['Female'],
   acceptingClients: 'yes',
   about: 'adfasdfadsf',
-  psychologyTodayLink: 'https://www.psychologytoday.com/us/therapists/mary-aldee-baja-seattle-wa/1402891',
+  psychologyTodayLink: 'https://www.psychologytoday.com/us/therapists/rachel-loch-seattle-wa/1555654',
 },
   {
   name: 'Emily Hawkins',
@@ -151,7 +151,7 @@ const allTherapists = [
   gender: ['Female'],
   acceptingClients: 'no',
   about: 'asdfasdfadsf',
-  psychologyTodayLink: 'https://www.psychologytoday.com/us/therapists/ryne-evans-seattle-wa/838470',
+  psychologyTodayLink: 'https://www.psychologytoday.com/us/therapists/selina-rojas-seattle-wa/1555564',
 },
 ]
 

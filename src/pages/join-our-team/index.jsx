@@ -55,11 +55,6 @@ function JobBoard() {
             Mindful Way has expanded rapidly, servicing more than 175 clients, many of whom are on Medicaid (Apple Health), with the support over over 10 clinicians and interns.
         </p>
       </div>
-
-      <div className="text-center mt-16">
-        <h2 className="text-2xl  text-sky-700 mb-6 text-center">Voices from Our Team</h2>
-
-      </div>
       
       {/* Job Listings Section */}
       <div className="text-center mt-16">
