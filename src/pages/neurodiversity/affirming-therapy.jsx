@@ -6,22 +6,22 @@ const AffirmingTheraoy = () => {
   return (
     <div className="bg-white text-gray-800">
       {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-4xl font-bold mb-4">Neurodivergent Affirming Therapy</h1>
-        <p className="text-lg text-gray-700 mb-10">
-          Neurodivergent Affirming Therapy is a supportive approach that celebrates neurodiversity, respecting and valuing traits like ADHD, Autism, 
-          and other variations as natural parts of identity. Rather than seeking to ‘fix’ or change these differences, this therapy empowers individuals 
-          to embrace their strengths, build self-acceptance, and thrive authentically..
-        </p>
-        <img
-          src="/images/autism_acceptance_splash.png"
-          alt="Autism Acceptance Banner"
-          className="mx-auto mb-10 rounded-lg shadow-md"
-        />
-      </section>
+        <section
+          className="w-full h-[450px] bg-cover bg-center mt-20 relative flex items-center justify-center"
+          style={{ backgroundImage: `url(/images/therapyheader.jpg)` }}
+        >
+          <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
+            <h1 className="text-3xl md:text-4xl mb-4">Neurodivergent Affirming Therapy</h1>
+            <p className="text-base md:text-lg leading-relaxed">
+            Neurodivergent Affirming Therapy is a supportive approach that celebrates neurodiversity, respecting and valuing traits like ADHD, Autism, 
+            and other variations as natural parts of identity. Rather than seeking to ‘fix’ or change these differences, this therapy empowers individuals to embrace their strengths, 
+            build self-acceptance, and thrive authentically.
+            </p>
+          </div>
+        </section>
 
       {/* Section 1: What is Neurodivergent Affirming Therapy? */}
-      <section className="bg-gray-50 py-16 px-4">
+      <section className="bg-gray-100 py-16 px-4">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="max-w-full">
             <img
@@ -77,7 +77,7 @@ const AffirmingTheraoy = () => {
       </section>
 
       {/* Section 4: Traits and Strengths Overview */}
-            <section className="py-16 px-4">
+            <section className="bg-gray-100 py-16 px-4">
               <div className="text-center">
                 <h2 className="text-3xl font-bold mb-8 text-gray-900">Therapy Modalities</h2>
 

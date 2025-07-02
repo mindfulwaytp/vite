@@ -74,13 +74,13 @@ function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="gap-10 px-6 md:px-12 mb-12 bg-white">
+      <section className="gap-10 px-6 md:px-12 bg-gray-100 pt-12">
         <div>
           <h2 className="text-center text-3xl font-bold text-sky-700">Our Services & Specialties</h2>
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row px-2 md:px-1 mb-12 bg-white">
+      <section className="flex flex-col md:flex-row px-2 md:px-1 pb-12 mb-20 bg-gray-100">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 items-start">
           {/* Row 1, Col 1 */}
           <div className="flex flex-col space-y-2">
