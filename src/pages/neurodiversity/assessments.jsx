@@ -14,7 +14,7 @@ const AssessmentsPage = () => {
         <p className="text-lg text-gray-700 mb-10">
           At Mindful Way Therapy, we recognize the unique ways ADHD and Autism shape daily experiences,
           from managing focus and productivity to navigating social and emotional dynamics. You don’t
-          have to navigate these challenges alone or wonder why certain things feel so difficult.
+          have to navigate these challenges alone or wonder why certain things feel so difficult asdfdfasdf.
         </p>
         <img
           src="/images/asessmentheader.avif"
