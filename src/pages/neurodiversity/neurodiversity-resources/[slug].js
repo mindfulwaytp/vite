@@ -11,7 +11,8 @@ export default function CategoryResourcePage() {
     autism: 'Books on Autism',
     adhd: 'Books on ADHD',
     parents: 'Books for Parents',
-    professionals: 'Books for Professionals'
+    professionals: 'Books for Professionals',
+    youth: 'Books for Children and Teens'
   };
 
   const subtitleMap = {
@@ -22,7 +23,9 @@ export default function CategoryResourcePage() {
     parents:
       'Support your child or teen with books that guide, inform, and validate your parenting journey.',
     professionals:
-      'Recommended reading for clinicians, educators, and advocates working with neurodivergent populations.'
+      'Recommended reading for clinicians, educators, and advocates working with neurodivergent populations.',
+    youth:
+      'Explore books written for (and even by!) autistic and ADHD voices that help .'
   };
 
   return (

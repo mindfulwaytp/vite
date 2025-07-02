@@ -26,6 +26,12 @@ const resourceCategories = [
     description: 'Curated books and guides for educators, therapists, and clinicians working with neurodivergent clients.',
     image: '/images/therapist_resource.jpeg',
   },
+  {
+    slug: 'youth',
+    title: 'Resources for Children and Teens',
+    description: 'Empowering stories, guides, and tools created for neurodivergent youth exploring identity, emotions, and belonging.',
+    image: '/images/therapist_resource.jpeg',
+  },
 ];
 
 export default function NeurodiversityResources() {
