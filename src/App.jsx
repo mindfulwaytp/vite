@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Header from './Header.jsx';
+import Header from './components/Header';
 import Home from './Home';
 import ProviderProfile from './pages/ProviderProfile'; // ✅ Update path if needed
 import ProviderDirectory from './pages/ProviderDirectory'; // ✅ THIS IS CORRECT
@@ -17,6 +17,7 @@ import AssessmentsPage from './pages/neurodiversity/assessments';
 import AffirmingTherapy from './pages/neurodiversity/affirming-therapy.jsx';
 import Services from './pages/Services';
 import RatesFess from './pages/services/ratesfees.jsx'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/neurodiversity/neurodiversity-resources/:slug" element={<CategoryResourcePage />} />
         <Route path="/neurodiversity/affirming-therapy" element={<AffirmingTherapy />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

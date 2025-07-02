@@ -45,6 +45,7 @@ const ProvidersDirectory = () => {
       return options.filter(opt => values.includes(opt.value));
     };
 
+
     setSelectedGender(getMultiValues('gender', genderOptions));
     setSelectedSpecialties(getMultiValues('specialties', specialtyOptions));
     setSelectedLocation(getMultiValues('location', locationOptions));
@@ -66,6 +67,13 @@ const ProvidersDirectory = () => {
       setAvailability(match || { value: 'all', label: 'All' });
     }
   }, [searchParams]);
+
+  useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}, [currentPage]);
 
   const filteredTherapists = allTherapists.filter(t => {
     const matchesSpecialties = selectedSpecialties.length === 0 || selectedSpecialties.every(sel => t.specialties.includes(sel.value));
@@ -98,7 +106,7 @@ const ProvidersDirectory = () => {
       <h1 className="text-3xl  text-center text-sky-700 mb-2">Meet Our Providers</h1>
       <h3 className="text-lg text-center text-gray-700 mb-6">
         Use the search functions below to find a provider. <br /> To learn more, click on each provider's profile<br />
-        <p className="italic">Availability Updated as of July 2025 (please note that provider availability may change quickly)</p>
+        <p className="italic">Availability Updated as of July 2025 (we do our best to update this weekly; pleae note provide availability may change suddenly)</p>
       </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">

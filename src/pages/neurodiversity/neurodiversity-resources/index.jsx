@@ -12,19 +12,19 @@ const resourceCategories = [
     slug: 'adhd',
     title: 'Resources for ADHD',
     description: 'Guides and stories that support thriving with ADHD across age and identity.',
-    image: '/images/adhd_blocks.jpg',
+    image: '/images/adhd_beads.jpg',
   },
   {
     slug: 'parents',
     title: 'Resources for Parents',
     description: 'Supportive resources for parenting neurodivergent kids and teens with care.',
-    image: '/images/autism-parent.jpg',
+    image: '/images/parenting_resource.jpg',
   },
   {
     slug: 'professionals',
     title: 'Resources for Professionals',
     description: 'Curated books and guides for educators, therapists, and clinicians working with neurodivergent clients.',
-    image: '/images/professionals-card.jpg',
+    image: '/images/therapist_resource.jpeg',
   },
 ];
 
@@ -60,7 +60,7 @@ export default function NeurodiversityResources() {
       </section>
 
       {/* Category Menu Grid */}
-      <h1 className="text-4xl font-bold text-sky-700 mb-6">Neurodiversity Resource Library</h1>
+      <h1 className="text-4xl font-bold text-sky-700 mb-6">Neurodivergent Resource Library</h1>
       <p className="text-lg text-gray-700 mb-10">
         Explore resources curated for different communities within the neurodivergent spectrum. Select a category to find books,
         tools, and media that support learning, healing, and self-understanding.
@@ -74,7 +74,7 @@ export default function NeurodiversityResources() {
                 <img
                   src={category.image}
                   alt={category.title}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className="w-full h-70 object-cover rounded-lg mb-4"
                 />
               )}
               <h2 className="text-2xl font-semibold text-sky-700 mb-2">{category.title}</h2>

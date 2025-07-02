@@ -12,9 +12,7 @@ function Home() {
           <h1 className="text-4xl md:text-4xl font-extrabold text-gray-900 mb-4">
             Welcome to Mindful Way Therapy
           </h1>
-          <p className="italic text-2xl text-gray-700 leading-relaxed mb-4">Therapy that Honors Who You Are</p>
-          <p className="italic text-2xl text-gray-700 leading-relaxed mb-2">Offering Therapy in Seattle's U-District and via Telehealth</p>
-          <p className="text-xl text-gray-700 leading-relaxed">We believe therapy should feel safe, validating, and grounded in real understanding. Whether you're seeking support for yourself, your relationship, or your child—we’re here to walk with you.</p>
+          <p className="text-2xl text-gray-700 leading-relaxed mb-4">Neurodivergent and LGBTQ+ Affirming Therapy in Seattle and via telehealth in Washington</p>
         </div>
 
         <div className="md:w-1/2">
@@ -88,23 +86,23 @@ function Home() {
           <div className="flex flex-col space-y-2">
             <div className="flex items-start gap-2"></div>
             <Link to="/services">
-            <h2 className="text-2xl font-bold text-center text-sky-700 underline">Services</h2>
+            <h2 className="text-2xl font-bold text-center text-gray-700 leading-snug hover:text-sky-700 hover:underline transition-colors">Services</h2>
             </Link>
           <ul className="list-disc list-outside ml-2 text-gray-700 mb-6 space-y-2 text-lg">
               <li>
-                <span className="font-bold text-sky-700">Individual Therapy:</span>
+                <span className="font-bold text-gray-700">Individual Therapy:</span>
                 <span className="font-normal text-gray-700"> Support for a wide variety of challenges, including anxiety, depression, identity exploration, relationships and more.</span>
               </li>
               <li>
-                <span className="font-bold text-sky-700">Couples and Family Therapy:</span>
+                <span className="font-bold text-gray-700">Couples and Family Therapy:</span>
                 <span className="font-normal text-gray-700"> Help navigating conflict, communication, and deeper connection.</span>
               </li>
               <li>
-                <span className="font-bold text-sky-700">ADHD & Autism Evaluations:</span>
+                <span className="font-bold text-gray-700">ADHD & Autism Evaluations:</span>
                 <span className="font-normal text-gray-700"> Affirming assessments focused on insight, not diagnosis alone.</span>
               </li>
               <li>
-                <span className="font-bold text-sky-700">Surgery and Gender-Affirming Letters:</span>
+                <span className="font-bold text-gray-700">Surgery and Gender-Affirming Letters:</span>
                 <span className="font-normal text-gray-700"> Respectful documentation for clients seeking medical transition support.</span>
               </li>
             </ul>
@@ -113,16 +111,16 @@ function Home() {
         {/* Row 1, Col 2 */}
         <div className="flex flex-col space-y-2">
             <div className="flex items-start gap-2"></div>
-            <h2 className="text-2xl font-bold text-center text-sky-700">Specializations</h2>
+            <h2 className="text-2xl font-bold text-center text-gray-700">Specializations</h2>
             <ul className="list-disc list-outside ml-2 text-gray-700 mb-6 space-y-2 text-lg">
               <li>
-                <span className="font-bold text-sky-700">Neurodiverse Affirming Therapy:</span> Affirming therapy for autism, ADHD, executive functioning differences, sensory sensitivities, burnout, and identity exploration.</li>
+                <span className="font-bold text-gray-700">Neurodiverse Affirming Therapy:</span> Affirming therapy for autism, ADHD, executive functioning differences, sensory sensitivities, burnout, and identity exploration.</li>
               <li>
-                <span className="font-bold text-sky-700">LGBTQ+ Mental Health Support:</span> Queer, transgender, nonbinary, and gender-diverse clients navigating identity, relationships, and life transitions</li>
+                <span className="font-bold text-gray-700">LGBTQ+ Mental Health Support:</span> Queer, transgender, nonbinary, and gender-diverse clients navigating identity, relationships, and life transitions</li>
               <li>
-                <span className="font-bold text-sky-700">Autism & ADHD Evaluations:</span> Comprehensive affirming assessments for teens and adults seeking clarity around their neurodivergent identity</li>
+                <span className="font-bold text-gray-700">Autism & ADHD Evaluations:</span> Comprehensive affirming assessments for teens and adults seeking clarity around their neurodivergent identity</li>
               <li>
-                <span className="font-bold text-sky-700">Non-Monogamy and Other Relationship Styles:</span> Inclusive care for individuals, couples, and constellations exploring consensual non-monogamy, and alternative structures</li>
+                <span className="font-bold text-gray-700">Non-Monogamy and Other Relationship Styles:</span> Inclusive care for individuals, couples, and constellations exploring consensual non-monogamy, and alternative structures</li>
             </ul>
           </div>
       </div>

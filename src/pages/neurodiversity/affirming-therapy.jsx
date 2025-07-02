@@ -25,7 +25,7 @@ const AffirmingTheraoy = () => {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="max-w-full">
             <img
-              src="/images/colorful_child.avif"
+              src="/images/what_is_affirming.jpeg"
               alt="Child with colorful background"
               className="w-full rounded-xl shadow-lg"
             />
@@ -68,7 +68,7 @@ const AffirmingTheraoy = () => {
           </div>
                     <div>
             <img
-              src="/images/autism_adult.jpeg"
+              src="/images/why_affirming.jpg"
               alt="Puzzle pieces with the word autism"
               className="rounded-xl shadow-lg"
             />
@@ -76,57 +76,35 @@ const AffirmingTheraoy = () => {
         </div>
       </section>
 
-      {/* Section 3: Why a "neuro-divergent" affirming assessment? */}
-      <section className="bg-gray-50 py-16 px-4">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <img
-              src="/images/autism_affirming.jpeg"
-              alt="Child with colorful background"
-              className="rounded-xl shadow-lg"
-            />
-          </div>
-          <div>
-            <h2 className="text-2xl font-semibold mb-4 text-sky-700">
-              Why a neurodivergent affimring assessment?
-            </h2>
-            <p className="text-lg mb-4">
-              A Neurodivergent Affirming Assessment views traits like ADHD and Autism as natural parts of identity, 
-              focusing on strengths rather than deficits. This approach provides insight into unique qualities and support 
-              needs without clinical or pathologizing language, empowering individuals and families with a more holistic 
-              understanding.
-            </p>
-            <h2 className="text-xl font-bold mb-4">How is this different from a typical assessment?</h2>
-            <ul className="text-lg mb-6 list-disc list-inside">
-              <li>Strength-Based Focus: We highlight unique strengths, reframing traits as valuable differences rather than challenges.</li>
-              <li>Respectful Language: Our assessments avoid pathologizing terms, respecting neurodivergent traits as natural variations.</li>
-              <li>Person-Centered: We see the whole person, not just symptoms, fostering self-confidence and acceptance.</li>
-              <li>Empowering Recommendations: Strategies are tailored to help clients thrive as they are, supporting genuine self-expression rather than conformity.</li>
-            </ul>
-            <p className="text-lg">
-              A Brain Style Profile assessment at Mindful Way Therapy goes beyond just answering questions—
-              it’s a step toward embracing your or your child’s unique neurodivergent identity. By
-              understanding how ADHD or Autism affects thinking, emotions, and interactions, you can access
-              the right tools, strategies, and resources to foster growth and well-being.
-            </p>
-          </div>
-        </div>
-      </section>
       {/* Section 4: Traits and Strengths Overview */}
-            <section className="py-16 px-4 bg-white">
-              <div className="max-w-4xl mx-auto text-center mb-10">
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">Therapy Modalities</h2>
-                <p className="text-lg text-gray-700">
-                We use a variety of evidence-based and neurodivergent-affirming therapy modalities tailored to support the unique needs of our clients. 
-                Our therapists integrate approaches such as somatic therapy, parts work, mindfulness-based interventions, and strengths-based and compassion-based 
-                therapy modalities. These methods help individuals explore identity, manage stress, process trauma, and build meaningful connections—without pathologizing neurodivergent traits. 
-                Whether you're navigating life with ADHD, autism, anxiety, or trauma, our integrative approach creates a validating, supportive environment to help you thrive.
+            <section className="py-16 px-4">
+              <div className="text-center">
+                <h2 className="text-3xl font-bold mb-8 text-gray-900">Therapy Modalities</h2>
+
+                <div className="flex justify-center mb-8">
+                  <img
+                    src="/images/therapy_modalities.jpg"
+                    alt="Therapy Modalities Brain Visual"
+                    className="w-full max-w-3xl h-auto rounded-lg shadow-md"
+                  />
+                </div>
+                <p className="max-w-4xl mx-auto text-lg text-gray-800 mb-12">
+                  We use a variety of evidence-based and neurodivergent-affirming therapy modalities tailored to support the unique needs of our clients.
+                  Our therapists integrate approaches such as somatic therapy, parts work, mindfulness-based interventions, and strengths-based and compassion-based therapy modalities.
+                  These methods help individuals explore identity, manage stress, process trauma, and build meaningful connections—without pathologizing neurodivergent traits.
+                  Whether you're navigating life with ADHD, autism, anxiety, or trauma, our integrative approach creates a validating, supportive environment to help you thrive.
                 </p>
               </div>
               <div className="max-w-4xl mx-auto">
                 <Modalities />
               </div>
             </section>
+              <div className="max-w-6xl mx-auto py-8 px-4 text-center">
+                <h2 className="text-xl font-bold text-gray-700 mb-6">Why We are Anti-ABA (Applied Behavioral Anaylsis)</h2>
+                <p className="text-lg">At Mindful Way Therapy, we do not use Applied Behavior Analysis (ABA) because it is often based on modifying behaviors to fit neurotypical standards, which can feel restrictive 
+                  and invalidating to neurodivergent individuals. ABA focuses primarily on changing outward behaviors rather than fostering self-acceptance, often aiming to eliminate natural expressions 
+                  of neurodivergent traits. This can undermine an individual’s sense of self-worth and authenticity, prioritizing “acceptable” behaviors over true understanding and support.</p>
+              </div>
             </div>
           );
       };

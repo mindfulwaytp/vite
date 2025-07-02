@@ -46,7 +46,7 @@ function Neurodiversity() {
       <div className="flex items-start gap-2">
         <img src={autism1} alt="Autism visual" className="w-[135px] h-[137px] shrink-0 mb-5"/>
         <Link to="/neurodiversity/affirming-therapy">
-        <h3 className="text-center text-2xl text-gray-900 align-center">
+        <h3 className="text-2xl text-gray-900 leading-snug hover:text-sky-700 hover:underline transition-colors">
           Neurodivergent Affirming Therapy
         </h3>
         </Link>
@@ -80,15 +80,12 @@ function Neurodiversity() {
     {/* Row 2, Centered Column */}
     <div className="flex flex-col space-y-2 md:col-span-2 md:items-center">
       <div className="flex items-start gap-2">
-        <Link to="/neurodiversity/resources">
-          <img src={autism3} alt="Resource Library icon" className="w-[135px] h-[137px] shrink-0" />
-        </Link>
-        <h3 className="text-2xl text-gray-900 leading-snug">
+        <img src={autism3} alt="Resource Library icon" className="w-[135px] h-[137px] shrink-0" />
+        <Link to="/neurodiversity/neurodiversity-resources">
+        <h3 className="text-2xl text-gray-900 leading-snug hover:text-sky-700 hover:underline transition-colors">
           Neurodiversity Resources
-          <div className="text-sm text-gray-600 mt-8">
-            <p>Click the image to be directed to our resource page</p>
-          </div>
         </h3>
+        </Link>
       </div>
       <p className="text-gray-700 leading-relaxed text-[17px] max-w-3xl">
         Explore our curated library of books, articles, and tools created by and for neurodivergent individuals.
