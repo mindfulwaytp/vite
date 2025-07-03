@@ -18,9 +18,12 @@ import AffirmingTherapy from './pages/neurodiversity/affirming-therapy.jsx';
 import Services from './pages/Services.jsx';
 import RatesFess from './pages/services/ratesfees.jsx'
 import Footer from './components/Footer'
+import usePageTracking from './hooks/usePageTracking';
+
 
 
 function App() {
+  usePageTracking(); // ✅ Track route changes
   return (
     <div className="bg-white">
       <ScrollToTop />

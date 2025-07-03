@@ -1,9 +1,34 @@
 import Accordion from '../../components/Accordion';
+import { Helmet } from 'react-helmet';
 
 // pages/neurodiversity/assessments.jsx
 
 const AssessmentsPage = () => {
   return (
+    <>
+      <Helmet>
+        <title>ADHD & Autism Evaluations | Mindful Way Therapy</title>
+        <meta
+          name="description"
+          content="Affirming ADHD and autism assessments for adults and teens. Discover your Brain Style with our neurodiversity-affirming team in Seattle."
+        />
+        <link
+          rel="canonical"
+          href="https://www.mindfulway-therapy.com/neurodiversity/assessments"
+        />
+        <meta property="og:title" content="ADHD & Autism Evaluations | Mindful Way Therapy" />
+        <meta
+          property="og:description"
+          content="Discover your unique Brain Style with affirming ADHD and autism assessments for teens and adults."
+        />
+        <meta
+          property="og:url"
+          content="https://www.mindfulway-therapy.com/neurodiversity/assessments"
+        />
+        <meta property="og:image" content="https://www.mindfulway-therapy.com/images/assessmentheader.avif" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
     <div className="bg-white text-gray-800">
       {/* Hero Section */}
         <section
@@ -152,6 +177,7 @@ const AssessmentsPage = () => {
         </div>
       </section>
     </div>
+  </>
   );
 }
 export default AssessmentsPage
