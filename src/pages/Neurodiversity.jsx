@@ -5,6 +5,7 @@ import autism1 from '../assets/autism1.svg';
 import autism2 from '../assets/autism2.svg';
 import autism3 from '../assets/images/autism3.png'; // ✅ correct path
 
+
 function Neurodiversity() {
   return (
     <div className="bg-[#f3f6f9] text-gray-800">

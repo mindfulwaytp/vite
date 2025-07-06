@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/providers" element={<ProviderDirectory />} />
-        <Route path="/providers/:slug" element={<ProviderProfile />} /> {/* ✅ New route */}
+        <Route path="/providers/:slug" element={<ProviderProfile />} />
         <Route path="/neurodiversity/assessments" element={<AssessmentsPage />} />
         <Route path="/join-our-team/lgbtq-therapist" element={<LGBTQTherapistJob />} />
         <Route path="/join-our-team/adhd-therapist" element={<ADHDTherapistJob />} />
