@@ -7,7 +7,7 @@ import { TbReportSearch } from 'react-icons/tb';
 import { providerImages } from '../assets/images';
 import exampleImg from '../assets/provider-example.avif';
 
-const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // replace with your actual SheetDB API URL
+const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // your SheetDB API
 
 function slugify(text) {
   return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
@@ -37,7 +37,14 @@ export default function ProviderProfile() {
           services: t.services?.split(',').map((s) => s.trim()) || [],
           gender: t.gender?.split(',').map((s) => s.trim()) || [],
         }));
+
         const match = parsed.find((p) => slugify(p.name) === slug);
+        if (match) {
+          console.log('Loaded provider:', match);
+        } else {
+          console.warn('No matching provider for slug:', slug);
+        }
+
         setProvider(match);
         setLoading(false);
       })
@@ -195,4 +202,3 @@ export default function ProviderProfile() {
     </>
   );
 }
-
