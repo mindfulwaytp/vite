@@ -6,7 +6,7 @@ import { TbReportSearch } from 'react-icons/tb';
 import { IoMdVideocam } from "react-icons/io";
 import { HiBuildingOffice2 } from "react-icons/hi2";
 import { providerImages } from '../assets/images';
-import defaultImage from './provider-example.avif'; // default image if no specific provider image is found
+import defaultImage from '../assets/images/provider-example.avif';
 import '../Providers.css';
 
 const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // replace with your actual SheetDB API URL
