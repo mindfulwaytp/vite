@@ -77,7 +77,7 @@ export default function ProviderProfile() {
           {/* Left: Photo */}
           <div className="md:w-1/3 bg-white p-6 flex flex-col items-center">
             <img
-              src={providerImages[provider.name] }
+              src={providerImages[provider.name] ?? defaultImage}
               alt={provider.name}
               className="w-[275px] h-[325px] rounded-2xl object-cover shadow-sm"
             />
