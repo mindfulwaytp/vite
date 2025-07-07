@@ -5,6 +5,7 @@ import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { FaCalendarCheck, FaCalendarTimes } from 'react-icons/fa';
 import { TbReportSearch } from 'react-icons/tb';
 import { providerImages } from '../assets/images';
+import { defaultImage } from './provider-example.avif'; // default image if no specific provider image is found
 
 const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // your SheetDB API
 
@@ -76,7 +77,7 @@ export default function ProviderProfile() {
           {/* Left: Photo */}
           <div className="md:w-1/3 bg-white p-6 flex flex-col items-center">
             <img
-              src={providerImages[provider.name] || provider.image }
+              src={providerImages[t.name] ?? defaultImage}
               alt={provider.name}
               className="w-[275px] h-[325px] rounded-2xl object-cover shadow-sm"
             />

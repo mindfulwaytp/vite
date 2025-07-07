@@ -6,6 +6,7 @@ import { TbReportSearch } from 'react-icons/tb';
 import { IoMdVideocam } from "react-icons/io";
 import { HiBuildingOffice2 } from "react-icons/hi2";
 import { providerImages } from '../assets/images';
+import defaultImage from './provider-example.avif'; // default image if no specific provider image is found
 import '../Providers.css';
 
 const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // replace with your actual SheetDB API URL
@@ -167,9 +168,9 @@ useEffect(() => {
           >
             <div className="w-full aspect-[5/6] max-w-[300px] mx-auto overflow-hidden rounded-lg mb-2">
               <img
-                src={providerImages[t.name] || t.image }
+                src={providerImages[t.name] ?? defaultImage}
                 alt={t.name}
-                className="w-full h-full object-cover rounded-lg shadow-sm"
+                className="w-[275px] h-[325px] rounded-2xl object-cover shadow-sm"
               />
             </div>
 
