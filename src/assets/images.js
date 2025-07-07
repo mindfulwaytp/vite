@@ -8,7 +8,7 @@ import julian from './images/julianprofile.jpeg';
 import emily from './images/emily.JPG';
 import rachel from './images/rachelprofile.jpeg';
 import kate from './images/kateprofile.JPG';
-import selena from './images/selenaprofile.JPG';
+import selena from './images/selenaprofile.JPG'
 
 export const providerImages = {
   'Ryne Evans': ryne,
@@ -21,4 +21,5 @@ export const providerImages = {
   'Emily Hawkins': emily,
   'Kate Guild': kate,
   'Selena Rojas': selena,
+  'Rachel Loch': rachel,
 }
