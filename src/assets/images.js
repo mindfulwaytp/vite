@@ -19,7 +19,6 @@ export const providerImages = {
   'Mary Baja': mary,
   'Julian Macke': julian,
   'Emily Hawkins': emily,
-  'Rachel Loch': rachel,
   'Kate Guild': kate,
   'Selena Rojas': selena,
 }
