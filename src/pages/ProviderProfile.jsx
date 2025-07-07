@@ -5,7 +5,6 @@ import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { FaCalendarCheck, FaCalendarTimes } from 'react-icons/fa';
 import { TbReportSearch } from 'react-icons/tb';
 import { providerImages } from '../assets/images';
-import exampleImg from '../assets/provider-example.avif';
 
 const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // your SheetDB API
 
