@@ -7,8 +7,10 @@ import mary from './images/maryprofile.JPG';
 import julian from './images/julianprofile.jpeg';
 import emily from './images/emily.JPG';
 import rachel from './images/rachelprofile.jpeg';
-import kate from './images/kateprofile.JPG';
-import selena from './images/selinaprofile.JPG'
+import kate from './images/kateprofile.jpeg';
+import selina from './images/selinaprofile.jpeg'
+
+// test
 
 export const providerImages = {
   'Ryne Evans': ryne,
@@ -20,6 +22,6 @@ export const providerImages = {
   'Julian Macke': julian,
   'Emily Hawkins': emily,
   'Kate Guild': kate,
-  'Selina Rojas': selena,
+  'Selina Rojas': selina,
   'Rachel Loch': rachel,
 }
