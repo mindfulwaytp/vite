@@ -25,7 +25,12 @@ const navItems = [
       { label: 'Rates and Fees', path: '/services/ratesfees'},
     ]
   },
-  { label: 'Get Started', path: '/contact' }
+  { label: 'Get Started', path: '/contact' },
+    {
+    label: 'Client Portal',
+    path: 'https://pp-wfe-100.advancedmd.com/157723/',
+    external: true, // optional: use this to style or handle differently in your Nav component
+  }
 ];
 
 
