@@ -73,22 +73,50 @@ function RatesFees() {
           </div>
         </div>
       </section>
-            {/* Our Fees Section */}
-      <section className="py-10 px-4 md:px-10 bg-white border-t border-gray-200">
-        <h1 className="text-3xl text-center text-sky-700 mb-6">Our Fees</h1>
-        <div className="max-w-3xl mx-auto">
-          <ul className="text-lg list-disc list-inside space-y-2">
-            <li><strong>Interns:</strong> $30–60/session</li>
-            <li><strong>Associate Providers:</strong> $115/session</li>
-            <li><strong>Fully Licensed:</strong> $125/session</li>
-            <li>
-              <strong>Ryne:</strong>
-              <ul className="ml-10 list-disc space-y-1">
+  
+  {/* Our Fees Section */}
+      <section className="py-16 px-4 md:px-10 bg-white">
+        <h1 className="text-3xl text-center text-sky-700 mb-6">Our Rates and Fees</h1>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+
+          <div>
+            <h2 className="text-xl font-bold mb-4 underline">Rates for Our Student Interns</h2>
+            <ul className="text-lg mb-6 list-disc list-inside">
+              <li><strong>Sliding Fee Available:</strong> $35-70/session</li>
+            </ul>
+
+            <div className="text-lg space-y-2 mb-6">
+              <h2 className="text-xl font-bold underline mb-4">Rates for Our Associate Clinicians</h2>
+              <p className="italic">(McCall Evans; Sarah Pompa; Cheryl Snider; Paige Butkey; Julian Macke; Mary Baja; and Rachel Loch)</p>
+              <ul className="list-disc list-inside space-y-2">
+                <li><strong>All Sessions:</strong> $115/session</li>
+                <li className="italic">Sliding Fee Available On a Case by Case Basis of $50-75/session</li>
+              </ul>
+            </div>
+
+            <div className="text-lg space-y-2">
+              <h2 className="text-xl font-bold mb-4 underline">Rates for Ryne Evans, MA, LMFT</h2>
                 <li><strong>Intakes:</strong> $200</li>
                 <li><strong>Ongoing Therapy:</strong> $175</li>
-              </ul>
-            </li>
-          </ul>
+          </div>
+          </div>
+          {/* Accepted by Ryne Only */}
+          <div className="flex flex-col items-center text-center">
+            <h2 className="text-xl font-bold mb-4">Find Out More About Our Providers</h2>
+            <a
+              href="/providers"
+              className="inline-block bg-sky-700 hover:bg-sky-800 text-white py-2 px-4 rounded shadow transition duration-200 mb-12"
+            >
+              Our Providers
+            </a>
+            <h2 className="text-xl font-bold mb-4">Get Started Today!</h2>
+            <a
+              href="/contact"
+              className="inline-block bg-sky-700 hover:bg-sky-800 text-white py-2 px-4 rounded shadow transition duration-200"
+            >
+              Get Started
+            </a>
+          </div>
         </div>
       </section>
     </div>
