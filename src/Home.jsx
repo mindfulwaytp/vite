@@ -69,6 +69,12 @@ function Home() {
             >
               <span>💰</span> Our Rates and Fees
             </Link>
+            <Link
+              to="/services"
+              className="px-5 py-3 border border-gray-400 rounded-lg text-gray-800 hover:border-sky-500 hover:text-sky-700 transition inline-flex items-center gap-2"
+            >
+              <span>📋</span> Services
+            </Link>
           </div>
         </div>
       </section>

@@ -17,11 +17,11 @@ function Services() {
       image: 'images/couples.avif',
     },
     {
-      title: 'ADHD & Autism Evaluations',
-      description: `We offer comprehensive ADHD and autism evaluations for teens and adults using a neurodivergent-affirming approach. Our assessments focus on understanding 
-      your brain’s natural wiring—not labeling deficits—so you can gain clarity, self-awareness, and personalized support. We specialize in late-identified Autism and ADHD, masking, 
-      executive functioning challenges, and intersectional identities. Get the insights and language you need to advocate for yourself at school, work, and beyond.`,
-      image: 'images/ndassessment.avif',
+      title: 'Polyamory & Non-Monogamy Support',
+      description: `We support individuals, couples, and relationship constellations exploring polyamory, ethical non-monogamy, or open relationships. 
+      Our therapists are affirming and knowledgeable about consensual non-monogamy and can help you navigate communication, jealousy, boundaries, and trust. 
+      Whether you're just beginning to explore or deepening existing dynamics, we provide a safe, nonjudgmental space to strengthen connection and clarify your relationship values.`,
+      image: 'images/polyamory.jpeg',
     },
     {
       title: 'Queer Affirming Therapy',
@@ -29,6 +29,13 @@ function Services() {
       Our providers how systemic oppression, gender dysphoria, coming out, or navigating queer and trans experiences can impact well-being. Whether you're questioning your identity, 
       seeking healing from past trauma, or wanting to feel more at home in yourself, our therapists offer compassionate, culturally aware support tailored to LGBTQ+ lives.`,
       image: 'images/lgbtqtherapy.jpg',
+    },
+    {
+      title: 'ADHD & Autism Evaluations',
+      description: `We offer comprehensive ADHD and autism evaluations for teens and adults using a neurodivergent-affirming approach. Our assessments focus on understanding 
+      your brain’s natural wiring—not labeling deficits—so you can gain clarity, self-awareness, and personalized support. We specialize in late-identified Autism and ADHD, masking, 
+      executive functioning challenges, and intersectional identities. Get the insights and language you need to advocate for yourself at school, work, and beyond.`,
+      image: 'images/ndassessment.avif',
     },
     {
       title: 'Neurodivergent Affirming Therapy',
@@ -56,7 +63,7 @@ function Services() {
 
       {/* Service Cards */}
       <section className="bg-white py-20 px-4 md:px-10">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-8">
           {services.map((s, index) => (
             <div
               key={index}
@@ -75,6 +82,34 @@ function Services() {
           ))}
         </div>
       </section>
+
+    {/* Call to Action Section */}
+<section className="bg-sky-700 text-white py-16 px-4 md:px-10 text-center">
+  <h2 className="text-3xl font-bold mb-4">Ready to Take the Next Step?</h2>
+  <p className="text-lg mb-8 max-w-2xl mx-auto">
+    Whether you're looking to find the right provider, have questions about therapy, or want to learn more about our rates and services—we're here to help you get started.
+  </p>
+  <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+    <a
+      href="/providers"
+      className="bg-white text-sky-700 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100 transition"
+    >
+      Meet Our Providers
+    </a>
+    <a
+      href="/contact"
+      className="bg-white text-sky-700 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100 transition"
+    >
+      Get Started
+    </a>
+    <a
+      href="/services/ratesfees"
+      className="bg-white text-sky-700 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100 transition"
+    >
+      View Rates & Fees
+    </a>
+  </div>
+</section>
     </div>
   );
 }
