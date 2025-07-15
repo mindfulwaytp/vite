@@ -20,10 +20,17 @@ async function updateProviders() {
     const data = await response.json();
     console.log('🔎 SheetDB response:', data);
 
+    // Write providers.json
     const filePath = resolve(__dirname, '../src/data/providers.json');
     await writeFile(filePath, JSON.stringify(data, null, 2), 'utf8');
-
     console.log('✅ providers.json updated successfully!');
+
+    // Write providers-meta.json with current timestamp
+    const metaPath = resolve(__dirname, '../src/data/providers-meta.json');
+    const metadata = { lastUpdated: new Date().toISOString() };
+    await writeFile(metaPath, JSON.stringify(metadata, null, 2), 'utf8');
+    console.log('✅ providers-meta.json updated successfully!');
+    
   } catch (error) {
     console.error('❌ Error updating providers.json:', error);
   }

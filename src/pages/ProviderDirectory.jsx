@@ -9,12 +9,18 @@ import { providerImages } from '../assets/images';
 import defaultImage from '../assets/images/provider-example.avif';
 import '../Providers.css';
 import rawProviders from '../data/providers.json';
-
+import providerMeta from '../data/providers-meta.json';
 
 
 function slugify(text) {
   return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 }
+
+const formattedDate = new Date(providerMeta.lastUpdated).toLocaleDateString(undefined, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
 
 const ProvidersDirectory = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -141,7 +147,7 @@ useEffect(() => {
       <h1 className="text-3xl  text-center text-sky-700 mb-2">Meet Our Providers</h1>
       <h3 className="text-lg text-center text-gray-700 mb-6">
         Use the search functions below to find a provider. <br /> To learn more, click on each provider's profile<br />
-        <p className="italic">Availability Updated as of July 9th, 2025 (we do our best to update this weekly; please note provider availability may change suddenly)</p>
+        <p className="italic">Availability Updated as of {formattedDate} (we do our best to update this weekly; please note provider availability may change suddenly)</p>
       </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
