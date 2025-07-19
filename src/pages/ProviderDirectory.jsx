@@ -118,7 +118,7 @@ useEffect(() => {
     const matchesInsurance = !selectedInsurance || t.insurance.includes(selectedInsurance.value);
     const matchesLocation = selectedLocation.length === 0 || selectedLocation.every(loc => t.location.includes(loc.value));
     const matchesServices = selectedServices.length === 0 || selectedServices.every(serv => t.services.includes(serv.value));
-    const matchesGender = selectedGender.length === 0 || selectedGender.some(sel => Array.isArray(t.gender) ? t.gender.includes(sel.value) : t.gender === sel.value);
+    const matchesGender = selectedGender.length === 0 || t.gender.some(g => selectedGender.map(sel => sel.value).includes(g));
     const matchesAvailability = availability.value === 'all' ||
       (availability.value === 'true' && ['yes', 'assessments only'].includes(t.acceptingClients?.toLowerCase())) ||
       (availability.value === 'false' && ['no', 'assessments only'].includes(t.acceptingClients?.toLowerCase()));
