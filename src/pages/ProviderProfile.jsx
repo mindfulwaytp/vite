@@ -111,6 +111,9 @@ export default function ProviderProfile() {
               {provider.acceptingClients?.toLowerCase() === 'no' && (
                 <span className="flex items-center gap-1 text-red-600"><FaCalendarTimes /> Waitlist</span>
               )}
+              {provider.acceptingClients?.toLowerCase() === 'starting soon' && (
+                <span className="flex items-center gap-1 text-orange-400"><FaUserClock className="text-lg" /> Starting Soon</span>
+              )}
             </div>
 
             <div className="flex flex-wrap gap-4 mt-4 text-base text-sky-800">

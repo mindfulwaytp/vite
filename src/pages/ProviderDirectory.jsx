@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { Link, useSearchParams } from 'react-router-dom';
-import { FaCalendarCheck, FaCalendarTimes } from 'react-icons/fa';
+import { FaCalendarCheck, FaCalendarTimes, FaUserClock } from 'react-icons/fa';
 import { TbReportSearch } from 'react-icons/tb';
 import { IoMdVideocam } from "react-icons/io";
 import { HiBuildingOffice2 } from "react-icons/hi2";
@@ -121,7 +121,7 @@ useEffect(() => {
     const matchesGender = selectedGender.length === 0 || t.gender.some(g => selectedGender.map(sel => sel.value).includes(g));
     const matchesAvailability = availability.value === 'all' ||
       (availability.value === 'true' && ['yes', 'assessments only'].includes(t.acceptingClients?.toLowerCase())) ||
-      (availability.value === 'false' && ['no', 'assessments only'].includes(t.acceptingClients?.toLowerCase()));
+      (availability.value === 'false' && ['no', 'starting soon'].includes(t.acceptingClients?.toLowerCase()));
     return matchesSpecialties && matchesInsurance && matchesLocation && matchesServices && matchesGender && matchesAvailability;
   });
 
@@ -194,6 +194,9 @@ useEffect(() => {
               )}
               {t.acceptingClients?.toLowerCase() === 'no' && (
                 <span className="flex items-center justify-center text-red-600 gap-1"><FaCalendarTimes /> Waitlist</span>
+              )}
+                {t.acceptingClients?.toLowerCase() === 'starting soon' && (
+                <span className="flex items-center justify-center text-purple-600 gap-1"><FaUserClock className="text-lg" /> Starting Soon</span>
               )}
             </div>
 
