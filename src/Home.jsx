@@ -1,5 +1,4 @@
 import React from 'react';
-import therapyScene from './assets/therapy-scene.avif';
 import therapyOffice from './assets/therapy-office.avif';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +16,7 @@ function Home() {
 
         <div className="md:w-1/2">
           <img
-            src={therapyScene}
+            src="/images/Home1.JPEG"
             alt="Therapy Scene"
             className="rounded-lg shadow-md w-full h-auto object-cover"
           />
