@@ -38,6 +38,12 @@ export default function EvaluationForm() {
         click here to complete the Therapy Inquiry Form
       </a>.
     </p>
+    <p className="text-lg text-gray-800">
+      If you are seeking <strong>both therapy and an evaluation</strong>, please, please{' '}
+      <a href="/contact/therapy" className="text-blue-700 font-semibold underline hover:text-blue-800 transition">
+        complete our Therapy Inquiry Form first
+      </a>. You will be redirected to the evaluation form after submission.
+    </p>
   </div>
 </section>
 
