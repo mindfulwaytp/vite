@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import heroBg from '../assets/hero-bg.png';
+import heroBg from '../assets/hero-bg.jpg';
 
 export default function Header() {
   const location = useLocation();
@@ -8,31 +8,30 @@ export default function Header() {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Providers', path: '/providers' },
-  {
-    label: 'Neurodiversity', path: '/neurodiversity',
-    subMenu: [
-      { label: 'Neurodivergent Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
-      { label: 'Autism & ADHD Assessments', path: '/neurodiversity/assessments' },
-      { label: 'Neurodivergent Resources', path: '/neurodiversity/neurodiversity-resources' },
-    ],
-  },
-  { label: 'Join Our Team', path: '/join-our-team' },
-  { label: 'Services', path: '/services', 
-    subMenu: [
-      { label: 'Rates and Fees', path: '/services/ratesfees'},
-    ]
-  },
-  { label: 'Get Started', path: '/contact' },
+  const navItems = [
+    { label: 'Home', path: '/' },
+    { label: 'Providers', path: '/providers' },
     {
-    label: 'Client Portal',
-    path: 'https://pp-wfe-100.advancedmd.com/157723/',
-    external: true, // optional: use this to style or handle differently in your Nav component
-  }
-];
-
+      label: 'Neurodiversity', path: '/neurodiversity',
+      subMenu: [
+        { label: 'Neurodivergent Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
+        { label: 'Autism & ADHD Assessments', path: '/neurodiversity/assessments' },
+        { label: 'Neurodivergent Resources', path: '/neurodiversity/neurodiversity-resources' },
+      ],
+    },
+    { label: 'Join Our Team', path: '/join-our-team' },
+    {
+      label: 'Services',
+      path: '/services',
+      subMenu: [{ label: 'Rates and Fees', path: '/services/ratesfees' }],
+    },
+    { label: 'Get Started', path: '/contact' },
+    {
+      label: 'Client Portal',
+      path: 'https://pp-wfe-100.advancedmd.com/157723/',
+      external: true,
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,10 +50,16 @@ const navItems = [
 
   return (
     <>
-      {/* Hero Image Block */}
+      {/* Hero Image Block (fixed height, won't resize) */}
       <div
-        className="h-[280px] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        className="w-full"
+        style={{
+          height: '320px',
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'bottom',
+          backgroundRepeat: 'no-repeat',
+        }}
       ></div>
 
       {/* Fixed Nav Overlay */}
@@ -85,64 +90,66 @@ const navItems = [
               </svg>
             </button>
           </div>
+ 
 
-{/* Desktop Nav */}
-<nav className="hidden md:flex flex-wrap gap-8 mt-4 md:text-lg font-serif font-semibold relative">
-  {navItems.map((item, idx) =>
-    item.subMenu ? (
-      <div key={idx} className="relative group">
-        <Link
-          to={item.path}
-          className={`hover:text-sky-400 transition inline-block ${
-            location.pathname === item.path || item.subMenu.some(sub => location.pathname.startsWith(sub.path))
-              ? 'underline underline-offset-4'
-              : ''
-          }`}
-        >
-          {item.label}
-        </Link>
-
-        <div className="absolute top-full left-0 mt-3 bg-white text-black rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50 min-w-[280px] py-3 px-2">
-          {item.subMenu.map((subItem, subIdx) => (
-            <Link
-              key={subIdx}
-              to={subItem.path}
-              className={`block px-4 py-2 text-sm hover:bg-sky-100 hover:text-sky-400 ${
-                location.pathname.startsWith(subItem.path)
-                  ? 'font-semibold text-sky-400'
-                  : ''
-              }`}
-            >
-              {subItem.label}
-            </Link>
-          ))}
-        </div>
-      </div>
-    ) : item.path.startsWith('/') ? (
-      <Link
-        key={idx}
-        to={item.path}
-        className={`hover:text-sky-400 transition ${
-          location.pathname === item.path ? 'underline underline-offset-4' : ''
-        }`}
-      >
-        {item.label}
-      </Link>
-    ) : (
-      <a
-        key={idx}
-        href={item.path}
-        className="hover:text-sky-200 transition"
-      >
-        {item.label}
-      </a>
-    )
-  )}
-</nav>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex flex-wrap gap-8 mt-4 md:text-lg font-serif font-semibold relative">
+            {navItems.map((item, idx) =>
+              item.subMenu ? (
+                <div key={idx} className="relative group">
+                  <Link
+                    to={item.path}
+                    className={`hover:text-sky-400 transition inline-block ${
+                      location.pathname === item.path || item.subMenu.some(sub => location.pathname.startsWith(sub.path))
+                        ? 'underline underline-offset-4'
+                        : ''
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                  <div className="absolute top-full left-0 mt-3 bg-white text-black rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50 min-w-[280px] py-3 px-2">
+                    {item.subMenu.map((subItem, subIdx) => (
+                      <Link
+                        key={subIdx}
+                        to={subItem.path}
+                        className={`block px-4 py-2 text-sm hover:bg-sky-100 hover:text-sky-400 ${
+                          location.pathname.startsWith(subItem.path)
+                            ? 'font-semibold text-sky-400'
+                            : ''
+                        }`}
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : item.path.startsWith('/') ? (
+                <Link
+                  key={idx}
+                  to={item.path}
+                  className={`hover:text-sky-400 transition ${
+                    location.pathname === item.path ? 'underline underline-offset-4' : ''
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={idx}
+                  href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-sky-200 transition"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
+          </nav>
         </div>
       </header>
 
-      {/* Mobile Nav */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="fixed top-0 left-0 right-0 bg-white text-black z-50 px-6 py-8 text-lg shadow-md max-h-[90vh] overflow-y-auto rounded-b-xl transition-all duration-300 flex flex-col space-y-6 pt-[80px]">
           <button
@@ -174,7 +181,7 @@ const navItems = [
                   </Link>
                 ))}
               </div>
-            ) : (
+            ) : item.path.startsWith('/') ? (
               <Link
                 key={idx}
                 to={item.path}
@@ -183,6 +190,16 @@ const navItems = [
               >
                 {item.label}
               </Link>
+            ) : (
+              <a
+                key={idx}
+                href={item.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-b pb-3 border-gray-200"
+              >
+                {item.label}
+              </a>
             )
           )}
         </div>

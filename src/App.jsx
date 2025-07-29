@@ -8,17 +8,20 @@ import JobBoard from './pages/join-our-team/index';
 import LGBTQTherapistJob from './pages/join-our-team/lgbtq-therapist';
 import ADHDTherapistJob from './pages/join-our-team/adhd-therapist';
 import Internships from './pages/join-our-team/internships'; // ✅ New import for ADHD Therapist job
-import Contact from './pages/contact';//
 import ScrollToTop from './components/ScrollToTop';
+import Contact from './pages/Contact';
 import Neurodiversity from './pages/Neurodiversity';
 import CategoryResourcePage from './pages/neurodiversity/neurodiversity-resources/CategoryResourcePage';
 import NeurodiversityResources from './pages/neurodiversity/neurodiversity-resources/index';
 import AssessmentsPage from './pages/neurodiversity/assessments';
 import AffirmingTherapy from './pages/neurodiversity/affirming-therapy.jsx';
 import Services from './pages/Services.jsx';
-import RatesFess from './pages/services/ratesfees.jsx'
-import Footer from './components/Footer'
+import RatesFess from './pages/services/ratesfees.jsx';
+import TherapyForm from './pages/Contact/TherapyForm';
+import EvaluationForm from './pages/Contact/EvaluationForm';
+import Footer from './components/Footer';
 import usePageTracking from './hooks/usePageTracking';
+
 
 
 
@@ -38,6 +41,8 @@ function App() {
         <Route path="/join-our-team/internships" element={<Internships />} />
         <Route path="/join-our-team" element={<JobBoard />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/contact/therapy" element={<TherapyForm />} />
+        <Route path="/contact/evaluation" element={<EvaluationForm />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/ratesfees" element={<RatesFess />} />
         <Route path="/neurodiversity" element={<Neurodiversity />} />

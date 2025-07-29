@@ -169,7 +169,7 @@ const AssessmentsPage = () => {
             Reach out today to schedule a consultation and take the next step toward understanding your brain style.
           </p>
           <a
-            href="/contact"
+            href="/contact/evaluation"
             className="inline-block bg-sky-700 text-white px-6 py-3 rounded-lg text-lg hover:bg-sky-800 transition"
           >
             Schedule an Evaluation
