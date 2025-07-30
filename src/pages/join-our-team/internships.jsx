@@ -81,7 +81,7 @@ export default function Internships() {
 
       <div className="mt-8 flex justify-center">
         <a
-          href="https://form.jotform.com/251684509750059"
+          href="https://form.jotform.com/251995793668178"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-sky-700 text-white px-6 py-3 rounded-lg  hover:bg-sky-700 transition"
