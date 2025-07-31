@@ -48,7 +48,7 @@ export default function Internships() {
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Hour Expectations and Requirements</h3>
       <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-2">
-        <li>Practicum: 3–5 clients per week with a minimum of 7 hours of availability.</li>
+        <li>Practicum: 5-7 clients per week with a minimum of 10 hours of availability.</li>
         <li>Internship: 12–15 clients per week with 15–20 hours of availability.</li>
         <li className="italic ml-6">These hour requirements help to account for training, shadowing, our business needs and cancellations during your internship experience.</li>
         <li className="italic ml-6">Minimum hour requirements may vary based on your specific program including any specialties, and
