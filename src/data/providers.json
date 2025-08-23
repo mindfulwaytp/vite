@@ -166,5 +166,33 @@
     "acceptingClients": "no",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/selina-rojas-seattle-wa/1555564"
+  },
+  {
+    "name": "Michelle Young",
+    "license": "Intern",
+    "pronouns": "she/her",
+    "specialties": "ADHD, Anxiety, Autism, Depression, LGBTQ+ Identities, Life-Transitions, Parenting, Pregnancy, Spirituality, Trauma, Women's Issues",
+    "topSpecialties": "ADHD, Autism, LGBTQ+ Identities, Parenting",
+    "insurance": "Molina-Medicaid, Private Pay",
+    "location": "Telehealth, U-District",
+    "services": "Individual",
+    "gender": "Female",
+    "acceptingClients": "starting soon",
+    "about": "....",
+    "psychologyTodayLink": ""
+  },
+  {
+    "name": "Justin Dahlquist",
+    "license": "Intern",
+    "pronouns": "he/him",
+    "specialties": "ADHD, Anxiety, Autism, Body Positivity, Depression, Grief/Loss, LGBTQ+ Identities, Relationships, Self-Esteem, Trauma",
+    "topSpecialties": "Anxiety, Self-Esteem, LGBTQ+ Identities, Relationships",
+    "insurance": "Molina-Medicaid, Private Pay",
+    "location": "Telehealth, U-District",
+    "services": "Individual",
+    "gender": "Male",
+    "acceptingClients": "starting soon",
+    "about": "....",
+    "psychologyTodayLink": ""
   }
 ]
