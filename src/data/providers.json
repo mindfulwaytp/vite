@@ -12,7 +12,7 @@
     "acceptingClients": "assessments only",
     "about": "....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/ryne-evans-seattle-wa/838470 ",
-    "Modalities": "ACT, CBT, Compassion Focused Therapy, DBT, EFT, Experiential Therapy, Psychodynamic Therapy, Schema Therapy"
+    "modalities": "ACT, CBT, Compassion Focused Therapy, DBT, EFT, Experiential Therapy, Psychodynamic Therapy, Schema Therapy"
   },
   {
     "name": "McCall Evans",
@@ -27,7 +27,7 @@
     "acceptingClients": "yes",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/james-evans-seattle-wa/1173220",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Chandra Lindeman",
@@ -42,7 +42,7 @@
     "acceptingClients": "no",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/chandra-lindeman-seattle-wa/1340345 ",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Cheryl Snider",
@@ -57,7 +57,7 @@
     "acceptingClients": "yes",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/cheryl-snider-seattle-wa/1404308 ",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Paige Butkey",
@@ -72,7 +72,7 @@
     "acceptingClients": "yes",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/paige-butkey-seattle-wa/1449182 ",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Julian Macke",
@@ -87,7 +87,7 @@
     "acceptingClients": "no",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/julian-macke-seattle-wa/1409205",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Mary Baja",
@@ -102,7 +102,7 @@
     "acceptingClients": "yes",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/mary-aldee-baja-seattle-wa/1402891",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Rachel Loch",
@@ -117,7 +117,7 @@
     "acceptingClients": "no",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/rachel-loch-seattle-wa/1555654",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Kendra Locke",
@@ -132,7 +132,7 @@
     "acceptingClients": "starting soon",
     "about": "......",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/kendra-nicole-locke-seattle-wa/1335550",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Emily Hawkins",
@@ -147,7 +147,7 @@
     "acceptingClients": "no",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/emily-hawkins-seattle-wa/1436007",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Kate Guild",
@@ -162,7 +162,7 @@
     "acceptingClients": "yes",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/kate-guild-seattle-wa/1484949",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Selina Rojas",
@@ -177,7 +177,7 @@
     "acceptingClients": "yes",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/selina-rojas-seattle-wa/1555564",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Michelle Young",
@@ -192,7 +192,7 @@
     "acceptingClients": "starting soon",
     "about": "....",
     "psychologyTodayLink": "",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   },
   {
     "name": "Justin Dahlquist",
@@ -207,6 +207,6 @@
     "acceptingClients": "starting soon",
     "about": "....",
     "psychologyTodayLink": "",
-    "Modalities": "Coming Soon"
+    "modalities": "Coming Soon"
   }
 ]
