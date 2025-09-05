@@ -32,6 +32,7 @@ export default function ProviderProfile() {
           ...t,
           specialties: t.specialties?.split(',').map((s) => s.trim()) || [],
           topSpecialties: t.topSpecialties?.split(',').map((s) => s.trim()) || [],
+          modalities: t.modalities?.split(',').map((s) => s.trim()) || [],
           insurance: t.insurance?.split(',').map((s) => s.trim()) || [],
           location: t.location?.split(',').map((s) => s.trim()) || [],
           services: t.services?.split(',').map((s) => s.trim()) || [],
@@ -197,6 +198,18 @@ export default function ProviderProfile() {
                       <span className="w-2 h-2 bg-green-400 rounded-full"></span> {s}
                     </span>
                   ))}
+              </div>
+            </div>
+          )}
+          {provider.modalities?.length > 0 && (
+            <div>
+              <h2 className="text-2xl text-sky-800 mb-2">Therapeutic Modalities :</h2>
+              <div className="flex flex-wrap gap-3 text-base text-sky-700">
+                {provider.modalities.map((m, i) => (
+                  <span key={i} className="flex items-center gap-1">
+                    <span className="w-2 h-2 bg-blue-400 rounded-full"></span> {m}
+                  </span>
+                ))}
               </div>
             </div>
           )}

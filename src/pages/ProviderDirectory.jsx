@@ -31,23 +31,25 @@ const ProvidersDirectory = () => {
   const [selectedLocation, setSelectedLocation] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
   const [selectedGender, setSelectedGender] = useState([]);
+  const [selectedModalities, setSelectedModalities] = useState([]); // NEW
   const [availability, setAvailability] = useState({ value: 'all', label: 'All' });
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
   useEffect(() => {
-  const parsed = rawProviders.map(t => ({
-    ...t,
-    specialties: t.specialties?.split(',').map(s => s.trim()) || [],
-    topSpecialties: t.topSpecialties?.split(',').map(s => s.trim()) || [],
-    insurance: t.insurance?.split(',').map(s => s.trim()) || [],
-    location: t.location?.split(',').map(s => s.trim()) || [],
-    services: t.services?.split(',').map(s => s.trim()) || [],
-    gender: t.gender?.split(',').map(s => s.trim()) || [],
-  }));
-  setAllTherapists(parsed);
-  setLoading(false);
-}, []);
+    const parsed = rawProviders.map(t => ({
+      ...t,
+      specialties: t.specialties?.split(',').map(s => s.trim()) || [],
+      topSpecialties: t.topSpecialties?.split(',').map(s => s.trim()) || [],
+      modalities: t.modalities?.split(',').map(s => s.trim()) || [], // NEW
+      insurance: t.insurance?.split(',').map(s => s.trim()) || [],
+      location: t.location?.split(',').map(s => s.trim()) || [],
+      services: t.services?.split(',').map(s => s.trim()) || [],
+      gender: t.gender?.split(',').map(s => s.trim()) || [],
+    }));
+    setAllTherapists(parsed);
+    setLoading(false);
+  }, []);
 
 
   const specialtyOptions = [...new Set(allTherapists.flatMap(t => t.specialties))]
@@ -57,6 +59,9 @@ const ProvidersDirectory = () => {
   const insuranceOptions = [...new Set(allTherapists.flatMap(t => t.insurance))].map(i => ({ label: i, value: i }));
   const locationOptions = [...new Set(allTherapists.flatMap(t => t.location))].map(l => ({ label: l, value: l }));
   const serviceOptions = [...new Set(allTherapists.flatMap(t => t.services))].map(s => ({ label: s, value: s }));
+  const modalityOptions = [...new Set(allTherapists.flatMap(t => t.modalities))]
+    .map(m => ({ label: m, value: m }))
+    .sort((a, b) => a.label.localeCompare(b.label));
   const genderOptions = [
     ...new Set(
       allTherapists.flatMap(t =>
@@ -65,48 +70,49 @@ const ProvidersDirectory = () => {
     )
   ].map(g => ({ label: g, value: g }));
 
-useEffect(() => {
-  // Only run this once after therapists are loaded and options can be created
-  if (allTherapists.length === 0) return;
+  useEffect(() => {
+    if (allTherapists.length === 0) return;
 
-  const specialtyOpts = [...new Set(allTherapists.flatMap(t => t.specialties))].map(s => ({ label: s, value: s }));
-  const insuranceOpts = [...new Set(allTherapists.flatMap(t => t.insurance))].map(i => ({ label: i, value: i }));
-  const locationOpts = [...new Set(allTherapists.flatMap(t => t.location))].map(l => ({ label: l, value: l }));
-  const serviceOpts = [...new Set(allTherapists.flatMap(t => t.services))].map(s => ({ label: s, value: s }));
-  const genderOpts = [
-    ...new Set(
-      allTherapists.flatMap(t =>
-        Array.isArray(t.gender) ? t.gender : [t.gender]
-      ).filter(Boolean).map(g => g.trim())
-    )
-  ].map(g => ({ label: g, value: g }));
+    const specialtyOpts = [...new Set(allTherapists.flatMap(t => t.specialties))].map(s => ({ label: s, value: s }));
+    const insuranceOpts = [...new Set(allTherapists.flatMap(t => t.insurance))].map(i => ({ label: i, value: i }));
+    const locationOpts = [...new Set(allTherapists.flatMap(t => t.location))].map(l => ({ label: l, value: l }));
+    const serviceOpts = [...new Set(allTherapists.flatMap(t => t.services))].map(s => ({ label: s, value: s }));
+    const modalityOpts = [...new Set(allTherapists.flatMap(t => t.modalities))].map(m => ({ label: m, value: m }));
+    const genderOpts = [
+      ...new Set(
+        allTherapists.flatMap(t =>
+          Array.isArray(t.gender) ? t.gender : [t.gender]
+        ).filter(Boolean).map(g => g.trim())
+      )
+    ].map(g => ({ label: g, value: g }));
 
-  const getMultiValues = (key, options) => {
-    const values = searchParams.getAll(key);
-    return options.filter(opt => values.includes(opt.value));
-  };
+    const getMultiValues = (key, options) => {
+      const values = searchParams.getAll(key);
+      return options.filter(opt => values.includes(opt.value));
+    };
 
-  setSelectedGender(getMultiValues('gender', genderOpts));
-  setSelectedSpecialties(getMultiValues('specialties', specialtyOpts));
-  setSelectedLocation(getMultiValues('location', locationOpts));
-  setSelectedServices(getMultiValues('services', serviceOpts));
+    setSelectedGender(getMultiValues('gender', genderOpts));
+    setSelectedSpecialties(getMultiValues('specialties', specialtyOpts));
+    setSelectedLocation(getMultiValues('location', locationOpts));
+    setSelectedServices(getMultiValues('services', serviceOpts));
+    setSelectedModalities(getMultiValues('modalities', modalityOpts)); // NEW
 
-  const insurance = searchParams.get('insurance');
-  if (insurance) {
-    const match = insuranceOpts.find(opt => opt.value === insurance);
-    setSelectedInsurance(match || null);
-  }
+    const insurance = searchParams.get('insurance');
+    if (insurance) {
+      const match = insuranceOpts.find(opt => opt.value === insurance);
+      setSelectedInsurance(match || null);
+    }
 
-  const avail = searchParams.get('availability');
-  if (avail) {
-    const match = [
-      { value: 'all', label: 'All' },
-      { value: 'true', label: 'Accepting New Clients' },
-      { value: 'false', label: 'Not Accepting New Clients' },
-    ].find(opt => opt.value === avail);
-    setAvailability(match || { value: 'all', label: 'All' });
-  }
-}, [searchParams, allTherapists]);
+    const avail = searchParams.get('availability');
+    if (avail) {
+      const match = [
+        { value: 'all', label: 'All' },
+        { value: 'true', label: 'Accepting New Clients' },
+        { value: 'false', label: 'Not Accepting New Clients' },
+      ].find(opt => opt.value === avail);
+      setAvailability(match || { value: 'all', label: 'All' });
+    }
+  }, [searchParams, allTherapists]);
 
 
   useEffect(() => {
@@ -118,11 +124,12 @@ useEffect(() => {
     const matchesInsurance = !selectedInsurance || t.insurance.includes(selectedInsurance.value);
     const matchesLocation = selectedLocation.length === 0 || selectedLocation.every(loc => t.location.includes(loc.value));
     const matchesServices = selectedServices.length === 0 || selectedServices.every(serv => t.services.includes(serv.value));
+    const matchesModalities = selectedModalities.length === 0 || selectedModalities.every(mod => t.modalities.includes(mod.value)); // NEW
     const matchesGender = selectedGender.length === 0 || t.gender.some(g => selectedGender.map(sel => sel.value).includes(g));
     const matchesAvailability = availability.value === 'all' ||
       (availability.value === 'true' && ['yes', 'assessments only'].includes(t.acceptingClients?.toLowerCase())) ||
       (availability.value === 'false' && ['no', 'starting soon'].includes(t.acceptingClients?.toLowerCase()));
-    return matchesSpecialties && matchesInsurance && matchesLocation && matchesServices && matchesGender && matchesAvailability;
+    return matchesSpecialties && matchesInsurance && matchesLocation && matchesServices && matchesModalities && matchesGender && matchesAvailability;
   });
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -155,6 +162,7 @@ useEffect(() => {
         <div><label className="block text-base text-gray-700 mb-1">Insurance</label><Select options={insuranceOptions} value={selectedInsurance} onChange={(v) => { setSelectedInsurance(v); const newParams = new URLSearchParams(searchParams); if (v) { newParams.set('insurance', v.value); } else { newParams.delete('insurance'); } setSearchParams(newParams); setCurrentPage(1); }} isClearable /></div>
         <div><label className="block text-base text-gray-700 mb-1">Location</label><Select isMulti options={locationOptions} value={selectedLocation} onChange={(v) => { setSelectedLocation(v || []); updateMultiSelect('location', v); }} /></div>
         <div><label className="block text-base text-gray-700 mb-1">Services</label><Select isMulti options={serviceOptions} value={selectedServices} onChange={(v) => { setSelectedServices(v || []); updateMultiSelect('services', v); }} /></div>
+        <div><label className="block text-base text-gray-700 mb-1">Modalities</label><Select isMulti options={modalityOptions} value={selectedModalities} onChange={(v) => { setSelectedModalities(v || []); updateMultiSelect('modalities', v); }} /></div>
         <div><label className="block text-base text-gray-700 mb-1">Gender Identity</label><Select isMulti options={genderOptions} value={selectedGender} onChange={(v) => { setSelectedGender(v || []); updateMultiSelect('gender', v); }} /></div>
         <div><label className="block text-base text-gray-700 mb-1">Availability</label><Select options={[{ value: 'all', label: 'All' }, { value: 'true', label: 'Accepting New Clients' }, { value: 'false', label: 'Not Accepting New Clients' }]} value={availability} onChange={(v) => { setAvailability(v); const newParams = new URLSearchParams(searchParams); newParams.set('availability', v.value); setSearchParams(newParams); setCurrentPage(1); }} /></div>
       </div>
@@ -195,7 +203,7 @@ useEffect(() => {
               {t.acceptingClients?.toLowerCase() === 'no' && (
                 <span className="flex items-center justify-center text-red-600 gap-1"><FaCalendarTimes /> Waitlist</span>
               )}
-                {t.acceptingClients?.toLowerCase() === 'starting soon' && (
+              {t.acceptingClients?.toLowerCase() === 'starting soon' && (
                 <span className="flex items-center justify-center text-purple-600 gap-1"><FaUserClock className="text-lg" /> Starting Soon</span>
               )}
             </div>
