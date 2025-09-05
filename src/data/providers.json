@@ -11,7 +11,8 @@
     "gender": "Male",
     "acceptingClients": "assessments only",
     "about": "....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/ryne-evans-seattle-wa/838470 "
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/ryne-evans-seattle-wa/838470 ",
+    "Modalities": "ACT, CBT, Compassion Focused Therapy, DBT, EFT, Experiential Therapy, Psychodynamic Therapy, Schema Therapy"
   },
   {
     "name": "McCall Evans",
@@ -25,7 +26,8 @@
     "gender": "Male",
     "acceptingClients": "yes",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/james-evans-seattle-wa/1173220"
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/james-evans-seattle-wa/1173220",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Chandra Lindeman",
@@ -39,7 +41,8 @@
     "gender": "Female",
     "acceptingClients": "no",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/chandra-lindeman-seattle-wa/1340345 "
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/chandra-lindeman-seattle-wa/1340345 ",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Cheryl Snider",
@@ -53,7 +56,8 @@
     "gender": "Female",
     "acceptingClients": "yes",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/cheryl-snider-seattle-wa/1404308 "
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/cheryl-snider-seattle-wa/1404308 ",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Paige Butkey",
@@ -67,7 +71,8 @@
     "gender": "Female",
     "acceptingClients": "yes",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/paige-butkey-seattle-wa/1449182 "
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/paige-butkey-seattle-wa/1449182 ",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Julian Macke",
@@ -81,7 +86,8 @@
     "gender": "Male, Non-Binary",
     "acceptingClients": "no",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/julian-macke-seattle-wa/1409205"
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/julian-macke-seattle-wa/1409205",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Mary Baja",
@@ -95,7 +101,8 @@
     "gender": "Female, Non-Binary",
     "acceptingClients": "yes",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/mary-aldee-baja-seattle-wa/1402891"
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/mary-aldee-baja-seattle-wa/1402891",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Rachel Loch",
@@ -109,7 +116,8 @@
     "gender": "Female",
     "acceptingClients": "no",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/rachel-loch-seattle-wa/1555654"
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/rachel-loch-seattle-wa/1555654",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Kendra Locke",
@@ -123,7 +131,8 @@
     "gender": "Female",
     "acceptingClients": "starting soon",
     "about": "......",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/kendra-nicole-locke-seattle-wa/1335550"
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/kendra-nicole-locke-seattle-wa/1335550",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Emily Hawkins",
@@ -137,7 +146,8 @@
     "gender": "Female",
     "acceptingClients": "no",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/emily-hawkins-seattle-wa/1436007"
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/emily-hawkins-seattle-wa/1436007",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Kate Guild",
@@ -151,7 +161,8 @@
     "gender": "Female",
     "acceptingClients": "yes",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/kate-guild-seattle-wa/1484949"
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/kate-guild-seattle-wa/1484949",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Selina Rojas",
@@ -165,7 +176,8 @@
     "gender": "Female",
     "acceptingClients": "yes",
     "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/selina-rojas-seattle-wa/1555564"
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/selina-rojas-seattle-wa/1555564",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Michelle Young",
@@ -179,7 +191,8 @@
     "gender": "Female",
     "acceptingClients": "starting soon",
     "about": "....",
-    "psychologyTodayLink": ""
+    "psychologyTodayLink": "",
+    "Modalities": "Coming Soon"
   },
   {
     "name": "Justin Dahlquist",
@@ -193,6 +206,7 @@
     "gender": "Male",
     "acceptingClients": "starting soon",
     "about": "....",
-    "psychologyTodayLink": ""
+    "psychologyTodayLink": "",
+    "Modalities": "Coming Soon"
   }
 ]
