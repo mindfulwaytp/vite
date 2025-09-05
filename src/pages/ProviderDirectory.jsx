@@ -8,7 +8,6 @@ import { HiBuildingOffice2 } from "react-icons/hi2";
 import { providerImages } from '../assets/images';
 import defaultImage from '../assets/images/provider-example.avif';
 import '../Providers.css';
-import rawProviders from '../data/providers.json';
 import providerMeta from '../data/providers-meta.json';
 
 
@@ -36,20 +35,29 @@ const ProvidersDirectory = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  useEffect(() => {
-    const parsed = rawProviders.map(t => ({
-      ...t,
-      specialties: t.specialties?.split(',').map(s => s.trim()) || [],
-      topSpecialties: t.topSpecialties?.split(',').map(s => s.trim()) || [],
-      modalities: t.modalities?.split(',').map(s => s.trim()) || [], // NEW
-      insurance: t.insurance?.split(',').map(s => s.trim()) || [],
-      location: t.location?.split(',').map(s => s.trim()) || [],
-      services: t.services?.split(',').map(s => s.trim()) || [],
-      gender: t.gender?.split(',').map(s => s.trim()) || [],
-    }));
-    setAllTherapists(parsed);
-    setLoading(false);
-  }, []);
+useEffect(() => {
+  fetch('https://sheetdb.io/api/v1/zpl35ateeao4a') // your SheetDB URL
+    .then(res => res.json())
+    .then(data => {
+      const parsed = data.map(t => ({
+        ...t,
+        specialties: t.specialties?.split(',').map(s => s.trim()) || [],
+        topSpecialties: t.topSpecialties?.split(',').map(s => s.trim()) || [],
+        modalities: t.modalities?.split(',').map(s => s.trim()) || [], // NEW
+        insurance: t.insurance?.split(',').map(s => s.trim()) || [],
+        location: t.location?.split(',').map(s => s.trim()) || [],
+        services: t.services?.split(',').map(s => s.trim()) || [],
+        gender: t.gender?.split(',').map(s => s.trim()) || [],
+      }));
+      setAllTherapists(parsed);
+      setLoading(false);
+    })
+    .catch(err => {
+      console.error('Error fetching providers:', err);
+      setLoading(false);
+    });
+}, []);
+
 
 
   const specialtyOptions = [...new Set(allTherapists.flatMap(t => t.specialties))]
