@@ -9,6 +9,10 @@ import emily from './images/emily.JPG';
 import rachel from './images/rachelprofile.jpeg';
 import kate from './images/kateprofile.jpeg';
 import selina from './images/selinaprofile.jpeg'
+import justin from './images/justinprofile.jpeg';
+import kendra from './images/kendraprofile.jpeg';
+import michelle from './images/michelleprofile.jpeg';
+
 
 // test
 
@@ -24,4 +28,7 @@ export const providerImages = {
   'Kate Guild': kate,
   'Selina Rojas': selina,
   'Rachel Loch': rachel,
+  'Justin Dahlquist': justin,
+  'Kendra Locke': kendra,
+  'Michelle Young': michelle
 }
