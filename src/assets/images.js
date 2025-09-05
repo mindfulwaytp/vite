@@ -6,12 +6,12 @@ import cheryl from './images/cherylprofile.jpeg';
 import mary from './images/maryprofile.JPG';
 import julian from './images/julianprofile.jpeg';
 import emily from './images/emily.JPG';
-import rachel from './images/rachelprofile.jpeg';
+import rachel from './images/rachelprofile.JPG';
 import kate from './images/kateprofile.jpeg';
 import selina from './images/selinaprofile.jpeg'
-import justin from './images/justinprofile.jpeg';
-import kendra from './images/kendraprofile.jpeg';
-import michelle from './images/michelleprofile.jpeg';
+import justin from './images/justinprofile.JPG';
+import kendra from './images/kendraprofile.JPG';
+import michelle from './images/michelleprofile.JPG';
 
 
 // test
