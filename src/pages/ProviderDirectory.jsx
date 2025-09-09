@@ -8,18 +8,11 @@ import { HiBuildingOffice2 } from "react-icons/hi2";
 import { providerImages } from '../assets/images';
 import defaultImage from '../assets/images/provider-example.avif';
 import '../Providers.css';
-import providerMeta from '../data/providers-meta.json';
-
 
 function slugify(text) {
   return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 }
 
-const formattedDate = new Date(providerMeta.lastUpdated).toLocaleDateString(undefined, {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-});
 
 const ProvidersDirectory = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -162,7 +155,7 @@ useEffect(() => {
       <h1 className="text-3xl  text-center text-sky-700 mb-2">Meet Our Providers</h1>
       <h3 className="text-lg text-center text-gray-700 mb-6">
         Use the search functions below to find a provider. <br /> To learn more, click on each provider's profile<br />
-        <p className="italic">Availability Updated as of {formattedDate} PLEASE NOTE: We are not accepting new clients from September 9-29 due to an EHR switch. All inquiries will be responded to after September 29. Thank you for your patience!</p>
+        <p className="italic">PLEASE NOTE: We are not accepting new clients from September 9-29 due to an EHR switch. All inquiries will be responded to after September 29. Thank you for your patience!</p>
       </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
