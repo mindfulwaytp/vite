@@ -1,17 +1,17 @@
-import ryne from './images/ryneprofile.JPG';
-import chandra from './images/chandraprofile.JPG';
-import mccall from './images/mccallprofile.JPG';
-import paige from './images/paigeprofile.JPG';
-import cheryl from './images/cherylprofile.jpeg';
-import mary from './images/maryprofile.JPG';
-import julian from './images/julianprofile.jpeg';
-import emily from './images/emily.JPG';
-import rachel from './images/rachelprofile.JPG';
-import kate from './images/kateprofile.jpeg';
-import selina from './images/selinaprofile.jpeg'
-import justin from './images/justinprofile.JPG';
-import kendra from './images/kendraprofile.JPG';
-import michelle from './images/michelleprofile.JPG';
+import ryne from './images/webp/ryneprofile.webp';
+import chandra from './images/webp/chandraprofile.webp';
+import mccall from './images/webp/mccallprofile.webp';
+import paige from './images/webp/paigeprofile.webp';
+import cheryl from './images/webp/cherylprofile.webp';
+import mary from './images/webp/maryprofile.webp';
+import julian from './images/webp/julianprofile.webp';
+import emily from './images/webp/emilyprofile.webp';
+import rachel from './images/webp/rachelprofile.webp';
+import kate from './images/webp/kateprofile.webp';
+import selina from './images/webp/selinaprofile.webp';
+import justin from './images/webp/justinprofile.webp';
+import kendra from './images/webp/kendraprofile.webp';
+import michelle from './images/webp/michelleprofile.webp';
 
 
 // test
