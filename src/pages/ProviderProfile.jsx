@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { IoMdVideocam } from 'react-icons/io';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
-import { FaCalendarCheck, FaCalendarTimes, FAUserClock } from 'react-icons/fa';
+import { FaCalendarCheck, FaCalendarTimes, FaUserClock } from 'react-icons/fa';
 import { TbReportSearch } from 'react-icons/tb';
 import { providerImages } from '../assets/images';
 import defaultImage from '../assets/images/provider-example.avif';
