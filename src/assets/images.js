@@ -12,6 +12,7 @@ import selina from './images/webp/selinaprofile.webp';
 import justin from './images/webp/justinprofile.webp';
 import kendra from './images/webp/kendraprofile.webp';
 import michelle from './images/webp/michelleprofile.webp';
+import julia from './images/webp/juliaprofile.webp';
 
 
 // test
@@ -30,5 +31,6 @@ export const providerImages = {
   'Rachel Loch': rachel,
   'Justin Dahlquist': justin,
   'Kendra Locke': kendra,
-  'Michelle Young': michelle
+  'Michelle Young': michelle,
+  'Julia Tauben': julia
 }
