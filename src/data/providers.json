@@ -99,7 +99,7 @@
     "location": "Telehealth, U-District",
     "services": "Assessments, Individual",
     "gender": "Female, Non-Binary",
-    "acceptingClients": "yes",
+    "acceptingClients": "no",
     "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/mary-aldee-baja-seattle-wa/1402891",
     "modalities": "CBT, Compassion Focused Therapy, DBT, Humanistic, Narrative Therapy, Person-Centered, Somatic Therapy, Strengths-Based, Solution Focused"
@@ -129,7 +129,7 @@
     "location": "Telehealth, U-District",
     "services": "Individual",
     "gender": "Female",
-    "acceptingClients": "starting soon",
+    "acceptingClients": "yes",
     "about": "......",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/kendra-nicole-locke-seattle-wa/1335550",
     "modalities": "Coming Soon"
@@ -191,7 +191,7 @@
     "gender": "Female",
     "acceptingClients": "yes",
     "about": "....",
-    "psychologyTodayLink": "",
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/michelle-young-seattle-wa/1610324",
     "modalities": "Coming Soon"
   },
   {
@@ -207,6 +207,21 @@
     "acceptingClients": "yes",
     "about": "....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/justin-dahlquist-seattle-wa/1600267",
+    "modalities": "Coming Soon"
+  },
+  {
+    "name": "Julia Tauben",
+    "license": "Intern",
+    "pronouns": "she/her",
+    "specialties": "ADHD, Adoption, Anxiety, Autism, Couples, Depression, LGBTQ+ Identities, Mood Disorders, Non-Monogamy, Polyamory, Relationships, Self-Esteem, Sex-Positive, Trauma",
+    "topSpecialties": "ADHD, Couples, LGBTQ+ Identities, Non-Monogamy ",
+    "insurance": "Molina-Medicaid, Private Pay",
+    "location": "Telehealth, U-District",
+    "services": "Individual",
+    "gender": "Female",
+    "acceptingClients": "yes",
+    "about": "....",
+    "psychologyTodayLink": "",
     "modalities": "Coming Soon"
   }
 ]

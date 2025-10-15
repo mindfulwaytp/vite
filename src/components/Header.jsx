@@ -28,7 +28,7 @@ export default function Header() {
     { label: 'Get Started', path: '/contact' },
     {
       label: 'Client Portal',
-      path: 'https://pp-wfe-100.advancedmd.com/157723/',
+      path: 'https://mindfulwaytherapyintouch.insynchcs.com/',
       external: true,
     },
   ];
