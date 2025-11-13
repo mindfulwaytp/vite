@@ -23,6 +23,13 @@ const jobListings = [
     location: 'Remote (WA) | U-Disctrict',
     summary: 'Masters-level student internship/practicum experience (CMHC/LMFT/MSW)',
     },
+  {
+    id: 'admin-assistant',
+    title: 'Virtual Administrative Assistant',
+    location: 'Remote',
+    type: 'Per-Diem',
+    summary: 'Support our growing mental health practice with administrative tasks and client coordination.',
+  },
   // You can add more jobs here
 ];
 
@@ -60,7 +67,7 @@ function JobBoard() {
       <div className="text-center mt-16">
         <h2 className="text-2xl  text-sky-700 mb-6 text-center">Current Employment and Internship Openings</h2>
         <p className="italic text-lg md:text-xl text-gray-700 leading-relaxed max-w-5xl mx-auto mb-6">
-            Our Fall 2025 internship positions are full. We are accepting applications for Winter 2025 (For a Nov-Jan start and begin interviewing in September)
+            Our Winter 2026 internship positions are full. We are accepting applications for Spring 2026 (For a April/May start and begin interviewing in January)
         </p>
         <div className="grid md:grid-cols-2 gap-6">
           {jobListings.map((job) => (
