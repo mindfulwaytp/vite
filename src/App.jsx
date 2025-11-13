@@ -39,6 +39,7 @@ function App() {
         <Route path="/neurodiversity/assessments" element={<AssessmentsPage />} />
         <Route path="/join-our-team/lgbtq-therapist" element={<LGBTQTherapistJob />} />
         <Route path="/join-our-team/adhd-therapist" element={<ADHDTherapistJob />} />
+        <Route path="/join-our-team/admin-assistant" element={<AdminJob />} />
         <Route path="/join-our-team/internships" element={<Internships />} />
         <Route path="/join-our-team" element={<JobBoard />} />
         <Route path="/contact" element={<Contact />} />
