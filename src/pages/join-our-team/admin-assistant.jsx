@@ -17,7 +17,8 @@ export default function AdminJob() {
 
       <h3 className="text-xl text-center font-bold text-sky-700 mt-8 mb-2">Description</h3>
       <p className="text-xl text-gray-700 mb-6">
-Mindful Way Therapy is looking to hire a virtual administrative assistant to support our rapidly growing mental health practice. This role begins as a per diem position for the first 6 months while we assess call volume, referral flow, and administrative workload. 
+        Mindful Way Therapy is looking to hire a virtual administrative assistant to support our rapidly growing mental health practice. 
+        This role begins as a per diem position for the first 6 months while we assess call volume, referral flow, and administrative workload. After 6 months, we will evaluate the workload and may offer permanent hours based on need.
       </p>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Benefits</h3>
@@ -74,7 +75,7 @@ Mindful Way Therapy is looking to hire a virtual administrative assistant to sup
 
       <div className="mt-8">
         <a
-          href="https://form.jotform.com/251684509750059"
+          href="https://form.jotform.com/253166011840145"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-sky-700 text-white px-6 py-3 rounded-lg  hover:bg-sky-700 transition"
