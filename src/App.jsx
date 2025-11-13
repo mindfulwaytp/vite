@@ -7,6 +7,7 @@ import ProviderDirectory from './pages/ProviderDirectory'; // ✅ THIS IS CORREC
 import JobBoard from './pages/join-our-team/index';
 import LGBTQTherapistJob from './pages/join-our-team/lgbtq-therapist';
 import ADHDTherapistJob from './pages/join-our-team/adhd-therapist';
+import AdminJob from './pages/join-our-team/admin-assistant.jsx';
 import Internships from './pages/join-our-team/internships'; // ✅ New import for ADHD Therapist job
 import ScrollToTop from './components/ScrollToTop';
 import Contact from './pages/Contact';
