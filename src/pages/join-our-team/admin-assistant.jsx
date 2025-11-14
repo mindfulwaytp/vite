@@ -30,7 +30,8 @@ export default function AdminJob() {
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Position Hours</h3>
       <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
-        <li>Per-diem, mast of 15 hours per week; after 6 months, will evaluate workload for permanent hours.</li>
+        <li>Per-diem (as needed; paid for work performed), max of 15 hours per week; after 6 months, will evaluate workload for permanent hours.</li>
+        <li>Generally available between 10am-4pm PST, Monday-Friday.</li>
       </ul>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-6 mb-2">Location</h3>
