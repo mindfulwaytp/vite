@@ -236,40 +236,48 @@ export default function ProviderProfile() {
         </div>
       </div>
 
-      {/* FLY-OUT PANEL */}
-      {openModality && (
-        <div className="fixed inset-0 z-[100]" role="dialog" aria-modal="true">
+{/* FLY-OUT PANEL */}
+{openModality && (
+  <div className="fixed inset-0 z-[9999]" role="dialog" aria-modal="true">
+    {/* Backdrop */}
+    <div
+      className="absolute inset-0 bg-black/40"
+      onClick={() => setOpenModality(null)}
+    />
 
-          {/* backdrop */}
-          <div className="absolute inset-0 bg-black/40" onClick={() => setOpenModality(null)} />
+    {/* Slide-in Panel */}
+    <div
+      className="
+        absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl p-6 
+        overflow-y-auto transform translate-x-0 transition-transform duration-300
+      "
+    >
+      <div className="flex items-start justify-between">
+        <h3 className="text-2xl font-semibold text-sky-800">{openModality}</h3>
 
-          {/* panel */}
-          <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl p-6 overflow-y-auto">
-            <div className="flex items-start justify-between">
-              <h3 className="text-2xl font-semibold text-sky-800">{openModality}</h3>
-              <button
-                onClick={() => setOpenModality(null)}
-                className="p-1 rounded hover:bg-gray-100"
-              >
-                <IoMdClose className="text-2xl" />
-              </button>
-            </div>
+        <button
+          onClick={() => setOpenModality(null)}
+          className="p-1 rounded hover:bg-gray-100"
+        >
+          <IoMdClose className="text-2xl" />
+        </button>
+      </div>
 
-            <p className="mt-4 text-gray-700 leading-relaxed">
-              {MODALITY_INFO[openModality] ?? DEFAULT_MODALITY_TEXT}
-            </p>
+      <p className="mt-4 text-gray-700 leading-relaxed">
+        {MODALITY_INFO[openModality] ?? DEFAULT_MODALITY_TEXT}
+      </p>
 
-            <div className="mt-7">
-              <button
-                onClick={() => setOpenModality(null)}
-                className="bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800 transition"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <div className="mt-7">
+        <button
+          onClick={() => setOpenModality(null)}
+          className="bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800 transition"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     </>
   );
 }
