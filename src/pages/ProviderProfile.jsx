@@ -6,6 +6,8 @@ import { FaCalendarCheck, FaCalendarTimes, FaUserClock } from 'react-icons/fa';
 import { TbReportSearch } from 'react-icons/tb';
 import { providerImages } from '../assets/images';
 import defaultImage from '../assets/images/provider-example.avif';
+import { MODALITY_INFO, DEFAULT_MODALITY_TEXT } from '../data/modalities-info';
+
 
 const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // your SheetDB API
 
@@ -19,6 +21,9 @@ export default function ProviderProfile() {
   const navigate = useNavigate();
   const [provider, setProvider] = useState(null);
   const [loading, setLoading] = useState(true);
+
+    // NEW: fly-out state
+  const [openModality, setOpenModality] = useState(null);
 
   const handleBack = () => {
     navigate(`/providers${location.search}`);
@@ -54,6 +59,13 @@ export default function ProviderProfile() {
         setLoading(false);
       });
   }, [slug]);
+
+  // Close on Escape
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && setOpenModality(null);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   if (loading) {
     return <div className="text-center mt-20 text-gray-600">Loading provider info...</div>;
@@ -201,20 +213,71 @@ export default function ProviderProfile() {
               </div>
             </div>
           )}
+                    {/* NEW: Therapeutic Modalities with fly-out */}
           {provider.modalities?.length > 0 && (
             <div>
-              <h2 className="text-2xl text-sky-800 mb-2">Therapeutic Modalities :</h2>
-              <div className="flex flex-wrap gap-3 text-base text-sky-700">
+              <h2 className="text-2xl text-sky-800 mb-2">Types of Therapy :</h2>
+              <div className="flex flex-wrap gap-2">
                 {provider.modalities.map((m, i) => (
-                  <span key={i} className="flex items-center gap-1">
-                    <span className="w-2 h-2 bg-blue-400 rounded-full"></span> {m}
-                  </span>
+                  <button
+                    key={i}
+                    onClick={() => setOpenModality(m)}
+                    className="px-3 py-1 rounded-full border border-sky-200 text-sky-800 hover:bg-sky-50 transition text-sm"
+                    aria-haspopup="dialog"
+                    aria-label={`Learn about ${m}`}
+                  >
+                    {m}
+                  </button>
                 ))}
               </div>
             </div>
           )}
         </div>
       </div>
+
+      {/* FLY-OUT PANEL */}
+      {openModality && (
+        <div
+          className="fixed inset-0 z-[100]"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${openModality} details`}
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setOpenModality(null)}
+          ></div>
+
+          {/* Panel */}
+          <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl p-6 overflow-y-auto
+                          transition-transform duration-200 ease-out">
+            <div className="flex items-start justify-between gap-4">
+              <h3 className="text-2xl font-semibold text-sky-800">{openModality}</h3>
+              <button
+                onClick={() => setOpenModality(null)}
+                className="p-1 rounded hover:bg-gray-100"
+                aria-label="Close"
+              >
+                <IoClose className="text-2xl" />
+              </button>
+            </div>
+
+            <p className="mt-4 text-base leading-relaxed text-gray-700">
+              {MODALITY_INFO[openModality] ?? DEFAULT_MODALITY_TEXT}
+            </p>
+
+            <div className="mt-6">
+              <button
+                onClick={() => setOpenModality(null)}
+                className="bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800 transition"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
