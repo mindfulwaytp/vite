@@ -4,7 +4,7 @@ import { IoMdVideocam } from 'react-icons/io';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { FaCalendarCheck, FaCalendarTimes, FaUserClock } from 'react-icons/fa';
 import { TbReportSearch } from 'react-icons/tb';
-import { IoClose } from 'react-icons/io5';
+import { IoMdClose } from "react-icons/io";
 import { providerImages } from '../assets/images';
 import defaultImage from '../assets/images/provider-example.avif';
 import { MODALITY_INFO, DEFAULT_MODALITY_TEXT } from '../data/modalities-info';
@@ -251,7 +251,7 @@ export default function ProviderProfile() {
                 onClick={() => setOpenModality(null)}
                 className="p-1 rounded hover:bg-gray-100"
               >
-                <IoClose className="text-2xl" />
+                <IoMdClose className="text-2xl" />
               </button>
             </div>
 
