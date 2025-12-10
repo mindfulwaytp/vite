@@ -259,7 +259,7 @@ export default function ProviderProfile() {
               {MODALITY_INFO[openModality] ?? DEFAULT_MODALITY_TEXT}
             </p>
 
-            <div className="mt-6">
+            <div className="mt-7">
               <button
                 onClick={() => setOpenModality(null)}
                 className="bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800 transition"
