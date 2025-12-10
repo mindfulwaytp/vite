@@ -4,12 +4,12 @@ import { IoMdVideocam } from 'react-icons/io';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { FaCalendarCheck, FaCalendarTimes, FaUserClock } from 'react-icons/fa';
 import { TbReportSearch } from 'react-icons/tb';
+import { IoClose } from 'react-icons/io5';
 import { providerImages } from '../assets/images';
 import defaultImage from '../assets/images/provider-example.avif';
 import { MODALITY_INFO, DEFAULT_MODALITY_TEXT } from '../data/modalities-info';
 
-
-const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // your SheetDB API
+const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a';
 
 function slugify(text) {
   return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
@@ -19,10 +19,9 @@ export default function ProviderProfile() {
   const { slug } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+
   const [provider, setProvider] = useState(null);
   const [loading, setLoading] = useState(true);
-
-    // NEW: fly-out state
   const [openModality, setOpenModality] = useState(null);
 
   const handleBack = () => {
@@ -31,55 +30,45 @@ export default function ProviderProfile() {
 
   useEffect(() => {
     fetch(SHEETDB_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        const parsed = data.map((t) => ({
+      .then(res => res.json())
+      .then(data => {
+        const parsed = data.map(t => ({
           ...t,
-          specialties: t.specialties?.split(',').map((s) => s.trim()) || [],
-          topSpecialties: t.topSpecialties?.split(',').map((s) => s.trim()) || [],
-          modalities: t.modalities?.split(',').map((s) => s.trim()) || [],
-          insurance: t.insurance?.split(',').map((s) => s.trim()) || [],
-          location: t.location?.split(',').map((s) => s.trim()) || [],
-          services: t.services?.split(',').map((s) => s.trim()) || [],
-          gender: t.gender?.split(',').map((s) => s.trim()) || [],
+          specialties: t.specialties?.split(',').map(s => s.trim()) || [],
+          topSpecialties: t.topSpecialties?.split(',').map(s => s.trim()) || [],
+          modalities: (t.modalities || t.Modalities)?.split(',').map(s => s.trim()) || [],
+          insurance: t.insurance?.split(',').map(s => s.trim()) || [],
+          location: t.location?.split(',').map(s => s.trim()) || [],
+          services: t.services?.split(',').map(s => s.trim()) || [],
+          gender: t.gender?.split(',').map(s => s.trim()) || [],
         }));
 
-        const match = parsed.find((p) => slugify(p.name) === slug);
-        if (match) {
-          console.log('Loaded provider:', match);
-        } else {
-          console.warn('No matching provider for slug:', slug);
-        }
-
+        const match = parsed.find(p => slugify(p.name) === slug);
         setProvider(match);
         setLoading(false);
       })
-      .catch((err) => {
-        console.error('Error fetching provider:', err);
+      .catch(err => {
+        console.error('Error loading provider:', err);
         setLoading(false);
       });
   }, [slug]);
 
-  // Close on Escape
+  // Close modality panel on ESC
   useEffect(() => {
-    const onKey = (e) => e.key === 'Escape' && setOpenModality(null);
+    const onKey = e => e.key === 'Escape' && setOpenModality(null);
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  if (loading) {
-    return <div className="text-center mt-20 text-gray-600">Loading provider info...</div>;
-  }
-
-  if (!provider) {
-    return <div className="text-center mt-20 text-red-600">Provider not found.</div>;
-  }
+  if (loading) return <div className="text-center mt-20 text-gray-600">Loading provider info...</div>;
+  if (!provider) return <div className="text-center mt-20 text-red-600">Provider not found.</div>;
 
   return (
     <>
+      {/* BACK BUTTON */}
       <button
         onClick={handleBack}
-        className="ml-4 mt-6 inline-block bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800 transition"
+        className="ml-4 mt-6 bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800 transition"
       >
         ← Back to Directory
       </button>
@@ -87,12 +76,14 @@ export default function ProviderProfile() {
       {/* HEADER BLOCK */}
       <div className="bg-[#f3f6f9] py-12 px-4 md:px-8">
         <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-md overflow-hidden md:flex">
+
           {/* Left: Photo */}
           <div className="md:w-1/3 bg-white p-6 flex flex-col items-center">
             <img
-              src={providerImages[provider.name] ?? defaultImage}
+              src={providerImages[provider.name?.trim()] ?? defaultImage}
               alt={provider.name}
               className="w-[275px] h-[325px] rounded-2xl object-cover shadow-sm"
+              loading="lazy"
             />
           </div>
 
@@ -100,11 +91,14 @@ export default function ProviderProfile() {
           <div className="md:w-2/3 p-6">
             <h1 className="text-3xl text-brand-500">
               {provider.name}
-              {provider.license && <span className="text-2xl text-brand-500 ml-2">, {provider.license}</span>}
+              {provider.license && <span className="text-2xl ml-2">, {provider.license}</span>}
             </h1>
-            {provider.pronouns && <p className="text-lg text-gray-800 mt-1">({provider.pronouns})</p>}
 
-            <div className="flex flex-wrap gap-4 mt-4 text-base text-sky-800">
+            {provider.pronouns && (
+              <p className="text-lg text-gray-800 mt-1">({provider.pronouns})</p>
+            )}
+
+            <div className="flex flex-wrap gap-4 mt-4 text-sky-800">
               {provider.location?.includes('U-District') && (
                 <span className="flex items-center gap-1"><HiBuildingOffice2 /> U-District</span>
               )}
@@ -113,8 +107,9 @@ export default function ProviderProfile() {
               )}
             </div>
 
-            <div className="flex items-center gap-2 mt-4 text-base text-sky-800">
+            <div className="flex items-center gap-2 mt-4 text-sky-800">
               <span>Availability:</span>
+
               {provider.acceptingClients?.toLowerCase() === 'yes' && (
                 <span className="flex items-center gap-1 text-green-600"><FaCalendarCheck /> Accepting New Clients</span>
               )}
@@ -129,23 +124,21 @@ export default function ProviderProfile() {
               )}
             </div>
 
-            <div className="flex flex-wrap gap-4 mt-4 text-base text-sky-800">
+            <div className="flex flex-wrap gap-4 mt-4 text-sky-800">
               <span>Services:</span>
               {provider.services?.map((s, i) => (
                 <span key={i}>
                   {s}
-                  {i !== provider.services.length - 1 && (
-                    <span className="mx-2 text-gray-400">|</span>
-                  )}
+                  {i !== provider.services.length - 1 && <span className="mx-2 text-gray-400">|</span>}
                 </span>
               ))}
             </div>
 
-            <div className="mt-4 text-base text-gray-600">
+            <div className="mt-4 text-gray-600">
               <span className="text-sky-800">Insurance:</span>
-              <div className="flex flex-wrap gap-3 mt-2 text-base text-sky-800">
+              <div className="flex flex-wrap gap-3 mt-2 text-sky-800">
                 {provider.insurance?.map((ins, i) => (
-                  <span key={i} className="flex items-center gap-1 text-base">
+                  <span key={i} className="flex items-center gap-1">
                     <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                     {ins}
                   </span>
@@ -153,11 +146,11 @@ export default function ProviderProfile() {
               </div>
             </div>
 
-            <div className="text-base mt-6 italic">
+            <div className="mt-6 italic">
               Fill out our inquiry form today.
               <a
                 href="/contact"
-                className="mx-8 inline-block bg-sky-700 hover:bg-sky-800 text-white py-2 px-4 rounded shadow transition duration-200"
+                className="ml-4 bg-sky-700 hover:bg-sky-800 text-white py-2 px-4 rounded-md transition"
               >
                 Get Started
               </a>
@@ -166,11 +159,13 @@ export default function ProviderProfile() {
         </div>
       </div>
 
-      {/* ABOUT + SPECIALTIES BLOCK */}
+      {/* ABOUT + SPECIALTIES + MODALITIES */}
       <div className="flex-col-reverse mt-10 bg-white p-6 rounded-xl shadow-sm flex md:flex-row gap-8 max-w-6xl mx-auto">
-        <div className="md:w-1/2 order-1 md:order-1">
+
+        {/* LEFT COLUMN */}
+        <div className="md:w-1/2">
           <h2 className="text-2xl text-sky-800 mb-4">Learn More</h2>
-          <p className="text-base text-gray-700 leading-relaxed">
+          <p className="text-gray-700 leading-relaxed">
             We’re building our detailed bios. In the meantime, you can view this provider’s profile on Psychology Today:
           </p>
           <a
@@ -183,13 +178,17 @@ export default function ProviderProfile() {
           </a>
         </div>
 
+        {/* DIVIDER */}
         <div className="hidden md:block w-px bg-gray-200"></div>
 
-        <div className="md:w-1/2 space-y-6 order-2 md:order-2">
+        {/* RIGHT COLUMN */}
+        <div className="md:w-1/2 space-y-6">
+
+          {/* Top Specialties */}
           {provider.topSpecialties?.length > 0 && (
             <div>
               <h2 className="text-2xl text-sky-800 mb-2">Primary Specialties :</h2>
-              <div className="flex flex-wrap gap-3 text-base text-sky-700">
+              <div className="flex flex-wrap gap-3 text-sky-700">
                 {provider.topSpecialties.map((s, i) => (
                   <span key={i} className="flex items-center gap-1">
                     <span className="w-2 h-2 bg-green-500 rounded-full"></span> {s}
@@ -199,12 +198,13 @@ export default function ProviderProfile() {
             </div>
           )}
 
+          {/* Additional Specialties */}
           {provider.specialties?.length > 0 && (
             <div>
               <h2 className="text-2xl text-sky-800 mb-2">Also Experienced With :</h2>
-              <div className="flex flex-wrap gap-3 text-base text-sky-700">
+              <div className="flex flex-wrap gap-3 text-sky-700">
                 {provider.specialties
-                  .filter((s) => !provider.topSpecialties?.includes(s))
+                  .filter(s => !provider.topSpecialties?.includes(s))
                   .map((s, i) => (
                     <span key={i} className="flex items-center gap-1">
                       <span className="w-2 h-2 bg-green-400 rounded-full"></span> {s}
@@ -213,7 +213,8 @@ export default function ProviderProfile() {
               </div>
             </div>
           )}
-                    {/* NEW: Therapeutic Modalities with fly-out */}
+
+          {/* Modalities */}
           {provider.modalities?.length > 0 && (
             <div>
               <h2 className="text-2xl text-sky-800 mb-2">Types of Therapy :</h2>
@@ -224,7 +225,6 @@ export default function ProviderProfile() {
                     onClick={() => setOpenModality(m)}
                     className="px-3 py-1 rounded-full border border-sky-200 text-sky-800 hover:bg-sky-50 transition text-sm"
                     aria-haspopup="dialog"
-                    aria-label={`Learn about ${m}`}
                   >
                     {m}
                   </button>
@@ -232,38 +232,30 @@ export default function ProviderProfile() {
               </div>
             </div>
           )}
+
         </div>
       </div>
 
       {/* FLY-OUT PANEL */}
       {openModality && (
-        <div
-          className="fixed inset-0 z-[100]"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${openModality} details`}
-        >
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-black/40"
-            onClick={() => setOpenModality(null)}
-          ></div>
+        <div className="fixed inset-0 z-[100]" role="dialog" aria-modal="true">
 
-          {/* Panel */}
-          <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl p-6 overflow-y-auto
-                          transition-transform duration-200 ease-out">
-            <div className="flex items-start justify-between gap-4">
+          {/* backdrop */}
+          <div className="absolute inset-0 bg-black/40" onClick={() => setOpenModality(null)} />
+
+          {/* panel */}
+          <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl p-6 overflow-y-auto">
+            <div className="flex items-start justify-between">
               <h3 className="text-2xl font-semibold text-sky-800">{openModality}</h3>
               <button
                 onClick={() => setOpenModality(null)}
                 className="p-1 rounded hover:bg-gray-100"
-                aria-label="Close"
               >
                 <IoClose className="text-2xl" />
               </button>
             </div>
 
-            <p className="mt-4 text-base leading-relaxed text-gray-700">
+            <p className="mt-4 text-gray-700 leading-relaxed">
               {MODALITY_INFO[openModality] ?? DEFAULT_MODALITY_TEXT}
             </p>
 
