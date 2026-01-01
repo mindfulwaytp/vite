@@ -17,7 +17,7 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email.trim(), password);
-      navigate("/dashboard");
+      navigate("/intranet", { replace: true });
     } catch (err) {
       setError(err?.message || "Login failed");
     } finally {

@@ -1,11 +1,12 @@
-import { Navigate, Outlet, Link } from "react-router-dom";
+import { Navigate, Outlet, Link, useLocation } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { useAuthUser } from "../../hooks/useAuthUser";
 
 export default function IntranetLayout() {
   const { user, profile, loading, profileLoading } = useAuthUser();
-
+  const location = useLocation();
+  const isPostsHome = location.pathname === "/intranet" || location.pathname === "/intranet/";
   // Initial auth loading
   if (loading) {
     return <div className="p-6">Loading…</div>;
@@ -73,34 +74,53 @@ export default function IntranetLayout() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="sticky top-0 z-10 bg-white border-b">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Link to="/intranet" className="font-semibold text-sky-800">
-              Staff Intranet
-            </Link>
+      <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
 
-            <span className="text-sm text-gray-500">
-              {profile.displayName} • {profile.role}
-            </span>
+    {/* LEFT: branding + nav */}
+    <div className="flex items-center gap-6">
+      <Link to="/intranet" className="font-semibold text-sky-800">
+        Staff Intranet
+      </Link>
 
-            {profile.role === "admin" && (
-              <Link
-                to="/intranet/new"
-                className="text-sm rounded-lg bg-sky-700 text-white px-3 py-1.5 hover:bg-sky-800"
-              >
-                New post
-              </Link>
-            )}
-          </div>
+      <nav className="flex items-center gap-4 ml-6">
+  <Link to="/intranet" className="text-md hover:underline">
+    Home
+  </Link>
+  <Link to="/intranet/resources" className="text-md hover:underline">
+    Resources
+  </Link>
+  <Link to="/intranet/links" className="text-md hover:underline">
+    Links
+  </Link>
+</nav>
 
-          <button
-            onClick={() => signOut(auth)}
-            className="text-sm rounded-lg px-3 py-1.5 border hover:bg-gray-50"
-          >
-            Sign out
-          </button>
-        </div>
-      </header>
+    </div>
+
+    {/* RIGHT: actions */}
+    <div className="flex items-center gap-3">
+      {profile?.role === "admin" && isPostsHome && (
+        <Link
+          to="/intranet/new"
+          className="rounded-lg bg-sky-700 text-white px-3 py-1.5 text-sm hover:bg-sky-800"
+        >
+          New post
+        </Link>
+      )}
+
+      <span className="text-sm text-gray-500">
+        {profile.displayName} · {profile.role}
+      </span>
+
+      <button
+        onClick={() => signOut(auth)}
+        className="text-sm rounded-lg px-3 py-1.5 border hover:bg-gray-50"
+      >
+        Sign out
+      </button>
+    </div>
+
+  </div>
+</header>
 
       {/* Page content */}
       <main className="max-w-5xl mx-auto px-4 py-6">
