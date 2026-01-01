@@ -9,7 +9,10 @@ function truncate(s, n = 160) {
 }
 
 export default function IntranetFeed() {
-  const { profile } = useOutletContext();
+  const outlet = useOutletContext();
+  const profile = outlet?.profile;
+  console.log("OUTLET CONTEXT:", outlet);
+  console.log("PROFILE IN FEED:", profile); 
   const [pinned, setPinned] = useState([]);
   const [recent, setRecent] = useState([]);
   const [loading, setLoading] = useState(true);
