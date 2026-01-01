@@ -1,7 +1,7 @@
 import { Navigate, Outlet, Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "../lib/firebase";
-import { useAuthUser } from "../hooks/useAuthUser";
+import { auth } from "../../lib/firebase";
+import { useAuthUser } from "../../hooks/useAuthUser";
 
 export default function IntranetLayout() {
   const { user, profile, loading, profileLoading } = useAuthUser();
