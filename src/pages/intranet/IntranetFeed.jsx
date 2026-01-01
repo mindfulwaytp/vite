@@ -72,20 +72,20 @@ export default function IntranetFeed() {
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-semibold">Updates</h2>
-        {profile?.role === "admin" && (
-  <div className="mt-4">
-    <Link
-      to="/intranet/new"
-      className="inline-flex items-center rounded-lg bg-sky-700 text-white px-4 py-2 hover:bg-sky-800"
-    >
-      New post
-    </Link>
-  </div>
-)}
-
         <p className="text-gray-600 mt-1">Announcements, policies, and internal notes.</p>
+                {profile?.role === "admin" && (
+          <div className="mt-4">
+            <Link
+              to="/intranet/new"
+              className="inline-flex items-center rounded-lg bg-sky-700 text-white px-4 py-2 hover:bg-sky-800"
+            >
+              New post
+            </Link>
+          </div>
+        )}
       </div>
 
+      
       {pinned.length > 0 && (
         <section className="space-y-3">
           <h3 className="text-lg font-semibold">Pinned</h3>
