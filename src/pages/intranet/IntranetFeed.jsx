@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { collection, getDocs, orderBy, query, where, limit } from "firebase/firestore";
 import { Link } from "react-router-dom";
-import { db } from "../lib/firebase";
-import { useAuthUser } from "../hooks/useAuthUser";
+import { db } from "../../lib/firebase";
+import { useAuthUser } from "../../hooks/useAuthUser";
 
 function truncate(s, n = 160) {
   if (!s) return "";
@@ -72,6 +72,17 @@ export default function IntranetFeed() {
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-semibold">Updates</h2>
+        {profile?.role === "admin" && (
+  <div className="mt-4">
+    <Link
+      to="/intranet/new"
+      className="inline-flex items-center rounded-lg bg-sky-700 text-white px-4 py-2 hover:bg-sky-800"
+    >
+      New post
+    </Link>
+  </div>
+)}
+
         <p className="text-gray-600 mt-1">Announcements, policies, and internal notes.</p>
       </div>
 

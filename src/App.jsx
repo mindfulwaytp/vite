@@ -23,9 +23,11 @@ import EvaluationForm from './pages/Contact/EvaluationForm';
 import Footer from './components/Footer';
 import usePageTracking from './hooks/usePageTracking';
 import Login from "./pages/Login";
-import IntranetLayout from "./pages/IntranetLayout";
-import IntranetFeed from "./pages/IntranetFeed";
-import PostDetail from "./pages/PostDetail";
+import IntranetLayout from "./pages/intranet/IntranetLayout.jsx";
+import IntranetFeed from "./pages/intranet/IntranetFeed.jsx";
+import PostDetail from "./pages/intranet/PostDetail.jsx";
+import NewPost from "./pages/intranet/NewPost";
+
 
 function PublicLayout() {
   usePageTracking();
@@ -48,6 +50,7 @@ function App() {
 
       <Route path="/intranet" element={<IntranetLayout />}>
         <Route index element={<IntranetFeed />} />
+        <Route path="new" element={<NewPost />} />
         <Route path="posts/:postId" element={<PostDetail />} />
         {/* we'll add /intranet/new next */}
       </Route>

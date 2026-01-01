@@ -12,8 +12,8 @@ import {
   deleteDoc,
   addDoc,
 } from "firebase/firestore";
-import { db } from "../lib/firebase";
-import { useAuthUser } from "../hooks/useAuthUser";
+import { db } from "../../lib/firebase";
+import { useAuthUser } from "../../hooks/useAuthUser";
 
 const EMOJIS = ["👍", "✅", "❤️"];
 
