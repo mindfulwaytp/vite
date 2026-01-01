@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { collection, getDocs, orderBy, query, where, limit } from "firebase/firestore";
-import { Link } from "react-router-dom";
 import { db } from "../../lib/firebase";
-import { useAuthUser } from "../../hooks/useAuthUser";
+import { Link, useOutletContext } from "react-router-dom";
 
 function truncate(s, n = 160) {
   if (!s) return "";
@@ -10,7 +9,7 @@ function truncate(s, n = 160) {
 }
 
 export default function IntranetFeed() {
-  const { profile } = useAuthUser();
+  const { profile } = useOutletContext();
   const [pinned, setPinned] = useState([]);
   const [recent, setRecent] = useState([]);
   const [loading, setLoading] = useState(true);
