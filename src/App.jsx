@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from "react-router-dom";
 import Header from './components/Header';
 import Home from './Home';
 import ProviderProfile from './pages/ProviderProfile'; // ✅ Update path if needed
@@ -22,39 +22,75 @@ import TherapyForm from './pages/Contact/TherapyForm';
 import EvaluationForm from './pages/Contact/EvaluationForm';
 import Footer from './components/Footer';
 import usePageTracking from './hooks/usePageTracking';
+import Login from "./pages/Login";
+import IntranetLayout from "./pages/IntranetLayout";
+import IntranetFeed from "./pages/IntranetFeed";
+import PostDetail from "./pages/PostDetail";
 
+function PublicLayout() {
+  usePageTracking();
 
-
-
-function App() {
-  usePageTracking(); // ✅ Track route changes
   return (
     <div className="bg-white">
       <ScrollToTop />
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/providers" element={<ProviderDirectory />} />
-        <Route path="/providers/:slug" element={<ProviderProfile />} />
-        <Route path="/neurodiversity/assessments" element={<AssessmentsPage />} />
-        <Route path="/join-our-team/lgbtq-therapist" element={<LGBTQTherapistJob />} />
-        <Route path="/join-our-team/adhd-therapist" element={<ADHDTherapistJob />} />
-        <Route path="/join-our-team/admin-assistant" element={<AdminJob />} />
-        <Route path="/join-our-team/internships" element={<Internships />} />
-        <Route path="/join-our-team" element={<JobBoard />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/contact/therapy" element={<TherapyForm />} />
-        <Route path="/contact/evaluation" element={<EvaluationForm />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/services/ratesfees" element={<RatesFess />} />
-        <Route path="/neurodiversity" element={<Neurodiversity />} />
-        <Route path="/neurodiversity/neurodiversity-resources" element={<NeurodiversityResources />} />
-        <Route path="/neurodiversity/neurodiversity-resources/:slug" element={<CategoryResourcePage />} />
-        <Route path="/neurodiversity/affirming-therapy" element={<AffirmingTherapy />} />
-      </Routes>
+      <Outlet />
       <Footer />
     </div>
   );
 }
 
+function App() {
+  return (
+    <Routes>
+      {/* 🔐 STAFF / INTRANET */}
+      <Route path="/login" element={<Login />} />
+
+      <Route path="/intranet" element={<IntranetLayout />}>
+        <Route index element={<IntranetFeed />} />
+        <Route path="posts/:postId" element={<PostDetail />} />
+        {/* we'll add /intranet/new next */}
+      </Route>
+
+      {/* 🌐 PUBLIC WEBSITE */}
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/providers" element={<ProviderDirectory />} />
+        <Route path="/providers/:slug" element={<ProviderProfile />} />
+
+        <Route path="/neurodiversity/assessments" element={<AssessmentsPage />} />
+
+        <Route path="/join-our-team" element={<JobBoard />} />
+        <Route path="/join-our-team/lgbtq-therapist" element={<LGBTQTherapistJob />} />
+        <Route path="/join-our-team/adhd-therapist" element={<ADHDTherapistJob />} />
+        <Route path="/join-our-team/admin-assistant" element={<AdminJob />} />
+        <Route path="/join-our-team/internships" element={<Internships />} />
+
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact/therapy" element={<TherapyForm />} />
+        <Route path="/contact/evaluation" element={<EvaluationForm />} />
+
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/ratesfees" element={<RatesFess />} />
+
+        <Route path="/neurodiversity" element={<Neurodiversity />} />
+        <Route
+          path="/neurodiversity/neurodiversity-resources"
+          element={<NeurodiversityResources />}
+        />
+        <Route
+          path="/neurodiversity/neurodiversity-resources/:slug"
+          element={<CategoryResourcePage />}
+        />
+        <Route
+          path="/neurodiversity/affirming-therapy"
+          element={<AffirmingTherapy />}
+        />
+
+        <Route path="*" element={<div className="p-6">Not found</div>} />
+      </Route>
+    </Routes>
+  );
+}
 export default App;

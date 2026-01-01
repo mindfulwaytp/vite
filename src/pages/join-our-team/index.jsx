@@ -24,7 +24,7 @@ const jobListings = [
     summary: 'Masters-level student internship/practicum experience (CMHC/LMFT/MSW)',
     },
   {
-    id: 'admin-assistant',
+    id: 'adminjob',
     title: 'Virtual Administrative Assistant',
     location: 'Remote',
     type: 'Per-Diem',
