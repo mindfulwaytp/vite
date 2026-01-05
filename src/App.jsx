@@ -27,7 +27,11 @@ import IntranetLayout from "./pages/intranet/IntranetLayout.jsx";
 import IntranetFeed from "./pages/intranet/IntranetFeed.jsx";
 import PostDetail from "./pages/intranet/PostDetail.jsx";
 import NewPost from "./pages/intranet/NewPost";
-
+import IntranetResources from "./pages/intranet/IntranetResources.jsx";
+import ResourceCategory from "./pages/intranet/ResourceCategory.jsx";
+import IntranetLinks from "./pages/intranet/IntranetLinks.jsx";
+import ResourceDetail from "./pages/intranet/ResourceDetail.jsx";
+import IntranetSearch from './pages/intranet/IntranetSearch.jsx';
 
 function PublicLayout() {
   usePageTracking();
@@ -52,8 +56,21 @@ function App() {
         <Route index element={<IntranetFeed />} />
         <Route path="new" element={<NewPost />} />
         <Route path="posts/:postId" element={<PostDetail />} />
-        {/* we'll add /intranet/new next */}
+        <Route path="search" element={<IntranetSearch />} />
+
+        {/* RESOURCES */}
+        <Route path="resources">
+          <Route index element={<IntranetResources />} />
+          <Route path=":categoryId" element={<ResourceCategory />} />
+          <Route
+            path=":categoryId/:resourceId"
+            element={<ResourceDetail />}
+          />
+        </Route>
+
+        <Route path="links" element={<IntranetLinks />} />
       </Route>
+
 
       {/* 🌐 PUBLIC WEBSITE */}
       <Route element={<PublicLayout />}>
