@@ -19,17 +19,10 @@ const jobListings = [
     },
  {
     id: 'internships',
-    title: 'Master Level Student Intern',
+    title: 'Master Level Student Intern (Full; Accepting Summer/Fall 2026 Applications)',
     location: 'Remote (WA) | U-Disctrict',
     summary: 'Masters-level student internship/practicum experience (CMHC/LMFT/MSW)',
     },
-  {
-    id: 'adminjob',
-    title: 'Virtual Administrative Assistant',
-    location: 'Remote',
-    type: 'Per-Diem',
-    summary: 'Support our growing mental health practice with administrative tasks and client coordination.',
-  },
   // You can add more jobs here
 ];
 
