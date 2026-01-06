@@ -19,6 +19,7 @@ export default function ProviderProfile() {
   const navigate = useNavigate();
   const [provider, setProvider] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [bioOpen, setBioOpen] = useState(false);
 
   const handleBack = () => {
     navigate(`/providers${location.search}`);
@@ -155,81 +156,112 @@ export default function ProviderProfile() {
         </div>
       </div>
 
-      {/* ABOUT + SPECIALTIES BLOCK */}
-<div className="flex-col-reverse mt-10 bg-white p-6 rounded-xl shadow-sm flex md:flex-row gap-8 max-w-6xl mx-auto">
+{/* ABOUT + SPECIALTIES BLOCK */}
+<div className="mt-10 bg-white p-6 rounded-xl shadow-sm max-w-6xl mx-auto">
+  <div className="flex flex-col md:flex-row gap-8">
 
-  {/* LEFT COLUMN: BIO */}
-  <div className="md:w-1/2 order-1 md:order-1">
-    <h2 className="text-2xl text-sky-800 mb-4">Learn More</h2>
+    {/* LEFT COLUMN — COLLAPSIBLE BIO */}
+    <div className="md:w-1/2">
+      <button
+      onClick={() => setBioOpen((prev) => !prev)}
+      className="w-full flex items-center justify-between text-left text-2xl text-sky-800 font-semibold pb-3 border-b border-gray-200 hover:text-sky-900 transition"
+      aria-expanded={bioOpen}
+      aria-controls="provider-bio"
+    >
+      <span>About</span>
+      <span
+        className={`transform transition-transform duration-200 ${
+          bioOpen ? 'rotate-180' : ''
+        }`}
+      >
+        ▾
+      </span>
+    </button>
 
-    <div className="space-y-4">
-      {provider.bioBody && (
-        <div className="space-y-4">
-          {provider.bioBody.split(/\n\s*\n/).map((para, i) => (
-            <p key={i} className="text-base text-gray-700 leading-relaxed">
-              {para}
-            </p>
-          ))}
-        </div>
-      )}
+      <div
+        id="provider-bio"
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          bioOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {provider.bioIntro || provider.bioBody ? (
+          <div className="space-y-4 mt-4">
 
-      {!provider.bioIntro && !provider.bioBody && (
-        <p className="text-base text-gray-500 italic">
-          This provider’s bio is coming soon.
-        </p>
-      )}
+            {provider.bioBody &&
+              provider.bioBody
+                .split(/\n\s*\n/)
+                .map((para, i) => (
+                  <p
+                    key={i}
+                    className="text-lg text-gray-700 leading-relaxed"
+                  >
+                    {para}
+                  </p>
+                ))}
+          </div>
+        ) : (
+          <p className="text-base text-gray-500 italic mt-4">
+            This provider’s bio is coming soon.
+          </p>
+        )}
+
+        {provider.psychologyTodayLink && (
+          <a
+            href={provider.psychologyTodayLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-6 bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800 transition"
+          >
+            View Psychology Today Profile
+          </a>
+        )}
+      </div>
     </div>
 
-    {provider.psychologyTodayLink && (
-      <a
-        href={provider.psychologyTodayLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block mt-6 bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800 transition"
-      >
-        View Psychology Today Profile
-      </a>
-    )}
-  </div>
+    {/* DIVIDER */}
+    <div className="hidden md:block w-px bg-gray-200"></div>
 
-  {/* DIVIDER */}
-  <div className="hidden md:block w-px bg-gray-200"></div>
+    {/* RIGHT COLUMN — ALWAYS VISIBLE */}
+    <div className="md:w-1/2 space-y-6">
 
-  {/* RIGHT COLUMN: SPECIALTIES */}
-  <div className="md:w-1/2 space-y-6 order-2 md:order-2">
-
-    {provider.topSpecialties?.length > 0 && (
-      <div>
-        <h2 className="text-2xl text-sky-800 mb-2">Primary Specialties</h2>
-        <div className="flex flex-wrap gap-3 text-base text-sky-700">
-          {provider.topSpecialties.map((s, i) => (
-            <span key={i} className="flex items-center gap-1">
-              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-              {s}
-            </span>
-          ))}
-        </div>
-      </div>
-    )}
-
-    {provider.specialties?.length > 0 && (
-      <div>
-        <h2 className="text-2xl text-sky-800 mb-2">Also Experienced With</h2>
-        <div className="flex flex-wrap gap-3 text-base text-sky-700">
-          {provider.specialties
-            .filter((s) => !provider.topSpecialties?.includes(s))
-            .map((s, i) => (
+      {provider.topSpecialties?.length > 0 && (
+        <div>
+          <h2 className="text-2xl text-sky-800 mb-2">
+            Primary Specialties
+          </h2>
+          <div className="flex flex-wrap gap-3 text-base text-sky-700">
+            {provider.topSpecialties.map((s, i) => (
               <span key={i} className="flex items-center gap-1">
-                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                 {s}
               </span>
             ))}
+          </div>
         </div>
-      </div>
-    )}
+      )}
 
+      {provider.specialties?.length > 0 && (
+        <div>
+          <h2 className="text-2xl text-sky-800 mb-2">
+            Also Experienced With
+          </h2>
+          <div className="flex flex-wrap gap-3 text-base text-sky-700">
+            {provider.specialties
+              .filter((s) => !provider.topSpecialties?.includes(s))
+              .map((s, i) => (
+                <span key={i} className="flex items-center gap-1">
+                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                  {s}
+                </span>
+              ))}
+          </div>
+        </div>
+      )}
+
+    </div>
   </div>
 </div>
+
 
     </>
   );
