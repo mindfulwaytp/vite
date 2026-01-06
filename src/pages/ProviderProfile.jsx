@@ -57,6 +57,38 @@ export default function ProviderProfile() {
       });
   }, [slug]);
 
+  useEffect(() => {
+  if (!provider) return;
+
+  // 1. Page title
+  const title = `${provider.name}${provider.license ? `, ${provider.license}` : ''} | Mindful Way Therapy`;
+  document.title = title;
+
+  // 2. Meta description (SEO)
+  const description =
+    provider.bioIntro ||
+    provider.bioBody?.slice(0, 155) ||
+    `Learn more about ${provider.name}, a therapist at Mindful Way Therapy.`;
+
+  let meta = document.querySelector('meta[name="description"]');
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.name = 'description';
+    document.head.appendChild(meta);
+  }
+  meta.content = description;
+
+  // 3. Canonical URL
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.href = `https://www.mindfulway-therapy.com/providers/${slug}`;
+
+}, [provider, slug]);
+
   if (loading) {
     return <div className="text-center mt-20 text-gray-600">Loading provider info...</div>;
   }
