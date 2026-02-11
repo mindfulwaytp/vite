@@ -106,17 +106,17 @@ const sections = [
     title: "Our Autism & ADHD (Comobined) Assessment Process",
     content: (
       <div className="space-y-8">
+        <p className="text-lg font-semibold text-gray-900">
+              Due to a backlog of inquiries, we are currently splitting our dual assessments into two (2) separate assessments, which will be completed approximately 3-6 months apart. 
+              We will complete the ADHD portion of the assessment first, followed by the Autism portion. This allows us to provide you with a preliminary diagnosis and recommendations for 
+              ADHD while you wait for your Autism assessment. We understand that this is not ideal, but we are doing our best to provide timely assessments given our current backlog. We appreciate your understanding and patience.
+        </p>
         {/* Step 1 */}
         <div className="flex items-start gap-4">
           <div className="text-sky-700 text-4xl shrink-0">
             <TbHexagonNumber1Filled />
           </div>
           <div>
-            <p className="text-lg font-semibold text-gray-900">
-              Due to a backlog of inquiries, we are currently splitting our dual assessments into two (2) separate assessments, which will be completed approximately 3-6 months apart. 
-              We will complete the ADHD portion of the assessment first, followed by the Autism portion. This allows us to provide you with a preliminary diagnosis and recommendations for 
-              ADHD while you wait for your Autism assessment. We understand that this is not ideal, but we are doing our best to provide timely assessments given our current backlog. We appreciate your understanding and patience.
-            </p>
             <p className="text-lg font-semibold text-gray-900">
               Screening Questionnaire & Assessments:
             </p>
