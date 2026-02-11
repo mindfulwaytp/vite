@@ -1,10 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { TbHexagonNumber1Filled, TbHexagonNumber2Filled, TbHexagonNumber3Filled } from "react-icons/tb";
 
+export default function Accordion() {
+  const location = useLocation();
+  const [openId, setOpenId] = useState(null);
+
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (hash) {
+      setOpenId(hash);
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [location]);
+
+  const toggleSection = (id) => {
+    setOpenId((prev) => (prev === id ? null : id));
+  };
+
+  return (
+    <div className="space-y-4">
+      {sections.map((section) => (
+        <div
+          key={section.id}
+          id={section.id}
+          className="border border-gray-200 rounded-xl shadow-sm"
+        >
+          <button
+            onClick={() => toggleSection(section.id)}
+            className="w-full flex justify-between items-center p-4 text-left text-lg font-semibold text-sky-800 hover:bg-gray-50 rounded-t-xl"
+          >
+            {section.title}
+            {openId === section.id ? <FaChevronUp /> : <FaChevronDown />}
+          </button>
+          {openId === section.id && (
+            <div className="p-4 bg-white rounded-b-xl text-gray-700">
+              {section.content}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const sections = [
   {
+    id: 'signs',
     title: "Common Signs of Autism & ADHD: Understanding the Neurodivergent Profile",
     content: (
       <>
@@ -58,6 +102,7 @@ const sections = [
     )
   },
   {
+    id: 'combined-assessment',
     title: "Our Autism & ADHD (Comobined) Assessment Process",
     content: (
       <div className="space-y-8">
@@ -145,6 +190,7 @@ const sections = [
       )
     },
   {
+    id: 'adhd-assessment',
     title: "Our ADHD Assessment Process",
     content: (
       <div className="space-y-8">
@@ -248,30 +294,3 @@ const sections = [
       )
     },
   ];
-
-export default function Accordion() {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggleSection = (index) => {
-    setOpenIndex(index === openIndex ? null : index);
-  };
-
-  return (
-    <div className="space-y-4">
-      {sections.map((section, index) => (
-        <div key={index} className="border border-gray-200 rounded-xl shadow-sm">
-          <button
-            onClick={() => toggleSection(index)}
-            className="w-full flex justify-between items-center p-4 text-left text-lg font-semibold text-sky-800 hover:bg-gray-50 rounded-t-xl"
-          >
-            {section.title}
-            {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
-          </button>
-          {openIndex === index && (
-            <div className="p-4 bg-white rounded-b-xl text-gray-700">{section.content}</div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}

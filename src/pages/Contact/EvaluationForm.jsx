@@ -46,7 +46,7 @@ export default function EvaluationForm() {
     </p>
     <p className="text-lg text-gray-800">
       We are currently backlogged for our autism and ADHD assessments. Current estimated wait time for ADHD assessments is 4-6 months; Autism assessments are backlogged 9+ months. 
-      If you are seeking a dual assessment, we may contact you to complete your ADHD portion first rather than complete the assessment all at once. We appreciate your understanding and patience.
+      Please read about our current process for completing dual assessments here: <a href="/neurodiversity/assessments#combined-assessment" className="text-blue-700 font-semibold underline hover:text-blue-800 transition">ADHD & Autism Evaluations</a>. We appreciate your understanding and patience.
     </p>
   </div>
 </section>
