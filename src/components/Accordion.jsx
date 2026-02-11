@@ -68,6 +68,11 @@ const sections = [
           </div>
           <div>
             <p className="text-lg font-semibold text-gray-900">
+              Due to a backlog of inquiries, we are currently splitting our dual assessments into two (2) separate assessments, which will be completed approximately 3-6 months apart. 
+              We will complete the ADHD portion of the assessment first, followed by the Autism portion. This allows us to provide you with a preliminary diagnosis and recommendations for 
+              ADHD while you wait for your Autism assessment. We understand that this is not ideal, but we are doing our best to provide timely assessments given our current backlog. We appreciate your understanding and patience.
+            </p>
+            <p className="text-lg font-semibold text-gray-900">
               Screening Questionnaire & Assessments:
             </p>
             <p className="text-lg text-gray-700 mt-2">
@@ -76,7 +81,7 @@ const sections = [
             </p>
             <ul className="list-disc pl-6 mt-3 text-lg text-gray-700 space-y-2">
               <li>
-                <span className="font-semibold">For Adolescents:</span> After receicing your screening questionnaire, we will provide assessments tailored to your child,
+                <span className="font-semibold">For Adolescents:</span> After receiving your screening questionnaire, we will provide assessments tailored to your child,
                 which may include input from teachers. Parents will also be asked to complete a developmental history
                 questionnaire to provide important background information.
               </li>
