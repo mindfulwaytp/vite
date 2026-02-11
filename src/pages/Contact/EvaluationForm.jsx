@@ -38,13 +38,12 @@ export default function EvaluationForm() {
         click here to complete the Therapy Inquiry Form
       </a>.
     </p>
-    <p className="text-lg text-gray-800">
-      If you are seeking <strong>both therapy and an evaluation</strong>, please, please{' '}
+    <p className="text-lg text-gray-800 mb-3">
+      If you are seeking <strong>both therapy and an evaluation</strong>, please{' '}
       <a href="/contact/therapy" className="text-blue-700 font-semibold underline hover:text-blue-800 transition">
         complete our Therapy Inquiry Form first
       </a>. You will be redirected to the evaluation form after submission.
     </p>
-    <p> </p>
     <p className="text-lg text-gray-800">
       We are currently backlogged for our autism and ADHD assessments. Current estimated wait time for ADHD assessments is 4-6 months; Autism assessments are backlogged 9+ months. 
       If you are seeking a dual assessment, we may contact you to complete your ADHD portion first rather than complete the assessment all at once. We appreciate your understanding and patience.
