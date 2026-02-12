@@ -13,6 +13,20 @@ function slugify(text) {
   return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 }
 
+function formatAvailabilityDate() {
+  const today = new Date();
+  
+  // Get Monday of current week
+  const day = today.getDay(); // 0 = Sunday
+  const diff = today.getDate() - day + (day === 0 ? -6 : 1);
+  const monday = new Date(today.setDate(diff));
+
+  return monday.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
 
 const ProvidersDirectory = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -155,7 +169,7 @@ useEffect(() => {
       <h1 className="text-3xl  text-center text-sky-700 mb-2">Meet Our Providers</h1>
       <h3 className="text-lg text-center text-gray-700 mb-6">
         Use the search functions below to find a provider. <br /> To learn more, click on each provider's profile<br />
-        <p className="italic">Availability updated on Feb. 12, 2026</p>
+        <p className="italic mt-3">Availability updated this week ({formatAvailabilityDate()})</p>
       </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
