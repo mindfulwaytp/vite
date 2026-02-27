@@ -7,8 +7,8 @@ import ProviderDirectory from './pages/ProviderDirectory'; // ✅ THIS IS CORREC
 import JobBoard from './pages/join-our-team/index';
 import LGBTQTherapistJob from './pages/join-our-team/lgbtq-therapist';
 import ADHDTherapistJob from './pages/join-our-team/adhd-therapist';
-import AdminJob from './pages/join-our-team/admin-assistant.jsx';
-import Internships from './pages/join-our-team/internships'; // ✅ New import for ADHD Therapist job
+import EatingDisorderJob from './pages/join-our-team/eating-disorder-therapist';
+import Internships from './pages/join-our-team/internships';
 import ScrollToTop from './components/ScrollToTop';
 import Contact from './pages/Contact';
 import Neurodiversity from './pages/Neurodiversity';
@@ -84,7 +84,7 @@ function App() {
         <Route path="/join-our-team" element={<JobBoard />} />
         <Route path="/join-our-team/lgbtq-therapist" element={<LGBTQTherapistJob />} />
         <Route path="/join-our-team/adhd-therapist" element={<ADHDTherapistJob />} />
-        <Route path="/join-our-team/admin-assistant" element={<AdminJob />} />
+        <Route path="/join-our-team/eating-disorder-therapist" element={<EatingDisorderJob />} />
         <Route path="/join-our-team/internships" element={<Internships />} />
 
         <Route path="/contact" element={<Contact />} />
