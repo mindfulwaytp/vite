@@ -15,14 +15,21 @@ const jobListings = [
     title: 'ADHD & Autism Therapist and Evaluator',
     location: 'Remote (WA) | U-Disctrict',
     type: 'Part-Time or Full-Time',
-    summary: 'Provide specialized and neurodivergent-affimring therapy and evaluations for ADHD and Autism',
+    summary: 'Provide specialized and neurodivergent-affirming therapy and evaluations for ADHD and Autism',
+    },
+  {
+    id: 'eating-disorder-therapist',
+    title: 'Eating Disorder Specialist',
+    location: 'Remote (WA) | U-Disctrict',
+    summary: 'Provide specialized and trauma-informed care for individuals with eating disorders.',
     },
  {
     id: 'internships',
-    title: 'Master Level Student Intern (Full; Accepting Summer/Fall 2026 Applications)',
+    title: 'Master Level Student Intern (Full; Accepting Fall 2026 Applications)',
     location: 'Remote (WA) | U-Disctrict',
     summary: 'Masters-level student internship/practicum experience (CMHC/LMFT/MSW)',
     },
+
   // You can add more jobs here
 ];
 

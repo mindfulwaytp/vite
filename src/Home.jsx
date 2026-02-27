@@ -37,7 +37,7 @@ function Home() {
           <h2 className="text-3xl font-bold text-center text-sky-700">About Us</h2>
 
           <h3 className="text-lg text-gray-700">
-            At Mindful Way Therapy, we offer affriming, trauma-informed care with a focus on the lived
+            At Mindful Way Therapy, we offer affirming, trauma-informed care with a focus on the lived
             experiences of LGBTQ+ and neurodivergent individuals. Many of our providers are members of these communities
             themselves, or have close connections that inform their work. Under the direction of Practice Owner, Ryne Evans, MA, LMFT,
             our providers are commmitted to providing care that is affirming and culturally sensitive. We know how painful it can feel
