@@ -32,6 +32,7 @@ import ResourceCategory from "./pages/intranet/ResourceCategory.jsx";
 import IntranetLinks from "./pages/intranet/IntranetLinks.jsx";
 import ResourceDetail from "./pages/intranet/ResourceDetail.jsx";
 import IntranetSearch from './pages/intranet/IntranetSearch.jsx';
+import PoliciesLandingPage from './pages/PoliciesLandingPage';
 
 function PublicLayout() {
   usePageTracking();
@@ -107,7 +108,8 @@ function App() {
           path="/neurodiversity/affirming-therapy"
           element={<AffirmingTherapy />}
         />
-
+        <Route path="/policies" element={<PoliciesLandingPage />}
+        />
         <Route path="*" element={<div className="p-6">Not found</div>} />
       </Route>
     </Routes>

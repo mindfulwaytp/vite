@@ -34,7 +34,7 @@ export default function LGBTQTherapistJob() {
           <li>CEU reimbursement (varies based on FTE status)</li>
           <li>Licensure reimbursement (varies based on FTE status)</li>
           <li>
-            Health insurance reimbursement (Up to $400/month; We hope to begin offering a group health plan later in 2026; only full-time)
+            Health insurance: Beginning in 2026, we are offering a group health plan through Premera to full-time employees (we do not cover dependents or spouses at this time). The cost per pay period is approximately $125/pay period.
           </li>
           <li>
             PTO (up to 75 hours per year; full-time only. Restrictions apply on how much can be used on a given day. Will discuss during interview)
@@ -59,29 +59,27 @@ export default function LGBTQTherapistJob() {
 
       <h3 className="text-xl font-semibold text-sky-700 mt-8 mb-2">Salary</h3>
       <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
-        <li>Starting at $42.75 for associates (increase after 6 months)</li>
-        <li>Starting at $52.75 for fully-licensed (increase after 6 months)</li>
+        <li>Starting at $42.75 for associates (increase after 9 months)</li>
+        <li>Starting at $52.75 for fully-licensed (increase after 9 months)</li>
         <li>Admin rate: $30/hour (1 hour per 5 hours worked; 15 hours max per month)</li>
         <li className="italic ml-4">Sliding scale and pro-bono is a reduced rate</li>
       </ul>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-6 mb-2">Responsibilities</h3>
       <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
-        <li>Provide individual and couples therapy sessions to clients, with a focus on LGBTQ+ affirming care</li>
-        <li>Conduct comprehensive patient assessments utilizing intake forms and assessment questionnaires</li>
-        <li>Maintain accurate medical documentation and adhere to HIPAA regulations</li>
-        <li>Educate clients and families about mental health resources and coping strategies</li>
+        <li>Provide individual, relational, and group therapy sessions to clients, with a focus on LGBTQ+ affirming care</li>
+        <li>Support clients navigating co-occurring concerns such as anxiety, depression, trauma, neurodivergence (ADHD/autism), and LGBTQ+ identity-related stress</li>
+        <li>Maintain timely, accurate clinical documentation in accordance with practice standards and Washington State regulations</li>
         <li>Stay up-to-date on best practices and research in LGBTQ+ affirmative therapy</li>
         <li>Coordinate care and collaborate with community agencies or external providers when necessary</li>
+        <li>Participate in bi-weekly case consultation and supervision as required by state law</li>
       </ul>
 
       <h3 className="text-xl font-semibold text-sky-700 mt-6 mb-2">Minimum Requirements</h3>
       <ul className="text-xl list-disc list-outside ml-6 text-gray-700 mb-6 space-y-1">
         <li>Master's degree in Marriage and Family Therapy, Clinical Mental Health Counseling, or Social Work</li>
-        <li>Must have completed an internship that meets state requirements</li>
         <li>Associate license (LMFTA, LMHCA, LSWAIC) in the state of Washington</li>
         <li>Experience working with LGBTQ+ clients and strong understanding of affirmative therapy</li>
-        <li>Excellent communication and interpersonal skills</li>
         <li>Ability to work independently and as part of a team</li>
       </ul>
 
