@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 function Services() {
   const services = [
@@ -56,7 +57,8 @@ function Services() {
         <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
           <h1 className="text-3xl md:text-4xl mb-4">Our Services</h1>
           <p className="text-base md:text-lg leading-relaxed">
-            At Mindful Way Therapy, we offer a wide range of specialized therapy services to support you on your journey toward improved mental health. Whether you're seeking individual therapy, couples counseling, or a neurodivergent-affirming evaluation, we're here to help.
+            At Mindful Way Therapy, we offer a wide range of specialized therapy services to support you on your journey toward improved mental health. 
+            Whether you're seeking individual therapy, couples counseling, or a neurodivergent-affirming evaluation, we're here to help.
           </p>
         </div>
       </div>
@@ -64,6 +66,10 @@ function Services() {
       {/* Service Cards */}
       <section className="bg-white py-20 px-4 md:px-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-8">
+              <h2 className="text-3xl font-bold text-center text-sky-700 mb-10 col-span-full">
+              What We Offer
+              </h2>
+
           {services.map((s, index) => (
             <div
               key={index}

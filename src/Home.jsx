@@ -1,10 +1,17 @@
 import React from 'react';
 import therapyOffice from './assets/therapy-office.avif';
+import therapyScene from './assets/therapy-scene.avif';
 import { Link } from 'react-router-dom';
+import SEO from './components/SEO';
 
 function Home() {
   return (
     <>
+    <SEO
+      title="Mindful Way Therapy"
+      description="Neurodivergent and LGBTQ+ affirming therapy in Seattle and via telehealth across Washington. Compassionate, trauma-informed care for individuals, couples, and families."
+      canonical="/"
+    />
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 mt-20 md:px-12 py-5 bg-brand-100">
         <div className="md:w-1/2 text-center md:text-center">
@@ -16,8 +23,8 @@ function Home() {
 
         <div className="md:w-1/2">
           <img
-            src="/images/Home1.JPEG"
-            alt="Therapy Scene"
+            src={therapyScene}
+            alt="therapy scene"
             className="rounded-lg shadow-md w-full h-auto object-cover"
           />
         </div>
@@ -28,7 +35,7 @@ function Home() {
         <div className="md:w-1/2">
           <img
             src={therapyOffice}
-            alt="About Us"
+            alt="Mindful Way Therapy office interior"
             className="rounded-lg shadow-lg w-[900px] h-[900px] object-cover"
           />
         </div>
@@ -36,13 +43,13 @@ function Home() {
         <div className="md:w-1/2 space-y-4">
           <h2 className="text-3xl font-bold text-center text-sky-700">About Us</h2>
 
-          <h3 className="text-lg text-gray-700">
+          <p className="text-lg text-gray-700">
             At Mindful Way Therapy, we offer affirming, trauma-informed care with a focus on the lived
             experiences of LGBTQ+ and neurodivergent individuals. Many of our providers are members of these communities
             themselves, or have close connections that inform their work. Under the direction of Practice Owner, Ryne Evans, MA, LMFT,
             our providers are commmitted to providing care that is affirming and culturally sensitive. We know how painful it can feel
             to be misunderstood in a healthcare setting--and we are committed to doing it differently.
-          </h3>
+          </p>
 
           <h3 className="text-2xl font-semibold text-sky-700">Why Choose Us?</h3>
           <ul className="list-disc list-outside ml-6 text-gray-700 mb-6 space-y-2 text-lg">
