@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import InquiryForm from '../components/inquiry/InquiryForm';
 
 function Contact() {
   useEffect(() => {
