@@ -23,7 +23,15 @@ export default function Header() {
     {
       label: 'Services',
       path: '/services',
-      subMenu: [{ label: 'Rates and Fees', path: '/services/ratesfees' }],
+      subMenu: [
+        { label: 'Individual Therapy', path: '/services/individual-therapy' },
+        { label: 'Couples & Family Therapy', path: '/services/couples-family-therapy' },
+        { label: 'Polyamory & Non-Monogamy Support', path: '/services/polyamory-non-monogamy' },
+        { label: 'Queer Affirming Therapy', path: '/services/queer-affirming-therapy' },
+        { label: 'ADHD & Autism Evaluations', path: '/services/adhd-autism-evaluations' },
+        { label: 'Neurodivergent Affirming Therapy', path: '/services/neurodivergent-affirming-therapy' },
+        { label: 'Groups', path: '/services/groups' },
+      ],
     },
     { label: 'Get Started', path: '/contact' },
     {

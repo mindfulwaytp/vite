@@ -17,9 +17,18 @@ import NeurodiversityResources from './pages/neurodiversity/neurodiversity-resou
 import AssessmentsPage from './pages/neurodiversity/assessments';
 import AffirmingTherapy from './pages/neurodiversity/affirming-therapy.jsx';
 import Services from './pages/Services.jsx';
-import RatesFess from './pages/services/ratesfees.jsx';
+import RatesFees from './pages/Contact/ratesfees.jsx';
+import IndividualTherapy from './pages/services/individual-therapy.jsx';
+import CouplesFamilyTherapy from './pages/services/couples-family-therapy.jsx';
+import PolyamoryNonMonogamy from './pages/services/polyamory-non-monogamy.jsx';
+import QueerAffirmingTherapy from './pages/services/queer-affirming-therapy.jsx';
+import ADHDAutismEvaluations from './pages/services/adhd-autism-evaluations.jsx';
+import NeurodivergentAffirmingTherapy from './pages/services/neurodivergent-affirming-therapy.jsx';
+import Groups from './pages/services/groups.jsx';
+import TTRPGGroup from './pages/services/groups/ttrpg.jsx';
 import TherapyForm from './pages/Contact/TherapyForm';
 import EvaluationForm from './pages/Contact/EvaluationForm';
+import AdventuringParty from './pages/Contact/AdventuringParty.jsx';
 import Footer from './components/Footer';
 import usePageTracking from './hooks/usePageTracking';
 import Login from "./pages/Login";
@@ -91,9 +100,18 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/contact/therapy" element={<TherapyForm />} />
         <Route path="/contact/evaluation" element={<EvaluationForm />} />
+        <Route path="/contact/adventuring-party" element={<AdventuringParty />} />
 
         <Route path="/services" element={<Services />} />
-        <Route path="/services/ratesfees" element={<RatesFess />} />
+        <Route path="/services/individual-therapy" element={<IndividualTherapy />} />
+        <Route path="/services/couples-family-therapy" element={<CouplesFamilyTherapy />} />
+        <Route path="/services/polyamory-non-monogamy" element={<PolyamoryNonMonogamy />} />
+        <Route path="/services/queer-affirming-therapy" element={<QueerAffirmingTherapy />} />
+        <Route path="/services/adhd-autism-evaluations" element={<ADHDAutismEvaluations />} />
+        <Route path="/services/neurodivergent-affirming-therapy" element={<NeurodivergentAffirmingTherapy />} />
+        <Route path="/services/groups" element={<Groups />} />
+        <Route path="/services/groups/ttrpg" element={<TTRPGGroup />} />
+        <Route path="/contact/ratesfees" element={<RatesFees />} />
 
         <Route path="/neurodiversity" element={<Neurodiversity />} />
         <Route

@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../../components/SEO';
+import ServicesLayout from '../../components/ServicesLayout';
 
 function QueerAffirmingTherapy() {
   return (
@@ -10,24 +11,26 @@ function QueerAffirmingTherapy() {
       />
 
       {/* Hero Section */}
-      <div
-        className="w-full h-[450px] bg-cover bg-center mt-20 relative flex items-center justify-center"
-        style={{ backgroundImage: "url('/images/lgbtqtherapy.jpg')" }}
-      >
-        <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
-          <h1 className="text-3xl md:text-4xl mb-4">Queer Affirming Therapy</h1>
-          <p className="text-base md:text-lg leading-relaxed">
-            {/* TODO: Hero subtitle */}
-          </p>
+      <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
+        <img
+          src="/images/lgbtqtherapy.jpg"
+          alt="Queer Affirming Therapy"
+          className="w-full max-h-[420px] object-cover object-center"
+        />
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
+            <h1 className="text-3xl md:text-4xl mb-4">Queer Affirming Therapy</h1>
+            <p className="text-base md:text-lg leading-relaxed">
+              {/* TODO: Hero subtitle */}
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <section className="bg-white py-20 px-4 md:px-10">
-        <div className="max-w-4xl mx-auto">
-          {/* TODO: Add content sections */}
-        </div>
-      </section>
+      {/* Main Content with Sidebar */}
+      <ServicesLayout>
+        {/* TODO: Add content sections */}
+      </ServicesLayout>
 
       {/* CTA */}
       <section className="bg-sky-700 text-white py-16 px-4 md:px-10 text-center">

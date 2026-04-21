@@ -6,7 +6,7 @@ function RatesFees() {
     <div className="bg-[#f3f6f9] text-gray-800">
       {/* Hero Section */}
       <div
-        className="w-full h-[40vh] max-h-[420px] min-h-[260px] bg-cover bg-center mt-20 relative flex items-center justify-center"
+        className="w-full h-[450px] bg-cover bg-center mt-20 relative flex items-center justify-center"
         style={{ backgroundImage: `url(${insurance})` }}
       >
         <div className="bg-gray-600/80 text-white px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
