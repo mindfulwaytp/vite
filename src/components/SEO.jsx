@@ -16,9 +16,12 @@ function SEO({
   const fullUrl = canonical ? `${baseUrl}${canonical}` : baseUrl;
   const fullImage = image ? `${baseUrl}${image}` : null;
 
+  const titleHasBrand = /mindful\s*way\s*therapy/i.test(title || '');
+  const fullTitle = titleHasBrand ? title : `${title} | Mindful Way Therapy`;
+
   return (
     <Helmet>
-      <title>{title} | Mindful Way Therapy</title>
+      <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullUrl} />
 
