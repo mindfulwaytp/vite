@@ -9,3 +9,9 @@
   port = 8888
   autoLaunch = true
   functions = "netlify/functions"
+
+# SPA fallback — non-forced so static files (e.g., pre-rendered blog posts) are served first
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
