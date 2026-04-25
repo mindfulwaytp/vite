@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../lib/firebase";
 
@@ -7,12 +7,15 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
     setError(null);
+    setInfo(null);
     setLoading(true);
 
     try {
@@ -22,6 +25,27 @@ export default function Login() {
       setError(err?.message || "Login failed");
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleForgotPassword() {
+    setError(null);
+    setInfo(null);
+
+    const trimmed = email.trim();
+    if (!trimmed) {
+      setError("Enter your email above, then click \"Forgot password?\" again.");
+      return;
+    }
+
+    setResetLoading(true);
+    try {
+      await sendPasswordResetEmail(auth, trimmed);
+      setInfo(`Password reset email sent to ${trimmed}. Check your inbox (and spam folder).`);
+    } catch (err) {
+      setError(err?.message || "Could not send reset email");
+    } finally {
+      setResetLoading(false);
     }
   }
 
@@ -57,6 +81,7 @@ export default function Login() {
           </div>
 
           {error && <div className="text-sm text-red-600">{error}</div>}
+          {info && <div className="text-sm text-green-700">{info}</div>}
 
           <button
             type="submit"
@@ -64,6 +89,15 @@ export default function Login() {
             className="w-full rounded-lg bg-sky-700 text-white py-2 hover:bg-sky-800 disabled:opacity-60"
           >
             {loading ? "Signing in…" : "Sign in"}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleForgotPassword}
+            disabled={resetLoading}
+            className="w-full text-sm text-sky-700 hover:text-sky-900 underline disabled:opacity-60"
+          >
+            {resetLoading ? "Sending reset email…" : "Forgot password?"}
           </button>
         </form>
       </div>
