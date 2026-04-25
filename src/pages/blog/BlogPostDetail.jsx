@@ -9,8 +9,14 @@ import {
 } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useAuthUser } from "../../hooks/useAuthUser";
-import { formatDate, sanitizeHtml } from "../../lib/blog";
+import { excerptFromHtml, formatDate, sanitizeHtml } from "../../lib/blog";
 import SEO from "../../components/SEO";
+
+function toIso(value) {
+  if (!value) return undefined;
+  const d = value?.toDate ? value.toDate() : new Date(value);
+  return Number.isNaN(d.getTime()) ? undefined : d.toISOString();
+}
 
 export default function BlogPostDetail() {
   const { slug } = useParams();
@@ -28,11 +34,15 @@ export default function BlogPostDetail() {
       setLoading(true);
       setNotFound(false);
       try {
-        const q = fsQuery(
-          collection(db, "blogPosts"),
-          where("slug", "==", slug),
-          limit(1)
-        );
+        const ref = collection(db, "blogPosts");
+        const q = isAdmin
+          ? fsQuery(ref, where("slug", "==", slug), limit(1))
+          : fsQuery(
+              ref,
+              where("slug", "==", slug),
+              where("published", "==", true),
+              limit(1)
+            );
         const snap = await getDocs(q);
         if (!alive) return;
         if (snap.empty) {
@@ -54,7 +64,7 @@ export default function BlogPostDetail() {
     return () => {
       alive = false;
     };
-  }, [slug]);
+  }, [slug, isAdmin]);
 
   if (loading) {
     return (
@@ -86,13 +96,48 @@ export default function BlogPostDetail() {
   }
 
   const cleanHtml = sanitizeHtml(post.body);
+  const description = post.excerpt || excerptFromHtml(post.body, 200);
+  const publishedIso = toIso(post.publishedAt);
+  const modifiedIso = toIso(post.updatedAt) || publishedIso;
+  const canonical = `/blog/${post.slug}`;
+  const baseUrl = "https://www.mindfulway-therapy.com";
+
+  const jsonLd = post.published
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.title,
+        description,
+        datePublished: publishedIso,
+        dateModified: modifiedIso,
+        author: post.author
+          ? { "@type": "Person", name: post.author }
+          : undefined,
+        publisher: {
+          "@type": "Organization",
+          name: "Mindful Way Therapy",
+          url: baseUrl,
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${baseUrl}${canonical}`,
+        },
+        keywords: (post.tags || []).join(", ") || undefined,
+      }
+    : undefined;
 
   return (
     <div className="bg-[#f3f6f9] text-gray-800 min-h-screen">
       <SEO
-        title={`${post.title} | Mindful Way Therapy`}
-        description={post.excerpt || ""}
-        canonical={`/blog/${post.slug}`}
+        title={post.title}
+        description={description}
+        canonical={canonical}
+        type="article"
+        publishedTime={publishedIso}
+        modifiedTime={modifiedIso}
+        author={post.author}
+        tags={post.tags || []}
+        jsonLd={jsonLd}
       />
 
       <article className="max-w-3xl mx-auto px-6 md:px-8 pt-32 pb-16">
