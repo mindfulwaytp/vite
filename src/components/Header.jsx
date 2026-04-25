@@ -33,6 +33,7 @@ export default function Header() {
         { label: 'Groups', path: '/services/groups' },
       ],
     },
+    { label: 'Blog', path: '/blog' },
     { label: 'Get Started', path: '/contact' },
     {
       label: 'Client Portal',

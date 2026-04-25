@@ -42,6 +42,10 @@ import IntranetLinks from "./pages/intranet/IntranetLinks.jsx";
 import ResourceDetail from "./pages/intranet/ResourceDetail.jsx";
 import IntranetSearch from './pages/intranet/IntranetSearch.jsx';
 import PoliciesLandingPage from './pages/PoliciesLandingPage';
+import BlogIndex from './pages/blog/index.jsx';
+import BlogPostDetail from './pages/blog/BlogPostDetail.jsx';
+import NewBlogPost from './pages/blog/NewBlogPost.jsx';
+import EditBlogPost from './pages/blog/EditBlogPost.jsx';
 
 function PublicLayout() {
   usePageTracking();
@@ -128,6 +132,12 @@ function App() {
         />
         <Route path="/policies" element={<PoliciesLandingPage />}
         />
+
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/new" element={<NewBlogPost />} />
+        <Route path="/blog/edit/:id" element={<EditBlogPost />} />
+        <Route path="/blog/:slug" element={<BlogPostDetail />} />
+
         <Route path="*" element={<div className="p-6">Not found</div>} />
       </Route>
     </Routes>
