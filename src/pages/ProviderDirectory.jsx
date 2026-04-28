@@ -248,12 +248,15 @@ const ProvidersDirectory = () => {
   const currentTherapists = filteredTherapists.slice(indexOfFirstItem, indexOfLastItem);
 
   useEffect(() => {
+    // Don't clamp the page until provider data has loaded — otherwise we'd briefly see
+    // totalPages=1 and rewrite ?page=2 down to ?page=1 before the real list arrives.
+    if (loading || allTherapists.length === 0) return;
     if (safeCurrentPage !== currentPage) {
       const newParams = new URLSearchParams(searchParams);
       newParams.set('page', String(safeCurrentPage));
       setSearchParams(newParams, { replace: true });
     }
-  }, [safeCurrentPage, currentPage, searchParams, setSearchParams]);
+  }, [safeCurrentPage, currentPage, searchParams, setSearchParams, loading, allTherapists.length]);
 
   const updateMultiSelect = (key, value) => {
     const newParams = new URLSearchParams(searchParams);

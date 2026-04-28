@@ -10,7 +10,14 @@
   autoLaunch = true
   functions = "netlify/functions"
 
-# SPA fallback — non-forced so static files (e.g., pre-rendered blog posts) are served first
+# Provider URL redirects (when a provider's name changes, redirect old slug to new)
+[[redirects]]
+  from = "/providers/mccall-evans"
+  to = "/providers/james-mccall-evans"
+  status = 301
+
+# SPA fallback — non-forced so static files (e.g., pre-rendered blog posts) are served first.
+# Specific rules above must come BEFORE this catch-all.
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -21,7 +21,7 @@ import kristina from './images/webp/kristinaprofile.webp';
 export const providerImages = {
   'Ryne Evans': ryne,
   'Chandra Lindeman': chandra,
-  'McCall Evans': mccall,
+  'James (McCall) Evans': mccall,
   'Paige Butkey': paige,
   'Cheryl Snider': cheryl,
   'Mary Baja': mary,
