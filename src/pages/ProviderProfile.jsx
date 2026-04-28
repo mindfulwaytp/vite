@@ -22,11 +22,11 @@ export default function ProviderProfile() {
   const [bioOpen, setBioOpen] = useState(false);
 
   const handleBack = () => {
-    if (location.state?.from) {
-      navigate(location.state.from);
-    } else {
-      navigate('/providers');
-    }
+    const fromState = location.state?.from;
+    const fromSession = typeof window !== 'undefined'
+      ? sessionStorage.getItem('providerDirectoryReturnUrl')
+      : null;
+    navigate(fromState || fromSession || '/providers');
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import Select from 'react-select';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { FaCalendarCheck, FaCalendarTimes, FaUserClock } from 'react-icons/fa';
@@ -30,9 +30,28 @@ function formatAvailabilityDate() {
   });
 }
 
+const PROVIDERS_RETURN_KEY = 'providerDirectoryReturnUrl';
+const PROVIDERS_SCROLL_KEY = 'providerDirectoryScrollY';
+
 const ProvidersDirectory = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
+  const isFirstRender = useRef(true);
+
+  // Remember the directory's current URL so a profile page can restore it on "Back to Directory",
+  // even after a page refresh or external entry.
+  useEffect(() => {
+    sessionStorage.setItem(PROVIDERS_RETURN_KEY, `${location.pathname}${location.search}`);
+  }, [location.pathname, location.search]);
+
+  // Restore scroll position on return from a profile page. Runs before paint so there's no flicker.
+  useLayoutEffect(() => {
+    const saved = sessionStorage.getItem(PROVIDERS_SCROLL_KEY);
+    if (saved) {
+      sessionStorage.removeItem(PROVIDERS_SCROLL_KEY);
+      window.scrollTo(0, parseInt(saved, 10));
+    }
+  }, []);
 
   const [allTherapists, setAllTherapists] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -172,6 +191,11 @@ const ProvidersDirectory = () => {
   }, [searchParams, allTherapists]);
 
   useEffect(() => {
+    // Skip on first render so we don't override scroll restoration on return-from-profile
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
@@ -379,6 +403,7 @@ const ProvidersDirectory = () => {
             key={i}
             to={`/providers/${slugify(t.name)}`}
             state={{ from: `${location.pathname}${location.search}` }}
+            onClick={() => sessionStorage.setItem(PROVIDERS_SCROLL_KEY, String(window.scrollY))}
             className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col items-center text-center max-w-sm mx-auto"
           >
             <div className="w-full aspect-[5/6] max-w-[300px] mx-auto overflow-hidden rounded-lg mb-2">
