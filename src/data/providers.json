@@ -7,12 +7,13 @@
     "topSpecialties": "ADHD, Autism, LGBTQ+ Identities, Polyamory, Assessments",
     "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Molina-Commercial, Premera, Private Pay, Regence, UHC-Medicaid, UHC-Commercial",
     "location": "Telehealth, U-District",
-    "services": "Assessments, Individual, Couples, Family",
+    "services": "Assessments, Individual, Relationships, Family",
     "gender": "Male",
     "acceptingClients": "assessments only",
-    "about": "....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/ryne-evans-seattle-wa/838470 ",
-    "modalities": "ACT, CBT, Compassion Focused Therapy, DBT, EFT, Experiential Therapy, Feminist Therapy, Mindfulness, Psychodynamic Therapy, Schema Therapy"
+    "modalities": "ACT, CBT, Compassion-Focused Therapy, DBT, Emotionally Focused Therapy, Experiential Therapy, Feminist Theory, Mindfulness-Based Therapy, Psychodynamic Therapy, Schema Therapy",
+    "bioIntro": "Ryne works with teens, individuals, couples, and families who are seeking to feel understood in a world that often feels confusing, invalidating, or uncertain.",
+    "bioBody": "Ryne works with teens, individuals, couples, and families who are seeking to feel understood in a world that often feels confusing, invalidating, or uncertain—especially when it comes to questions like whether they’re “doing this whole life thing right.” Many of the clients Ryne supports are part of historically marginalized communities and are navigating the intersections of multiple identities. They often arrive feeling disconnected from others, burned out, or struggling with anxiety and depression as a result of long-standing pressure to adapt to systems that were not built with them in mind.\n\n\nRyne approaches therapy from a relational and trauma-informed lens, with particular attention to how patterns develop over time and how early experiences shape the way we view ourselves, our relationships, and the world around us. Rather than focusing on quick fixes, Ryne’s work emphasizes building a more compassionate relationship with oneself—supporting clients in moving toward acceptance, understanding, and non-judgmental awareness of who they are.\n\n\nSessions are collaborative and conversational, balancing reflection with gentle structure and practical support when helpful. Clients often describe working with Ryne as thoughtful, grounding, and genuine.\n\n\nAs a queer and neurodivergent therapist, Ryne brings both professional training and lived experience into the room, and is deeply committed to creating a space that is affirming, curious, and responsive to each client’s unique way of being. Ryne welcomes clients who are new to therapy as well as those returning after past experiences that may not have felt fully supportive.\n"
   },
   {
     "name": "McCall Evans",
@@ -25,9 +26,10 @@
     "services": "Individual",
     "gender": "Male",
     "acceptingClients": "yes",
-    "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/james-evans-seattle-wa/1173220",
-    "modalities": "CBT, Creative Arts Therapy, Drama Therapy, Existential Therapy, Expressive Arts, Narrative Therapy, Person-Centered, Strengths-Based"
+    "modalities": "CBT, Creative Arts Therapy, Drama Therapy, Existential Therapy, Expressive Arts Therapy, Narrative Therapy, Person-Centered Therapy, Strengths-Based Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
   },
   {
     "name": "Chandra Lindeman",
@@ -35,44 +37,31 @@
     "pronouns": "she/her",
     "specialties": "ADHD, Anxiety, Autism, Chronic Illness, Depression, LGBTQ+ Identities, Life Transitions, Mood Disorders, Non-Monogamy, Parenting, Sex-Positive, Trauma, Women's Issues",
     "topSpecialties": "ADHD, Chronic Illness, LGBTQ+ Identities, Parenting",
-    "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Molina-Commercial, Premera, Private Pay, Regence",
+    "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Molina-Commercial, Premera, Private Pay, Regence, UHC-Medicaid, UHC-Commercial",
     "location": "Telehealth",
     "services": "Individual",
     "gender": "Female",
-    "acceptingClients": "no",
-    "about": ".....",
+    "acceptingClients": "yes",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/chandra-lindeman-seattle-wa/1340345 ",
-    "modalities": "CBT, Compassion Focused Therapy, DBT, Feminist Therapy, Humanistic, IFS, Mindfulness, Parts Work, Person-Centered, Somatic Therapy, Strengths-Based, "
+    "modalities": "CBT, Compassion-Focused Therapy, DBT, Feminist Theory, Humanistic Therapy, IFS, Mindfulness-Based Therapy, Parts Work, Person-Centered Therapy, Somatic Therapy, Strengths-Based Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
   },
   {
     "name": "Cheryl Snider",
     "license": "LSWAIC",
     "pronouns": "she/her",
-    "specialties": "ADHD, Anxiety, Autism, Couples, Depression, Family Conflict, LGBTQ+ Identities, Life Transitions, Mood Disorders, Non-Monogamy, Parenting, Polyamory, Relationships, Self-Esteem, Sex-Positive, Teens, Trauma, Women's Issues",
-    "topSpecialties": "ADHD, Autism, Couples, LGBTQ+, Non-Monogamy",
+    "specialties": "ADHD, Anxiety, Autism, Depression, Family Conflict, LGBTQ+ Identities, Life Transitions, Mood Disorders, Non-Monogamy, Parenting, Polyamory, Relationships, Self-Esteem, Sex-Positive, Teens, Trauma, Women's Issues",
+    "topSpecialties": "ADHD, Autism, LGBTQ+, Non-Monogamy, Relationships",
     "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Premera, Private Pay, Regence, UHC-Medicaid",
     "location": "Telehealth",
-    "services": "Assessments, Individual, Couples, Family",
+    "services": "Individual, Relationships, Family",
     "gender": "Female",
-    "acceptingClients": "yes",
-    "about": ".....",
+    "acceptingClients": "no",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/cheryl-snider-seattle-wa/1404308 ",
-    "modalities": "Coming Soon"
-  },
-  {
-    "name": "Paige Butkey",
-    "license": "LMFTA",
-    "pronouns": "she/her",
-    "specialties": "ADHD, Anxiety, Autism, Couples, Depression, Family Conflict, LGBTQ+ Identities, Mood Disorders, Parenting, Racial Identity, Relationships, Self-Esteem, Sex-Positive, Trauma",
-    "topSpecialties": "ADHD, Autism, Couples, LGBTQ+, Racial Identity",
-    "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Premera, Private Pay, Regence, UHC-Medicaid",
-    "location": "Telehealth",
-    "services": "Individual, Couples, Family",
-    "gender": "Female",
-    "acceptingClients": "yes",
-    "about": ".....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/paige-butkey-seattle-wa/1449182 ",
-    "modalities": "Coming Soon"
+    "modalities": "CBT, DBT, Feminist Theory, Gottman Method, Person-Centered Therapy, Psychodynamic Therapy, Solution-Focused Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Cheryl works with adults and couples who are navigating the effects of trauma, chronic stress, identity-related concerns, and relationship challenges. Many of the clients she supports come to therapy when recurring emotional patterns, disconnection, or relationship difficulties begin to impact their sense of stability or well-being.\n\nHer work is grounded in a relational, trauma-informed approach that pays close attention to how early experiences, attachment patterns, and nervous system responses shape the way people relate to themselves and others. Rather than focusing on quick fixes, Cheryl views therapy as a collaborative and reflective process focused on building insight, emotional awareness, and more integrated ways of understanding one’s experiences.\n\nCheryl has a particular interest in working with neurodivergent adults and LGBTQ+ individuals, including those exploring gender, sexuality, or identity. She is committed to providing an affirming, flexible therapeutic space that honors different ways of thinking, processing, and communicating.\n\nIn sessions, Cheryl balances structure with openness and curiosity, adapting the work to each client’s needs and goals. Clients often describe her style as steady, thoughtful, and grounding. She welcomes both individuals and couples who are new to therapy as well as those returning after past experiences that may not have felt fully supportive."
   },
   {
     "name": "Julian Macke",
@@ -80,14 +69,15 @@
     "pronouns": "he/they",
     "specialties": "ADHD, Autism, Anxiety, Chronic Illness, Chronic Pain, Dissociative Disorders, Depression, LGBTQ+ Identities, Life Transitions, Mood Disorders, Non-Monogamy, OCD, Polyamory,, Self-Esteem, Sex-Positive, Trauma",
     "topSpecialties": "Autism, Dissociative Disorders, Gender Identity, LGBTQ+ Identities",
-    "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Premera, Private Pay, Regence",
+    "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Premera, Private Pay, Regence, UHC-Medicaid",
     "location": "Telehealth",
     "services": "Individual",
     "gender": "Male, Non-Binary",
     "acceptingClients": "no",
-    "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/julian-macke-seattle-wa/1409205",
-    "modalities": "Art Therapy, Creative Arts Therapy, Expressive Arts, Feminist Therapy, Mindfulness, Parts Work, Person-Centered, Somatic Therapy, Strengths-Based"
+    "modalities": "Art Therapy, Creative Arts Therapy, Expressive Arts Therapy, Feminist Theory, Mindfulness, Parts Work, Person-Centered Therapy, Somatic Therapy, Strengths-Based Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
   },
   {
     "name": "Mary Baja",
@@ -95,14 +85,15 @@
     "pronouns": "she/they",
     "specialties": "ADHD, Anxiety, Autism, Chronic Illness, Depression, LGBTQ+ Identities, Life Transitions, Mood Disorders, Non-Monogamy, Polyamory, Racial Identity, Self-Esteem, Suicidial Ideation, Sex-Positive, Trauma",
     "topSpecialties": "ADHD, Autism, LGBTQ+ Identities, Racial Identity",
-    "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Premera, Private Pay, Regence",
-    "location": "Telehealth, U-District",
+    "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Premera, Private Pay, Regence, UHC-Medicaid",
+    "location": "Telehealth",
     "services": "Assessments, Individual",
     "gender": "Female, Non-Binary",
     "acceptingClients": "no",
-    "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/mary-aldee-baja-seattle-wa/1402891",
-    "modalities": "CBT, Compassion Focused Therapy, DBT, Humanistic, Narrative Therapy, Person-Centered, Somatic Therapy, Strengths-Based, Solution Focused"
+    "modalities": "CBT, Compassion-Focused Therapy, DBT, Humanistic Therapy, Narrative Therapy, Person-Centered Therapy, Somatic Therapy, Strengths-Based Therapy, Solution-Focused Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Mary works with teens and adults who often feel out of place in spaces that weren’t built with their identities in mind. Many of her clients are LGBTQIA+, neurodivergent, and/or navigating the complexities of cultural and systemic expectations. If you’re feeling overwhelmed by daily pressures, questioning your identity, or exhausted from trying to fit into a world that doesn't always \"get it,\" you’ll find a space here where you don’t have to explain or justify your experiences. A space where you can show up as you are.\n\nBecause you know yourself best, Mary’s role is to sit beside you, offering support and guidance while you choose the direction that feels right for you. Her role is to sit in the passenger seat, supporting you as you choose what direction you want to go, rather than telling you what turns you should take. Sessions are conversational and flexible, creating a supportive space to sort through what’s on your mind rather than feeling like a “traditional” therapy session. Many clients appreciate this open-ended style as it often feels easier to build trust, find a sense of safety, and work through challenges at a pace that feels comfortable and natural.\n\nA core part of this work is the shift from masking to authenticity. So much energy is often spent hiding parts of ourselves to survive or keep the peace. Here, you are invited to drop the performance. The goal is to look at what it means to live authentically; not by following a rigid plan, but by slowly unlearning the expectations that have been placed on you and discovering what actually feels right.\n\nAs a queer, Filipino-American, and neurodivergent therapist (AuDHD), Mary brings lived experience and a commitment to social justice into the room. She understands that many struggles stem from trying to function in systems that weren't designed for you. This perspective shapes a practice that is affirming and non-judgmental, where therapy is adapted to fit your way of thinking and being. You don’t need to have the \"right words\" or clear goals to begin; curiosity and openness are enough."
   },
   {
     "name": "Rachel Loch",
@@ -115,24 +106,26 @@
     "services": "Individual",
     "gender": "Female",
     "acceptingClients": "no",
-    "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/rachel-loch-seattle-wa/1555654",
-    "modalities": "Art Therapy, Creative Arts Therapy, Expressive Arts, Narrative Therapy, Parts Work, Person-Centered, Strengths-Based"
+    "modalities": "Art Therapy, Creative Arts Therapy, Expressive Arts Therapy, Narrative Therapy, Parts Work, Person-Centered Therapy, Strengths-Based Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
   },
   {
     "name": "Kendra Locke",
     "license": "LMHCA",
     "pronouns": "she/they",
-    "specialties": "ADHD, Anxiety, Children, Domestic Violence, Families, LGBTQ+ Identities, Mood Disorders, Non-Monogamy, Open Relationships, Parenting, Self-Esteem, Self-Harm, Sexual-Trauma, Sex-Positive, Suicidal Ideaion, Women's Issues",
-    "topSpecialties": "ADHD, Autism, LGBTQ+ Identities, Self-Esteem",
+    "specialties": "ADHD, Anxiety, Children, Domestic Violence, Families, LGBTQ+ Identities, Mood Disorders, Non-Monogamy, Parenting, Self-Esteem, Self-Harm, Sexual-Trauma, Sex-Positive, Sex Therapy, Suicidal Ideaion, Women's Issues",
+    "topSpecialties": "ADHD, Autism, LGBTQ+ Identities, Self-Esteem, Sex Therapy",
     "insurance": "Aetna, BCBS, Cigna, Molina-Medicaid, Premera, Private Pay, Regence",
     "location": "Telehealth, U-District",
     "services": "Individual",
     "gender": "Female",
     "acceptingClients": "yes",
-    "about": "......",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/kendra-nicole-locke-seattle-wa/1335550",
-    "modalities": "Coming Soon"
+    "modalities": "Attachment-Focused Therapy, CBT, DBT, Emotionally Focused Therapy, Existential Therapy, Gottman Method, IFS, Narrative Therapy, Person-Centered Therapy, Sex Therapy, Somatic Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
   },
   {
     "name": "Emily Hawkins",
@@ -145,24 +138,26 @@
     "services": "Individual",
     "gender": "Female",
     "acceptingClients": "no",
-    "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/emily-hawkins-seattle-wa/1436007",
-    "modalities": "Coming Soon"
+    "modalities": "Compassion-Focused Therapy, Feminist Theory, Humanistic Therapy, Mindfulness-Based Therapy, Person-Centered Therapy, Psychodynamic Therapy, Somatic Therapy, Strengths-Based Therapy, Somatic Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
   },
   {
     "name": "Kate Guild",
     "license": "Intern",
     "pronouns": "she/they",
     "specialties": "ADHD, Anxiety, Autism, Depression, Family Conflict, Grief/Loss, LGBTQ+ Identities, Life Transitions, Mood Disorders, Non-Monogamy, Polyamory, Relationships, Self-Esteem, Sex-Positive, Trauma",
-    "topSpecialties": "ADHD, Couples, LGTBQ+ Identities",
+    "topSpecialties": "ADHD, LGTBQ+ Identities, Relationships",
     "insurance": "Molina-Medicaid, Private Pay",
     "location": "Telehealth, U-District",
-    "services": "Individual, Couples, Family",
+    "services": "Individual, Relationships, Family",
     "gender": "Female",
     "acceptingClients": "yes",
-    "about": ".....",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/kate-guild-seattle-wa/1484949",
-    "modalities": "Coming Soon"
+    "modalities": "Attachment-Focused Therapy, Compassion-Focused Therapy, Emotionally Focused Therapy, Mindfulness-Based Therapy, Narrative Therapy, Parts Work, Person-Centered Therapy, Psychodynamic Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
   },
   {
     "name": "Selina Rojas",
@@ -174,10 +169,11 @@
     "location": "Telehealth, U-District",
     "services": "Individual",
     "gender": "Female",
-    "acceptingClients": "yes",
-    "about": ".....",
+    "acceptingClients": "no",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/selina-rojas-seattle-wa/1555564",
-    "modalities": "Coming Soon"
+    "modalities": "Compassion-Focused Therapy, Narrative Therapy, Parts Work, Person-Centered Therapy, Strength-Based Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
   },
   {
     "name": "Michelle Young",
@@ -189,10 +185,11 @@
     "location": "Telehealth, U-District",
     "services": "Individual",
     "gender": "Female",
-    "acceptingClients": "yes",
-    "about": "....",
+    "acceptingClients": "no",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/michelle-young-seattle-wa/1610324",
-    "modalities": "Coming Soon"
+    "modalities": "Attachment-Focused Therapy, Compassion-Focused Therapy, DBT, Feminist Theory, IFS, Narrative Therapy, Person-Centered Therapy, Psychodynamic Therapy, Somatic Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Michelle works with adults and teens who feel overwhelmed, on edge, or stuck and want to grow their self-understanding, heal past hurts, and thrive in their relationships and lives. Many of the clients she supports are navigating neurodivergence, working through challenges in family or other relationships, or going through life transitions. Michelle also enjoys working with parents or caregivers who want to argue less and connect more with their kids or teens, be more authentic in their relationships, and break unhelpful generational patterns.\n\nMichelle’s work focuses on exploring clients’ different “parts” that are feeling stuck, unheard, or hurt and fostering a healthy, secure relationship with the self. Together, you might explore internal conflicts, patterns of behavior that are no longer helpful, and difficult emotions along with their underlying unmet needs. Michelle incorporates mindfulness, body-based practices, and creative expression to cultivate a sense of safety and regulation. For clients interested in increasing executive function skills, she also provides executive function tools and support through a neurodivergent-affirming lens. Michelle believes culture and context play an important role in clients’ struggles and cultivates a warm, affirming, and judgment-free therapy space.\n\nTherapy sessions with Michelle are collaborative and client-centered, providing a space to explore, be witnessed, and affirmed along with specific, practical tools, depending on client needs. Michelle strives to adapt the structure, flow, and work of therapy to the unique individual and is experienced in responding to neurodivergent clients’ needs. Her approach to therapy is trauma-informed and anti-oppressive, and she welcomes clients of all identities, experiences, and backgrounds."
   },
   {
     "name": "Justin Dahlquist",
@@ -204,24 +201,58 @@
     "location": "Telehealth, U-District",
     "services": "Individual",
     "gender": "Male",
-    "acceptingClients": "yes",
-    "about": "....",
+    "acceptingClients": "no",
     "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/justin-dahlquist-seattle-wa/1600267",
-    "modalities": "Coming Soon"
+    "modalities": "Attachment-Focused Therapy, CBT, Compassion-Focused Therapy, Emotionally Focused Therapy, Feminist Theory, Humanistic Therapy, Psychoanalytic Therapy, Psychodynamic Therapy",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
   },
   {
     "name": "Julia Tauben",
     "license": "Intern",
     "pronouns": "she/her",
-    "specialties": "ADHD, Adoption, Anxiety, Autism, Couples, Depression, LGBTQ+ Identities, Mood Disorders, Non-Monogamy, Polyamory, Relationships, Self-Esteem, Sex-Positive, Trauma",
-    "topSpecialties": "ADHD, Couples, LGBTQ+ Identities, Non-Monogamy ",
+    "specialties": "ADHD, Adoption, Anxiety, Autism, Depression, LGBTQ+ Identities, Mood Disorders, Non-Monogamy, Polyamory, Relationships, Self-Esteem, Sex-Positive, Trauma",
+    "topSpecialties": "ADHD, LGBTQ+ Identities, Non-Monogamy, Relationships",
+    "insurance": "Molina-Medicaid, Private Pay",
+    "location": "Telehealth, U-District",
+    "services": "Individual",
+    "gender": "Female",
+    "acceptingClients": "no",
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/julia-tauben-seattle-wa/1600261",
+    "modalities": "Coming Soon",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
+  },
+  {
+    "name": "Kristina Smart",
+    "license": "Intern",
+    "pronouns": "she/her",
+    "specialties": "ADHD, Anxiety, Depression, LGBTQ+ Identities, Mood Disorders, Parenting, Relationships, Self-Esteem, Trauma ",
+    "topSpecialties": "ADHD, Self-Esteem, Trauma",
     "insurance": "Molina-Medicaid, Private Pay",
     "location": "Telehealth, U-District",
     "services": "Individual",
     "gender": "Female",
     "acceptingClients": "yes",
-    "about": "....",
-    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/julia-tauben-seattle-wa/1600261",
-    "modalities": "Coming Soon"
+    "psychologyTodayLink": "",
+    "modalities": "Coming Soon",
+    "bioIntro": "Coming soon",
+    "bioBody": "Coming soon"
+  },
+  {
+    "name": "Heley Babrak",
+    "license": "Intern",
+    "pronouns": "she/her",
+    "specialties": "ADHD, Anxiety, Autism, Body Positivity, Chronic Illness, Depression, Grief/Loss, LGBTQ+ Identities, Non-Monogamy, Polyamory, Racial Identity, Relationships, Self-Esteem, Sex-Positive, Spirituality, Trauma, Women's Issues",
+    "topSpecialties": "ADHD, Autism, Racial Identity, Relationships",
+    "insurance": "Molina-Medicaid, Private Pay",
+    "location": "Telehealth",
+    "services": "Individual, Relationships, Family",
+    "gender": "Female",
+    "acceptingClients": "yes",
+    "psychologyTodayLink": "https://www.psychologytoday.com/us/therapists/heley-babrak-seattle-wa/1714871",
+    "modalities": "Coming Soon",
+    "bioIntro": "Coming Soon",
+    "bioBody": "Coming Soon"
   }
 ]
