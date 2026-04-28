@@ -22,6 +22,7 @@ export const providerImages = {
   'Ryne Evans': ryne,
   'Chandra Lindeman': chandra,
   'James (McCall) Evans': mccall,
+  'McCall Evans': mccall,
   'Paige Butkey': paige,
   'Cheryl Snider': cheryl,
   'Mary Baja': mary,
