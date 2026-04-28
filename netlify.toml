@@ -3,6 +3,10 @@
   publish = "dist"
   functions = "netlify/functions"
 
+[build.environment]
+  # Cache Chrome downloads in the repo dir so Netlify's build cache picks it up between builds
+  PUPPETEER_CACHE_DIR = "/opt/build/repo/.cache/puppeteer"
+
 [dev]
   command = "vite"
   targetPort = 5173

@@ -297,5 +297,6 @@ async function main() {
 
 main().catch((err) => {
   console.error('[prerender-pages] FAILED:', err);
-  process.exit(1);
+  console.warn('[prerender-pages] Continuing build without per-page prerendering. Site will still deploy; social previews on pages other than blog/home may be generic.');
+  process.exit(0);
 });
