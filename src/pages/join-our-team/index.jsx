@@ -25,7 +25,7 @@ const jobListings = [
     },
  {
     id: 'internships',
-    title: 'Master Level Student Intern (Full; Accepting Fall 2026 Applications)',
+    title: 'Master Level Student Intern (Fall 2026 internship applications are full; we are accepting applications for Winter 2026 only at this time.)',
     location: 'Remote (WA) | U-Disctrict',
     summary: 'Masters-level student internship/practicum experience (CMHC/LMFT/MSW)',
     },
