@@ -67,7 +67,7 @@ function JobBoard() {
       <div className="text-center mt-16">
         <h2 className="text-2xl  text-sky-700 mb-6 text-center">Current Employment and Internship Openings</h2>
         <p className="italic text-lg md:text-xl text-gray-700 leading-relaxed max-w-5xl mx-auto mb-6">
-            Our Winter 2026 internship positions are full. We are accepting applications for Fall 2026 (For a August-October start and begin interviewing in May, 2026)
+            Our Fall 2026 internship positions are full. We are accepting applications for Winter 2026 (For a December-January start and begin interviewing in September, 2026)
         </p>
         <div className="grid md:grid-cols-2 gap-6">
           {jobListings.map((job) => (
