@@ -21,7 +21,7 @@ const xpGains = [
 ];
 
 const details = [
-  { icon: '📅', label: 'Your Adventure Starts', value: 'Friday, June 19th' },
+  { icon: '📅', label: 'Your Adventure Starts', value: 'Friday, July 3rd' },
   { icon: '⏰', label: 'Session Time', value: '5:30 PM – 7:00 PM' },
   { icon: '🗺️', label: 'Where', value: 'The Virtual Tavern (Zoom)' },
   { icon: '📆', label: 'Duration', value: '6–8 weeks' },
@@ -34,7 +34,7 @@ function TTRPGGroup() {
     <div className="bg-[#f3f6f9] text-gray-800">
       <SEO
         title="The Adventuring Party | Groups | Mindful Way Therapy"
-        description="A virtual tabletop RPG therapeutic group for neurodiverse teens ages 13-17. Fridays starting June 19th via Zoom."
+        description="A virtual tabletop RPG therapeutic group for neurodiverse teens ages 13-17. Fridays starting July 3rd via Zoom."
       />
 
       {/* Hero */}
