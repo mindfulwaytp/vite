@@ -18,7 +18,7 @@ const groups = [
     ages: '13-17',
     format: 'Virtual (Zoom)',
     schedule: 'Fridays, 5:30 PM - 7:00 PM',
-    startDate: 'Starting June 19th',
+    startDate: 'Starting July 3, 2026',
     duration: '6-8 weeks',
     cost: '$40/session',
     facilitators: 'Ryne Evans, MA, LMFT & Julian Macke, MA, LMHCA',
