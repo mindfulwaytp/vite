@@ -17,7 +17,7 @@ export default function Internships() {
 
         <h2 className="text-xl text-center font-bold text-sky-700 mt-8 mb-2">About our Internships</h2>    
             <p className="text-xl text-gray-700 mb-6">
-                Mindful Way Therapy is excted to invite Master's-level students in Clinical Mental Health Counseling (CMHC), Marriage (Couples) and Family Therapy (MFT/CFT) programs to apply
+                Mindful Way Therapy is excited to invite Master's-level students in Clinical Mental Health Counseling (CMHC), Marriage (Couples) and Family Therapy (MFT/CFT) programs to apply
                 for an internship with us and become part of a team that strives to meet the needs of our community in working with diverse and marginalized communities. We are a practice that 
                 is committed to dismantling the systems of oppression within mental health care and fostering a learning environment for students to gain hands-on clinical experience in providing
                 psychotherapy while working alongside experienced professsionals in a safe and supportive enviroment.
