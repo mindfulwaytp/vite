@@ -14,23 +14,16 @@ const Footer = () => {
           <p>Seattle, WA 98105</p>
 
           <p className="mt-3">
-            Call:{" "}
+            Phone:{" "}
             <a href="tel:360-347-2559" className="text-blue-600 underline">
               360-347-2559 x 1
-            </a>
-          </p>
-
-          <p>
-            Text:{" "}
-            <a href="sms:360-347-2559" className="text-blue-600 underline">
-              360-347-2559
             </a>
           </p>
 
           <p>Fax: 206-844-6811</p>
 
           <p>
-            Email:{" "}
+            Email us:{" "}
             <a
               href="mailto:support@mindfulway-therapy.com"
               className="text-blue-600 underline"
