@@ -7,6 +7,7 @@ routes = [
   { pattern = "api.mindfulway-therapy.com/*", zone_name = "mindfulway-therapy.com" }
 ]
 
+# Superseded by netlify/functions/airtableBooks.js — this worker is no longer deployed.
+# Secrets must never be committed here; use `wrangler secret put AIRTABLE_TOKEN` instead.
 [vars]
 AIRTABLE_BASE_ID = "appjQb7xeAtRjHH19"
-AIRTABLE_TOKEN = "patglgQHGqHuPxdBL.1ed3d8d711d74ec54632cf01a7a77d713b88b1fe5e105394cf95e1d3208ac663"

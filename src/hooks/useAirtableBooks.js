@@ -6,20 +6,28 @@ export default function useAirtableBooks() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-  fetch('https://api.mindfulway-therapy.com/books')
-    .then(async (res) => {
-      const text = await res.text();
+    fetch('/.netlify/functions/airtableBooks')
+      .then(async (res) => {
+        const text = await res.text();
 
-      try {
-        const data = JSON.parse(text);
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch {
+          throw new Error(`Unexpected response (HTTP ${res.status}): ${text.slice(0, 200)}`);
+        }
+
+        if (!res.ok) {
+          throw new Error(data?.error || `Request failed with HTTP ${res.status}`);
+        }
 
         if (!Array.isArray(data)) {
           throw new Error('Unexpected response format: expected an array');
         }
 
-        const normalized = data
-          .filter(record => record.fields?.Title)
-          .map(record => ({
+        return data
+          .filter((record) => record.fields?.Title)
+          .map((record) => ({
             id: record.id,
             title: record.fields.Title,
             author: record.fields.Author,
@@ -29,20 +37,17 @@ export default function useAirtableBooks() {
             imageUrl: record.fields.Image?.[0]?.thumbnails?.large?.url || null,
             category: record.fields.Category || '',
           }));
-
+      })
+      .then((normalized) => {
         setBooks(normalized);
         setLoading(false);
-      } catch (jsonErr) {
-        throw new Error(`Error parsing response: ${jsonErr.message}\nRaw: ${text}`);
-      }
-    })
-    .catch((err) => {
-      console.error('Error loading books:', err);
-      setError(err);
-      setLoading(false);
-    });
-}, []);
-
+      })
+      .catch((err) => {
+        console.error('Error loading books:', err);
+        setError(err);
+        setLoading(false);
+      });
+  }, []);
 
   return { books, loading, error };
 }

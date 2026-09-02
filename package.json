@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "netlify dev",
+    "dev:vite": "vite",
     "build": "vite build && node scripts/prerender-pages.js && node scripts/prerender-blog.js",
     "postinstall": "node node_modules/puppeteer/install.mjs || true",
     "lint": "eslint .",

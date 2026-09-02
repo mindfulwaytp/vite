@@ -1,40 +1,51 @@
-export default {
-  async fetch(request, env) {
-    const baseId = env.AIRTABLE_BASE_ID;
-    const token = env.AIRTABLE_TOKEN;
+// Netlify Function (v2). Proxies the Airtable "Books" table so the token
+// stays server-side. Same-origin from the site, so no CORS headers needed.
+export default async () => {
+  const baseId = process.env.AIRTABLE_BASE_ID;
+  const token = process.env.AIRTABLE_TOKEN;
 
-    if (!baseId || !token) {
-      return new Response(JSON.stringify({ error: 'Missing Airtable credentials' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+  if (!baseId || !token) {
+    return Response.json(
+      { error: 'Missing Airtable credentials' },
+      { status: 500 }
+    );
+  }
 
-    try {
-      const res = await fetch(`https://api.airtable.com/v0/${baseId}/Books`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+  try {
+    // Airtable caps each response at 100 records, so follow the offset cursor.
+    const records = [];
+    let offset;
+
+    do {
+      const url = new URL(`https://api.airtable.com/v0/${baseId}/Books`);
+      url.searchParams.set('pageSize', '100');
+      if (offset) url.searchParams.set('offset', offset);
+
+      const res = await fetch(url, {
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       if (!res.ok) {
         const text = await res.text();
-        return new Response(JSON.stringify({ error: `Airtable error: ${text}` }), {
-          status: res.status,
-          headers: { 'Content-Type': 'application/json' },
-        });
+        return Response.json(
+          { error: `Airtable error: ${text}` },
+          { status: res.status }
+        );
       }
 
       const data = await res.json();
-      return new Response(JSON.stringify(data.records || []), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    } catch (err) {
-      return new Response(JSON.stringify({ error: err.message || 'Unknown error' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-  },
+      records.push(...(data.records || []));
+      offset = data.offset;
+    } while (offset);
+
+    return Response.json(records, {
+      status: 200,
+      headers: { 'Cache-Control': 'public, max-age=300' },
+    });
+  } catch (err) {
+    return Response.json(
+      { error: err.message || 'Unknown error' },
+      { status: 500 }
+    );
+  }
 };
