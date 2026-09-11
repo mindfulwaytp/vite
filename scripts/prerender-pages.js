@@ -313,6 +313,36 @@ async function captureBatch(routes, browser, baseUrl, template, snapshots, optio
   }
 }
 
+function toSitemapUrl(route) {
+  const withSlash = route.endsWith('/') ? route : `${route}/`;
+  return `${SITE_URL}${withSlash}`;
+}
+
+// Blog files carry their real modified date in the head written by prerender-blog.
+async function blogLastmod(route) {
+  try {
+    const html = await fs.readFile(routeOutputPath(route), 'utf-8');
+    const match = html.match(/<meta property="article:modified_time" content="([^"]+)"/);
+    return match ? match[1].slice(0, 10) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function writeSitemap(routes) {
+  const today = new Date().toISOString().slice(0, 10);
+  const entries = [];
+
+  for (const route of routes) {
+    const lastmod = route.startsWith('/blog/') ? (await blogLastmod(route)) || today : today;
+    entries.push(`  <url>\n    <loc>${toSitemapUrl(route)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`);
+  }
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join('\n')}\n</urlset>\n`;
+  await fs.writeFile(path.join(DIST, 'sitemap.xml'), xml);
+  console.log(`[prerender-pages] Wrote sitemap.xml (${entries.length} URLs)`);
+}
+
 async function main() {
   console.log('[prerender-pages] Starting Vite preview server...');
   let server;
@@ -369,6 +399,10 @@ async function main() {
       }
       for (const [route, html] of blogSnapshots) snapshots.set(route, html);
     }
+
+    // Sitemap: every route this build rendered, so it can never list a URL that
+    // doesn't exist or omit one that does.
+    await writeSitemap([...allRoutes, ...blogRoutes]);
 
     // Write phase: persist all snapshots to disk.
     console.log(`[prerender-pages] Writing ${snapshots.size} files...`);

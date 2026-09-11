@@ -176,53 +176,6 @@ function buildIndexHead(posts) {
   )}`;
 }
 
-async function writeSitemap(posts) {
-  const staticUrls = [
-    '/',
-    '/providers/',
-    '/neurodiversity/',
-    '/neurodiversity/assessments/',
-    '/neurodiversity/affirming-therapy/',
-    '/neurodiversity/neurodiversity-resources/',
-    '/services/',
-    '/services/individual-therapy/',
-    '/services/couples-family-therapy/',
-    '/services/polyamory-non-monogamy/',
-    '/services/queer-affirming-therapy/',
-    '/services/adhd-autism-evaluations/',
-    '/services/neurodivergent-affirming-therapy/',
-    '/services/groups/',
-    '/services/groups/ttrpg/',
-    '/contact/',
-    '/contact/ratesfees/',
-    '/join-our-team/',
-    '/join-our-team/lgbtq-therapist/',
-    '/join-our-team/adhd-therapist/',
-    '/join-our-team/internships/',
-    '/join-our-team/eating-disorder-therapist/',
-    '/blog/',
-  ];
-
-  const today = new Date().toISOString().slice(0, 10);
-
-  const staticEntries = staticUrls
-    .map(
-      (p) => `  <url>\n    <loc>${SITE_URL}${p}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`
-    )
-    .join('\n');
-
-  const blogEntries = posts
-    .map((post) => {
-      const updated = toIso(post.updatedAt) || toIso(post.publishedAt);
-      const lastmod = (updated || `${today}T00:00:00.000Z`).slice(0, 10);
-      return `  <url>\n    <loc>${SITE_URL}/blog/${post.slug}/</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
-    })
-    .join('\n');
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticEntries}\n${blogEntries}\n</urlset>\n`;
-
-  await fs.writeFile(path.join(DIST, 'sitemap.xml'), xml);
-}
 
 async function main() {
   const credentials = await loadCredentials();
@@ -264,8 +217,6 @@ async function main() {
   await fs.writeFile(path.join(indexDir, 'index.html'), indexHtml);
   console.log('[prerender]   /blog');
 
-  await writeSitemap(posts);
-  console.log('[prerender] sitemap.xml regenerated with all blog posts');
   console.log('[prerender] Done.');
 }
 
