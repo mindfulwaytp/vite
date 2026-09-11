@@ -1,4 +1,12 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
+
+// Netlify serves each prerendered route as /path/ and 301s /path → /path/, so a
+// canonical without the trailing slash points search engines at a redirect.
+function toCanonicalPath(path) {
+  const clean = path.split(/[?#]/)[0] || '/';
+  return clean.endsWith('/') ? clean : `${clean}/`;
+}
 
 function SEO({
   title,
@@ -12,8 +20,11 @@ function SEO({
   tags = [],
   jsonLd,
 }) {
+  const { pathname } = useLocation();
   const baseUrl = 'https://www.mindfulway-therapy.com';
-  const fullUrl = canonical ? `${baseUrl}${canonical}` : baseUrl;
+  // Default to the page's own URL — falling back to the homepage told search
+  // engines every page without an explicit canonical was a duplicate of it.
+  const fullUrl = `${baseUrl}${toCanonicalPath(canonical || pathname)}`;
   const fullImage = image ? `${baseUrl}${image}` : null;
 
   const titleHasBrand = /mindful\s*way\s*therapy/i.test(title || '');

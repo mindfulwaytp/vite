@@ -5,4 +5,7 @@ Allow: /
 Disallow: /login
 Disallow: /intranet/
 
+# Empty SPA shell served for unmatched routes — not a real page
+Disallow: /app-shell.html
+
 Sitemap: https://www.mindfulway-therapy.com/sitemap.xml

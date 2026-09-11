@@ -75,11 +75,34 @@ function injectIntoHead(html, headFragment) {
   return html.replace('</head>', `${headFragment}\n</head>`);
 }
 
+// Firestore Timestamps don't survive JSON; the client's date helpers accept ISO strings.
+function serializePost(post, { includeBody } = { includeBody: true }) {
+  return {
+    id: post.id,
+    slug: post.slug,
+    title: post.title,
+    author: post.author,
+    excerpt: post.excerpt || excerptFromHtml(post.body, 200),
+    tags: post.tags || [],
+    published: post.published,
+    publishedAt: toIso(post.publishedAt),
+    updatedAt: toIso(post.updatedAt),
+    ...(includeBody ? { body: post.body } : {}),
+  };
+}
+
+// Inline JSON for the client to render from on first paint. `<` is escaped so the
+// payload can never terminate the script element early.
+function buildDataScript(globalName, value) {
+  const json = JSON.stringify(value).replace(/</g, '\\u003c');
+  return `\n  <script>window.${globalName} = ${json};</script>`;
+}
+
 function buildPostHead(post) {
   const description = post.excerpt || excerptFromHtml(post.body, 200);
   const publishedIso = toIso(post.publishedAt);
   const modifiedIso = toIso(post.updatedAt) || publishedIso;
-  const url = `${SITE_URL}/blog/${post.slug}`;
+  const url = `${SITE_URL}/blog/${post.slug}/`;
   const fullTitle = `${post.title} | Mindful Way Therapy`;
 
   const jsonLd = {
@@ -121,14 +144,14 @@ ${publishedIso ? `  <meta property="article:published_time" content="${escapeHtm
   <meta name="twitter:description" content="${escapeHtml(description)}" />
   <meta name="twitter:image" content="${DEFAULT_SOCIAL_IMAGE}" />
 
-  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+  <script type="application/ld+json" data-prerendered>${JSON.stringify(jsonLd)}</script>${buildDataScript('__PRERENDERED_POST__', serializePost(post))}`;
 }
 
-function buildIndexHead() {
+function buildIndexHead(posts) {
   const title = 'Blog | Mindful Way Therapy';
   const description =
     'Reflections, resources, and updates from Mindful Way Therapy on neurodivergent and LGBTQ+ affirming care.';
-  const url = `${SITE_URL}/blog`;
+  const url = `${SITE_URL}/blog/`;
 
   return `
   <title>${escapeHtml(title)}</title>
@@ -145,33 +168,39 @@ function buildIndexHead() {
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${escapeHtml(title)}" />
   <meta name="twitter:description" content="${escapeHtml(description)}" />
-  <meta name="twitter:image" content="${DEFAULT_SOCIAL_IMAGE}" />`;
+  <meta name="twitter:image" content="${DEFAULT_SOCIAL_IMAGE}" />${buildDataScript(
+    '__PRERENDERED_POSTS__',
+    [...posts]
+      .sort((a, b) => (toIso(b.publishedAt) || '').localeCompare(toIso(a.publishedAt) || ''))
+      .map((post) => serializePost(post, { includeBody: false }))
+  )}`;
 }
 
 async function writeSitemap(posts) {
   const staticUrls = [
     '/',
-    '/providers',
-    '/neurodiversity',
-    '/neurodiversity/assessments',
-    '/neurodiversity/affirming-therapy',
-    '/neurodiversity/neurodiversity-resources',
-    '/services',
-    '/services/individual-therapy',
-    '/services/couples-family-therapy',
-    '/services/polyamory-non-monogamy',
-    '/services/queer-affirming-therapy',
-    '/services/adhd-autism-evaluations',
-    '/services/neurodivergent-affirming-therapy',
-    '/services/groups',
-    '/contact',
-    '/contact/ratesfees',
-    '/join-our-team',
-    '/join-our-team/lgbtq-therapist',
-    '/join-our-team/adhd-therapist',
-    '/join-our-team/internships',
-    '/join-our-team/eating-disorder-therapist',
-    '/blog',
+    '/providers/',
+    '/neurodiversity/',
+    '/neurodiversity/assessments/',
+    '/neurodiversity/affirming-therapy/',
+    '/neurodiversity/neurodiversity-resources/',
+    '/services/',
+    '/services/individual-therapy/',
+    '/services/couples-family-therapy/',
+    '/services/polyamory-non-monogamy/',
+    '/services/queer-affirming-therapy/',
+    '/services/adhd-autism-evaluations/',
+    '/services/neurodivergent-affirming-therapy/',
+    '/services/groups/',
+    '/services/groups/ttrpg/',
+    '/contact/',
+    '/contact/ratesfees/',
+    '/join-our-team/',
+    '/join-our-team/lgbtq-therapist/',
+    '/join-our-team/adhd-therapist/',
+    '/join-our-team/internships/',
+    '/join-our-team/eating-disorder-therapist/',
+    '/blog/',
   ];
 
   const today = new Date().toISOString().slice(0, 10);
@@ -186,7 +215,7 @@ async function writeSitemap(posts) {
     .map((post) => {
       const updated = toIso(post.updatedAt) || toIso(post.publishedAt);
       const lastmod = (updated || `${today}T00:00:00.000Z`).slice(0, 10);
-      return `  <url>\n    <loc>${SITE_URL}/blog/${post.slug}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
+      return `  <url>\n    <loc>${SITE_URL}/blog/${post.slug}/</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
     })
     .join('\n');
 
@@ -229,7 +258,7 @@ async function main() {
     console.log(`[prerender]   /blog/${post.slug}`);
   }
 
-  const indexHtml = injectIntoHead(stripped, buildIndexHead());
+  const indexHtml = injectIntoHead(stripped, buildIndexHead(posts));
   const indexDir = path.join(DIST, 'blog');
   await fs.mkdir(indexDir, { recursive: true });
   await fs.writeFile(path.join(indexDir, 'index.html'), indexHtml);

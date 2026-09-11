@@ -1,7 +1,8 @@
 // Build-time pre-render for static and provider pages.
 // Spins up a local preview server, drives a headless browser to each route,
-// captures whatever React + Helmet rendered into <head>, and writes static
-// HTML files so social previews and crawlers see real meta tags.
+// captures whatever React + Helmet rendered into <head> AND the rendered page
+// body, and writes static HTML files so social previews and crawlers that don't
+// run JavaScript (most AI crawlers) see real meta tags and real content.
 //
 // Blog post pages are pre-rendered separately by scripts/prerender-blog.js
 // (which uses firebase-admin to fetch posts directly from Firestore).
@@ -78,6 +79,16 @@ function injectIntoHead(html, headFragment) {
   return html.replace('</head>', `${headFragment}\n</head>`);
 }
 
+// Replaces the empty SPA mount point with the rendered markup. React clears and
+// re-renders the container on mount, so this is for crawlers, not hydration.
+function injectIntoRoot(html, rootHtml) {
+  if (!rootHtml) return html;
+  return html.replace(
+    /<div id="root"><\/div>/,
+    `<div id="root">${rootHtml}</div>`
+  );
+}
+
 function buildHeadFragment({ title, description, canonicalUrl, ogTags, twitterTags, jsonLd }) {
   const og = new Map(ogTags);
   const tw = new Map(twitterTags);
@@ -103,7 +114,7 @@ function buildHeadFragment({ title, description, canonicalUrl, ogTags, twitterTa
     .join('\n');
 
   const jsonLdHtml = jsonLd
-    ? `\n  <script type="application/ld+json">${jsonLd}</script>`
+    ? `\n  <script type="application/ld+json" data-prerendered>${jsonLd}</script>`
     : '';
 
   return `
@@ -116,12 +127,31 @@ ${ogHtml}
 ${twHtml}${jsonLdHtml}`;
 }
 
-async function snapshotRoute(browser, baseUrl, route, template) {
+async function snapshotRoute(browser, baseUrl, route, template, options = {}) {
+  const { bodyOnly = false } = options;
   const page = await browser.newPage();
   page.setDefaultTimeout(30000);
+  await page.setViewport({ width: 1280, height: 900 });
 
   try {
-    await page.goto(`${baseUrl}${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
+    if (bodyOnly) {
+      // Firestore holds a network connection open, so networkidle0 never fires on
+      // blog routes. Wait for rendered article text instead.
+      await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+      await page
+        .waitForFunction(
+          () => {
+            const el = document.getElementById('root');
+            const text = el?.innerText || '';
+            return text.length > 500 && !/Loading[….]/.test(text);
+          },
+          { timeout: 20000 }
+        )
+        .catch(() => {});
+      await new Promise((r) => setTimeout(r, 500));
+    } else {
+      await page.goto(`${baseUrl}${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
+    }
 
     // Wait for Helmet to have run on pages that use it. Pages without Helmet (e.g. provider profiles)
     // simply time out and proceed — that's expected.
@@ -166,10 +196,24 @@ async function snapshotRoute(browser, baseUrl, route, template) {
         if (k && v) twMap.set(k, v);
       });
 
-      const jsonLdEls = Array.from(document.querySelectorAll('head script[type="application/ld+json"]'));
+      // Not head-only: under React 19, react-helmet-async hoists title/meta/link into <head>
+      // but leaves <script> tags where they render, in the body.
+      const jsonLdEls = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
       const jsonLd = jsonLdEls.length ? jsonLdEls[jsonLdEls.length - 1].textContent : '';
 
+      // Rendered markup for crawlers. Scripts are dropped so nothing executes twice
+      // (the JSON-LD is re-emitted into <head> instead), and iframes are dropped so
+      // embeds like the intake form don't load once statically and again under React.
+      const rootEl = document.getElementById('root');
+      let rootHtml = '';
+      if (rootEl) {
+        const clone = rootEl.cloneNode(true);
+        clone.querySelectorAll('script, iframe, noscript').forEach((el) => el.remove());
+        rootHtml = clone.innerHTML;
+      }
+
       return {
+        rootHtml,
         title,
         description,
         canonical,
@@ -179,7 +223,7 @@ async function snapshotRoute(browser, baseUrl, route, template) {
       };
     });
 
-    const canonicalUrl = captured.canonical || `${SITE_URL}${route}`;
+    const canonicalUrl = captured.canonical || `${SITE_URL}${route.endsWith('/') ? route : `${route}/`}`;
 
     const headFragment = buildHeadFragment({
       title: captured.title,
@@ -190,8 +234,13 @@ async function snapshotRoute(browser, baseUrl, route, template) {
       jsonLd: captured.jsonLd,
     });
 
+    if (bodyOnly) {
+      if (!captured.rootHtml) throw new Error('no rendered content captured');
+      return injectIntoRoot(template, captured.rootHtml);
+    }
+
     const html = injectIntoHead(stripExistingHeadTags(template), headFragment);
-    return html;
+    return injectIntoRoot(html, captured.rootHtml);
   } finally {
     await page.close();
   }
@@ -217,10 +266,37 @@ async function loadProviderRoutes() {
   }
 }
 
-async function captureBatch(routes, browser, baseUrl, template, snapshots) {
+// Blog pages are written by scripts/prerender-blog.js (head only, from Firestore).
+// Whatever it produced this build gets its body captured here.
+async function loadBlogRoutes() {
+  const blogDir = path.join(DIST, 'blog');
+  try {
+    const entries = await fs.readdir(blogDir, { withFileTypes: true });
+    const routes = [];
+    for (const entry of entries) {
+      if (entry.isDirectory()) routes.push(`/blog/${entry.name}`);
+    }
+    try {
+      await fs.access(path.join(blogDir, 'index.html'));
+      routes.unshift('/blog');
+    } catch {
+      // no blog index this build
+    }
+    return routes;
+  } catch {
+    return [];
+  }
+}
+
+async function captureBatch(routes, browser, baseUrl, template, snapshots, options = {}) {
   const results = await Promise.allSettled(
     routes.map(async (route) => {
-      const html = await snapshotRoute(browser, baseUrl, route, template);
+      // Blog pages already have head tags written from Firestore data; re-use that
+      // file as the template so only the rendered body is added.
+      const routeTemplate = options.bodyOnly
+        ? await fs.readFile(routeOutputPath(route), 'utf-8')
+        : template;
+      const html = await snapshotRoute(browser, baseUrl, route, routeTemplate, options);
       snapshots.set(route, html);
       return route;
     })
@@ -274,6 +350,24 @@ async function main() {
     for (let i = 0; i < allRoutes.length; i += CONCURRENCY) {
       const batch = allRoutes.slice(i, i + CONCURRENCY);
       await captureBatch(batch, browser, baseUrl, template, snapshots);
+    }
+
+    // The SPA fallback can no longer be index.html: that file now carries the
+    // home page's rendered body, which would be served for every unmatched route.
+    // app-shell.html keeps an empty mount point for client-side routing.
+    await fs.writeFile(path.join(DIST, 'app-shell.html'), template);
+    console.log('[prerender-pages] Wrote app-shell.html (SPA fallback)');
+
+    // Blog pages: capture rendered bodies into the files prerender-blog just wrote.
+    const blogRoutes = await loadBlogRoutes();
+    if (blogRoutes.length) {
+      console.log(`[prerender-pages] Capturing ${blogRoutes.length} blog route(s)`);
+      const blogSnapshots = new Map();
+      for (let i = 0; i < blogRoutes.length; i += CONCURRENCY) {
+        const batch = blogRoutes.slice(i, i + CONCURRENCY);
+        await captureBatch(batch, browser, baseUrl, template, blogSnapshots, { bodyOnly: true });
+      }
+      for (const [route, html] of blogSnapshots) snapshots.set(route, html);
     }
 
     // Write phase: persist all snapshots to disk.

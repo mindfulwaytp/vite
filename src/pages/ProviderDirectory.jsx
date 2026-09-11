@@ -6,6 +6,7 @@ import { TbReportSearch } from 'react-icons/tb';
 import { IoMdVideocam } from 'react-icons/io';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { providerImages } from '../assets/images';
+import { parseProviderRows, seededProviders } from '../lib/providers';
 import defaultImage from '../assets/images/provider-example.avif';
 
 import '../Providers.css';
@@ -53,8 +54,10 @@ const ProvidersDirectory = () => {
     }
   }, []);
 
-  const [allTherapists, setAllTherapists] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // Seeded from the build-time snapshot (see ProviderProfile) so the directory
+  // renders immediately; the SheetDB fetch below replaces it with live data.
+  const [allTherapists, setAllTherapists] = useState(seededProviders);
+  const [loading, setLoading] = useState(false);
   const [selectedSpecialties, setSelectedSpecialties] = useState([]);
   const [selectedInsurance, setSelectedInsurance] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState([]);
@@ -72,16 +75,7 @@ const ProvidersDirectory = () => {
     fetch('https://sheetdb.io/api/v1/zpl35ateeao4a')
       .then((res) => res.json())
       .then((data) => {
-        const parsed = data.map((t) => ({
-          ...t,
-          specialties: t.specialties?.split(',').map((s) => s.trim()) || [],
-          topSpecialties: t.topSpecialties?.split(',').map((s) => s.trim()) || [],
-          modalities: t.modalities?.split(',').map((s) => s.trim()) || [],
-          insurance: t.insurance?.split(',').map((s) => s.trim()) || [],
-          location: t.location?.split(',').map((s) => s.trim()) || [],
-          services: t.services?.split(',').map((s) => s.trim()) || [],
-          gender: t.gender?.split(',').map((s) => s.trim()) || [],
-        }));
+        const parsed = parseProviderRows(data);
 
         setAllTherapists(parsed);
         setLoading(false);

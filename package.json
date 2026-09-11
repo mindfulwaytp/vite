@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "netlify dev",
-    "dev:vite": "vite",
-    "build": "vite build && node scripts/prerender-pages.js && node scripts/prerender-blog.js",
+    "dev": "vite",
+    "build": "vite build && node scripts/prerender-blog.js && node scripts/prerender-pages.js",
     "postinstall": "node node_modules/puppeteer/install.mjs || true",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -36,6 +35,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@netlify/vite-plugin": "^2.12.9",
     "@tailwindcss/typography": "^0.5.19",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",

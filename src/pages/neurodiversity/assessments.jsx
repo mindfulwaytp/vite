@@ -14,7 +14,7 @@ const AssessmentsPage = () => {
         />
         <link
           rel="canonical"
-          href="https://www.mindfulway-therapy.com/neurodiversity/assessments"
+          href="https://www.mindfulway-therapy.com/neurodiversity/assessments/"
         />
         <meta property="og:title" content="ADHD & Autism Evaluations | Mindful Way Therapy" />
         <meta
@@ -23,7 +23,7 @@ const AssessmentsPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.mindfulway-therapy.com/neurodiversity/assessments"
+          content="https://www.mindfulway-therapy.com/neurodiversity/assessments/"
         />
         <meta property="og:image" content="https://www.mindfulway-therapy.com/images/assessmentheader.avif" />
         <meta name="twitter:card" content="summary_large_image" />

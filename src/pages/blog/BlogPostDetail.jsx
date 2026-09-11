@@ -18,20 +18,30 @@ function toIso(value) {
   return Number.isNaN(d.getTime()) ? undefined : d.toISOString();
 }
 
+// Pre-rendered post pages ship the post inline (scripts/prerender-blog.js), so the
+// article paints immediately instead of flashing a loading state over static markup.
+function seededPost(wanted) {
+  if (typeof window === "undefined") return null;
+  const payload = window.__PRERENDERED_POST__;
+  return payload && payload.slug === wanted ? payload : null;
+}
+
 export default function BlogPostDetail() {
   const { slug } = useParams();
   const { profile } = useAuthUser();
   const isAdmin = profile?.role === "admin";
 
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [post, setPost] = useState(() => seededPost(slug));
+  const [loading, setLoading] = useState(() => !seededPost(slug));
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     let alive = true;
 
     async function load() {
-      setLoading(true);
+      const seeded = seededPost(slug);
+      setPost(seeded);
+      setLoading(!seeded);
       setNotFound(false);
       try {
         const ref = collection(db, "blogPosts");
@@ -99,7 +109,7 @@ export default function BlogPostDetail() {
   const description = post.excerpt || excerptFromHtml(post.body, 200);
   const publishedIso = toIso(post.publishedAt);
   const modifiedIso = toIso(post.updatedAt) || publishedIso;
-  const canonical = `/blog/${post.slug}`;
+  const canonical = `/blog/${post.slug}/`;
   const baseUrl = "https://www.mindfulway-therapy.com";
 
   const jsonLd = post.published

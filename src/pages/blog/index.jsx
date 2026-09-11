@@ -13,19 +13,26 @@ import { useAuthUser } from "../../hooks/useAuthUser";
 import { formatDate } from "../../lib/blog";
 import SEO from "../../components/SEO";
 
+// Pre-rendered pages ship the post list inline (scripts/prerender-blog.js) so the
+// page paints immediately instead of flashing a loading state over static markup.
+function prerenderedPosts() {
+  if (typeof window === "undefined") return null;
+  return window.__PRERENDERED_POSTS__ || null;
+}
+
 export default function BlogIndex() {
   const { profile } = useAuthUser();
   const isAdmin = profile?.role === "admin";
 
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState(() => prerenderedPosts() || []);
+  const [loading, setLoading] = useState(() => !prerenderedPosts());
   const [activeTag, setActiveTag] = useState(null);
 
   useEffect(() => {
     let alive = true;
 
     async function load() {
-      setLoading(true);
+      if (!prerenderedPosts()) setLoading(true);
       try {
         const ref = collection(db, "blogPosts");
         const q = isAdmin

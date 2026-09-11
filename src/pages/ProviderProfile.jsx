@@ -5,6 +5,7 @@ import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { FaCalendarCheck, FaCalendarTimes } from 'react-icons/fa';
 import { TbReportSearch } from 'react-icons/tb';
 import { providerImages } from '../assets/images';
+import { parseProviderRows, seededProviders } from '../lib/providers';
 import defaultImage from '../assets/images/provider-example.avif';
 
 const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // your SheetDB API
@@ -17,8 +18,12 @@ export default function ProviderProfile() {
   const { slug } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const [provider, setProvider] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // providers.json is the build-time snapshot of the same SheetDB data. Seeding from
+  // it means pre-rendered markup stays on screen instead of flashing a loading state,
+  // and the SheetDB fetch below refreshes it with anything newer.
+  const seededProvider = seededProviders.find((p) => slugify(p.name) === slug) || null;
+  const [provider, setProvider] = useState(seededProvider);
+  const [loading, setLoading] = useState(!seededProvider);
   const [bioOpen, setBioOpen] = useState(false);
 
   const handleBack = () => {
@@ -30,20 +35,14 @@ export default function ProviderProfile() {
   };
 
   useEffect(() => {
+    const seeded = seededProviders.find((p) => slugify(p.name) === slug) || null;
+    setProvider(seeded);
+    setLoading(!seeded);
+
     fetch(SHEETDB_URL)
       .then((res) => res.json())
       .then((data) => {
-        const parsed = data.map((t) => ({
-          ...t,
-          bioIntro: (t.bioIntro || '').trim(),
-          bioBody: (t.bioBody || '').trim(),
-          specialties: t.specialties?.split(',').map((s) => s.trim()) || [],
-          topSpecialties: t.topSpecialties?.split(',').map((s) => s.trim()) || [],
-          insurance: t.insurance?.split(',').map((s) => s.trim()) || [],
-          location: t.location?.split(',').map((s) => s.trim()) || [],
-          services: t.services?.split(',').map((s) => s.trim()) || [],
-          gender: t.gender?.split(',').map((s) => s.trim()) || [],
-        }));
+        const parsed = parseProviderRows(data);
 
         const match = parsed.find((p) => slugify(p.name) === slug);
         if (match) {
@@ -89,7 +88,7 @@ export default function ProviderProfile() {
     canonical.rel = 'canonical';
     document.head.appendChild(canonical);
   }
-  canonical.href = `https://www.mindfulway-therapy.com/providers/${slug}`;
+  canonical.href = `https://www.mindfulway-therapy.com/providers/${slug}/`;
 
 }, [provider, slug]);
 

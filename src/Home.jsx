@@ -3,6 +3,7 @@ import therapyOffice from './assets/therapy-office.avif';
 import therapyScene from './assets/therapy-scene.avif';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
+import { organizationJsonLd } from './data/organization';
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       title="Mindful Way Therapy"
       description="Neurodivergent and LGBTQ+ affirming therapy in Seattle and via telehealth across Washington. Compassionate, trauma-informed care for individuals, couples, and families."
       canonical="/"
+      jsonLd={{ '@context': 'https://schema.org', ...organizationJsonLd }}
     />
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 mt-20 md:px-12 py-5 bg-brand-100">
