@@ -31,7 +31,6 @@ import AffordingTherapy from './pages/Contact/affording-therapy';
 import EvaluationForm from './pages/Contact/EvaluationForm';
 import AdventuringParty from './pages/Contact/AdventuringParty.jsx';
 import Footer from './components/Footer';
-import usePageTracking from './hooks/usePageTracking';
 import Login from "./pages/Login";
 import IntranetLayout from "./pages/intranet/IntranetLayout.jsx";
 import IntranetFeed from "./pages/intranet/IntranetFeed.jsx";
@@ -49,7 +48,6 @@ import NewBlogPost from './pages/blog/NewBlogPost.jsx';
 import EditBlogPost from './pages/blog/EditBlogPost.jsx';
 
 function PublicLayout() {
-  usePageTracking();
 
   return (
     <div className="bg-white">
