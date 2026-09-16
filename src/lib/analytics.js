@@ -1,9 +1,11 @@
-// Piwik PRO analytics. Chosen over Google Analytics because they sign a BAA —
-// a page path like /contact/therapy reveals that a visitor is seeking therapy.
-import PiwikPro, { PageViews } from '@piwikpro/react-piwik-pro';
-
-const CONTAINER_ID = 'afe10d91-7996-4d05-a6d0-d722c3397b8b';
-const CONTAINER_URL = 'https://mwtherapy.containers.piwik.pro';
+// Plausible analytics. Cookieless: no persistent identifiers, and visitor IPs are
+// hashed with a rotating salt rather than stored — so nothing leaves this site that
+// ties a page like /contact/therapy to a person.
+//
+// Loaded as a script rather than via npm: plausible-tracker is still pre-1.0 and
+// rarely updated, while this file is what Plausible maintains (bot filtering included).
+const DOMAIN = 'mindfulway-therapy.com';
+const SCRIPT_URL = 'https://plausible.io/js/script.manual.js';
 
 // The build drives a headless browser over every route against the local preview
 // server (scripts/prerender-pages.js), which would otherwise record a phantom
@@ -23,13 +25,27 @@ let started = false;
 
 export function startAnalytics() {
   if (started || !isRealVisitor()) return;
-  PiwikPro.initialize(CONTAINER_ID, CONTAINER_URL);
+
+  // Queue stub, so the first page view isn't lost while the script is still loading.
+  window.plausible =
+    window.plausible ||
+    function plausibleStub(...args) {
+      (window.plausible.q = window.plausible.q || []).push(args);
+    };
+
+  const script = document.createElement('script');
+  script.defer = true;
+  script.src = SCRIPT_URL;
+  script.setAttribute('data-domain', DOMAIN);
+  document.head.appendChild(script);
+
   started = true;
+
+  // script.manual.js sends nothing on its own — the initial view is ours to record.
+  window.plausible('pageview');
 }
 
-// The container records the first page view itself; this is for client-side
-// navigations, which would otherwise never be counted in a single-page app.
 export function trackNavigation() {
   if (!started) return;
-  PageViews.trackPageView();
+  window.plausible('pageview');
 }
