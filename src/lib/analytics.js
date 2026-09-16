@@ -21,6 +21,15 @@ function isRealVisitor() {
   return true;
 }
 
+// Direct visits land on /path/ (Netlify redirects /path to it) while in-app links
+// point at /path, so the same page would appear as two rows in Plausible. Report the
+// trailing-slash form everywhere, matching the canonical URLs.
+function canonicalUrl() {
+  const { origin, pathname, search } = window.location;
+  const path = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  return `${origin}${path}${search}`;
+}
+
 let started = false;
 
 export function startAnalytics() {
@@ -42,10 +51,10 @@ export function startAnalytics() {
   started = true;
 
   // script.manual.js sends nothing on its own — the initial view is ours to record.
-  window.plausible('pageview');
+  window.plausible('pageview', { u: canonicalUrl() });
 }
 
 export function trackNavigation() {
   if (!started) return;
-  window.plausible('pageview');
+  window.plausible('pageview', { u: canonicalUrl() });
 }
