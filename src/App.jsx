@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Outlet } from "react-router-dom";
+import usePageTracking from './hooks/usePageTracking';
 import Header from './components/Header';
 import Home from './Home';
 import ProviderProfile from './pages/ProviderProfile'; // ✅ Update path if needed
@@ -48,6 +49,8 @@ import NewBlogPost from './pages/blog/NewBlogPost.jsx';
 import EditBlogPost from './pages/blog/EditBlogPost.jsx';
 
 function PublicLayout() {
+  // Public pages only — staff areas (/login, /intranet) sit outside this layout.
+  usePageTracking();
 
   return (
     <div className="bg-white">
