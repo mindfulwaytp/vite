@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import insurance from '../../assets/healthins.jpg';
 
 function RatesFees() {
@@ -15,6 +16,18 @@ function RatesFees() {
             We are considered in-network with the following insurance companies. Please note: just because we are in network does not mean we accept your specific plan. It is ultimately your responsibility to confirm the network status of your provider.
           </p>
         </div>
+      </div>
+
+      {/* Affordability entry point */}
+      <div className="bg-sky-50 border-b border-sky-100 px-4 py-5">
+        <p className="max-w-3xl mx-auto text-center text-gray-700">
+          <strong>Worried about affording therapy?</strong> You may qualify for Apple Health (Washington
+          Medicaid), which covers therapy and can be applied for any time of year.{' '}
+          <Link to="/contact/affording-therapy" className="text-sky-700 underline font-semibold">
+            See your options
+          </Link>
+          .
+        </p>
       </div>
 
       {/* Insurance Details */}

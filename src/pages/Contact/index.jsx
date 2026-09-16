@@ -63,6 +63,22 @@ function Contact() {
         ))}
       </div>
 
+      <div className="border-t border-gray-200 pt-12 mb-12">
+        <h2 className="text-2xl md:text-3xl text-sky-700 mb-3 text-center">Worried About Affording Therapy?</h2>
+        <p className="text-center text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+          You may qualify for Apple Health (Washington Medicaid), which covers therapy and has no enrollment
+          deadline. We also offer sliding-scale options.
+        </p>
+        <div className="flex justify-center">
+          <Link
+            to="/contact/affording-therapy"
+            className="bg-sky-700 text-white font-semibold py-3 px-8 rounded-lg shadow hover:bg-sky-800 transition"
+          >
+            Help Paying for Therapy
+          </Link>
+        </div>
+      </div>
+
       <div className="border-t border-gray-200 pt-12">
         <h2 className="text-2xl md:text-3xl text-sky-700 mb-3 text-center">Rates & Fees</h2>
         <p className="text-center text-gray-600 text-lg mb-8 max-w-2xl mx-auto">

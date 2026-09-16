@@ -38,6 +38,7 @@ const STATIC_ROUTES = [
   '/services/groups/ttrpg',
   '/contact',
   '/contact/ratesfees',
+  '/contact/affording-therapy',
   '/contact/therapy',
   '/contact/evaluation',
   '/contact/adventuring-party',

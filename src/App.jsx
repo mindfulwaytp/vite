@@ -27,6 +27,7 @@ import NeurodivergentAffirmingTherapy from './pages/services/neurodivergent-affi
 import Groups from './pages/services/groups.jsx';
 import TTRPGGroup from './pages/services/groups/ttrpg.jsx';
 import TherapyForm from './pages/Contact/TherapyForm';
+import AffordingTherapy from './pages/Contact/affording-therapy';
 import EvaluationForm from './pages/Contact/EvaluationForm';
 import AdventuringParty from './pages/Contact/AdventuringParty.jsx';
 import Footer from './components/Footer';
@@ -116,6 +117,7 @@ function App() {
         <Route path="/services/groups" element={<Groups />} />
         <Route path="/services/groups/ttrpg" element={<TTRPGGroup />} />
         <Route path="/contact/ratesfees" element={<RatesFees />} />
+        <Route path="/contact/affording-therapy" element={<AffordingTherapy />} />
 
         <Route path="/neurodiversity" element={<Neurodiversity />} />
         <Route
