@@ -84,13 +84,22 @@ function AffordingTherapy() {
       />
 
       {/* Hero */}
-      <section className="mt-20 bg-sky-700 text-white py-16 px-4 md:px-10 text-center">
-        <h1 className="text-3xl md:text-4xl mb-4">Help Paying for Therapy</h1>
-        <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-          Cost should not be the reason you never start. Here are the options, including one a lot of
-          people do not realize they qualify for.
-        </p>
-      </section>
+      <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
+        <img
+          src="/images/medicaid_header.jpg"
+          alt="Help paying for therapy"
+          className="w-full max-h-[420px] object-cover object-center"
+        />
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
+            <h1 className="text-3xl md:text-4xl mb-4">Help Paying for Therapy</h1>
+            <p className="text-base md:text-lg leading-relaxed">
+              Cost should not be the reason you never start. Here are the options, including one a lot of
+              people do not realize they qualify for.
+            </p>
+          </div>
+        </div>
+      </div>
 
       <section className="bg-white py-16 px-4 md:px-10">
         <div className="max-w-3xl mx-auto space-y-8">
