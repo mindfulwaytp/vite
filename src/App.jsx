@@ -6,6 +6,7 @@ import Home from './Home';
 import ProviderProfile from './pages/ProviderProfile'; // ✅ Update path if needed
 import ProviderDirectory from './pages/ProviderDirectory'; // ✅ THIS IS CORRECT
 import JobBoard from './pages/join-our-team/index';
+import GeneralistTherapistJob from './pages/join-our-team/generalist-therapist';
 import LGBTQTherapistJob from './pages/join-our-team/lgbtq-therapist';
 import ADHDTherapistJob from './pages/join-our-team/adhd-therapist';
 import EatingDisorderJob from './pages/join-our-team/eating-disorder-therapist';
@@ -101,6 +102,7 @@ function App() {
         <Route path="/neurodiversity/assessments" element={<AssessmentsPage />} />
 
         <Route path="/join-our-team" element={<JobBoard />} />
+        <Route path="/join-our-team/generalist-therapist" element={<GeneralistTherapistJob />} />
         <Route path="/join-our-team/lgbtq-therapist" element={<LGBTQTherapistJob />} />
         <Route path="/join-our-team/adhd-therapist" element={<ADHDTherapistJob />} />
         <Route path="/join-our-team/eating-disorder-therapist" element={<EatingDisorderJob />} />

@@ -43,6 +43,7 @@ const STATIC_ROUTES = [
   '/contact/evaluation',
   '/contact/adventuring-party',
   '/join-our-team',
+  '/join-our-team/generalist-therapist',
   '/join-our-team/lgbtq-therapist',
   '/join-our-team/adhd-therapist',
   '/join-our-team/internships',

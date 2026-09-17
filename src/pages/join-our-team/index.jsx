@@ -4,6 +4,13 @@ import employmentImage from '../../assets/employmentimage.avif'; // or whatever 
 
 const jobListings = [
   {
+    id: 'generalist-therapist',
+    title: 'Generalist Therapist',
+    location: 'Remote (WA) | U-Disctrict',
+    type: 'Part-Time or Full-Time',
+    summary: 'Provide affirming, trauma-informed therapy across a broad range of concerns — no specialty required.',
+  },
+  {
     id: 'lgbtq-therapist',
     title: 'LGBTQ+ Affirming Therapist',
     location: 'Remote (WA) | U-Disctrict',
