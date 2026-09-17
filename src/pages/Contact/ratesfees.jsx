@@ -1,20 +1,88 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO';
 import insurance from '../../assets/healthins.jpg';
+
+// Plans and prices are reproduced exactly as previously published. Update carefully:
+// the sliding-scale figures also appear on /contact/affording-therapy.
+const insuranceGroups = [
+  {
+    title: 'Accepted by All Providers',
+    plans: [{ name: 'Molina Medicaid', detail: 'A Washington Apple Health (Medicaid) plan' }],
+  },
+  {
+    title: 'Accepted by All Providers Except Interns',
+    plans: [
+      { name: 'Aetna', detail: 'Including Meritain Health' },
+      {
+        name: 'BlueCross / BlueShield',
+        detail: 'Premera BlueCross · Regence BlueShield · Out-of-State BCBS Plans, including BCBS FEP',
+      },
+      { name: 'Cigna' },
+    ],
+  },
+  {
+    title: 'Accepted by Ryne Evans Only',
+    plans: [
+      { name: 'FirstChoice Health Network (FCHN)' },
+      {
+        name: 'Kaiser Permanente Health Plan of Washington',
+        detail:
+          'We only accept Kaiser PPO Plans through FCHN. We do not accept Kaiser HMO or single-case agreements with Kaiser.',
+      },
+      { name: 'United Healthcare (Medicaid and Commercial)', detail: 'Including UMR' },
+    ],
+  },
+];
+
+const rateTiers = [
+  {
+    title: 'Student Interns',
+    price: '$35–70',
+    unit: 'per session',
+    note: 'Sliding fee, based on what you can afford.',
+    details: ['Graduate students in supervised training', 'Often the most availability'],
+  },
+  {
+    title: 'Associate Clinicians',
+    price: '$115',
+    unit: 'per session',
+    note: 'Sliding fee available on a case-by-case basis, $50–75/session.',
+    details: ['McCall Evans · Sarah Pompa · Cheryl Snider · Paige Butkey · Julian Macke · Mary Baja · Rachel Loch'],
+    featured: true,
+  },
+  {
+    title: 'Ryne Evans, MA, LMFT',
+    price: '$175',
+    unit: 'per ongoing session',
+    note: 'Intake sessions are $200.',
+    details: ['Founder and clinical supervisor'],
+  },
+];
 
 function RatesFees() {
   return (
     <div className="bg-[#f3f6f9] text-gray-800">
-      {/* Hero Section */}
-      <div
-        className="w-full h-[450px] bg-cover bg-center mt-20 relative flex items-center justify-center"
-        style={{ backgroundImage: `url(${insurance})` }}
-      >
-        <div className="bg-gray-600/80 text-white px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
-          <h1 className="text-3xl md:text-4xl mb-4">Fees & Insurance</h1>
-          <p className="text-base md:text-lg leading-relaxed">
-            We are considered in-network with the following insurance companies. Please note: just because we are in network does not mean we accept your specific plan. It is ultimately your responsibility to confirm the network status of your provider.
-          </p>
+      <SEO
+        title="Rates & Insurance | Mindful Way Therapy"
+        description="Insurance plans accepted at Mindful Way Therapy in Seattle, session rates by therapist, and sliding-scale options."
+        canonical="/contact/ratesfees/"
+      />
+
+      {/* Hero */}
+      <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
+        <img
+          src={insurance}
+          alt="Rates and insurance"
+          className="w-full max-h-[420px] object-cover object-center"
+        />
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
+            <h1 className="text-3xl md:text-4xl mb-4">Rates &amp; Insurance</h1>
+            <p className="text-base md:text-lg leading-relaxed">
+              What therapy costs here, which plans we accept, and what to do if neither works for you.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -30,106 +98,94 @@ function RatesFees() {
         </p>
       </div>
 
-      {/* Insurance Details */}
-      <section className="py-16 px-4 md:px-10 bg-white">
-        <h1 className="text-3xl text-center text-sky-700 mb-6">Insurance Plans We Accept</h1>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      {/* Insurance */}
+      <section className="bg-white py-16 px-4 md:px-10">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl text-center text-sky-700 mb-3">Insurance We Accept</h2>
+          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+            Coverage varies by therapist. Being in network does not mean we accept your specific plan —
+            it is ultimately your responsibility to confirm your provider’s network status with your
+            insurer.
+          </p>
 
-          {/* Accepted by All Providers */}
-          <div>
-            <h2 className="text-xl font-bold mb-4 underline">The Following Plans are Accepted by All Providers</h2>
-            <ul className="text-lg mb-6 list-disc list-inside">
-              <li><strong>Medicaid</strong></li>
-              <ul className="ml-12 list-disc">
-                <li>Molina Medicaid</li>
-              </ul>
-            </ul>
-
-            <h2 className="text-xl font-bold mb-2 underline">The Following Plans are Accepted by All Providers (Except Interns)</h2>
-            <ul className="text-lg list-disc list-inside space-y-2">
-              <li><strong>Aetna</strong>
-                <ul className="ml-12 list-disc">
-                  <li>Including Meritain Health</li>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            {insuranceGroups.map((group) => (
+              <div
+                key={group.title}
+                className="bg-white rounded-2xl shadow-md flex flex-col overflow-hidden border border-gray-100"
+              >
+                <div className="bg-sky-700 px-5 py-4">
+                  <h3 className="text-white font-bold leading-tight">{group.title}</h3>
+                </div>
+                <ul className="p-5 space-y-4">
+                  {group.plans.map((plan) => (
+                    <li key={plan.name}>
+                      <p className="font-semibold text-gray-800">{plan.name}</p>
+                      {plan.detail && (
+                        <p className="text-sm text-gray-600 mt-1 leading-relaxed">{plan.detail}</p>
+                      )}
+                    </li>
+                  ))}
                 </ul>
-              </li>
-              <li><strong>BlueCross/BlueShield</strong>
-                <ul className="ml-12 list-disc">
-                  <li>Premera BlueCross</li>
-                  <li>Regence BlueShield</li>
-                  <li>Out-of-State BCBS Plans, including BCBS FEP</li>
-                </ul>
-              </li>
-              <li><strong>Cigna</strong></li>
-            </ul>
-          </div>
-
-          {/* Accepted by Ryne Only */}
-          <div>
-            <h2 className="text-xl font-bold mb-4 underline">The Following Plans are Only Accepted by Ryne:</h2>
-            <ul className="text-lg list-disc list-inside space-y-4">
-              <li><strong>FirstChoice Health Network (FCHN)</strong></li>
-
-              <li>
-                <strong>Kaiser Permanente Health Plan of Washington</strong>
-                <p className="ml-10 text-md italic mt-1">
-                  Note: We only accept Kaiser PPO Plans through FCHN. We do not accept Kaiser HMO or single-case agreements with Kaiser.
-                </p>
-              </li>
-
-              <li>
-                <strong>United Healthcare (Medicaid and Commercial)</strong>
-                <ul className="ml-10 list-disc">
-                  <li>Including UMR</li>
-                </ul>
-              </li>
-            </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-  
-  {/* Our Fees Section */}
-      <section className="py-16 px-4 md:px-10 bg-white">
-        <h1 className="text-3xl text-center text-sky-700 mb-6">Our Rates and Fees</h1>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
 
-          <div>
-            <h2 className="text-xl font-bold mb-4 underline">Rates for Our Student Interns</h2>
-            <ul className="text-lg mb-6 list-disc list-inside">
-              <li><strong>Sliding Fee Available:</strong> $35-70/session</li>
-            </ul>
+      {/* Rates */}
+      <section className="bg-[#f3f6f9] py-16 px-4 md:px-10">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl text-center text-sky-700 mb-3">Our Rates</h2>
+          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+            Rates depend on your therapist’s licensure. Sliding-scale options are available.
+          </p>
 
-            <div className="text-lg space-y-2 mb-6">
-              <h2 className="text-xl font-bold underline mb-4">Rates for Our Associate Clinicians</h2>
-              <p className="italic">(McCall Evans; Sarah Pompa; Cheryl Snider; Paige Butkey; Julian Macke; Mary Baja; and Rachel Loch)</p>
-              <ul className="list-disc list-inside space-y-2">
-                <li><strong>All Sessions:</strong> $115/session</li>
-                <li className="italic">Sliding Fee Available On a Case by Case Basis of $50-75/session</li>
-              </ul>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            {rateTiers.map((tier) => (
+              <div
+                key={tier.title}
+                className={`bg-white rounded-2xl shadow-md p-6 flex flex-col h-full ${
+                  tier.featured ? 'ring-2 ring-sky-700' : ''
+                }`}
+              >
+                <h3 className="text-lg font-bold text-gray-800">{tier.title}</h3>
+                <p className="mt-4">
+                  <span className="text-3xl font-bold text-sky-700">{tier.price}</span>{' '}
+                  <span className="text-sm text-gray-500">{tier.unit}</span>
+                </p>
+                <p className="text-sm text-gray-700 mt-3">{tier.note}</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                  {tier.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="text-lg space-y-2">
-              <h2 className="text-xl font-bold mb-4 underline">Rates for Ryne Evans, MA, LMFT</h2>
-                <li><strong>Intakes:</strong> $200</li>
-                <li><strong>Ongoing Therapy:</strong> $175</li>
-          </div>
-          </div>
-          {/* Accepted by Ryne Only */}
-          <div className="flex flex-col items-center text-center">
-            <h2 className="text-xl font-bold mb-4">Find Out More About Our Providers</h2>
-            <a
-              href="/providers"
-              className="inline-block bg-sky-700 hover:bg-sky-800 text-white py-2 px-4 rounded shadow transition duration-200 mb-12"
-            >
-              Our Providers
-            </a>
-            <h2 className="text-xl font-bold mb-4">Get Started Today!</h2>
-            <a
-              href="/contact"
-              className="inline-block bg-sky-700 hover:bg-sky-800 text-white py-2 px-4 rounded shadow transition duration-200"
-            >
-              Get Started
-            </a>
-          </div>
+      {/* CTA */}
+      <section className="bg-sky-700 text-white py-16 px-4 md:px-10 text-center">
+        <h2 className="text-3xl font-bold mb-4">Not Sure What You’ll Pay?</h2>
+        <p className="text-lg mb-8 max-w-2xl mx-auto">
+          Tell us your plan in the inquiry form and we will help you sort it out before your first
+          session.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <Link
+            to="/providers"
+            className="bg-white text-sky-700 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100 transition"
+          >
+            Meet Our Providers
+          </Link>
+          <Link
+            to="/contact/therapy"
+            className="bg-white text-sky-700 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100 transition"
+          >
+            Complete Our Inquiry Form
+          </Link>
         </div>
       </section>
     </div>
