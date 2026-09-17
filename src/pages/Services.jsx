@@ -13,7 +13,7 @@ function Services() {
     {
       title: 'Couples & Family Therapy',
       description: 'Our couples and family therapy services support deeper connection, improved communication, and authentic relationships in neurodivergent, LGBTQ+, and non-traditional relationships.',
-      image: 'images/couples-family-therapy-hero.jpg',
+      image: 'images/couples-family-therapy-card.jpg',
       href: '/services/couples-family-therapy',
     },
     {
