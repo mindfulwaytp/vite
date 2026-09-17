@@ -9,7 +9,12 @@ import { fetchProviders, seededProviders } from '../../lib/providers';
 const insuranceGroups = [
   {
     title: 'Accepted by All Providers',
-    plans: [{ name: 'Molina Medicaid', detail: 'A Washington Apple Health (Medicaid) plan' }],
+    plans: [
+      {
+        name: 'Molina Healthcare of Washington',
+        detail: 'A Washington Apple Health (Medicaid) managed care plan, also listed as Molina Apple Health',
+      },
+    ],
   },
   {
     title: 'Accepted by All Providers Except Interns',
@@ -24,7 +29,10 @@ const insuranceGroups = [
         ],
       },
       { name: 'Cigna' },
-      { name: 'United Healthcare (Medicaid)' },
+      {
+        name: 'UnitedHealthcare Community Plan',
+        detail: 'UnitedHealthcare’s Washington Apple Health (Medicaid) managed care plan',
+      },
     ],
   },
   {
@@ -119,8 +127,10 @@ function RatesFees() {
       {/* Affordability entry point */}
       <div className="bg-sky-50 border-b border-sky-100 px-4 py-5">
         <p className="max-w-3xl mx-auto text-center text-gray-700">
-          <strong>Worried about affording therapy?</strong> You may qualify for Apple Health (Washington
-          Medicaid), which covers therapy and can be applied for any time of year.{' '}
+          <strong>Worried about affording therapy?</strong> You may qualify for Washington Apple Health
+          (Medicaid), which covers therapy at no cost and can be applied for any time of year. We are in
+          network with Molina Healthcare and UnitedHealthcare Community Plan, and you can change your Apple
+          Health plan at any time.{' '}
           <Link to="/contact/affording-therapy" className="text-sky-700 underline font-semibold">
             See your options
           </Link>
