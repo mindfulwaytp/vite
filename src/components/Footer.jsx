@@ -63,12 +63,28 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Mindful Way Therapy. All rights reserved.
           </p>
 
-          {/* Policies Link */}
+          {/* Each policy links directly, in one consistent style. The consumer health
+              data policy is its own distinct link, as Washington's My Health My Data
+              Act (RCW 19.373) requires on the homepage. */}
           <Link
-            to="/policies"
+            to="/policies/privacy"
             className="text-sm text-blue-600 underline hover:text-blue-800"
           >
-            Privacy Policy & Terms
+            Privacy Policy
+          </Link>
+
+          <Link
+            to="/policies/terms"
+            className="text-sm text-blue-600 underline hover:text-blue-800"
+          >
+            Terms &amp; Conditions
+          </Link>
+
+          <Link
+            to="/policies/my-health-my-data"
+            className="text-sm text-blue-600 underline hover:text-blue-800"
+          >
+            My Health My Data Act
           </Link>
         </div>
       </div>

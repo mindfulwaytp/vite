@@ -43,6 +43,9 @@ import IntranetLinks from "./pages/intranet/IntranetLinks.jsx";
 import ResourceDetail from "./pages/intranet/ResourceDetail.jsx";
 import IntranetSearch from './pages/intranet/IntranetSearch.jsx';
 import PoliciesLandingPage from './pages/PoliciesLandingPage';
+import MyHealthMyData from './pages/policies/my-health-my-data';
+import PrivacyPolicyPage from './pages/policies/privacy';
+import TermsAndConditionsPage from './pages/policies/terms';
 import BlogIndex from './pages/blog/index.jsx';
 import BlogPostDetail from './pages/blog/BlogPostDetail.jsx';
 import NewBlogPost from './pages/blog/NewBlogPost.jsx';
@@ -133,8 +136,10 @@ function App() {
           path="/neurodiversity/affirming-therapy"
           element={<AffirmingTherapy />}
         />
-        <Route path="/policies" element={<PoliciesLandingPage />}
-        />
+        <Route path="/policies" element={<PoliciesLandingPage />} />
+        <Route path="/policies/my-health-my-data" element={<MyHealthMyData />} />
+        <Route path="/policies/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/policies/terms" element={<TermsAndConditionsPage />} />
 
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/new" element={<NewBlogPost />} />

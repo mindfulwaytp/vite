@@ -48,6 +48,9 @@ const STATIC_ROUTES = [
   '/join-our-team/internships',
   '/join-our-team/eating-disorder-therapist',
   '/policies',
+  '/policies/my-health-my-data',
+  '/policies/privacy',
+  '/policies/terms',
 ];
 
 const CONCURRENCY = 4;

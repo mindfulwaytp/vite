@@ -8,9 +8,9 @@ const PrivacyPolicyContent = () => {
           Legal
         </p>
 
-        <h2 className="mt-2 text-3xl font-bold text-slate-900">
+        <h1 className="mt-2 text-3xl font-bold text-slate-900">
           Privacy Policy
-        </h2>
+        </h1>
 
         <p className="text-slate-600">Mindful Way Therapy, PLLC</p>
 
