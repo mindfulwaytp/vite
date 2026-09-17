@@ -5,10 +5,8 @@ import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { FaCalendarCheck, FaCalendarTimes } from 'react-icons/fa';
 import { TbReportSearch } from 'react-icons/tb';
 import { providerImages } from '../assets/images';
-import { parseProviderRows, seededProviders } from '../lib/providers';
+import { fetchProviders, seededProviders } from '../lib/providers';
 import defaultImage from '../assets/images/provider-example.avif';
-
-const SHEETDB_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a'; // your SheetDB API
 
 function slugify(text) {
   return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
@@ -39,11 +37,8 @@ export default function ProviderProfile() {
     setProvider(seeded);
     setLoading(!seeded);
 
-    fetch(SHEETDB_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        const parsed = parseProviderRows(data);
-
+    fetchProviders()
+      .then((parsed) => {
         const match = parsed.find((p) => slugify(p.name) === slug);
         if (match) {
           console.log('Loaded provider:', match);

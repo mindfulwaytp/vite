@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import insurance from '../../assets/healthins.jpg';
-import { seededProviders } from '../../lib/providers';
+import { fetchProviders, seededProviders } from '../../lib/providers';
 
 // Plans and prices are reproduced exactly as previously published. Update carefully:
 // the sliding-scale figures also appear on /contact/affording-therapy.
@@ -36,18 +36,16 @@ const insuranceGroups = [
   },
 ];
 
-// Licences map to the rate tiers below; names come from the provider data rather than
-// being listed here, which is what let the old hardcoded list go stale.
+// Names come from the provider sheet rather than the page, which is what let the old
+// hardcoded list go stale. Associates aren't listed individually — there are nine and
+// the roster moves; the fully licensed pair is stable enough to name.
 const ASSOCIATE_LICENSES = ['LMHCA', 'LSWAIC'];
 const FULLY_LICENSED_LICENSES = ['LMFT', 'LMHC'];
 
-const namesByLicense = (licenses) =>
-  seededProviders.filter((provider) => licenses.includes(provider.license)).map((p) => p.name);
+const namesByLicense = (providers, licenses) =>
+  providers.filter((provider) => licenses.includes(provider.license)).map((p) => p.name);
 
-const associateNames = namesByLicense(ASSOCIATE_LICENSES);
-const fullyLicensedNames = namesByLicense(FULLY_LICENSED_LICENSES);
-
-const rateTiers = [
+const buildRateTiers = (providers) => [
   {
     title: 'Student Interns',
     price: '$35–70',
@@ -60,7 +58,9 @@ const rateTiers = [
     price: '$115',
     unit: 'per session',
     note: 'Sliding fee available on a case-by-case basis, $50–75/session.',
-    details: [associateNames.join(' · ')],
+    details: [
+      `${namesByLicense(providers, ASSOCIATE_LICENSES).length} associate-licensed clinicians working under supervision`,
+    ],
     featured: true,
   },
   {
@@ -68,11 +68,29 @@ const rateTiers = [
     price: '$175',
     unit: 'per ongoing session',
     note: 'Intake sessions are $200.',
-    details: [fullyLicensedNames.join(' · ')],
+    details: [namesByLicense(providers, FULLY_LICENSED_LICENSES).join(' · ')],
   },
 ];
 
 function RatesFees() {
+  const [providers, setProviders] = useState(seededProviders);
+
+  // Seeded from the build-time snapshot so the page renders immediately, then
+  // updated from the sheet — no redeploy needed when the roster changes.
+  useEffect(() => {
+    let alive = true;
+    fetchProviders()
+      .then((rows) => {
+        if (alive && rows.length) setProviders(rows);
+      })
+      .catch((err) => console.error('Error fetching providers:', err));
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const rateTiers = buildRateTiers(providers);
+
   return (
     <div className="bg-[#f3f6f9] text-gray-800">
       <SEO

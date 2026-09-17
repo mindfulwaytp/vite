@@ -6,7 +6,7 @@ import { TbReportSearch } from 'react-icons/tb';
 import { IoMdVideocam } from 'react-icons/io';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { providerImages } from '../assets/images';
-import { parseProviderRows, seededProviders } from '../lib/providers';
+import { fetchProviders, seededProviders } from '../lib/providers';
 import defaultImage from '../assets/images/provider-example.avif';
 
 import '../Providers.css';
@@ -72,11 +72,8 @@ const ProvidersDirectory = () => {
   const itemsPerPage = 6;
 
   useEffect(() => {
-    fetch('https://sheetdb.io/api/v1/zpl35ateeao4a')
-      .then((res) => res.json())
-      .then((data) => {
-        const parsed = parseProviderRows(data);
-
+    fetchProviders()
+      .then((parsed) => {
         setAllTherapists(parsed);
         setLoading(false);
       })
