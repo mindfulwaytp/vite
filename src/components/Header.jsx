@@ -14,7 +14,7 @@ export default function Header() {
     {
       label: 'Neurodiversity', path: '/neurodiversity',
       subMenu: [
-        { label: 'Neurodivergent Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
+        { label: 'Autism & ADHD Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
         { label: 'Autism & ADHD Assessments', path: '/neurodiversity/assessments' },
         { label: 'Neurodivergent Resources', path: '/neurodiversity/neurodiversity-resources' },
       ],
@@ -28,8 +28,8 @@ export default function Header() {
         { label: 'Couples & Family Therapy', path: '/services/couples-family-therapy' },
         { label: 'Polyamory & Non-Monogamy Support', path: '/services/polyamory-non-monogamy' },
         { label: 'Queer Affirming Therapy', path: '/services/queer-affirming-therapy' },
-        { label: 'ADHD & Autism Evaluations', path: '/services/adhd-autism-evaluations' },
-        { label: 'Neurodivergent Affirming Therapy', path: '/services/neurodivergent-affirming-therapy' },
+        { label: 'Autism & ADHD Assessments', path: '/neurodiversity/assessments' },
+        { label: 'Autism & ADHD Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
         { label: 'Groups', path: '/services/groups' },
       ],
     },

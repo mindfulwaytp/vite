@@ -24,8 +24,6 @@ import IndividualTherapy from './pages/services/individual-therapy.jsx';
 import CouplesFamilyTherapy from './pages/services/couples-family-therapy.jsx';
 import PolyamoryNonMonogamy from './pages/services/polyamory-non-monogamy.jsx';
 import QueerAffirmingTherapy from './pages/services/queer-affirming-therapy.jsx';
-import ADHDAutismEvaluations from './pages/services/adhd-autism-evaluations.jsx';
-import NeurodivergentAffirmingTherapy from './pages/services/neurodivergent-affirming-therapy.jsx';
 import Groups from './pages/services/groups.jsx';
 import TTRPGGroup from './pages/services/groups/ttrpg.jsx';
 import TherapyForm from './pages/Contact/TherapyForm';
@@ -118,8 +116,6 @@ function App() {
         <Route path="/services/couples-family-therapy" element={<CouplesFamilyTherapy />} />
         <Route path="/services/polyamory-non-monogamy" element={<PolyamoryNonMonogamy />} />
         <Route path="/services/queer-affirming-therapy" element={<QueerAffirmingTherapy />} />
-        <Route path="/services/adhd-autism-evaluations" element={<ADHDAutismEvaluations />} />
-        <Route path="/services/neurodivergent-affirming-therapy" element={<NeurodivergentAffirmingTherapy />} />
         <Route path="/services/groups" element={<Groups />} />
         <Route path="/services/groups/ttrpg" element={<TTRPGGroup />} />
         <Route path="/contact/ratesfees" element={<RatesFees />} />

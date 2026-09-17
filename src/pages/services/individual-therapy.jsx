@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO';
+import FaqAccordion from '../../components/FaqAccordion';
 import ServicesLayout from '../../components/ServicesLayout';
+import ServiceHero from '../../components/ServiceHero';
+import ServiceSection, { ServiceTextSection } from '../../components/ServiceSection';
 import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../../data/organization';
 
 const PAGE_URL = `${SITE_URL}/services/individual-therapy/`;
@@ -78,19 +81,6 @@ const jsonLd = {
   ],
 };
 
-function SectionCard({ title, children }) {
-  return (
-    <div className="bg-white rounded-2xl shadow-md flex flex-col overflow-hidden">
-      <div className="bg-sky-700 px-5 py-4">
-        <h2 className="text-white text-xl font-bold leading-tight">{title}</h2>
-      </div>
-      <div className="p-5 text-gray-700 leading-relaxed space-y-4">
-        {children}
-      </div>
-    </div>
-  );
-}
-
 function IndividualTherapy() {
   return (
     <div className="bg-[#f3f6f9] text-gray-800">
@@ -101,27 +91,22 @@ function IndividualTherapy() {
         jsonLd={jsonLd}
       />
 
-      {/* Hero Section */}
-      <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
-        <img
-          src="/images/individual2.jpg"
-          alt="Individual Therapy"
-          className="w-full max-h-[420px] object-cover object-center"
-        />
-        <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
-            <h1 className="text-3xl md:text-4xl mb-4">Individual Therapy</h1>
-            <p className="text-base md:text-lg leading-relaxed">
-              Serving clients in Seattle, WA and via telehealth throughout Washington
-            </p>
-          </div>
-        </div>
-      </div>
+      <ServiceHero
+        image="/images/individual-therapy-hero.jpg"
+        alt="A person in an individual therapy session"
+        title="Individual Therapy"
+        subtitle="Serving clients in Seattle, WA and via telehealth throughout Washington"
+      />
 
       {/* Main Content with Sidebar */}
       <ServicesLayout>
         <div className="space-y-8">
-          <SectionCard title="You Don’t Have to Figure This Out Alone">
+          <ServiceSection
+            title="You Don’t Have to Figure This Out Alone"
+            image="/images/individual-therapy-1.avif"
+            alt="A therapist and client talking"
+            tinted
+          >
             <p>
               Maybe you’ve been carrying more than you can hold. Maybe you’re burned out, stuck in cycles that
               don’t serve you, or just tired of masking your way through the day. Whatever brought you here, you
@@ -136,9 +121,9 @@ function IndividualTherapy() {
               don’t believe in one-size-fits-all treatment. Your therapist will meet you where you are and build a
               plan that reflects your goals, your identity, and the way your brain works.
             </p>
-          </SectionCard>
+          </ServiceSection>
 
-          <SectionCard title="What We Can Work On Together">
+          <ServiceTextSection title="What We Can Work On Together">
             <p>
               Our therapists work with a wide range of concerns, and many specialize in the experiences of
               neurodivergent and LGBTQ+ people. Some of the areas we commonly support include:
@@ -152,9 +137,31 @@ function IndividualTherapy() {
               Not sure where your concerns fit? That’s okay — you don’t need to have it all figured out before
               reaching out.
             </p>
-          </SectionCard>
+          </ServiceTextSection>
 
-          <SectionCard title="What to Expect">
+          <ServiceSection
+            title="What to Expect"
+            image="/images/individual-therapy-2.jpg"
+            alt="A therapist and client in conversation"
+            reverse
+            tinted
+            footer={
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/providers"
+                  className="flex-1 text-center border-2 border-sky-700 text-sky-700 font-semibold py-2 px-5 rounded-lg hover:bg-sky-50 transition"
+                >
+                  Meet Our Therapists
+                </Link>
+                <Link
+                  to="/contact/therapy"
+                  className="flex-1 text-center bg-sky-700 border-2 border-sky-700 text-white font-semibold py-2 px-5 rounded-lg shadow hover:bg-sky-800 hover:border-sky-800 transition"
+                >
+                  Complete Our Inquiry Form
+                </Link>
+              </div>
+            }
+          >
             <p>
               Getting started begins with our Therapy Inquiry &amp; Intake Form. If you’re also interested in an
               ADHD or autism evaluation, complete the therapy form first — you’ll be directed to the evaluation form
@@ -177,33 +184,11 @@ function IndividualTherapy() {
               BlueShield, Cigna, and Molina Medicaid, though coverage varies by plan and by therapist. Self-pay and
               sliding-scale options are also available.
             </p>
+          </ServiceSection>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Link
-                to="/providers"
-                className="flex-1 text-center border-2 border-sky-700 text-sky-700 font-semibold py-2 px-5 rounded-lg hover:bg-sky-50 transition"
-              >
-                Meet Our Therapists
-              </Link>
-              <Link
-                to="/contact/therapy"
-                className="flex-1 text-center bg-sky-700 border-2 border-sky-700 text-white font-semibold py-2 px-5 rounded-lg shadow hover:bg-sky-800 hover:border-sky-800 transition"
-              >
-                Complete Our Inquiry Form
-              </Link>
-            </div>
-          </SectionCard>
-
-          <SectionCard title="Frequently Asked Questions">
-            <div className="divide-y divide-gray-200">
-              {faqs.map((faq) => (
-                <div key={faq.question} className="py-4 first:pt-0 last:pb-0">
-                  <h3 className="font-semibold text-gray-800 mb-1">{faq.question}</h3>
-                  <p>{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </SectionCard>
+          <ServiceTextSection title="Frequently Asked Questions">
+            <FaqAccordion items={faqs} />
+          </ServiceTextSection>
         </div>
       </ServicesLayout>
 

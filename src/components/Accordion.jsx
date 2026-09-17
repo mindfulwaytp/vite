@@ -269,6 +269,7 @@ const sections = [
       )
     },
   {
+    id: 'costs',
     title: "Asssment Costs, FAQs and Disclosures",
     content: (
       <div className="space-y-6">

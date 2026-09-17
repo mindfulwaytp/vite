@@ -6,8 +6,10 @@ const serviceLinks = [
   { label: 'Couples & Family Therapy', path: '/services/couples-family-therapy' },
   { label: 'Polyamory & Non-Monogamy', path: '/services/polyamory-non-monogamy' },
   { label: 'Queer Affirming Therapy', path: '/services/queer-affirming-therapy' },
-  { label: 'ADHD & Autism Evaluations', path: '/services/adhd-autism-evaluations' },
-  { label: 'Neurodivergent Affirming Therapy', path: '/services/neurodivergent-affirming-therapy' },
+  // These two live under /neurodiversity — the services URLs were empty duplicates
+  // and now 301 here. Listed in the services nav so the section still reads complete.
+  { label: 'Autism & ADHD Assessments', path: '/neurodiversity/assessments' },
+  { label: 'Autism & ADHD Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
   { label: 'Groups', path: '/services/groups' },
 ];
 

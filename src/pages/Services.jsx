@@ -7,43 +7,43 @@ function Services() {
     {
       title: 'Individual Therapy',
       description: 'Our individual therapy services provide a supportive space where you can explore your identity, process life challenges, and build emotional resilience.',
-      image: 'images/individual.avif',
+      image: 'images/individual-therapy-card.avif',
       href: '/services/individual-therapy',
     },
     {
       title: 'Couples & Family Therapy',
       description: 'Our couples and family therapy services support deeper connection, improved communication, and authentic relationships in neurodivergent, LGBTQ+, and non-traditional relationships.',
-      image: 'images/couples.avif',
+      image: 'images/couples-family-therapy-hero.jpg',
       href: '/services/couples-family-therapy',
     },
     {
       title: 'Polyamory & Non-Monogamy Support',
       description: 'We support individuals, couples, and relationship constellations exploring polyamory, ethical non-monogamy, or open relationships in a safe, nonjudgmental space.',
-      image: 'images/polyamory.jpeg',
+      image: 'images/polyamory-non-monogamy-hero.jpeg',
       href: '/services/polyamory-non-monogamy',
     },
     {
       title: 'Queer Affirming Therapy',
       description: 'Our queer-affirming therapy provides a safe, supportive space for LGBTQ+ individuals to explore identity, relationships, mental health, and self-worth without judgment.',
-      image: 'images/lgbtqtherapy.jpg',
+      image: 'images/queer-affirming-therapy-hero.jpg',
       href: '/services/queer-affirming-therapy',
     },
     {
-      title: 'ADHD & Autism Evaluations',
-      description: 'We offer comprehensive ADHD and autism evaluations for teens and adults using a neurodivergent-affirming approach focused on clarity, self-awareness, and personalized support.',
-      image: 'images/ndassessment.avif',
-      href: '/services/adhd-autism-evaluations',
+      title: 'Autism & ADHD Assessments',
+      description: 'We offer comprehensive autism and ADHD assessments for teens and adults using a neurodivergent-affirming approach focused on clarity, self-awareness, and personalized support.',
+      image: 'images/autism-adhd-assessments-card.avif',
+      href: '/neurodiversity/assessments',
     },
     {
-      title: 'Neurodivergent Affirming Therapy',
+      title: 'Autism & ADHD Affirming Therapy',
       description: 'We specialize in working with autistic and ADHD individuals across all ages using a strengths-based, neurodiversity-affirming approach.',
-      image: 'images/ndservices.avif',
-      href: '/services/neurodivergent-affirming-therapy',
+      image: 'images/autism-adhd-therapy-card.avif',
+      href: '/neurodiversity/affirming-therapy',
     },
     {
       title: 'Groups',
       description: '',
-      image: 'images/therapycouch.jpg',
+      image: 'images/groups-hero.jpg',
       href: '/services/groups',
     },
   ];
@@ -53,7 +53,7 @@ function Services() {
       {/* Hero Section */}
       <div
         className="w-full h-[450px] bg-cover bg-center mt-20 relative flex items-center justify-center"
-        style={{ backgroundImage: "url('/images/therapycouch.jpg')" }}
+        style={{ backgroundImage: "url('/images/groups-hero.jpg')" }}
       >
         <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
           <h1 className="text-3xl md:text-4xl mb-4">Our Services</h1>

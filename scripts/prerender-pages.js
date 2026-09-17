@@ -32,8 +32,6 @@ const STATIC_ROUTES = [
   '/services/couples-family-therapy',
   '/services/polyamory-non-monogamy',
   '/services/queer-affirming-therapy',
-  '/services/adhd-autism-evaluations',
-  '/services/neurodivergent-affirming-therapy',
   '/services/groups',
   '/services/groups/ttrpg',
   '/contact',
