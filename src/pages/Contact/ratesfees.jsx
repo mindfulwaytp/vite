@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import insurance from '../../assets/healthins.jpg';
+import { seededProviders } from '../../lib/providers';
 
 // Plans and prices are reproduced exactly as previously published. Update carefully:
 // the sliding-scale figures also appear on /contact/affording-therapy.
@@ -16,24 +17,35 @@ const insuranceGroups = [
       { name: 'Aetna', detail: 'Including Meritain Health' },
       {
         name: 'BlueCross / BlueShield',
-        detail: 'Premera BlueCross · Regence BlueShield · Out-of-State BCBS Plans, including BCBS FEP',
+        items: [
+          'Premera BlueCross',
+          'Regence BlueShield',
+          'Out-of-State BCBS Plans, including BCBS FEP',
+        ],
       },
       { name: 'Cigna' },
+      { name: 'United Healthcare (Medicaid)' },
     ],
   },
   {
-    title: 'Accepted by Ryne Evans Only',
+    title: 'Accepted by Fully Licensed Providers Only',
     plans: [
-      { name: 'FirstChoice Health Network (FCHN)' },
-      {
-        name: 'Kaiser Permanente Health Plan of Washington',
-        detail:
-          'We only accept Kaiser PPO Plans through FCHN. We do not accept Kaiser HMO or single-case agreements with Kaiser.',
-      },
-      { name: 'United Healthcare (Medicaid and Commercial)', detail: 'Including UMR' },
+      { name: 'United Healthcare Marketplace', detail: 'Including UMR' },
+      { name: 'Molina Marketplace' },
     ],
   },
 ];
+
+// Licences map to the rate tiers below; names come from the provider data rather than
+// being listed here, which is what let the old hardcoded list go stale.
+const ASSOCIATE_LICENSES = ['LMHCA', 'LSWAIC'];
+const FULLY_LICENSED_LICENSES = ['LMFT', 'LMHC'];
+
+const namesByLicense = (licenses) =>
+  seededProviders.filter((provider) => licenses.includes(provider.license)).map((p) => p.name);
+
+const associateNames = namesByLicense(ASSOCIATE_LICENSES);
+const fullyLicensedNames = namesByLicense(FULLY_LICENSED_LICENSES);
 
 const rateTiers = [
   {
@@ -48,15 +60,15 @@ const rateTiers = [
     price: '$115',
     unit: 'per session',
     note: 'Sliding fee available on a case-by-case basis, $50–75/session.',
-    details: ['McCall Evans · Sarah Pompa · Cheryl Snider · Paige Butkey · Julian Macke · Mary Baja · Rachel Loch'],
+    details: [associateNames.join(' · ')],
     featured: true,
   },
   {
-    title: 'Ryne Evans, MA, LMFT',
+    title: 'Fully Licensed Providers',
     price: '$175',
     unit: 'per ongoing session',
     note: 'Intake sessions are $200.',
-    details: ['Founder and clinical supervisor'],
+    details: [fullyLicensedNames.join(' · ')],
   },
 ];
 
@@ -123,6 +135,13 @@ function RatesFees() {
                       <p className="font-semibold text-gray-800">{plan.name}</p>
                       {plan.detail && (
                         <p className="text-sm text-gray-600 mt-1 leading-relaxed">{plan.detail}</p>
+                      )}
+                      {plan.items && (
+                        <ul className="list-disc pl-5 mt-1 space-y-1 text-sm text-gray-600 marker:text-sky-700">
+                          {plan.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
                       )}
                     </li>
                   ))}
