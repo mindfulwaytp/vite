@@ -9,8 +9,14 @@ export default defineConfig({
   plugins: [
     react(),
     // Runs netlify/functions/* (with Netlify env vars) inside the Vite dev server.
-    // Edge functions are off: the site has none, and they need a Deno runtime.
-    netlify({ edgeFunctions: { enabled: false } }),
+    // Everything else is off: edge functions need a Deno runtime the site doesn't use,
+    // and static-file/redirect emulation shadows Vite's own serving — it served stale
+    // pre-rendered pages out of dist/ when they existed, and raw .jsx when they didn't.
+    netlify({
+      edgeFunctions: { enabled: false },
+      staticFiles: { enabled: false },
+      redirects: { enabled: false },
+    }),
     svgr(),
     viteStaticCopy({
       targets: [
