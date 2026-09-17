@@ -13,7 +13,7 @@ function QueerAffirmingTherapy() {
       {/* Hero Section */}
       <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
         <img
-          src="/images/lgbtqtherapy.jpg"
+          src="/images/queer-affirming-therapy-hero.jpg"
           alt="Queer Affirming Therapy"
           className="w-full max-h-[420px] object-cover object-center"
         />

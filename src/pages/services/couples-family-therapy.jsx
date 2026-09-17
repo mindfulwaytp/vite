@@ -13,7 +13,7 @@ function CouplesFamilyTherapy() {
       {/* Hero Section */}
       <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
         <img
-          src="/images/couples.avif"
+          src="/images/couples-family-therapy-hero.jpg"
           alt="Couples and Family Therapy"
           className="w-full max-h-[420px] object-cover object-center"
         />

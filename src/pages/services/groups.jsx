@@ -39,7 +39,7 @@ function Groups() {
       {/* Hero Section */}
       <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
         <img
-          src="/images/therapycouch.jpg"
+          src="/images/groups-hero.jpg"
           alt="Groups"
           className="w-full max-h-[420px] object-cover object-center"
         />

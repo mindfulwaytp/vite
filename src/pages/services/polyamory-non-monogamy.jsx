@@ -13,7 +13,7 @@ function PolyamoryNonMonogamy() {
       {/* Hero Section */}
       <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
         <img
-          src="/images/polyamory.jpeg"
+          src="/images/polyamory-non-monogamy-hero.jpeg"
           alt="Polyamory and Non-Monogamy Support"
           className="w-full max-h-[420px] object-cover object-center"
         />
