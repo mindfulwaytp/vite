@@ -23,6 +23,7 @@ function ImagePlaceholder({ expectedFile }) {
 }
 
 export default function ServiceSection({
+  id,
   title,
   image,
   alt,
@@ -40,7 +41,8 @@ export default function ServiceSection({
 
   return (
     <section
-      className={`rounded-2xl shadow-sm p-6 md:p-8 ${tinted ? 'bg-gray-100' : 'bg-white'}`}
+      id={id}
+      className={`rounded-2xl shadow-sm p-6 md:p-8 scroll-mt-28 ${tinted ? 'bg-gray-100' : 'bg-white'}`}
     >
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div className={reverse ? 'md:order-2' : ''}>
@@ -69,10 +71,11 @@ export default function ServiceSection({
 
 // Full-width text block for sections that don't get a photo — keeps the same
 // card treatment so the page still reads as one rhythm.
-export function ServiceTextSection({ title, tinted = false, children }) {
+export function ServiceTextSection({ id, title, tinted = false, children }) {
   return (
     <section
-      className={`rounded-2xl shadow-sm p-6 md:p-8 ${tinted ? 'bg-gray-100' : 'bg-white'}`}
+      id={id}
+      className={`rounded-2xl shadow-sm p-6 md:p-8 scroll-mt-28 ${tinted ? 'bg-gray-100' : 'bg-white'}`}
     >
       <h2 className="text-2xl font-semibold mb-4 text-sky-700">{title}</h2>
       <div className="text-lg text-gray-700 leading-relaxed space-y-4">{children}</div>
