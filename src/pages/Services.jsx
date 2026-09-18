@@ -1,55 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { SERVICE_LINKS } from '../data/navigation';
 
 function Services() {
-  const services = [
-    {
-      title: 'Individual Therapy',
-      description: 'Our individual therapy services provide a supportive space where you can explore your identity, process life challenges, and build emotional resilience.',
-      image: 'images/individual-therapy-card.avif',
-      href: '/services/individual-therapy',
-    },
-    {
-      title: 'Couples & Family Therapy',
-      description: 'Our couples and family therapy services support deeper connection, improved communication, and authentic relationships in neurodivergent, LGBTQ+, and non-traditional relationships.',
-      image: 'images/couples-family-therapy-card.jpg',
-      href: '/services/couples-family-therapy',
-    },
-    {
-      title: 'Polyamory & Non-Monogamy Support',
-      description: 'We support individuals, couples, and relationship constellations exploring polyamory, ethical non-monogamy, or open relationships in a safe, nonjudgmental space.',
-      image: 'images/polyamory-non-monogamy-hero.jpeg',
-      href: '/services/polyamory-non-monogamy',
-    },
-    {
-      title: 'Queer Affirming Therapy',
-      description: 'Our queer-affirming therapy provides a safe, supportive space for LGBTQ+ individuals to explore identity, relationships, mental health, and self-worth without judgment.',
-      image: 'images/queer-affirming-therapy-hero.jpg',
-      href: '/services/queer-affirming-therapy',
-    },
-    {
-      title: 'Autism & ADHD Assessments',
-      description: 'We offer comprehensive autism and ADHD assessments for teens and adults using a neurodivergent-affirming approach focused on clarity, self-awareness, and personalized support.',
-      image: 'images/autism-adhd-assessments-card.avif',
-      href: '/neurodiversity/assessments',
-    },
-    {
-      title: 'Autism & ADHD Affirming Therapy',
-      description: 'We specialize in working with autistic and ADHD individuals across all ages using a strengths-based, neurodiversity-affirming approach.',
-      image: 'images/autism-adhd-therapy-card.avif',
-      href: '/neurodiversity/affirming-therapy',
-    },
-    {
-      title: 'Groups',
-      description: '',
-      image: 'images/groups-hero.jpg',
-      href: '/services/groups',
-    },
-  ];
+  const services = SERVICE_LINKS;
 
   return (
     <div className="bg-[#f3f6f9] text-gray-800">
+      <SEO
+        title="Therapy Services in Seattle, WA | Mindful Way Therapy"
+        description="Individual therapy, couples and family therapy, groups, and autism and ADHD assessments in Seattle and by telehealth across Washington."
+        canonical="/services/"
+      />
+
       {/* Hero Section */}
       <div
         className="w-full h-[450px] bg-cover bg-center mt-20 relative flex items-center justify-center"
@@ -67,9 +31,17 @@ function Services() {
       {/* Service Cards */}
       <section className="bg-white py-20 px-4 md:px-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-8">
-          <h2 className="text-3xl font-bold text-center text-sky-700 mb-10 col-span-full">
-            What We Offer
-          </h2>
+          <div className="col-span-full text-center mb-10">
+            <h2 className="text-3xl font-bold text-sky-700 mb-4">What We Offer</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Looking for a particular area of focus instead — autism and ADHD, LGBTQ+ care, or
+              non-monogamy?{' '}
+              <Link to="/specialties" className="text-sky-700 underline font-semibold">
+                See our specialties
+              </Link>
+              .
+            </p>
+          </div>
 
           {services.map((s, index) => (
             <div
@@ -79,14 +51,14 @@ function Services() {
               <div className="w-full aspect-[5/6] max-w-[300px] mx-auto overflow-hidden rounded-lg mb-4">
                 <img
                   src={s.image}
-                  alt={s.title}
+                  alt={s.label}
                   className="w-full h-full object-cover rounded-lg shadow-sm"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{s.title}</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{s.label}</h3>
               <p className="text-gray-700 text-base leading-relaxed mb-4">{s.description}</p>
               <Link
-                to={s.href}
+                to={s.path}
                 className="mt-auto bg-sky-700 text-white text-sm font-semibold py-2 px-5 rounded shadow hover:bg-sky-800 transition"
               >
                 Learn More
@@ -116,7 +88,7 @@ function Services() {
             Get Started
           </a>
           <a
-            href="/contact/ratesfees"
+            href="/rates-fees"
             className="bg-white text-sky-700 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100 transition"
           >
             View Rates &amp; Fees

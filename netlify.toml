@@ -20,17 +20,66 @@
   to = "/providers/james-mccall-evans"
   status = 301
 
-# These two service pages were never written — empty stubs that duplicated the
-# fuller /neurodiversity pages and split ranking signal between two URLs with
-# identical titles. Consolidated onto /neurodiversity.
+# Service/specialty URL history. Every rule points at the FINAL destination —
+# never at another redirect — so no request is ever bounced twice.
+#
+# Two /services pages were empty stubs duplicating fuller pages; the rest moved
+# when services (how care is delivered) and specialties (what we help with)
+# were split into separate sections.
+
+# -> /services/autism-adhd-assessments
 [[redirects]]
   from = "/services/adhd-autism-evaluations"
-  to = "/neurodiversity/assessments/"
+  to = "/services/autism-adhd-assessments/"
   status = 301
 
 [[redirects]]
+  from = "/neurodiversity/assessments"
+  to = "/services/autism-adhd-assessments/"
+  status = 301
+
+# -> /specialties/autism-adhd-therapy
+[[redirects]]
   from = "/services/neurodivergent-affirming-therapy"
-  to = "/neurodiversity/affirming-therapy/"
+  to = "/specialties/autism-adhd-therapy/"
+  status = 301
+
+[[redirects]]
+  from = "/neurodiversity/affirming-therapy"
+  to = "/specialties/autism-adhd-therapy/"
+  status = 301
+
+# -> /specialties/*
+[[redirects]]
+  from = "/services/queer-affirming-therapy"
+  to = "/specialties/queer-affirming-therapy/"
+  status = 301
+
+[[redirects]]
+  from = "/services/polyamory-non-monogamy"
+  to = "/specialties/polyamory-non-monogamy/"
+  status = 301
+
+# Cost and resource pages moved out from under /contact and /neurodiversity.
+# "ratesfees" also had no separator, so "rates" and "fees" were invisible as words.
+[[redirects]]
+  from = "/contact/ratesfees"
+  to = "/rates-fees/"
+  status = 301
+
+[[redirects]]
+  from = "/contact/affording-therapy"
+  to = "/affording-therapy/"
+  status = 301
+
+[[redirects]]
+  from = "/neurodiversity/neurodiversity-resources"
+  to = "/resources/"
+  status = 301
+
+[[redirects]]
+  from = "/neurodiversity/neurodiversity-resources/*"
+  to = "/resources/:splat"
   status = 301
 
 # SPA fallback — non-forced so static files (e.g., pre-rendered blog posts) are served first.

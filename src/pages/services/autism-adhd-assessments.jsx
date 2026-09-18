@@ -7,12 +7,12 @@ import ServiceHero from '../../components/ServiceHero';
 import ServiceSection, { ServiceTextSection } from '../../components/ServiceSection';
 import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../../data/organization';
 
-// pages/neurodiversity/assessments.jsx
+// pages/services/autism-adhd-assessments.jsx
 //
 // Lives under /neurodiversity but wears the services layout — see the note in
 // affirming-therapy.jsx.
 
-const PAGE_URL = `${SITE_URL}/neurodiversity/assessments/`;
+const PAGE_URL = `${SITE_URL}/services/autism-adhd-assessments/`;
 const DESCRIPTION =
   'Autism and ADHD assessments for adults and teens in Seattle and by telehealth across Washington. Affirming, strengths-based evaluations. Insurance and Apple Health (Medicaid) accepted.';
 
@@ -79,7 +79,7 @@ const AssessmentsPage = () => {
       <SEO
         title="Adult Autism & ADHD Assessment in Seattle, WA"
         description={DESCRIPTION}
-        canonical="/neurodiversity/assessments/"
+        canonical="/services/autism-adhd-assessments/"
         image="/images/autism-adhd-assessments-hero.avif"
         jsonLd={jsonLd}
       />
@@ -214,7 +214,7 @@ const AssessmentsPage = () => {
             Schedule an Evaluation
           </Link>
           <Link
-            to="/contact/ratesfees"
+            to="/rates-fees"
             className="bg-white text-sky-700 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100 transition"
           >
             Rates &amp; Fees

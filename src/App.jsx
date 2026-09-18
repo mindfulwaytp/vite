@@ -14,20 +14,22 @@ import Internships from './pages/join-our-team/internships';
 import ScrollToTop from './components/ScrollToTop';
 import Contact from './pages/Contact';
 import Neurodiversity from './pages/Neurodiversity';
-import CategoryResourcePage from './pages/neurodiversity/neurodiversity-resources/CategoryResourcePage';
-import NeurodiversityResources from './pages/neurodiversity/neurodiversity-resources/index';
-import AssessmentsPage from './pages/neurodiversity/assessments';
-import AffirmingTherapy from './pages/neurodiversity/affirming-therapy.jsx';
+import CategoryResourcePage from './pages/resources/CategoryResourcePage';
+import NeurodiversityResources from './pages/resources/index';
+import AssessmentsPage from './pages/services/autism-adhd-assessments';
+import AffirmingTherapy from './pages/specialties/autism-adhd-therapy.jsx';
 import Services from './pages/Services.jsx';
-import RatesFees from './pages/Contact/ratesfees.jsx';
+import HowWeHelp from './pages/HowWeHelp.jsx';
+import RatesFees from './pages/rates-fees.jsx';
 import IndividualTherapy from './pages/services/individual-therapy.jsx';
 import CouplesFamilyTherapy from './pages/services/couples-family-therapy.jsx';
-import PolyamoryNonMonogamy from './pages/services/polyamory-non-monogamy.jsx';
-import QueerAffirmingTherapy from './pages/services/queer-affirming-therapy.jsx';
+import PolyamoryNonMonogamy from './pages/specialties/polyamory-non-monogamy.jsx';
+import QueerAffirmingTherapy from './pages/specialties/queer-affirming-therapy.jsx';
+import Specialties from './pages/Specialties.jsx';
 import Groups from './pages/services/groups.jsx';
 import TTRPGGroup from './pages/services/groups/ttrpg.jsx';
 import TherapyForm from './pages/Contact/TherapyForm';
-import AffordingTherapy from './pages/Contact/affording-therapy';
+import AffordingTherapy from './pages/affording-therapy';
 import EvaluationForm from './pages/Contact/EvaluationForm';
 import AdventuringParty from './pages/Contact/AdventuringParty.jsx';
 import Footer from './components/Footer';
@@ -97,7 +99,7 @@ function App() {
         <Route path="/providers" element={<ProviderDirectory />} />
         <Route path="/providers/:slug" element={<ProviderProfile />} />
 
-        <Route path="/neurodiversity/assessments" element={<AssessmentsPage />} />
+        <Route path="/services/autism-adhd-assessments" element={<AssessmentsPage />} />
 
         <Route path="/join-our-team" element={<JobBoard />} />
         <Route path="/join-our-team/generalist-therapist" element={<GeneralistTherapistJob />} />
@@ -111,27 +113,29 @@ function App() {
         <Route path="/contact/evaluation" element={<EvaluationForm />} />
         <Route path="/contact/adventuring-party" element={<AdventuringParty />} />
 
+        <Route path="/how-we-help" element={<HowWeHelp />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/individual-therapy" element={<IndividualTherapy />} />
         <Route path="/services/couples-family-therapy" element={<CouplesFamilyTherapy />} />
-        <Route path="/services/polyamory-non-monogamy" element={<PolyamoryNonMonogamy />} />
-        <Route path="/services/queer-affirming-therapy" element={<QueerAffirmingTherapy />} />
+        <Route path="/specialties" element={<Specialties />} />
+        <Route path="/specialties/polyamory-non-monogamy" element={<PolyamoryNonMonogamy />} />
+        <Route path="/specialties/queer-affirming-therapy" element={<QueerAffirmingTherapy />} />
         <Route path="/services/groups" element={<Groups />} />
         <Route path="/services/groups/ttrpg" element={<TTRPGGroup />} />
-        <Route path="/contact/ratesfees" element={<RatesFees />} />
-        <Route path="/contact/affording-therapy" element={<AffordingTherapy />} />
+        <Route path="/rates-fees" element={<RatesFees />} />
+        <Route path="/affording-therapy" element={<AffordingTherapy />} />
 
         <Route path="/neurodiversity" element={<Neurodiversity />} />
         <Route
-          path="/neurodiversity/neurodiversity-resources"
+          path="/resources"
           element={<NeurodiversityResources />}
         />
         <Route
-          path="/neurodiversity/neurodiversity-resources/:slug"
+          path="/resources/:slug"
           element={<CategoryResourcePage />}
         />
         <Route
-          path="/neurodiversity/affirming-therapy"
+          path="/specialties/autism-adhd-therapy"
           element={<AffirmingTherapy />}
         />
         <Route path="/policies" element={<PoliciesLandingPage />} />

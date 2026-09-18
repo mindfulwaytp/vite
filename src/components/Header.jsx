@@ -12,27 +12,20 @@ export default function Header() {
     { label: 'Home', path: '/' },
     { label: 'Providers', path: '/providers' },
     {
-      label: 'Neurodiversity', path: '/neurodiversity',
+      // Hub menu: points at landing pages rather than listing every leaf. Each
+      // landing page does the work of explaining and listing its own children,
+      // which keeps the nav short and gives those pages a reason to exist.
+      label: 'How We Help',
+      path: '/how-we-help',
       subMenu: [
-        { label: 'Autism & ADHD Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
-        { label: 'Autism & ADHD Assessments', path: '/neurodiversity/assessments' },
-        { label: 'Neurodivergent Resources', path: '/neurodiversity/neurodiversity-resources' },
+        { label: 'Services', path: '/services' },
+        { label: 'Specialties', path: '/specialties' },
+        { label: 'Insurance & Rates', path: '/rates-fees' },
+        { label: 'Help Paying for Therapy', path: '/affording-therapy' },
+        { label: 'Neurodivergent Resources', path: '/resources' },
       ],
     },
     { label: 'Join Our Team', path: '/join-our-team' },
-    {
-      label: 'Services',
-      path: '/services',
-      subMenu: [
-        { label: 'Individual Therapy', path: '/services/individual-therapy' },
-        { label: 'Couples & Family Therapy', path: '/services/couples-family-therapy' },
-        { label: 'Polyamory & Non-Monogamy Support', path: '/services/polyamory-non-monogamy' },
-        { label: 'Queer Affirming Therapy', path: '/services/queer-affirming-therapy' },
-        { label: 'Autism & ADHD Assessments', path: '/neurodiversity/assessments' },
-        { label: 'Autism & ADHD Affirming Therapy', path: '/neurodiversity/affirming-therapy' },
-        { label: 'Groups', path: '/services/groups' },
-      ],
-    },
     { label: 'Blog', path: '/blog' },
     { label: 'Get Started', path: '/contact' },
     {

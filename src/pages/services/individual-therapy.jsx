@@ -206,7 +206,7 @@ function IndividualTherapy() {
             Email Us
           </a>
           <Link
-            to="/contact/ratesfees"
+            to="/rates-fees"
             className="bg-white text-sky-700 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100 transition"
           >
             Rates &amp; Fees

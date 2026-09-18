@@ -46,7 +46,7 @@ function Neurodiversity() {
     <div className="flex flex-col space-y-2">
       <div className="flex items-start gap-2">
         <img src={autism1} alt="Autism visual" className="w-[135px] h-[137px] shrink-0 mb-5"/>
-        <Link to="/neurodiversity/affirming-therapy">
+        <Link to="/specialties/autism-adhd-therapy">
         <h3 className="text-2xl text-gray-900 leading-snug hover:text-sky-700 hover:underline transition-colors">
           Neurodivergent Affirming Therapy
         </h3>
@@ -64,7 +64,7 @@ function Neurodiversity() {
     <div className="flex flex-col space-y-2">
       <div className="flex items-start gap-2">
         <img src={autism2} alt="Autism visual" className="w-[135px] h-[137px] shrink-0 mb-5"/>
-        <Link to="/neurodiversity/assessments">
+        <Link to="/services/autism-adhd-assessments">
           <h3 className="text-2xl text-gray-900 leading-snug hover:text-sky-700 hover:underline transition-colors">
             ADHD & Autism Evaluations
           </h3>
@@ -82,7 +82,7 @@ function Neurodiversity() {
     <div className="flex flex-col space-y-2 md:col-span-2 md:items-center">
       <div className="flex items-start gap-2">
         <img src={autism3} alt="Resource Library icon" className="w-[135px] h-[137px] shrink-0" />
-        <Link to="/neurodiversity/neurodiversity-resources">
+        <Link to="/resources">
         <h3 className="text-2xl text-gray-900 leading-snug hover:text-sky-700 hover:underline transition-colors">
           Neurodiversity Resources
         </h3>

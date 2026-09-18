@@ -7,13 +7,13 @@ import ServiceHero from '../../components/ServiceHero';
 import ServiceSection, { ServiceTextSection } from '../../components/ServiceSection';
 import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../../data/organization';
 
-// pages/neurodiversity/affirming-therapy.jsx
+// pages/specialties/autism-adhd-therapy.jsx
 //
 // Lives under /neurodiversity but wears the services layout — the URL and the
 // chrome are independent, and this is one of the seven service offerings listed
 // in the sidebar.
 
-const PAGE_URL = `${SITE_URL}/neurodiversity/affirming-therapy/`;
+const PAGE_URL = `${SITE_URL}/specialties/autism-adhd-therapy/`;
 const DESCRIPTION =
   'Neurodivergent-affirming therapy for autistic and ADHD adults, teens, and families in Seattle and by telehealth across Washington. We work with your brain, not against it.';
 
@@ -78,7 +78,7 @@ const AffirmingTherapy = () => {
       <SEO
         title="Autism & ADHD Therapy in Seattle, WA"
         description={DESCRIPTION}
-        canonical="/neurodiversity/affirming-therapy/"
+        canonical="/specialties/autism-adhd-therapy/"
         image="/images/autism-adhd-therapy-hero.jpg"
         jsonLd={jsonLd}
       />
@@ -205,7 +205,7 @@ const AffirmingTherapy = () => {
             Email Us
           </a>
           <Link
-            to="/contact/ratesfees"
+            to="/rates-fees"
             className="bg-white text-sky-700 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100 transition"
           >
             Rates &amp; Fees
