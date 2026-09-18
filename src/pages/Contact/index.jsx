@@ -71,7 +71,7 @@ function Contact() {
         </p>
         <div className="flex justify-center">
           <Link
-            to="/contact/affording-therapy"
+            to="/affording-therapy"
             className="bg-sky-700 text-white font-semibold py-3 px-8 rounded-lg shadow hover:bg-sky-800 transition"
           >
             Help Paying for Therapy
@@ -86,7 +86,7 @@ function Contact() {
         </p>
         <div className="flex justify-center">
           <Link
-            to="/contact/ratesfees"
+            to="/rates-fees"
             className="bg-sky-700 text-white font-semibold py-3 px-8 rounded-lg shadow hover:bg-sky-800 transition"
           >
             View Rates & Fees

@@ -1,4 +1,4 @@
-// pages/neurodiversity/neurodiversity-resources/index.js
+// pages/resources/index.js
 import { Link } from 'react-router-dom';
 
 const resourceCategories = [
@@ -74,7 +74,7 @@ export default function NeurodiversityResources() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
         {resourceCategories.map((category) => (
-          <Link key={category.slug} to={`/neurodiversity/neurodiversity-resources/${category.slug}`}>
+          <Link key={category.slug} to={`/resources/${category.slug}`}>
             <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition p-6 flex flex-col cursor-pointer">
               {category.image && (
                 <img

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import BookShelf from '../../../components/BookShelf';
+import BookShelf from '../../components/BookShelf';
 
 export default function CategoryResourcePage() {
   const router = useRouter();

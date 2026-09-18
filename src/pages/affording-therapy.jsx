@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SEO from '../../components/SEO';
-import FaqAccordion from '../../components/FaqAccordion';
-import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../../data/organization';
+import SEO from '../components/SEO';
+import FaqAccordion from '../components/FaqAccordion';
+import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../data/organization';
 
-const PAGE_URL = `${SITE_URL}/contact/affording-therapy/`;
+const PAGE_URL = `${SITE_URL}/affording-therapy/`;
 const DESCRIPTION =
   'Seattle therapists who take Washington Apple Health (Medicaid). We are in network with Molina Healthcare and UnitedHealthcare Community Plan, in person in the U-District and by telehealth statewide, plus sliding-scale options.';
 
@@ -43,11 +43,6 @@ const faqs = [
     question: 'What if I do not qualify for Apple Health and cannot afford the full fee?',
     answer:
       'Our student interns offer a sliding scale of $35 to $70 per session. Our associate clinicians offer sliding-scale fees on a case-by-case basis. Tell us about your situation in the inquiry form and we will talk through what is possible.',
-  },
-  {
-    question: 'How do I know if my insurance plan is covered?',
-    answer:
-      'We are in network with Aetna, Premera Blue Cross, Regence BlueShield, Cigna, Molina Healthcare, and UnitedHealthcare Community Plan, but being in network does not guarantee your specific plan is covered, and some plans are accepted only by certain therapists. Our Rates & Fees page lists the details, and we recommend confirming with your insurer.',
   },
 ];
 
@@ -92,7 +87,7 @@ function AffordingTherapy() {
       <SEO
         title="Apple Health (Medicaid) Therapy in Seattle | Mindful Way Therapy"
         description={DESCRIPTION}
-        canonical="/contact/affording-therapy/"
+        canonical="/affording-therapy/"
         jsonLd={jsonLd}
       />
 
@@ -225,7 +220,7 @@ function AffordingTherapy() {
               therapist, so it is worth confirming with your insurer before your first session.
             </p>
             <p>
-              <Link to="/contact/ratesfees" className="text-sky-700 underline font-semibold">
+              <Link to="/rates-fees" className="text-sky-700 underline font-semibold">
                 See the full list of plans and rates
               </Link>
             </p>

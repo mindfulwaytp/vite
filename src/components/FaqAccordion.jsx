@@ -18,7 +18,7 @@ export default function FaqAccordion({ items }) {
   const location = useLocation();
   const [openId, setOpenId] = useState(null);
 
-  // Lets a link like /contact/affording-therapy/#can-i-change-my-apple-health-plan
+  // Lets a link like /affording-therapy/#can-i-change-my-apple-health-plan
   // open and scroll to a single answer.
   useEffect(() => {
     const hash = location.hash.replace('#', '');
@@ -55,7 +55,9 @@ export default function FaqAccordion({ items }) {
               hidden={!isOpen}
               className="px-4 pb-4 text-gray-700 leading-relaxed"
             >
-              {item.answer}
+              {/* `body` renders rich markup (lists, links) while `answer` stays
+                  plain text for the FAQPage structured data. */}
+              {item.body ?? item.answer}
             </div>
           </div>
         );

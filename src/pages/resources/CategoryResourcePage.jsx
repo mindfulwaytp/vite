@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import BookShelf from '../../../components/BookShelf';
+import BookShelf from '../../components/BookShelf';
 
 export default function CategoryResourcePage() {
   const { slug } = useParams();
