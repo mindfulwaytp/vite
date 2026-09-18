@@ -54,6 +54,13 @@ export const SPECIALTY_LINKS = [
       'Neurodivergent-affirming therapy that works with your brain rather than against it.',
   },
   {
+    label: 'Depression',
+    path: '/specialties/depression',
+    image: 'images/depression-card.jpg',
+    description:
+      'For exhaustion, numbness, and loss of interest — including depression that turns out to be something else.',
+  },
+  {
     label: 'LGBTQ+ & Queer',
     path: '/specialties/queer-affirming-therapy',
     image: 'images/queer-affirming-therapy-hero.jpg',

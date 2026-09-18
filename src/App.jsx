@@ -26,6 +26,7 @@ import CouplesFamilyTherapy from './pages/services/couples-family-therapy.jsx';
 import PolyamoryNonMonogamy from './pages/specialties/polyamory-non-monogamy.jsx';
 import QueerAffirmingTherapy from './pages/specialties/queer-affirming-therapy.jsx';
 import Specialties from './pages/Specialties.jsx';
+import Depression from './pages/specialties/depression.jsx';
 import Groups from './pages/services/groups.jsx';
 import TTRPGGroup from './pages/services/groups/ttrpg.jsx';
 import TherapyForm from './pages/Contact/TherapyForm';
@@ -118,6 +119,7 @@ function App() {
         <Route path="/services/individual-therapy" element={<IndividualTherapy />} />
         <Route path="/services/couples-family-therapy" element={<CouplesFamilyTherapy />} />
         <Route path="/specialties" element={<Specialties />} />
+        <Route path="/specialties/depression" element={<Depression />} />
         <Route path="/specialties/polyamory-non-monogamy" element={<PolyamoryNonMonogamy />} />
         <Route path="/specialties/queer-affirming-therapy" element={<QueerAffirmingTherapy />} />
         <Route path="/services/groups" element={<Groups />} />
