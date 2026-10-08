@@ -66,10 +66,13 @@ function Specialties() {
                 key={item.path}
                 className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col items-center text-center"
               >
-                <div className="w-full aspect-[5/6] max-w-[300px] mx-auto overflow-hidden rounded-lg mb-4">
+                <div className="w-full aspect-[5/6] max-w-[300px] mx-auto overflow-hidden rounded-lg mb-4 bg-gray-100">
                   <img
                     src={item.image}
                     alt={item.label}
+                    // A card whose photo hasn't been uploaded yet shows a plain
+                    // tile instead of a broken-image icon.
+                    onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }}
                     className="w-full h-full object-cover rounded-lg shadow-sm"
                   />
                 </div>
@@ -86,8 +89,8 @@ function Specialties() {
           </div>
 
           <p className="text-center text-gray-600 max-w-2xl mx-auto mt-12">
-            Not seeing what you’re looking for? Our therapists also work with anxiety, depression,
-            trauma, grief, life transitions, and more.{' '}
+            Not seeing what you’re looking for? Our therapists also work with anxiety, trauma, grief,
+            life transitions, and more.{' '}
             <Link to="/providers" className="text-sky-700 underline font-semibold">
               Search our providers by specialty
             </Link>{' '}

@@ -14,7 +14,7 @@ import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../../data/organi
 
 const PAGE_URL = `${SITE_URL}/services/autism-adhd-assessments/`;
 const DESCRIPTION =
-  'Autism and ADHD assessments for adults and teens in Seattle and by telehealth across Washington. Affirming, strengths-based evaluations. Insurance and Apple Health (Medicaid) accepted.';
+  'Autism and ADHD assessment and diagnosis for adults and teens in Seattle and across Washington. Affirming and strengths-based. Apple Health (Medicaid) accepted.';
 
 // Rendered on the page and emitted as FAQPage structured data — keep answers plain text.
 // Costs are covered in detail in the Assessment Process accordion below; these
@@ -77,7 +77,7 @@ const AssessmentsPage = () => {
   return (
     <div className="bg-[#f3f6f9] text-gray-800">
       <SEO
-        title="Adult Autism & ADHD Assessment in Seattle, WA"
+        title="Autism & ADHD Diagnosis & Assessment in Seattle"
         description={DESCRIPTION}
         canonical="/services/autism-adhd-assessments/"
         image="/images/autism-adhd-assessments-hero.avif"
@@ -175,6 +175,12 @@ const AssessmentsPage = () => {
               Autism and ADHD each bring distinct traits, patterns, and ways of engaging with the world. Our
               Brain Style Profiles highlight both strengths and differences to help individuals and families
               better understand and support neurodivergent identities.
+            </p>
+            <p>
+              Where the findings support one, an assessment can provide a formal autism or ADHD
+              diagnosis, along with the documentation people often need to request accommodations at
+              work or school. A diagnosis is never the whole point, though. Plenty of people come away
+              valuing the self-understanding more than the label itself.
             </p>
             <Accordion />
           </ServiceTextSection>

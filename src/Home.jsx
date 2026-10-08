@@ -9,8 +9,8 @@ function Home() {
   return (
     <>
     <SEO
-      title="Mindful Way Therapy"
-      description="Neurodivergent and LGBTQ+ affirming therapy in Seattle and via telehealth across Washington. Compassionate, trauma-informed care for individuals, couples, and families."
+      title="Neurodivergent & LGBTQ+ Affirming Therapy in Seattle"
+      description="Neurodivergent and LGBTQ+ affirming therapy in Seattle and by telehealth across Washington. Trauma-informed care for individuals, couples, and families."
       canonical="/"
       jsonLd={{ '@context': 'https://schema.org', ...organizationJsonLd }}
     />
@@ -18,9 +18,12 @@ function Home() {
       <section className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 mt-20 md:px-12 py-5 bg-brand-100">
         <div className="md:w-1/2 text-center md:text-center">
           <h1 className="text-4xl md:text-4xl font-extrabold text-gray-900 mb-4">
-            Welcome to Mindful Way Therapy
+            Neurodivergent &amp; LGBTQ+ Affirming Therapy in Seattle
           </h1>
-          <p className="text-2xl text-gray-700 leading-relaxed mb-4">Neurodivergent and LGBTQ+ Affirming Therapy in Seattle and via telehealth in Washington</p>
+          <p className="text-2xl text-gray-700 leading-relaxed mb-4">
+            Welcome to Mindful Way Therapy — compassionate, trauma-informed care for individuals,
+            couples, and families, in person and by telehealth across Washington.
+          </p>
         </div>
 
         <div className="md:w-1/2">
@@ -72,7 +75,7 @@ function Home() {
               <span>👥</span> Our Providers
             </Link>
             <Link
-              to="/services/ratesfees"
+              to="/rates-fees"
               className="px-5 py-3 border border-gray-400 rounded-lg text-gray-800 hover:border-sky-500 hover:text-sky-700 transition inline-flex items-center gap-2"
             >
               <span>💰</span> Our Rates and Fees

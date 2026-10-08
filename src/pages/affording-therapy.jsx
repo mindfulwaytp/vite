@@ -6,7 +6,7 @@ import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../data/organizat
 
 const PAGE_URL = `${SITE_URL}/affording-therapy/`;
 const DESCRIPTION =
-  'Seattle therapists who take Washington Apple Health (Medicaid). We are in network with Molina Healthcare and UnitedHealthcare Community Plan, in person in the U-District and by telehealth statewide, plus sliding-scale options.';
+  'Seattle therapists who take Washington Apple Health (Medicaid), plus sliding-scale options. In person in the U-District and by telehealth statewide.';
 
 const HEALTHPLANFINDER_URL = 'https://www.wahealthplanfinder.org';
 const HCA_CHANGE_PLAN_URL =

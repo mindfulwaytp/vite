@@ -24,6 +24,8 @@ export default function SelfAssessment({
   bands,
   criticalItemIndex,
   criticalNote,
+  condition,
+  medicalNote,
   attribution,
 }) {
   const [answers, setAnswers] = useState(() => Array(items.length).fill(null));
@@ -158,15 +160,11 @@ export default function SelfAssessment({
 
             <p className="text-gray-700 mb-4">
               <strong>This is a screening tool, not a diagnosis.</strong> It cannot tell you whether you
-              have depression — only a conversation with a clinician can do that, and scores like this
+              have {condition} — only a conversation with a clinician can do that, and scores like this
               one are a starting point for that conversation rather than a substitute for it.
             </p>
 
-            <p className="text-gray-700 mb-4">
-              It is also worth mentioning persistent symptoms to a primary care provider. Some things
-              that look like depression have medical contributors — thyroid, anemia, sleep disorders,
-              medication side effects — that therapy alone will not address.
-            </p>
+            {medicalNote && <p className="text-gray-700 mb-4">{medicalNote}</p>}
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Link

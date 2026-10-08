@@ -10,7 +10,7 @@ import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../../data/organi
 
 const PAGE_URL = `${SITE_URL}/specialties/depression/`;
 const DESCRIPTION =
-  'Depression therapy in Seattle and by telehealth across Washington. For exhaustion, numbness, and loss of interest — including depression that turns out to be autistic burnout, ADHD, or minority stress.';
+  'Depression therapy in Seattle and by telehealth across Washington — for exhaustion, numbness, and loss of interest, including autistic burnout.';
 
 const signs = [
   'Exhaustion that sleep doesn’t fix',
@@ -329,6 +329,8 @@ function Depression() {
               bands={phq9Bands}
               criticalItemIndex={8}
               criticalNote="You indicated thoughts of being better off dead or of hurting yourself. That is worth taking seriously, and you deserve support with it right now."
+              condition="depression"
+              medicalNote="It is also worth mentioning persistent symptoms to a primary care provider. Some things that look like depression have medical contributors — thyroid, anemia, sleep disorders, medication side effects — that therapy alone will not address."
               attribution="PHQ-9 developed by Drs. Robert L. Spitzer, Janet B.W. Williams, and Kurt Kroenke, with an educational grant from Pfizer Inc. No permission required to reproduce or distribute."
             />
           </ServiceTextSection>

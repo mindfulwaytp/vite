@@ -15,7 +15,7 @@ import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../../data/organi
 
 const PAGE_URL = `${SITE_URL}/specialties/autism-adhd-therapy/`;
 const DESCRIPTION =
-  'Neurodivergent-affirming therapy for autistic and ADHD adults, teens, and families in Seattle and by telehealth across Washington. We work with your brain, not against it.';
+  'Neurodivergent-affirming therapy for autistic and ADHD adults, teens, and families — in Seattle and by telehealth across Washington.';
 
 // Rendered on the page and emitted as FAQPage structured data — keep answers plain text.
 const faqs = [
@@ -76,7 +76,7 @@ const AffirmingTherapy = () => {
   return (
     <div className="bg-[#f3f6f9] text-gray-800">
       <SEO
-        title="Autism & ADHD Therapy in Seattle, WA"
+        title="Neurodivergent-Affirming Therapy in Seattle, WA"
         description={DESCRIPTION}
         canonical="/specialties/autism-adhd-therapy/"
         image="/images/autism-adhd-therapy-hero.jpg"
