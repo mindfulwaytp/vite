@@ -9,8 +9,9 @@ function Home() {
   return (
     <>
     <SEO
-      title="Neurodivergent & LGBTQ+ Affirming Therapy in Seattle"
-      description="Neurodivergent and LGBTQ+ affirming therapy in Seattle and by telehealth across Washington. Trauma-informed care for individuals, couples, and families."
+      title="Autism, ADHD & LGBTQ+ Affirming Therapy in Seattle"
+      appendSiteName={false}
+      description="Therapy for autistic and ADHD adults, teens, and families in Seattle and by telehealth across Washington. Neurodivergent- and LGBTQ+-affirming, queer-owned."
       canonical="/"
       jsonLd={{ '@context': 'https://schema.org', ...organizationJsonLd }}
     />
@@ -18,7 +19,7 @@ function Home() {
       <section className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 mt-20 md:px-12 py-5 bg-brand-100">
         <div className="md:w-1/2 text-center md:text-center">
           <h1 className="text-4xl md:text-4xl font-extrabold text-gray-900 mb-4">
-            Neurodivergent &amp; LGBTQ+ Affirming Therapy in Seattle
+            Autism, ADHD &amp; LGBTQ+ Affirming Therapy in Seattle
           </h1>
           <p className="text-2xl text-gray-700 leading-relaxed mb-4">
             Welcome to Mindful Way Therapy — compassionate, trauma-informed care for individuals,
@@ -50,10 +51,11 @@ function Home() {
 
           <p className="text-lg text-gray-700">
             At Mindful Way Therapy, we offer affirming, trauma-informed care with a focus on the lived
-            experiences of LGBTQ+ and neurodivergent individuals. Many of our providers are members of these communities
+            experiences of LGBTQ+ and neurodivergent people — autistic adults, people with ADHD,
+          and their families. Many of our providers are members of these communities
             themselves, or have close connections that inform their work. Under the direction of Practice Owner, Ryne Evans, MA, LMFT,
-            our providers are commmitted to providing care that is affirming and culturally sensitive. We know how painful it can feel
-            to be misunderstood in a healthcare setting--and we are committed to doing it differently.
+            our providers are committed to providing care that is affirming and culturally sensitive. We know how painful it can feel
+            to be misunderstood in a healthcare setting — and we are committed to doing it differently.
           </p>
 
           <h3 className="text-2xl font-semibold text-sky-700">Why Choose Us?</h3>

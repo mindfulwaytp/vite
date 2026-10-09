@@ -10,6 +10,7 @@ function toCanonicalPath(path) {
 
 function SEO({
   title,
+  appendSiteName = true,
   description,
   canonical,
   image,
@@ -28,7 +29,8 @@ function SEO({
   const fullImage = image ? `${baseUrl}${image}` : null;
 
   const titleHasBrand = /mindful\s*way\s*therapy/i.test(title || '');
-  const fullTitle = titleHasBrand ? title : `${title} | Mindful Way Therapy`;
+  const fullTitle =
+    titleHasBrand || !appendSiteName ? title : `${title} | Mindful Way Therapy`;
 
   return (
     <Helmet>
