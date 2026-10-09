@@ -73,9 +73,9 @@ export default function Header() {
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col">
           {/* Logo and Hamburger */}
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl md:text-3xl uppercase font-serif font-bold">
+            <div className="text-2xl md:text-3xl uppercase font-serif font-bold">
               Mindful Way Therapy, PLLC
-            </h1>
+            </div>
 
             <button
               className="md:hidden focus:outline-none"

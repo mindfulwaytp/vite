@@ -59,7 +59,7 @@ function JobBoard() {
             className="w-full h-auto rounded-lg shadow-md object-cover"
           />
         </div>
-        <h1 className="text-3xl md:text-4xl text-sky-700 mt-8 mb-6">About Mindful Way Therapy</h1>
+        <h2 className="text-3xl md:text-4xl text-sky-700 mt-8 mb-6">About Mindful Way Therapy</h2>
         <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-5xl mx-auto">
             Mindful Way Therapy is a queer-owned group practice in Seattle, WA, in the heart of the University District. We offer individual, family and couples therapy, as well as ADHD and Autism evaluations, as well as gender-affirming care letters for those seeking medical transition interventions. 
             
