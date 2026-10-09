@@ -13,7 +13,6 @@ import EatingDisorderJob from './pages/join-our-team/eating-disorder-therapist';
 import Internships from './pages/join-our-team/internships';
 import ScrollToTop from './components/ScrollToTop';
 import Contact from './pages/Contact';
-import Neurodiversity from './pages/Neurodiversity';
 import CategoryResourcePage from './pages/resources/CategoryResourcePage';
 import NeurodiversityResources from './pages/resources/index';
 import AssessmentsPage from './pages/services/autism-adhd-assessments';
@@ -127,7 +126,6 @@ function App() {
         <Route path="/rates-fees" element={<RatesFees />} />
         <Route path="/affording-therapy" element={<AffordingTherapy />} />
 
-        <Route path="/neurodiversity" element={<Neurodiversity />} />
         <Route
           path="/resources"
           element={<NeurodiversityResources />}

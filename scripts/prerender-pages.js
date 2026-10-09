@@ -23,7 +23,6 @@ const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/images/social-preview.jpg`;
 const STATIC_ROUTES = [
   '/',
   '/providers',
-  '/neurodiversity',
   '/services/autism-adhd-assessments',
   '/specialties/autism-adhd-therapy',
   '/resources',

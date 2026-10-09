@@ -49,6 +49,14 @@
   to = "/specialties/autism-adhd-therapy/"
   status = 301
 
+# The old /neurodiversity landing page, now deleted. It had no title tag or
+# description, nothing linked to it, and its topic duplicated the specialty
+# page it now points at -- so the two were competing for the same queries.
+[[redirects]]
+  from = "/neurodiversity"
+  to = "/specialties/autism-adhd-therapy/"
+  status = 301
+
 # -> /specialties/*
 [[redirects]]
   from = "/services/queer-affirming-therapy"
