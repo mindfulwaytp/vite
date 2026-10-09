@@ -8,6 +8,8 @@ function toCanonicalPath(path) {
   return clean.endsWith('/') ? clean : `${clean}/`;
 }
 
+const TITLE_LIMIT = 60;
+
 function SEO({
   title,
   appendSiteName = true,
@@ -28,9 +30,17 @@ function SEO({
   const fullUrl = `${baseUrl}${toCanonicalPath(canonical || pathname)}`;
   const fullImage = image ? `${baseUrl}${image}` : null;
 
+  // Google truncates titles at roughly 600px, about 60 characters. The brand
+  // suffix is the least useful thing in a title, so append it only when it
+  // survives that cut: a page whose own title is already long keeps all of its
+  // keywords instead of trailing off mid-brand. Pass appendSiteName={false} to
+  // suppress it regardless.
   const titleHasBrand = /mindful\s*way\s*therapy/i.test(title || '');
+  const withSiteName = `${title} | Mindful Way Therapy`;
   const fullTitle =
-    titleHasBrand || !appendSiteName ? title : `${title} | Mindful Way Therapy`;
+    titleHasBrand || !appendSiteName || withSiteName.length > TITLE_LIMIT
+      ? title
+      : withSiteName;
 
   return (
     <Helmet>

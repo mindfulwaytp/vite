@@ -85,7 +85,7 @@ function AffordingTherapy() {
   return (
     <div className="bg-[#f3f6f9] text-gray-800">
       <SEO
-        title="Apple Health (Medicaid) Therapy in Seattle | Mindful Way Therapy"
+        title="Apple Health (Medicaid) Therapy in Seattle"
         description={DESCRIPTION}
         canonical="/affording-therapy/"
         jsonLd={jsonLd}

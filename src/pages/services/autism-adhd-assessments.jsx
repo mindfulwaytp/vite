@@ -14,7 +14,7 @@ import { ORGANIZATION_ID, SITE_URL, organizationJsonLd } from '../../data/organi
 
 const PAGE_URL = `${SITE_URL}/services/autism-adhd-assessments/`;
 const DESCRIPTION =
-  'Autism and ADHD assessment and diagnosis for adults and teens in Seattle and across Washington. Affirming and strengths-based. Apple Health (Medicaid) accepted.';
+  'Autism and ADHD assessments for adults and teens in Seattle and across Washington. Most insurance plans are accepted, including Apple Health (Medicaid).';
 
 // Rendered on the page and emitted as FAQPage structured data — keep answers plain text.
 // Costs are covered in detail in the Assessment Process accordion below; these
@@ -77,7 +77,7 @@ const AssessmentsPage = () => {
   return (
     <div className="bg-[#f3f6f9] text-gray-800">
       <SEO
-        title="Autism & ADHD Diagnosis & Assessment in Seattle"
+        title="Autism & ADHD Diagnosis & Assessment | Seattle & WA"
         description={DESCRIPTION}
         canonical="/services/autism-adhd-assessments/"
         image="/images/autism-adhd-assessments-hero.avif"

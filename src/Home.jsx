@@ -10,7 +10,6 @@ function Home() {
     <>
     <SEO
       title="Autism, ADHD & LGBTQ+ Affirming Therapy in Seattle"
-      appendSiteName={false}
       description="Therapy for autistic and ADHD adults, teens, and families in Seattle and by telehealth across Washington. Neurodivergent- and LGBTQ+-affirming, queer-owned."
       canonical="/"
       jsonLd={{ '@context': 'https://schema.org', ...organizationJsonLd }}
