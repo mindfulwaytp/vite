@@ -34,15 +34,6 @@ import EvaluationForm from './pages/Contact/EvaluationForm';
 import AdventuringParty from './pages/Contact/AdventuringParty.jsx';
 import Footer from './components/Footer';
 import Login from "./pages/Login";
-import IntranetLayout from "./pages/intranet/IntranetLayout.jsx";
-import IntranetFeed from "./pages/intranet/IntranetFeed.jsx";
-import PostDetail from "./pages/intranet/PostDetail.jsx";
-import NewPost from "./pages/intranet/NewPost";
-import IntranetResources from "./pages/intranet/IntranetResources.jsx";
-import ResourceCategory from "./pages/intranet/ResourceCategory.jsx";
-import IntranetLinks from "./pages/intranet/IntranetLinks.jsx";
-import ResourceDetail from "./pages/intranet/ResourceDetail.jsx";
-import IntranetSearch from './pages/intranet/IntranetSearch.jsx';
 import PoliciesLandingPage from './pages/PoliciesLandingPage';
 import MyHealthMyData from './pages/policies/my-health-my-data';
 import PrivacyPolicyPage from './pages/policies/privacy';
@@ -53,7 +44,7 @@ import NewBlogPost from './pages/blog/NewBlogPost.jsx';
 import EditBlogPost from './pages/blog/EditBlogPost.jsx';
 
 function PublicLayout() {
-  // Public pages only — staff areas (/login, /intranet) sit outside this layout.
+  // Public pages only — /login sits outside this layout.
   usePageTracking();
 
   return (
@@ -69,28 +60,8 @@ function PublicLayout() {
 function App() {
   return (
     <Routes>
-      {/* 🔐 STAFF / INTRANET */}
+      {/* 🔐 STAFF — sign-in for blog authoring */}
       <Route path="/login" element={<Login />} />
-
-      <Route path="/intranet" element={<IntranetLayout />}>
-        <Route index element={<IntranetFeed />} />
-        <Route path="new" element={<NewPost />} />
-        <Route path="posts/:postId" element={<PostDetail />} />
-        <Route path="search" element={<IntranetSearch />} />
-
-        {/* RESOURCES */}
-        <Route path="resources">
-          <Route index element={<IntranetResources />} />
-          <Route path=":categoryId" element={<ResourceCategory />} />
-          <Route
-            path=":categoryId/:resourceId"
-            element={<ResourceDetail />}
-          />
-        </Route>
-
-        <Route path="links" element={<IntranetLinks />} />
-      </Route>
-
 
       {/* 🌐 PUBLIC WEBSITE */}
       <Route element={<PublicLayout />}>

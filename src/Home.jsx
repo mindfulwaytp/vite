@@ -9,8 +9,8 @@ function Home() {
   return (
     <>
     <SEO
-      title="Autism, ADHD & LGBTQ+ Affirming Therapy in Seattle"
-      description="Therapy for autistic and ADHD adults, teens, and families in Seattle and by telehealth across Washington. Neurodivergent- and LGBTQ+-affirming, queer-owned."
+      title="Autism & ADHD Affirming Therapy | Seattle & Telehealth in WA | Mindful Way Therapy"
+      description="Neurodivergent- and LGBTQ+ -affirming therapy and autism assessments for teens & adults. In the U-District and by telehealth statewide. Apple Health accepted."
       canonical="/"
       jsonLd={{ '@context': 'https://schema.org', ...organizationJsonLd }}
     />
@@ -18,7 +18,7 @@ function Home() {
       <section className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 mt-20 md:px-12 py-5 bg-brand-100">
         <div className="md:w-1/2 text-center md:text-center">
           <h1 className="text-4xl md:text-4xl font-extrabold text-gray-900 mb-4">
-            Autism, ADHD &amp; LGBTQ+ Affirming Therapy in Seattle
+            Autism, ADHD &amp; LGBTQ+ Affirming Therapy | Seattle & WA
           </h1>
           <p className="text-2xl text-gray-700 leading-relaxed mb-4">
             Welcome to Mindful Way Therapy — compassionate, trauma-informed care for individuals,
