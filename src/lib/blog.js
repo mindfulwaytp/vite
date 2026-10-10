@@ -22,8 +22,20 @@ export function sanitizeHtml(html) {
       "blockquote",
       "a",
       "hr",
+      "img", "figure", "figcaption",
     ],
-    ALLOWED_ATTR: ["href", "target", "rel"],
+    // Event handlers and "style" stay out; these are only what an image needs
+    // to render and be accessible. width/height let the browser reserve space
+    // so the page doesn't shift as images load.
+    //
+    // Don't add ALLOWED_URI_REGEXP here: DOMPurify tests it against EVERY
+    // attribute value, not just URLs, so a stricter pattern silently drops
+    // width="1600", loading="lazy", target and rel. The default pattern
+    // tolerates plain values and still rejects javascript: URLs.
+    ALLOWED_ATTR: [
+      "href", "target", "rel",
+      "src", "alt", "title", "width", "height", "loading", "decoding",
+    ],
   });
 }
 

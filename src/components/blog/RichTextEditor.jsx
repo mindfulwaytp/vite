@@ -1,7 +1,8 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
-import { useEffect } from "react";
+import Image from "@tiptap/extension-image";
+import { useEffect, useRef, useState } from "react";
 
 function ToolbarButton({ onClick, active, disabled, children, title }) {
   return (
@@ -23,10 +24,25 @@ function ToolbarButton({ onClick, active, disabled, children, title }) {
 }
 
 export default function RichTextEditor({ value, onChange }) {
+  const fileInputRef = useRef(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
         heading: { levels: [2, 3, 4] },
+      }),
+      Image.configure({
+        // Images are block-level here rather than inline, so they sit on their
+        // own line the way they render on the published post.
+        inline: false,
+        allowBase64: false,
+        HTMLAttributes: {
+          class: "rounded-lg my-4 max-w-full h-auto",
+          loading: "lazy",
+          decoding: "async",
+        },
       }),
       Link.configure({
         openOnClick: false,
@@ -59,6 +75,37 @@ export default function RichTextEditor({ value, onChange }) {
   }, [value, editor]);
 
   if (!editor) return null;
+
+  async function handleFile(event) {
+    const file = event.target.files?.[0];
+    event.target.value = ""; // let the same file be picked again after an error
+    if (!file) return;
+
+    setUploadError(null);
+    setUploading(true);
+    try {
+      const { uploadBlogImage } = await import("../../lib/uploadBlogImage");
+      const { url, width, height } = await uploadBlogImage(file);
+
+      // Alt text is asked for every time rather than left to chance: screen
+      // readers depend on it, and it is one of the few image signals search
+      // engines can actually read.
+      const alt = window.prompt(
+        "Describe this image for people using a screen reader.\n\nLeave blank only if it is purely decorative.",
+        ""
+      );
+
+      editor
+        .chain()
+        .focus()
+        .setImage({ src: url, alt: alt?.trim() || "", width, height })
+        .run();
+    } catch (err) {
+      setUploadError(err?.message || "Upload failed.");
+    } finally {
+      setUploading(false);
+    }
+  }
 
   function setLink() {
     const previousUrl = editor.getAttributes("link").href;
@@ -137,6 +184,13 @@ export default function RichTextEditor({ value, onChange }) {
           🔗
         </ToolbarButton>
         <ToolbarButton
+          onClick={() => fileInputRef.current?.click()}
+          disabled={uploading}
+          title="Insert image"
+        >
+          {uploading ? "Uploading…" : "🖼"}
+        </ToolbarButton>
+        <ToolbarButton
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
           title="Horizontal rule"
         >
@@ -158,6 +212,18 @@ export default function RichTextEditor({ value, onChange }) {
           ↷
         </ToolbarButton>
       </div>
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/jpeg,image/png,image/webp,image/avif,image/gif"
+        className="sr-only"
+        onChange={handleFile}
+      />
+      {uploadError && (
+        <p className="px-4 py-2 text-sm text-red-700 bg-red-50 border-b border-red-200">
+          {uploadError}
+        </p>
+      )}
       <EditorContent editor={editor} />
     </div>
   );

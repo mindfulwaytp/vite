@@ -192,7 +192,7 @@ export default function BlogPostDetail() {
         </div>
 
         <div
-          className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-sky-700 hover:prose-a:text-sky-900"
+          className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-sky-700 hover:prose-a:text-sky-900 prose-img:rounded-lg"
           dangerouslySetInnerHTML={{ __html: cleanHtml }}
         />
       </article>
