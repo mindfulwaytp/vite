@@ -16,9 +16,9 @@ export default function ProviderProfile() {
   const { slug } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  // providers.json is the build-time snapshot of the same SheetDB data. Seeding from
+  // providers.json is the build-time snapshot of the same Firestore data. Seeding from
   // it means pre-rendered markup stays on screen instead of flashing a loading state,
-  // and the SheetDB fetch below refreshes it with anything newer.
+  // and the Firestore fetch below refreshes it with anything newer.
   const seededProvider = seededProviders.find((p) => slugify(p.name) === slug) || null;
   const [provider, setProvider] = useState(seededProvider);
   const [loading, setLoading] = useState(!seededProvider);

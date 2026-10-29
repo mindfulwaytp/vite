@@ -1,6 +1,8 @@
-// Provider rows come from SheetDB at runtime and from the build-time snapshot in
-// src/data/providers.json. Both are raw sheet rows with comma-separated strings,
-// so both must go through the same parsing before rendering.
+// Provider rows come from Firestore at runtime and from the build-time snapshot in
+// src/data/providers.json. Both are raw sheet-style rows with comma-separated
+// strings, so both must go through the same parsing before rendering.
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { db } from './firebase';
 import providersSnapshot from '../data/providers.json';
 
 const LIST_FIELDS = [
@@ -38,12 +40,13 @@ export function parseProviderRows(rows) {
 // Parsed build-time snapshot, used to render before the live fetch resolves.
 export const seededProviders = parseProviderRows(providersSnapshot);
 
-// The sheet is the source of truth; providers.json is a snapshot of it refreshed by
-// `npm run update-providers`. Pages seed from the snapshot, then catch up to the sheet.
-export const PROVIDERS_SHEET_URL = 'https://sheetdb.io/api/v1/zpl35ateeao4a';
-
+// Firestore is the source of truth (availability is edited at /admin/providers);
+// providers.json is a snapshot of it refreshed on every build. Pages seed from the
+// snapshot, then catch up to Firestore.
 export async function fetchProviders() {
-  const res = await fetch(PROVIDERS_SHEET_URL);
-  if (!res.ok) throw new Error(`Provider sheet request failed (HTTP ${res.status})`);
-  return parseProviderRows(await res.json());
+  const snap = await getDocs(query(collection(db, 'providers'), orderBy('order')));
+  // An empty result means the collection hasn't been populated; keep the snapshot
+  // rather than render an empty directory.
+  if (snap.empty) throw new Error('No providers in Firestore');
+  return parseProviderRows(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
 }

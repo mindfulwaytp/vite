@@ -7,6 +7,7 @@ import { IoMdVideocam } from 'react-icons/io';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { providerImages } from '../assets/images';
 import { fetchProviders, seededProviders } from '../lib/providers';
+import { useAuthUser } from '../hooks/useAuthUser';
 import defaultImage from '../assets/images/provider-example.avif';
 
 import '../Providers.css';
@@ -38,6 +39,8 @@ const ProvidersDirectory = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const isFirstRender = useRef(true);
+  const { profile } = useAuthUser();
+  const isAdmin = profile?.isActive && profile.role === 'admin';
 
   // Remember the directory's current URL so a profile page can restore it on "Back to Directory",
   // even after a page refresh or external entry.
@@ -55,7 +58,7 @@ const ProvidersDirectory = () => {
   }, []);
 
   // Seeded from the build-time snapshot (see ProviderProfile) so the directory
-  // renders immediately; the SheetDB fetch below replaces it with live data.
+  // renders immediately; the Firestore fetch below replaces it with live data.
   const [allTherapists, setAllTherapists] = useState(seededProviders);
   const [loading, setLoading] = useState(false);
   const [selectedSpecialties, setSelectedSpecialties] = useState([]);
@@ -287,6 +290,16 @@ const ProvidersDirectory = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
+      {isAdmin && (
+        <div className="flex justify-end mb-4">
+          <Link
+            to="/admin/providers"
+            className="text-sm rounded-lg px-3 py-1.5 border border-sky-700 text-sky-700 hover:bg-sky-50"
+          >
+            Edit availability
+          </Link>
+        </div>
+      )}
       <h1 className="text-3xl text-center text-sky-700 mb-2">Meet Our Providers</h1>
       <h3 className="text-lg text-center text-gray-700 mb-6">
         Use the search functions below to find a provider. <br />

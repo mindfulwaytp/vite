@@ -5,12 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender-blog.js && node scripts/prerender-pages.js",
+    "build": "node scripts/snapshot-providers.js && vite build && node scripts/prerender-blog.js && node scripts/prerender-pages.js",
     "postinstall": "node node_modules/puppeteer/install.mjs || true",
     "lint": "eslint .",
     "preview": "vite preview",
-    "update-providers": "node scripts/updateProviders.js",
-    "refresh-providers": "npm run update-providers && git add src/data/providers.json src/data/providers-meta.json && git commit -m \"🔄 Manual provider data update\" && git push origin main"
+    "import-providers": "node scripts/import-providers.js",
+    "snapshot-providers": "node scripts/snapshot-providers.js"
   },
   "dependencies": {
     "@tiptap/extension-image": "3.22.4",

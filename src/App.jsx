@@ -42,6 +42,7 @@ import BlogIndex from './pages/blog/index.jsx';
 import BlogPostDetail from './pages/blog/BlogPostDetail.jsx';
 import NewBlogPost from './pages/blog/NewBlogPost.jsx';
 import EditBlogPost from './pages/blog/EditBlogPost.jsx';
+import ManageProviders from './pages/admin/ManageProviders.jsx';
 
 function PublicLayout() {
   // Public pages only — /login sits outside this layout.
@@ -118,6 +119,8 @@ function App() {
         <Route path="/blog/new" element={<NewBlogPost />} />
         <Route path="/blog/edit/:id" element={<EditBlogPost />} />
         <Route path="/blog/:slug" element={<BlogPostDetail />} />
+
+        <Route path="/admin/providers" element={<ManageProviders />} />
 
         <Route path="*" element={<div className="p-6">Not found</div>} />
       </Route>

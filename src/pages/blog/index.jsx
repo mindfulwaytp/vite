@@ -93,7 +93,13 @@ export default function BlogIndex() {
 
       <section className="max-w-5xl mx-auto px-6 md:px-12 py-12">
         {isAdmin && (
-          <div className="mb-8 flex justify-end">
+          <div className="mb-8 flex justify-end gap-3">
+            <Link
+              to="/admin/providers"
+              className="inline-flex items-center rounded-lg border border-sky-700 text-sky-700 px-4 py-2 hover:bg-sky-50"
+            >
+              Provider availability
+            </Link>
             <Link
               to="/blog/new"
               className="inline-flex items-center rounded-lg bg-sky-700 text-white px-4 py-2 hover:bg-sky-800"

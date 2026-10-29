@@ -132,16 +132,22 @@ ${ogHtml}
 ${twHtml}${jsonLdHtml}`;
 }
 
+const FIRESTORE_ROUTES = ['/providers', '/rates-fees'];
+
 async function snapshotRoute(browser, baseUrl, route, template, options = {}) {
   const { bodyOnly = false } = options;
   const page = await browser.newPage();
   page.setDefaultTimeout(30000);
   await page.setViewport({ width: 1280, height: 900 });
 
+  // Blog pages and anything showing provider data (fetchProviders) load from
+  // Firestore, which holds a network connection open, so networkidle0 never fires.
+  const usesFirestore =
+    bodyOnly || FIRESTORE_ROUTES.includes(route) || route.startsWith('/providers/');
+
   try {
-    if (bodyOnly) {
-      // Firestore holds a network connection open, so networkidle0 never fires on
-      // blog routes. Wait for rendered article text instead.
+    if (usesFirestore) {
+      // Wait for rendered page text instead.
       await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
       await page
         .waitForFunction(
