@@ -18,28 +18,28 @@ export const SERVICE_LINKS = [
   {
     label: 'Individual Therapy',
     path: '/services/individual-therapy',
-    image: 'images/individual-therapy-card.avif',
+    image: '/images/individual-therapy-card.avif',
     description:
       'A supportive space to explore your identity, process life challenges, and build emotional resilience.',
   },
   {
     label: 'Couples & Family Therapy',
     path: '/services/couples-family-therapy',
-    image: 'images/couples-family-therapy-card.jpg',
+    image: '/images/couples-family-therapy-card.jpg',
     description:
       'Support for deeper connection, improved communication, and authentic relationships.',
   },
   {
     label: 'Groups',
     path: '/services/groups',
-    image: 'images/groups-hero.jpg',
+    image: '/images/groups-hero.jpg',
     description:
       'Facilitated groups where you can connect with people navigating similar experiences.',
   },
   {
     label: 'Autism & ADHD Assessments',
     path: '/services/autism-adhd-assessments',
-    image: 'images/autism-adhd-assessments-card.avif',
+    image: '/images/autism-adhd-assessments-card.avif',
     description:
       'Comprehensive assessments for teens and adults using a strengths-based, affirming approach.',
   },
@@ -49,35 +49,35 @@ export const SPECIALTY_LINKS = [
   {
     label: 'Autism & ADHD',
     path: '/specialties/autism-adhd-therapy',
-    image: 'images/autism-adhd-therapy-card.avif',
+    image: '/images/autism-adhd-therapy-card.avif',
     description:
       'Neurodivergent-affirming therapy that works with your brain rather than against it.',
   },
   {
     label: 'Anxiety',
     path: '/specialties/anxiety',
-    image: 'images/anxiety-card.jpg',
+    image: '/images/anxiety-card.jpg',
     description:
       'For worry that won’t switch off, panic, and the constant low hum of bracing for something.',
   },
   {
     label: 'Depression',
     path: '/specialties/depression',
-    image: 'images/depression-card.jpg',
+    image: '/images/depression-card.jpg',
     description:
       'For exhaustion, numbness, and loss of interest — including depression that turns out to be something else.',
   },
   {
     label: 'LGBTQ+ & Queer',
     path: '/specialties/queer-affirming-therapy',
-    image: 'images/queer-affirming-therapy-hero.jpg',
+    image: '/images/queer-affirming-therapy-hero.jpg',
     description:
       'Affirming care from a queer-owned practice — identity, coming out, minority stress, and trauma.',
   },
   {
     label: 'Polyamory & Non-Monogamy',
     path: '/specialties/polyamory-non-monogamy',
-    image: 'images/polyamory-non-monogamy-hero.jpeg',
+    image: '/images/polyamory-non-monogamy-hero.jpeg',
     description:
       'For individuals, couples opening up, and existing polycules — without having to justify the structure.',
   },
