@@ -89,8 +89,8 @@ function Specialties() {
           </div>
 
           <p className="text-center text-gray-600 max-w-2xl mx-auto mt-12">
-            Not seeing what you’re looking for? Our therapists also work with anxiety, trauma, grief,
-            life transitions, and more.{' '}
+            Not seeing what you’re looking for? Our therapists also work with trauma, grief, life
+            transitions, chronic illness, and more.{' '}
             <Link to="/providers" className="text-sky-700 underline font-semibold">
               Search our providers by specialty
             </Link>{' '}

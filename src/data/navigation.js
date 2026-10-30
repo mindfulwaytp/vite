@@ -54,6 +54,13 @@ export const SPECIALTY_LINKS = [
       'Neurodivergent-affirming therapy that works with your brain rather than against it.',
   },
   {
+    label: 'Anxiety',
+    path: '/specialties/anxiety',
+    image: 'images/anxiety-card.jpg',
+    description:
+      'For worry that won’t switch off, panic, and the constant low hum of bracing for something.',
+  },
+  {
     label: 'Depression',
     path: '/specialties/depression',
     image: 'images/depression-card.jpg',

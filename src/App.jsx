@@ -1,51 +1,52 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route, Outlet } from "react-router-dom";
 import usePageTracking from './hooks/usePageTracking';
 import Header from './components/Header';
 import Home from './Home';
-import ProviderProfile from './pages/ProviderProfile'; // ✅ Update path if needed
-import ProviderDirectory from './pages/ProviderDirectory'; // ✅ THIS IS CORRECT
-import JobBoard from './pages/join-our-team/index';
-import GeneralistTherapistJob from './pages/join-our-team/generalist-therapist';
-import LGBTQTherapistJob from './pages/join-our-team/lgbtq-therapist';
-import ADHDTherapistJob from './pages/join-our-team/adhd-therapist';
-import EatingDisorderJob from './pages/join-our-team/eating-disorder-therapist';
-import Internships from './pages/join-our-team/internships';
+const ProviderProfile = lazy(() => import('./pages/ProviderProfile'));
+const ProviderDirectory = lazy(() => import('./pages/ProviderDirectory'));
+const JobBoard = lazy(() => import('./pages/join-our-team/index'));
+const GeneralistTherapistJob = lazy(() => import('./pages/join-our-team/generalist-therapist'));
+const LGBTQTherapistJob = lazy(() => import('./pages/join-our-team/lgbtq-therapist'));
+const ADHDTherapistJob = lazy(() => import('./pages/join-our-team/adhd-therapist'));
+const EatingDisorderJob = lazy(() => import('./pages/join-our-team/eating-disorder-therapist'));
+const Internships = lazy(() => import('./pages/join-our-team/internships'));
 import ScrollToTop from './components/ScrollToTop';
-import Contact from './pages/Contact';
-import CategoryResourcePage from './pages/resources/CategoryResourcePage';
-import NeurodiversityResources from './pages/resources/index';
-import AssessmentsPage from './pages/services/autism-adhd-assessments';
-import AffirmingTherapy from './pages/specialties/autism-adhd-therapy.jsx';
-import Services from './pages/Services.jsx';
-import HowWeHelp from './pages/HowWeHelp.jsx';
-import RatesFees from './pages/rates-fees.jsx';
-import IndividualTherapy from './pages/services/individual-therapy.jsx';
-import CouplesFamilyTherapy from './pages/services/couples-family-therapy.jsx';
-import PolyamoryNonMonogamy from './pages/specialties/polyamory-non-monogamy.jsx';
-import QueerAffirmingTherapy from './pages/specialties/queer-affirming-therapy.jsx';
-import Specialties from './pages/Specialties.jsx';
-import Depression from './pages/specialties/depression.jsx';
-import Groups from './pages/services/groups.jsx';
-import TTRPGGroup from './pages/services/groups/ttrpg.jsx';
-import TherapyForm from './pages/Contact/TherapyForm';
-import AffordingTherapy from './pages/affording-therapy';
-import EvaluationForm from './pages/Contact/EvaluationForm';
-import AdventuringParty from './pages/Contact/AdventuringParty.jsx';
+const Contact = lazy(() => import('./pages/Contact'));
+const CategoryResourcePage = lazy(() => import('./pages/resources/CategoryResourcePage'));
+const NeurodiversityResources = lazy(() => import('./pages/resources/index'));
+const AssessmentsPage = lazy(() => import('./pages/services/autism-adhd-assessments'));
+const AffirmingTherapy = lazy(() => import('./pages/specialties/autism-adhd-therapy.jsx'));
+const Services = lazy(() => import('./pages/Services.jsx'));
+const HowWeHelp = lazy(() => import('./pages/HowWeHelp.jsx'));
+const RatesFees = lazy(() => import('./pages/rates-fees.jsx'));
+const IndividualTherapy = lazy(() => import('./pages/services/individual-therapy.jsx'));
+const CouplesFamilyTherapy = lazy(() => import('./pages/services/couples-family-therapy.jsx'));
+const PolyamoryNonMonogamy = lazy(() => import('./pages/specialties/polyamory-non-monogamy.jsx'));
+const QueerAffirmingTherapy = lazy(() => import('./pages/specialties/queer-affirming-therapy.jsx'));
+const Specialties = lazy(() => import('./pages/Specialties.jsx'));
+const Anxiety = lazy(() => import('./pages/specialties/anxiety.jsx'));
+const Depression = lazy(() => import('./pages/specialties/depression.jsx'));
+const Groups = lazy(() => import('./pages/services/groups.jsx'));
+const TTRPGGroup = lazy(() => import('./pages/services/groups/ttrpg.jsx'));
+const TherapyForm = lazy(() => import('./pages/Contact/TherapyForm'));
+const AffordingTherapy = lazy(() => import('./pages/affording-therapy'));
+const EvaluationForm = lazy(() => import('./pages/Contact/EvaluationForm'));
+const AdventuringParty = lazy(() => import('./pages/Contact/AdventuringParty.jsx'));
 import Footer from './components/Footer';
-import Login from "./pages/Login";
-import PoliciesLandingPage from './pages/PoliciesLandingPage';
-import MyHealthMyData from './pages/policies/my-health-my-data';
-import PrivacyPolicyPage from './pages/policies/privacy';
-import TermsAndConditionsPage from './pages/policies/terms';
-import BlogIndex from './pages/blog/index.jsx';
-import BlogPostDetail from './pages/blog/BlogPostDetail.jsx';
-import NewBlogPost from './pages/blog/NewBlogPost.jsx';
-import EditBlogPost from './pages/blog/EditBlogPost.jsx';
-import AdminSession from './components/AdminSession.jsx';
-import AdminHome from './pages/admin/AdminHome.jsx';
-import ManageProviders from './pages/admin/ManageProviders.jsx';
-import EditProvider from './pages/admin/EditProvider.jsx';
+const Login = lazy(() => import("./pages/Login"));
+const PoliciesLandingPage = lazy(() => import('./pages/PoliciesLandingPage'));
+const MyHealthMyData = lazy(() => import('./pages/policies/my-health-my-data'));
+const PrivacyPolicyPage = lazy(() => import('./pages/policies/privacy'));
+const TermsAndConditionsPage = lazy(() => import('./pages/policies/terms'));
+const BlogIndex = lazy(() => import('./pages/blog/index.jsx'));
+const BlogPostDetail = lazy(() => import('./pages/blog/BlogPostDetail.jsx'));
+const NewBlogPost = lazy(() => import('./pages/blog/NewBlogPost.jsx'));
+const EditBlogPost = lazy(() => import('./pages/blog/EditBlogPost.jsx'));
+const AdminSession = lazy(() => import('./components/AdminSession.jsx'));
+const AdminHome = lazy(() => import('./pages/admin/AdminHome.jsx'));
+const ManageProviders = lazy(() => import('./pages/admin/ManageProviders.jsx'));
+const EditProvider = lazy(() => import('./pages/admin/EditProvider.jsx'));
 
 function PublicLayout() {
   // Public pages only — /login sits outside this layout.
@@ -55,7 +56,9 @@ function PublicLayout() {
     <div className="bg-white">
       <ScrollToTop />
       <Header />
-      <Outlet />
+      <Suspense fallback={<div className="min-h-[70vh]" aria-busy="true" />}>
+        <Outlet />
+      </Suspense>
       <Footer />
     </div>
   );
@@ -63,6 +66,7 @@ function PublicLayout() {
 
 function App() {
   return (
+    <Suspense fallback={<div className="min-h-screen" aria-busy="true" />}>
     <Routes>
       {/* 🔐 STAFF — sign-in for blog authoring */}
       <Route path="/login" element={<Login />} />
@@ -93,6 +97,7 @@ function App() {
         <Route path="/services/individual-therapy" element={<IndividualTherapy />} />
         <Route path="/services/couples-family-therapy" element={<CouplesFamilyTherapy />} />
         <Route path="/specialties" element={<Specialties />} />
+        <Route path="/specialties/anxiety" element={<Anxiety />} />
         <Route path="/specialties/depression" element={<Depression />} />
         <Route path="/specialties/polyamory-non-monogamy" element={<PolyamoryNonMonogamy />} />
         <Route path="/specialties/queer-affirming-therapy" element={<QueerAffirmingTherapy />} />
@@ -133,6 +138,7 @@ function App() {
         <Route path="*" element={<div className="p-6">Not found</div>} />
       </Route>
     </Routes>
+    </Suspense>
   );
 }
 export default App;
