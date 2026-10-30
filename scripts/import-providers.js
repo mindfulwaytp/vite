@@ -1,14 +1,13 @@
 // Copies provider rows from the Google Sheet (via SheetDB) into the Firestore
 // `providers` collection, one doc per provider keyed by URL slug.
 //
-// Availability is edited on the site now (/admin/providers), so for providers
-// already in Firestore this keeps their acceptingClients and updates everything
-// else. Until profiles can be edited on the site too, re-run this after changing
-// a bio, specialties, etc. in the sheet.
+// Profiles are edited on the site now (/admin/providers), so by default this only
+// adds providers that aren't in Firestore yet and leaves existing ones alone.
 //
-//   npm run import-providers                  # sync profile fields, keep availability
-//   npm run import-providers -- --availability   # also overwrite availability from the sheet
-//   npm run import-providers -- --prune          # also delete providers no longer in the sheet
+//   npm run import-providers                  # add new providers from the sheet
+//   npm run import-providers -- --overwrite      # replace existing profiles with the sheet's rows
+//
+// Providers are added and removed on the site too, so this never deletes any.
 
 import process from 'node:process';
 import { FieldValue } from 'firebase-admin/firestore';
@@ -22,8 +21,7 @@ function slugify(text) {
 }
 
 async function main() {
-  const overwriteAvailability = process.argv.includes('--availability');
-  const prune = process.argv.includes('--prune');
+  const overwrite = process.argv.includes('--overwrite');
 
   const db = await getAdminFirestore();
   if (!db) {
@@ -40,38 +38,25 @@ async function main() {
   const existing = new Map((await collection.get()).docs.map((d) => [d.id, d.data()]));
 
   const batch = db.batch();
-  const seen = new Set();
 
   rows.forEach((row, order) => {
     const id = slugify(row.name.trim());
-    seen.add(id);
     const data = { ...row, order };
 
     const current = existing.get(id);
-    if (current && !overwriteAvailability) {
-      data.acceptingClients = current.acceptingClients;
+    if (current && !overwrite) {
+      console.log(`= ${row.name} (already here; edit on the site)`);
+      return;
     }
-    if (!current || data.acceptingClients !== current.acceptingClients) {
-      data.updatedAt = FieldValue.serverTimestamp();
-      data.updatedBy = 'sheet import';
-    }
+    data.updatedAt = FieldValue.serverTimestamp();
+    data.updatedBy = 'sheet import';
 
     batch.set(collection.doc(id), data, { merge: true });
     console.log(`${current ? '↻' : '+'} ${row.name} (${data.acceptingClients || 'no availability'})`);
   });
 
-  const stale = [...existing.keys()].filter((id) => !seen.has(id));
-  for (const id of stale) {
-    if (prune) {
-      batch.delete(collection.doc(id));
-      console.log(`− ${id} (removed)`);
-    } else {
-      console.warn(`⚠️  ${id} is in Firestore but not the sheet; run with --prune to remove it.`);
-    }
-  }
-
   await batch.commit();
-  console.log(`✅ Synced ${rows.length} providers to Firestore.`);
+  console.log(`✅ Checked ${rows.length} providers from the sheet.`);
 }
 
 main().catch((err) => {

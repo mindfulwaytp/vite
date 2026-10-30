@@ -3,6 +3,7 @@ Allow: /
 
 # Block staff areas
 Disallow: /login
+Disallow: /admin
 Disallow: /intranet/
 
 # Empty SPA shell served for unmatched routes — not a real page

@@ -7,7 +7,7 @@ import path from 'node:path';
 import { ROOT, getAdminFirestore } from './lib/firebaseAdmin.js';
 
 // Bookkeeping fields that aren't part of a provider row (and Timestamps don't survive JSON).
-const NON_ROW_FIELDS = ['order', 'updatedAt', 'updatedBy'];
+const NON_ROW_FIELDS = ['order', 'updatedAt', 'updatedBy', 'hidden'];
 
 async function main() {
   const db = await getAdminFirestore();
@@ -22,11 +22,16 @@ async function main() {
     return;
   }
 
-  const rows = snap.docs.map((doc) => {
+  // Hidden providers are still being set up; they get no page or sitemap entry.
+  const rows = snap.docs.filter((doc) => !doc.data().hidden).map((doc) => {
     const row = { ...doc.data() };
     for (const field of NON_ROW_FIELDS) delete row[field];
     return row;
   });
+  if (!rows.length) {
+    console.warn('[snapshot-providers] Every provider is hidden; keeping the existing providers.json.');
+    return;
+  }
 
   const filePath = path.join(ROOT, 'src', 'data', 'providers.json');
   await fs.writeFile(filePath, JSON.stringify(rows, null, 2) + '\n', 'utf-8');

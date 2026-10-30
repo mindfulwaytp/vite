@@ -1,16 +1,40 @@
-import { useState } from "react";
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../lib/firebase";
+import {
+  clearSignOutReason,
+  consumeReturnTo,
+  markActive,
+  signOutReason,
+} from "../lib/adminSession";
+
+const SIGN_OUT_MESSAGES = {
+  idle: "You were signed out after 30 minutes of inactivity. Sign in again to continue.",
+  expired: "Your session ended after 12 hours. Sign in again to continue.",
+};
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [info, setInfo] = useState(null);
+  const [info, setInfo] = useState(() => SIGN_OUT_MESSAGES[signOutReason()] || null);
   const [loading, setLoading] = useState(false);
   const [resetLoading, setResetLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => clearSignOutReason(), []);
+
+  // Covers both a fresh sign-in and arriving here already signed in (e.g. from the
+  // footer link). The admin pages check the session's age, so a stale one still
+  // ends up back here.
+  useEffect(
+    () =>
+      onAuthStateChanged(auth, (user) => {
+        if (user) navigate(consumeReturnTo() || "/admin", { replace: true });
+      }),
+    [navigate]
+  );
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,11 +43,11 @@ export default function Login() {
     setLoading(true);
 
     try {
+      // Before signing in, so the admin pages don't see a session with no activity.
+      markActive();
       await signInWithEmailAndPassword(auth, email.trim(), password);
-      navigate("/blog", { replace: true });
     } catch (err) {
       setError(err?.message || "Login failed");
-    } finally {
       setLoading(false);
     }
   }
@@ -52,7 +76,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-gray-50">
       <div className="w-full max-w-md bg-white rounded-2xl shadow p-6">
-        <h1 className="text-2xl font-semibold">Staff Login</h1>
+        <h1 className="text-2xl font-semibold">Admin Login</h1>
         <p className="text-gray-600 mt-1">Sign in with your staff account.</p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">

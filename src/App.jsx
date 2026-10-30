@@ -42,7 +42,10 @@ import BlogIndex from './pages/blog/index.jsx';
 import BlogPostDetail from './pages/blog/BlogPostDetail.jsx';
 import NewBlogPost from './pages/blog/NewBlogPost.jsx';
 import EditBlogPost from './pages/blog/EditBlogPost.jsx';
+import AdminSession from './components/AdminSession.jsx';
+import AdminHome from './pages/admin/AdminHome.jsx';
 import ManageProviders from './pages/admin/ManageProviders.jsx';
+import EditProvider from './pages/admin/EditProvider.jsx';
 
 function PublicLayout() {
   // Public pages only — /login sits outside this layout.
@@ -116,11 +119,16 @@ function App() {
         <Route path="/policies/terms" element={<TermsAndConditionsPage />} />
 
         <Route path="/blog" element={<BlogIndex />} />
-        <Route path="/blog/new" element={<NewBlogPost />} />
-        <Route path="/blog/edit/:id" element={<EditBlogPost />} />
         <Route path="/blog/:slug" element={<BlogPostDetail />} />
 
-        <Route path="/admin/providers" element={<ManageProviders />} />
+        {/* 🔐 Signed-in pages: timed sign-out applies to everything in here */}
+        <Route element={<AdminSession />}>
+          <Route path="/admin" element={<AdminHome />} />
+          <Route path="/admin/providers" element={<ManageProviders />} />
+          <Route path="/admin/providers/:id" element={<EditProvider />} />
+          <Route path="/blog/new" element={<NewBlogPost />} />
+          <Route path="/blog/edit/:id" element={<EditBlogPost />} />
+        </Route>
 
         <Route path="*" element={<div className="p-6">Not found</div>} />
       </Route>

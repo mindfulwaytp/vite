@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
   collection,
@@ -7,20 +7,14 @@ import {
   getDocs,
   orderBy,
   query,
+  runTransaction,
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useAuthUser } from "../../hooks/useAuthUser";
 import SEO from "../../components/SEO";
-
-// Values the directory and profile pages know how to display (compared lowercase).
-const AVAILABILITY_OPTIONS = [
-  { value: "yes", label: "Accepting clients" },
-  { value: "assessments only", label: "Assessments only" },
-  { value: "starting soon", label: "Starting soon" },
-  { value: "no", label: "Not accepting" },
-];
+import { AVAILABILITY_OPTIONS, slugify } from "../../lib/providers";
 
 const STATUS_STYLES = {
   yes: "bg-emerald-50 text-emerald-800 border-emerald-200",
@@ -78,6 +72,17 @@ function ProviderRow({ provider, currentUser, onSaved }) {
           {provider.name}
         </Link>
         {provider.license && <span className="text-gray-500">, {provider.license}</span>}
+        {provider.hidden && (
+          <span className="ml-2 rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-xs text-amber-800">
+            Hidden
+          </span>
+        )}
+        <Link
+          to={`/admin/providers/${provider.id}`}
+          className="ml-3 text-sm text-sky-700 hover:underline"
+        >
+          Edit profile
+        </Link>
         <p className="text-xs text-gray-500 mt-0.5">
           {status === "saving" && "Saving…"}
           {status === "saved" && <span className="text-emerald-700">Saved. Live on the site now.</span>}
@@ -111,6 +116,84 @@ function ProviderRow({ provider, currentUser, onSaved }) {
   );
 }
 
+function AddProvider({ providers, currentUser }) {
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [error, setError] = useState("");
+  const [adding, setAdding] = useState(false);
+
+  const trimmed = name.trim().replace(/\s+/g, " ");
+  const id = slugify(trimmed);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!id) return;
+    setError("");
+    setAdding(true);
+    try {
+      const ref = doc(db, "providers", id);
+      const order = Math.max(-1, ...providers.map((p) => p.order ?? -1)) + 1;
+      await runTransaction(db, async (tx) => {
+        if ((await tx.get(ref)).exists()) throw new Error("exists");
+        // Starts hidden so an empty profile never shows in the directory.
+        tx.set(ref, {
+          name: trimmed,
+          order,
+          hidden: true,
+          acceptingClients: "no",
+          updatedAt: serverTimestamp(),
+          updatedBy: currentUser.email || currentUser.uid,
+        });
+      });
+      navigate(`/admin/providers/${id}`);
+    } catch (err) {
+      console.error("Could not add provider:", err);
+      setError(
+        err.message === "exists"
+          ? `There’s already a provider at /providers/${id}.`
+          : "Couldn’t add the provider. Check your connection and try again."
+      );
+      setAdding(false);
+    }
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white rounded-2xl shadow-sm border border-gray-200 px-6 md:px-8 py-5 mb-6"
+    >
+      <label htmlFor="newProviderName" className="block font-semibold text-gray-900">
+        Add a provider
+      </label>
+      <p className="text-sm text-gray-500 mt-0.5">
+        Use their full name as it should appear on the site. It sets their profile’s web address
+        {id ? <> (/providers/{id})</> : null} and can’t be changed later.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-2 mt-3">
+        <input
+          id="newProviderName"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+            setError("");
+          }}
+          placeholder="First Last"
+          autoComplete="off"
+          className="flex-1 min-w-0 rounded-lg border border-gray-300 px-3 py-2"
+        />
+        <button
+          type="submit"
+          disabled={!id || adding}
+          className="rounded-lg bg-sky-700 text-white px-4 py-2 font-medium hover:bg-sky-800 disabled:opacity-50"
+        >
+          {adding ? "Adding…" : "Add provider"}
+        </button>
+      </div>
+      {error && <p className="text-sm text-red-700 mt-2">{error}</p>}
+    </form>
+  );
+}
+
 export default function ManageProviders() {
   const { user, profile, loading, profileLoading } = useAuthUser();
   const isAdmin = profile?.isActive && profile.role === "admin";
@@ -137,7 +220,8 @@ export default function ManageProviders() {
     setProviders((list) => list.map((p) => (p.id === id ? { ...p, ...changes } : p)));
   }
 
-  const acceptingCount = providers?.filter((p) =>
+  const listed = providers?.filter((p) => !p.hidden);
+  const acceptingCount = listed?.filter((p) =>
     ["yes", "assessments only"].includes((p.acceptingClients || "").toLowerCase())
   ).length;
 
@@ -151,9 +235,10 @@ export default function ManageProviders() {
       <div className="max-w-3xl mx-auto px-6 md:px-8 pt-32">
         <div className="flex items-start justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Provider availability</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Providers</h1>
             <p className="text-gray-600 mt-1">
-              Changes save as soon as you pick a new status and show on the directory right away.
+              Availability saves as soon as you pick a new status and shows on the directory right
+              away. Use Edit profile to change bios, specialties, insurance and the rest.
             </p>
           </div>
           <Link
@@ -163,6 +248,8 @@ export default function ManageProviders() {
             View directory
           </Link>
         </div>
+
+        {providers && <AddProvider providers={providers} currentUser={user} />}
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 px-6 md:px-8 py-2">
           {loadError && (
@@ -180,7 +267,7 @@ export default function ManageProviders() {
           {providers && providers.length > 0 && (
             <>
               <p className="pt-4 text-sm text-gray-600">
-                {acceptingCount} of {providers.length} providers currently accepting clients.
+                {acceptingCount} of {listed.length} listed providers currently accepting clients.
               </p>
               <ul className="divide-y divide-gray-100">
                 {providers.map((p) => (

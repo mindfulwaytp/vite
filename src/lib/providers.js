@@ -43,10 +43,25 @@ export const seededProviders = parseProviderRows(providersSnapshot);
 // Firestore is the source of truth (availability is edited at /admin/providers);
 // providers.json is a snapshot of it refreshed on every build. Pages seed from the
 // snapshot, then catch up to Firestore.
-export async function fetchProviders() {
+// Hidden providers (new ones still being set up) are left out unless includeHidden.
+export async function fetchProviders({ includeHidden = false } = {}) {
   const snap = await getDocs(query(collection(db, 'providers'), orderBy('order')));
   // An empty result means the collection hasn't been populated; keep the snapshot
   // rather than render an empty directory.
   if (snap.empty) throw new Error('No providers in Firestore');
-  return parseProviderRows(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+  const rows = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  return parseProviderRows(includeHidden ? rows : rows.filter((row) => !row.hidden));
 }
+
+// Must match slugify() in the provider pages: the doc id is the profile URL.
+export function slugify(text) {
+  return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+}
+
+// Values the directory and profile pages know how to display (compared lowercase).
+export const AVAILABILITY_OPTIONS = [
+  { value: 'yes', label: 'Accepting clients' },
+  { value: 'assessments only', label: 'Assessments only' },
+  { value: 'starting soon', label: 'Starting soon' },
+  { value: 'no', label: 'Not accepting' },
+];
