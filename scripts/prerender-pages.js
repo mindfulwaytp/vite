@@ -40,6 +40,7 @@ const STATIC_ROUTES = [
   '/contact',
   '/rates-fees',
   '/affording-therapy',
+  '/our-new-name',
   '/contact/therapy',
   '/contact/evaluation',
   '/contact/adventuring-party',

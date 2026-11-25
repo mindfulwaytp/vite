@@ -90,7 +90,7 @@ const Footer = () => {
           <Link
             to="/login"
             rel="nofollow"
-            className="text-sm text-gray-500 hover:text-gray-700 hover:underline"
+            className="text-sm text-gray-600 hover:text-gray-800 hover:underline"
           >
             Admin login
           </Link>

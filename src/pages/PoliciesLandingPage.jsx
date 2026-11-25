@@ -33,7 +33,7 @@ const PoliciesLandingPage = () => {
         canonical="/policies/"
       />
 
-      <main className="mt-20 bg-white py-16 px-4 md:px-10">
+      <div className="mt-20 bg-white py-16 px-4 md:px-10">
         <section className="mx-auto max-w-3xl">
           <div className="mb-10 text-center">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-teal-700">Legal</p>
@@ -58,7 +58,7 @@ const PoliciesLandingPage = () => {
             ))}
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 };

@@ -74,7 +74,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-gray-50">
+    <main className="min-h-screen flex items-center justify-center p-6 bg-gray-50">
       <div className="w-full max-w-md bg-white rounded-2xl shadow p-6">
         <h1 className="text-2xl font-semibold">Admin Login</h1>
         <p className="text-gray-600 mt-1">Sign in with your staff account.</p>
@@ -125,6 +125,6 @@ export default function Login() {
           </button>
         </form>
       </div>
-    </div>
+    </main>
   );
 }

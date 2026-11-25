@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import heroBg from '../assets/hero-bg.jpg';
+import RebrandBanner from './RebrandBanner';
 
 export default function Header() {
   const location = useLocation();
@@ -52,11 +53,14 @@ export default function Header() {
 
   return (
     <>
-      {/* Hero Image Block (fixed height, won't resize) */}
+      {/* Hero Image Block: same shape as the photo (1600 × 659), so wide screens show
+          all of it. minHeight keeps it from shrinking to a sliver on phones, where
+          the sides get cropped instead. */}
       <div
         className="w-full"
         style={{
-          height: '320px',
+          aspectRatio: '1600 / 659',
+          minHeight: '320px',
           backgroundImage: `url(${heroBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'bottom',
@@ -70,6 +74,7 @@ export default function Header() {
           showHeader ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
+        <RebrandBanner />
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col">
           {/* Logo and Hamburger */}
           <div className="flex justify-between items-center">
@@ -153,7 +158,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed top-0 left-0 right-0 bg-white text-black z-50 px-6 py-8 text-lg shadow-md max-h-[90vh] overflow-y-auto rounded-b-xl transition-all duration-300 flex flex-col space-y-6 pt-[80px]">
+        <nav aria-label="Mobile menu" className="fixed top-0 left-0 right-0 bg-white text-black z-50 px-6 py-8 text-lg shadow-md max-h-[90vh] overflow-y-auto rounded-b-xl transition-all duration-300 flex flex-col space-y-6 pt-[80px]">
           <button
             className="self-end text-3xl mb-4"
             onClick={() => setMobileMenuOpen(false)}
@@ -204,7 +209,7 @@ export default function Header() {
               </a>
             )
           )}
-        </div>
+        </nav>
       )}
     </>
   );

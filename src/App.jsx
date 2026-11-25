@@ -31,6 +31,7 @@ const Groups = lazy(() => import('./pages/services/groups.jsx'));
 const TTRPGGroup = lazy(() => import('./pages/services/groups/ttrpg.jsx'));
 const TherapyForm = lazy(() => import('./pages/Contact/TherapyForm'));
 const AffordingTherapy = lazy(() => import('./pages/affording-therapy'));
+const OurNewName = lazy(() => import('./pages/our-new-name.jsx'));
 const EvaluationForm = lazy(() => import('./pages/Contact/EvaluationForm'));
 const AdventuringParty = lazy(() => import('./pages/Contact/AdventuringParty.jsx'));
 import Footer from './components/Footer';
@@ -56,9 +57,13 @@ function PublicLayout() {
     <div className="bg-white">
       <ScrollToTop />
       <Header />
-      <Suspense fallback={<div className="min-h-[70vh]" aria-busy="true" />}>
-        <Outlet />
-      </Suspense>
+      {/* The one main landmark per page: lets screen reader users jump straight
+          past the nav. Pages must not add their own <main>. */}
+      <main id="main-content">
+        <Suspense fallback={<div className="min-h-[70vh]" aria-busy="true" />}>
+          <Outlet />
+        </Suspense>
+      </main>
       <Footer />
     </div>
   );
@@ -105,6 +110,7 @@ function App() {
         <Route path="/services/groups/ttrpg" element={<TTRPGGroup />} />
         <Route path="/rates-fees" element={<RatesFees />} />
         <Route path="/affording-therapy" element={<AffordingTherapy />} />
+        <Route path="/our-new-name" element={<OurNewName />} />
 
         <Route
           path="/resources"

@@ -38,13 +38,13 @@ function TTRPGGroup() {
       />
 
       {/* Hero */}
-      <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
+      <div className="mt-20 relative w-full overflow-hidden flex min-h-[260px] md:min-h-[420px]">
         <img
           src="/images/dnd.jpg"
           alt="The Adventuring Party"
-          className="w-full max-h-[420px] object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 flex items-center justify-center px-4 bg-black/30">
+        <div className="relative flex-1 flex items-center justify-center px-4 py-8 bg-black/30">
           <div className="bg-white/85 text-black px-6 py-8 rounded-xl shadow-lg max-w-2xl text-center">
             <p className="text-sm font-semibold text-sky-700 uppercase tracking-widest mb-2">Group Therapy</p>
             <h1 className="text-3xl md:text-4xl font-bold mb-2">The Adventuring Party</h1>

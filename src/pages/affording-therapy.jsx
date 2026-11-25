@@ -92,13 +92,13 @@ function AffordingTherapy() {
       />
 
       {/* Hero */}
-      <div className="mt-20 relative w-full overflow-hidden max-h-[420px]">
+      <div className="mt-20 relative w-full overflow-hidden flex min-h-[260px] md:min-h-[420px]">
         <img
           src="/images/medicaid_header.jpg"
           alt="Help paying for therapy"
-          className="w-full max-h-[420px] object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 flex items-center justify-center px-4">
+        <div className="relative flex-1 flex items-center justify-center px-4 py-8">
           <div className="bg-white/80 text-black px-6 py-8 rounded-xl shadow-md max-w-2xl text-center">
             <h1 className="text-3xl md:text-4xl mb-4">
               Help Paying for Therapy in Seattle
